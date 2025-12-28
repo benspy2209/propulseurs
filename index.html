@@ -3,43 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formation Stratégie Auteur | Benjamin de Bruijne</title>
+    <title>Formation Auteurs | Propulsée par PulseNoir</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-      /* Styles critiques appliqués immédiatement pour éviter le clignotement blanc */
       html, body {
         margin: 0;
         padding: 0;
-        background-color: #000000;
+        background-color: #000000 !important;
         color: #ffffff;
         font-family: 'Inter', sans-serif;
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
       }
       
-      /* Pré-style des conteneurs principaux pour correspondre aux classes Tailwind */
       #root {
-        background-color: #000000;
+        background-color: #000000 !important;
         min-height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
 
-      /* Styles de base pour les éléments structurants */
       nav {
         background-color: rgba(0, 0, 0, 0.9);
+      }
+      
+      img {
+        display: block;
       }
     </style>
   <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3"
   }
 }
 </script>
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

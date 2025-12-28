@@ -1,5 +1,16 @@
 import { LucideIcon } from 'lucide-react';
 
+export interface Chapter {
+  title: string;
+  content: string[]; // Paragraphes de texte
+  type: 'text' | 'exercise' | 'key-concept';
+}
+
+export interface Resource {
+  title: string;
+  type: 'pdf' | 'template' | 'checklist' | 'sheet';
+}
+
 export interface ModuleContent {
   id: string;
   title: string;
@@ -9,4 +20,8 @@ export interface ModuleContent {
   icon: LucideIcon;
   imageKeyword: string;
   color: string;
+  longDescription?: string;
+  chapters?: Chapter[];
+  duration?: string;
+  resources?: Resource[]; // Nouveaux goodies
 }
