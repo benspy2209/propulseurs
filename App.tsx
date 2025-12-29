@@ -5,6 +5,8 @@ import CoursePlayer from './components/CoursePlayer';
 import LegalView from './components/LegalView';
 import PrivacyPolicyView from './components/PrivacyPolicyView';
 import MentionsLegalesView from './components/MentionsLegalesView';
+import PurchaseView from './components/PurchaseView';
+import SuccessView from './components/SuccessView';
 import { 
   ArrowRight, 
   ExternalLink, 
@@ -39,7 +41,7 @@ import {
   CalendarDays
 } from 'lucide-react';
 
-type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions';
+type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('landing');
@@ -91,6 +93,23 @@ const App: React.FC = () => {
     return <MentionsLegalesView onBack={() => setCurrentView('landing')} />;
   }
 
+  if (currentView === 'purchase') {
+    return (
+      <PurchaseView 
+        onBack={() => setCurrentView('landing')} 
+        onSuccess={() => setCurrentView('success')} 
+      />
+    );
+  }
+
+  if (currentView === 'success') {
+    return (
+      <SuccessView 
+        onGoToCourse={() => setCurrentView('course')} 
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-[#ff0000] selection:text-white">
       
@@ -137,10 +156,10 @@ const App: React.FC = () => {
           </div>
 
           <button 
-            onClick={() => setCurrentView('course')}
+            onClick={() => setCurrentView('purchase')}
             className="bg-[#ff0000] text-white px-6 py-2 rounded-full text-[11px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,0,0,0.4)]"
           >
-            Accès Formation
+            S'inscrire
           </button>
         </div>
       </nav>
@@ -178,10 +197,10 @@ const App: React.FC = () => {
           
           <div className="flex flex-col items-center gap-8">
             <button 
-              onClick={() => scrollToSection('programme')}
+              onClick={() => setCurrentView('purchase')}
               className="px-16 py-8 bg-[#ff0000] text-white text-base font-black rounded-full flex items-center gap-3 group uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-[0_0_60px_rgba(255,0,0,0.5)] active:scale-95"
             >
-              Découvrir la formation
+              Rejoindre la formation
               <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
             </button>
             <div className="flex items-center gap-3 text-gray-500 text-[10px] font-black uppercase tracking-[0.4em]">
@@ -239,7 +258,7 @@ const App: React.FC = () => {
           ))}
         </div>
         <div className="mt-20 text-center">
-          <button onClick={() => setCurrentView('course')} className="text-[#ff0000] font-black uppercase tracking-[0.3em] text-sm hover:underline flex items-center gap-2 mx-auto">
+          <button onClick={() => setCurrentView('purchase')} className="text-[#ff0000] font-black uppercase tracking-[0.3em] text-sm hover:underline flex items-center gap-2 mx-auto">
             Voir le détail complet de la formation <ArrowRight size={18} />
           </button>
         </div>
@@ -384,7 +403,7 @@ const App: React.FC = () => {
             Plan de Guerre 90 Jours pour Auteurs de Noir & Thriller. Rejoins le clan.
           </p>
           <button 
-            onClick={() => setCurrentView('course')}
+            onClick={() => setCurrentView('purchase')}
             className="px-16 py-8 bg-[#ff0000] text-white text-lg font-black rounded-full uppercase tracking-[0.2em] transition-all hover:scale-110 shadow-[0_0_80px_rgba(255,0,0,0.6)] active:scale-95 mb-8"
           >
             Rejoindre la formation
