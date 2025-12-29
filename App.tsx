@@ -11,6 +11,7 @@ import SuccessView from './components/SuccessView';
 import LoginView from './components/LoginView';
 import InteractivePresentation from './components/InteractivePresentation';
 import TestimonialsSection from './components/TestimonialsSection';
+import LeadMagnetSection from './components/LeadMagnetSection';
 import { supabase } from './lib/supabase';
 import { 
   ArrowRight, 
@@ -393,6 +394,9 @@ const App: React.FC = () => {
 
       {/* Testimonials Section */}
       <TestimonialsSection />
+
+      {/* Lead Magnet Section */}
+      <LeadMagnetSection />
 
       {/* Footer */}
       <footer className="py-20 bg-black border-t border-white/5 text-center px-6">

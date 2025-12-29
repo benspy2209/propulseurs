@@ -69,7 +69,8 @@ export const PULSENOIR_LINKS = {
   studio: "https://studio.pulsenoir.be/",
   biblio: "https://bibliopulse.com/",
   instagram: "https://www.instagram.com/pulsenoirbe/",
-  youtube: "https://www.youtube.com/@PulseNoirBe"
+  youtube: "https://www.youtube.com/@PulseNoirBe",
+  leadMagnetDoc: "https://drive.google.com/file/d/1A_3xB_TOWQaOMU5CJXD9LAkjXGJb3PTM/view?usp=drive_link"
 };
 
 // Guide de mapping pour n8n / Automation
@@ -106,7 +107,7 @@ export const COURSE_MODULES: ModuleContent[] = [
       "Télécharger et remplir les 4 outils du Pack Bonus du module."
     ],
     transitionTitle: "Mettre en pratique avec les outils du module",
-    transitionText: "Une fois que tu as lu cette page et répondu à l’exercice sur ta Promesse de Noir, passe aux outils ci‑dessous. Ils te servent à concrétiser ton ADN d’auteur : ton écosystème, ton calcul de rentabilité, ton lecteur cible et tes piliers pro.",
+    transitionText: "Une fois que tu as lu cette page et répondu à l’exercice sur ta promesse de Noir, passe aux outils ci‑dessous. Ils te servent à concrétiser ton ADN d’auteur : ton écosystème, ton calcul de rentabilité, ton lecteur cible et tes piliers pro.",
     transitionButtonText: "Descendre vers les outils",
     chapters: [
       {
