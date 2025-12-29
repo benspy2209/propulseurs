@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { COURSE_MODULES, INSTRUCTOR, INSTRUCTOR_STATS, PULSENOIR_LINKS, FAQ_ITEMS } from './constants';
 import ModuleCard from './components/ModuleCard';
@@ -8,6 +9,8 @@ import MentionsLegalesView from './components/MentionsLegalesView';
 import PurchaseView from './components/PurchaseView';
 import SuccessView from './components/SuccessView';
 import LoginView from './components/LoginView';
+import InteractivePresentation from './components/InteractivePresentation';
+import { supabase } from './lib/supabase';
 import { 
   ArrowRight, 
   Instagram,
@@ -20,22 +23,47 @@ import {
   Zap,
   ShieldCheck,
   CalendarDays,
-  User
+  User,
+  Play
 } from 'lucide-react';
 
 type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success' | 'login';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('landing');
+  const [showPresentation, setShowPresentation] = useState(false);
   const [copied, setCopied] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isInstructorHovered, setIsInstructorHovered] = useState(false);
   
-  // État de l'utilisateur (Simulation de session)
+  // État de l'utilisateur
   const [userEmail, setUserEmail] = useState<string | null>(localStorage.getItem('userEmail'));
   const [hasAccess, setHasAccess] = useState<boolean>(localStorage.getItem('hasAccess') === 'true');
 
-  // Simuler la détection du retour Stripe
+  // 1. Écouter les changements d'auth (Magic Link retour)
+  useEffect(() => {
+    // Vérifier la session actuelle au chargement
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user?.email) {
+        handleLogin(session.user.email);
+      }
+    });
+
+    // Écouter les changements d'état (clic sur le lien dans le mail)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN' && session?.user?.email) {
+        handleLogin(session.user.email);
+      } else if (event === 'SIGNED_OUT') {
+        handleLogout();
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  // 2. Détection du retour Stripe
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('status') === 'success') {
@@ -57,8 +85,6 @@ const App: React.FC = () => {
   };
 
   const handleLogin = (email: string) => {
-    // Ici, on simulera une vérification réussie
-    // En production, on interrogera Supabase ici
     setUserEmail(email);
     setHasAccess(true);
     localStorage.setItem('userEmail', email);
@@ -66,7 +92,8 @@ const App: React.FC = () => {
     setCurrentView('course');
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     setUserEmail(null);
     setHasAccess(false);
     localStorage.removeItem('userEmail');
@@ -97,6 +124,10 @@ const App: React.FC = () => {
       });
     }
   };
+
+  if (showPresentation) {
+    return <InteractivePresentation onExit={() => setShowPresentation(false)} />;
+  }
 
   if (currentView === 'login') {
     return <LoginView onBack={() => setCurrentView('landing')} onLogin={handleLogin} />;
@@ -218,31 +249,26 @@ const App: React.FC = () => {
             Plan de Guerre 90 Jours pour Auteurs de Noir & Thriller.
           </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-16 max-w-4xl mx-auto">
-            {[
-              "Construire ton écosystème d'auteur de noir moderne, sans te perdre.",
-              "Lancer ton polar avec un plan de guerre 90 jours, action par action.",
-              "Utiliser des checklists, scripts et fichiers prêts à l'emploi, pensés pour le noir."
-            ].map((text, i) => (
-              <div key={i} className="flex gap-4 items-start text-left bg-neutral-900/40 p-5 rounded-2xl border border-white/5">
-                <Check className="text-[#ff0000] shrink-0 mt-1" size={18} strokeWidth={3} />
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-wide leading-relaxed">{text}</p>
-              </div>
-            ))}
-          </div>
-          
-          <div className="flex flex-col items-center gap-8">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-16">
             <button 
               onClick={() => setCurrentView('purchase')}
-              className="px-16 py-8 bg-[#ff0000] text-white text-base font-black rounded-full flex items-center gap-3 group uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-[0_0_60px_rgba(255,0,0,0.5)] active:scale-95"
+              className="px-12 py-7 bg-[#ff0000] text-white text-base font-black rounded-full flex items-center gap-3 group uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-[0_0_60px_rgba(255,0,0,0.5)] active:scale-95"
             >
               Rejoindre la formation
               <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
             </button>
-            <div className="flex items-center gap-3 text-gray-500 text-[10px] font-black uppercase tracking-[0.4em]">
-              <ShieldCheck size={14} className="text-[#ff0000]" />
-              PulseNoir : La référence polar & thriller
-            </div>
+            <button 
+              onClick={() => setShowPresentation(true)}
+              className="px-12 py-7 bg-white/5 border border-white/10 text-white text-base font-black rounded-full flex items-center gap-3 group uppercase tracking-[0.2em] transition-all hover:bg-white hover:text-black active:scale-95"
+            >
+              <Play size={20} className="fill-current" />
+              Découvrir la méthode
+            </button>
+          </div>
+          
+          <div className="flex items-center justify-center gap-3 text-gray-500 text-[10px] font-black uppercase tracking-[0.4em]">
+            <ShieldCheck size={14} className="text-[#ff0000]" />
+            PulseNoir : La référence polar & thriller
           </div>
         </div>
       </header>
@@ -350,100 +376,16 @@ const App: React.FC = () => {
             </div>
 
             <div className="mt-16 flex flex-wrap items-center gap-12">
-              {INSTRUCTOR_STATS.map((stat, i) => (
+              {INSTRUCTOR_STATS.map((stat, i) => ( stat.value && (
                 <div key={i} className="flex flex-col">
-                  {stat.value && (
-                    <span className="text-5xl font-black text-white tracking-tighter mb-1">{stat.value}</span>
-                  )}
+                  <span className="text-5xl font-black text-white tracking-tighter mb-1">{stat.value}</span>
                   <span className="text-[#ff0000] font-black uppercase tracking-widest text-[10px] leading-relaxed max-w-[200px]">
                     {stat.label}
                   </span>
                 </div>
-              ))}
+              )))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Bloc Format & Mises à jour */}
-      <section id="format" className="py-24 bg-neutral-950 border-y border-white/5">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-black/40 p-10 md:p-16 rounded-[3rem] border border-[#ff0000]/20 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity">
-              <Zap size={120} className="text-[#ff0000]" />
-            </div>
-            
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 bg-[#ff0000]/10 rounded-2xl text-[#ff0000]">
-                <CalendarDays size={24} />
-              </div>
-              <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic serif-font">Comment se présente la <span className="text-[#ff0000]">formation</span> ?</h2>
-            </div>
-            
-            <div className="space-y-6 text-gray-400 text-lg leading-relaxed font-medium italic">
-              <p>
-                Aujourd’hui, la formation est construite autour de documents, fiches, checklists, modèles et fichiers que tu peux utiliser immédiatement pour ton lancement : pas besoin de binge-watcher des heures de vidéos avant d’agir.
-              </p>
-              <div className="relative p-6 bg-[#ff0000]/5 border-l-4 border-[#ff0000] rounded-r-2xl">
-                <p className="relative z-10">
-                  Des vidéos viendront compléter les modules dans une prochaine mise à jour. Et bonne nouvelle : toutes les personnes qui ont déjà acheté la formation auront accès à ces vidéos, et à toutes les mises à jour futures, <span className="inline-flex items-center gap-2 bg-[#ff0000] text-white px-3 py-1 rounded-full font-black not-italic shadow-[0_0_20px_rgba(255,0,0,0.4)] text-sm uppercase tracking-widest animate-pulse">
-                    <Sparkles size={14} /> Gratuitement, à vie.
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section FAQ – Questions fréquentes */}
-      <section id="faq" className="py-32 bg-black">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-white italic serif-font">FAQ – Questions <span className="text-[#ff0000]">fréquentes</span></h2>
-            <div className="h-1 w-24 bg-[#ff0000] mx-auto" />
-          </div>
-          <div className="grid gap-4">
-            {FAQ_ITEMS.map((item, i) => (
-              <div key={i} className="bg-neutral-900/20 border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#ff0000]/20">
-                <button 
-                  onClick={() => toggleFaq(i)} 
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-neutral-900/40 transition-colors group"
-                >
-                  <span className={`text-sm md:text-base font-black uppercase tracking-widest italic transition-colors flex gap-4 ${openFaq === i ? 'text-[#ff0000]' : 'text-white'}`}>
-                    <span className="text-[#ff0000]/40 font-sans not-italic">{i + 1}.</span>
-                    {item.q}
-                  </span>
-                  <ChevronDown size={20} className={`text-[#ff0000] shrink-0 transition-transform duration-500 ${openFaq === i ? 'rotate-180' : ''}`} />
-                </button>
-                <div className={`transition-all duration-500 ease-in-out overflow-hidden ${openFaq === i ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <div className="p-8 pt-0 text-gray-400 font-medium italic text-lg leading-relaxed border-t border-white/5 bg-neutral-950/20 ml-12">
-                    {item.a}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Final */}
-      <section className="py-32 bg-black text-center px-6 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#ff0000]/5 blur-[150px] pointer-events-none" />
-        <div className="relative z-10 max-w-5xl mx-auto">
-          <h2 className="text-6xl md:text-[100px] font-black uppercase tracking-tighter leading-[0.8] mb-10 italic serif-font">
-            Vendez vos<br/>
-            <span className="text-[#ff0000] text-glow">Polars</span>.
-          </h2>
-          <p className="text-xl md:text-2xl text-gray-500 mb-14 max-w-2xl mx-auto italic font-light">
-            Plan de Guerre 90 Jours pour Auteurs de Noir & Thriller. Rejoins le clan.
-          </p>
-          <button 
-            onClick={() => setCurrentView('purchase')}
-            className="px-16 py-8 bg-[#ff0000] text-white text-lg font-black rounded-full uppercase tracking-[0.2em] transition-all hover:scale-110 shadow-[0_0_80px_rgba(255,0,0,0.6)] active:scale-95 mb-8"
-          >
-            Rejoindre la formation
-          </button>
         </div>
       </section>
 
@@ -460,24 +402,9 @@ const App: React.FC = () => {
           </div>
           <p className="text-gray-800 text-[10px] font-black uppercase tracking-[0.5em] mb-4">© 2025 PulseNoir - Benjamin de Bruijne - Academy Elite</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-            <button 
-              onClick={() => setCurrentView('mentions')}
-              className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4"
-            >
-              Mentions Légales
-            </button>
-            <button 
-              onClick={() => setCurrentView('cgv')}
-              className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4"
-            >
-              Conditions Générales de Vente
-            </button>
-            <button 
-              onClick={() => setCurrentView('privacy')}
-              className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4"
-            >
-              Politique de confidentialité
-            </button>
+            <button onClick={() => setCurrentView('mentions')} className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4">Mentions Légales</button>
+            <button onClick={() => setCurrentView('cgv')} className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4">Conditions Générales de Vente</button>
+            <button onClick={() => setCurrentView('privacy')} className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4">Politique de confidentialité</button>
           </div>
         </div>
       </footer>

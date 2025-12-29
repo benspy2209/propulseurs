@@ -46,54 +46,6 @@ export const FAQ_ITEMS = [
   {
     q: "Est-ce que c’est adapté si je n’ai encore jamais rien lancé / je suis nul·le en marketing ?",
     a: "Oui, le contenu est pensé pour des auteur·rices qui partent de presque zéro en promo. Les modules avancent pas à pas, avec des checklists, des modèles de messages, des fichiers à remplir et un Plan de Guerre 90 jours très guidé. L’objectif est justement de t’éviter le jargon et les stratégies irréalistes."
-  },
-  {
-    q: "Est-ce que cela fonctionne aussi si mon livre est déjà publié ?",
-    a: "Oui. Si ton polar est déjà en ligne mais qu’il “dort” sur les plateformes, tu peux utiliser la formation pour relancer proprement : optimiser ta fiche Amazon, remettre à plat ton réseau (street team, chroniqueurs, lecteurs), travailler ta preuve sociale et dérouler un plan 90 jours pour redonner une vraie visibilité à ton livre."
-  },
-  {
-    q: "Combien de temps dois-je prévoir chaque semaine ?",
-    a: "Le plan est conçu pour être modulable. Tu peux suivre la formation avec : un profil “15 minutes par jour” (micro-actions guidées), un profil “1 heure par jour”, ou “1 demi-journée par semaine” en mode batch. Les goodies et le Plan de Guerre 90 jours t’aident à choisir ton niveau d’intensité sans culpabiliser."
-  },
-  {
-    q: "Est-ce que c’est uniquement valable pour le polar/thriller ?",
-    a: "Tout est pensé pour le noir : exemples, scripts, listes de groupes, mots-clés Amazon, psychologie des couvertures, etc. Si tu écris de la romance ou de la fantasy, certaines briques resteront utiles, mais la formation est optimisée pour les auteur·rices de polar, thriller et roman noir."
-  },
-  {
-    q: "Que vais-je concrètement obtenir en plus du contenu théorique ?",
-    a: "Tu reçois une série de goodies actionnables : blueprints, checklists, tableurs, fiches à remplir, scripts de messages, fichiers de suivi, listes de mots-clés, laboratoires de résumés, plan de guerre 90 jours, etc. L’idée est que tu n’aies pas à repartir d’une page blanche à chaque étape."
-  },
-  {
-    q: "Y a‑t‑il des vidéos dans la formation ?",
-    a: "La première version de la formation est 100% basée sur des documents, fiches, checklists et outils pratiques. Les vidéos arriveront dans une prochaine mise à jour. Toutes les personnes qui ont déjà acheté la formation auront accès à ces vidéos, et à toutes les mises à jour futures, gratuitement à vie."
-  },
-  {
-    q: "Pendant combien de temps ai-je accès à la formation ?",
-    a: "L’accès est prévu comme durable : tu peux revenir sur les modules et les outils à chaque nouveau lancement (ou relancement) de polar/thriller. Et toutes les futures mises à jour (ajouts de contenus, vidéos, nouveaux outils) sont incluses gratuitement pour les personnes qui ont déjà acheté la formation."
-  },
-  {
-    q: "Comment se passe le paiement ? Puis-je payer en plusieurs fois ?",
-    a: "Le paiement est géré de manière sécurisée via une solution de paiement professionnelle (Stripe). Le paiement en 3 fois est possible : tu choisis l’option qui te convient au moment du règlement, directement sur la page de paiement."
-  },
-  {
-    q: "Et si je manque de temps en plein milieu des 90 jours ?",
-    a: "Le Plan de Guerre 90 jours est un cadre, pas une prison. Tu peux ralentir le rythme, reprendre une phase plus tard, ou te concentrer uniquement sur les “actions essentielles” si tu n’as plus de bande passante. L’idée est de t’aider à avancer, pas de te mettre une pression supplémentaire."
-  },
-  {
-    q: "Je n’ai pas encore fini d’écrire mon livre, est‑ce pour moi ?",
-    a: "Oui, c’est même le meilleur moment. Tu construis ta visibilité pendant l’écriture pour être prêt·e le jour J, au lieu d’attendre le dernier chapitre pour te poser la question « et maintenant, je fais quoi ? »."
-  },
-  {
-    q: "Je suis nul·le en technique / pub, est‑ce que je vais suivre ?",
-    a: "Tout est guidé. Les outils (templates, checklists, fichiers à remplir) font 80% du travail technique pour toi. Tu suis les étapes, tu coches, tu adaptes à ton cas : pas besoin d’être marketeur ou geek."
-  },
-  {
-    q: "Je n’ai pas beaucoup de temps, est‑ce réaliste ?",
-    a: "Oui. Le plan est adaptable : de 15 minutes par jour à une demi‑journée par semaine. Tu choisis ton « mode » et tu avances à ton rythme ; ce qui compte, c’est la régularité, pas la perfection."
-  },
-  {
-    q: "Est‑ce réservé à l’autoédition ou aussi aux auteurs en maison ?",
-    a: "C’est pour les deux. Même en maison d’édition, l’auteur moderne doit aujourd’hui savoir gérer sa propre communauté, ses lecteurs et sa visibilité. La formation t’aide à prendre en main cette partie, quel que soit ton mode de publication."
   }
 ];
 
@@ -105,6 +57,17 @@ export const PULSENOIR_LINKS = {
   studio: "https://studio.pulsenoir.be/",
   biblio: "https://bibliopulse.com/",
   instagram: "https://www.instagram.com/pulsenoirbe/"
+};
+
+// Guide de mapping pour n8n / Automation
+export const AUTOMATION_GUIDE = {
+  stripe_trigger: "checkout.session.completed",
+  supabase_table: "utilisateurs",
+  mapping: [
+    { source: "customer_details.email", target: "email", type: "string" },
+    { source: "fixed_value: true", target: "acces_formation", type: "boolean" },
+    { source: "auto_generated", target: "id", type: "uuid" }
+  ]
 };
 
 export const COURSE_MODULES: ModuleContent[] = [

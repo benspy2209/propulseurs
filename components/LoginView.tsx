@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ArrowLeft, Mail, ShieldCheck, ArrowRight, Lock, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Mail, ShieldCheck, ArrowRight, Lock, AlertCircle, CheckCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 interface LoginViewProps {
@@ -12,6 +12,7 @@ const LoginView: React.FC<LoginViewProps> = ({ onBack, onLogin }) => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isSent, setIsSent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,6 +28,8 @@ const LoginView: React.FC<LoginViewProps> = ({ onBack, onLogin }) => {
     setLoading(true);
     
     try {
+      // 1. Vérification préalable : l'utilisateur existe-t-il dans notre table de clients ?
+      // (Remplie par n8n lors de l'achat Stripe)
       const { data, error: dbError } = await supabase
         .from('utilisateurs')
         .select('*')
@@ -34,37 +37,73 @@ const LoginView: React.FC<LoginViewProps> = ({ onBack, onLogin }) => {
         .maybeSingle(); 
 
       if (dbError) {
-        console.error("Erreur Supabase détectée:", dbError);
-        
-        if (dbError.message.includes("Invalid API key")) {
-          setError("ERREUR CONFIGURATION : La clé API dans lib/supabase.ts est incorrecte. Elle doit commencer par 'eyJ...'. Vérifie tes réglages Supabase > API.");
-        } else {
-          setError(`Erreur base de données: ${dbError.message}`);
-        }
+        setError(`Erreur base de données: ${dbError.message}`);
         setLoading(false);
         return;
       }
 
       if (!data) {
-        setError("Cet email n'est pas reconnu dans notre base de membres.");
+        setError("Cet email n'est pas reconnu dans notre base de membres. Assurez-vous d'utiliser l'email utilisé lors de votre achat.");
         setLoading(false);
         return;
       }
 
       if (data.acces_formation === false) {
-        setError("Accès non activé. Si vous avez payé, contactez le support.");
+        setError("Votre accès n'est pas encore activé. Cela peut prendre 1 à 2 minutes après l'achat.");
         setLoading(false);
         return;
       }
 
-      onLogin(cleanEmail);
+      // 2. Déclenchement du Magic Link Supabase
+      const { error: authError } = await supabase.auth.signInWithOtp({
+        email: cleanEmail,
+        options: {
+          emailRedirectTo: window.location.origin,
+        },
+      });
+
+      if (authError) {
+        setError(`Erreur d'envoi : ${authError.message}`);
+        setLoading(false);
+        return;
+      }
+
+      // 3. Succès de l'envoi
+      setIsSent(true);
     } catch (err) {
-      setError("Erreur technique inattendue. Vérifie la console (F12).");
+      setError("Erreur technique inattendue.");
       console.error("Exception:", err);
     } finally {
       setLoading(false);
     }
   };
+
+  if (isSent) {
+    return (
+      <div className="min-h-screen bg-black text-white font-sans flex items-center justify-center p-6 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff0000]/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="max-w-md w-full relative z-10 text-center">
+          <div className="bg-neutral-900/40 rounded-[3rem] p-12 border border-[#ff0000]/30 backdrop-blur-xl shadow-2xl">
+            <div className="w-20 h-20 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner border border-green-500/20">
+              <CheckCircle size={40} />
+            </div>
+            <h1 className="text-3xl font-black uppercase tracking-tighter italic serif-font mb-6">
+              Lien <span className="text-[#ff0000]">Envoyé</span>
+            </h1>
+            <p className="text-gray-300 text-base leading-relaxed mb-8 italic">
+              Vérifie ta boîte mail (et tes spams). Clique sur le bouton dans l'email pour accéder instantanément à tes modules.
+            </p>
+            <button 
+              onClick={() => setIsSent(false)}
+              className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors"
+            >
+              Utiliser une autre adresse email
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-black text-white font-sans flex items-center justify-center p-6 relative overflow-hidden">
@@ -87,7 +126,7 @@ const LoginView: React.FC<LoginViewProps> = ({ onBack, onLogin }) => {
               Espace <span className="text-[#ff0000]">Membre</span>
             </h1>
             <p className="text-gray-500 text-xs font-bold uppercase tracking-widest italic">
-              Connecte-toi pour accéder à tes modules
+              Accès sécurisé par Magic Link
             </p>
           </header>
 
@@ -127,34 +166,27 @@ const LoginView: React.FC<LoginViewProps> = ({ onBack, onLogin }) => {
               {loading ? (
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
-                  <span>Vérification...</span>
+                  <span>Envoi du lien...</span>
                 </div>
               ) : (
                 <>
-                  Accéder à la formation
+                  Recevoir mon lien d'accès
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </>
               )}
             </button>
           </form>
 
-          <footer className="mt-10 pt-8 border-t border-white/5 text-center">
-            <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest italic mb-4">
-              Pas encore de compte ?
-            </p>
-            <button 
-              onClick={() => onBack()}
-              className="text-[#ff0000] font-black uppercase tracking-[0.2em] text-[10px] hover:underline"
-            >
-              Découvrir la formation
-            </button>
+          <footer className="mt-10 pt-8 border-t border-white/5 text-center text-[10px] text-gray-600 font-medium italic">
+            Inutile de créer un mot de passe.<br/>
+            Un lien unique te sera envoyé par email.
           </footer>
         </div>
 
         <div className="mt-12 flex items-center justify-center gap-6 text-gray-700">
           <div className="flex items-center gap-2">
             <ShieldCheck size={14} />
-            <span className="text-[9px] font-black uppercase tracking-widest italic">Accès sécurisé Supabase</span>
+            <span className="text-[9px] font-black uppercase tracking-widest italic">Authentification Supabase</span>
           </div>
           <div className="w-1 h-1 bg-gray-800 rounded-full" />
           <span className="text-[9px] font-black uppercase tracking-widest italic">PulseNoir Academy</span>
