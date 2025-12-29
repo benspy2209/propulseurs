@@ -303,7 +303,7 @@ const App: React.FC = () => {
             ))}
           </div>
           <p className="mt-16 text-center text-xl text-white font-black uppercase tracking-widest border border-[#ff0000]/20 py-8 px-4 rounded-3xl bg-[#ff0000]/5">
-            Si tu écris du noir, du polar, du thriller et que tu veux des lecteurs, cette formation est pour toi.
+            Si tu écris du noir, du polar, du thriller<br />et que tu veux des lecteurs, cette formation est pour toi.
           </p>
         </div>
       </section>
@@ -375,11 +375,11 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-16 flex flex-wrap items-center gap-12">
+            <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-y-12 gap-x-8">
               {INSTRUCTOR_STATS.map((stat, i) => ( stat.value && (
                 <div key={i} className="flex flex-col">
                   <span className="text-5xl font-black text-white tracking-tighter mb-1">{stat.value}</span>
-                  <span className="text-[#ff0000] font-black uppercase tracking-widest text-[10px] leading-relaxed max-w-[200px]">
+                  <span className="text-[#ff0000] font-black uppercase tracking-widest text-[10px] leading-relaxed max-w-[240px]">
                     {stat.label}
                   </span>
                 </div>

@@ -26,15 +26,27 @@ export const INSTRUCTOR = {
   quote: "« Aider les auteurs de noir à ne pas laisser leurs livres disparaître dans le noir des plateformes. »",
   bioBlocks: [
     "En 2025, j’ai vu la même scène se répéter encore et encore : des auteur·rices de polar, thriller, roman noir qui ont travaillé dur sur leur livre… et qui se retrouvent complètement perdu·es au moment de le faire connaître. Pas de méthode, pas de plan, un peu de posts “au hasard”, quelques pubs, beaucoup de frustration, et trop souvent cette phrase : “Mon livre ne se vend pas.” C’est pour ça que j’ai créé Pulsenoir et cette formation : pour donner aux auteurs de noir un plan concret, adapté à leur genre, et pas un énième bla-bla marketing généraliste.",
-    "Toute cette aventure Pulsenoir est récente : elle a commencé en 2025. Mais les racines, elles, remontent bien plus loin. Il y a 35 ans que je suis un lecteur passionné de noir, de polar, de thriller. Et 20 ans que je travaille dans le web : développement, marketing digital, création de sites, optimisation de présence en ligne. J’ai d’abord lancé Bibliopulse, une bibliothèque en ligne pour chercher des livres, suivre ses lectures et écrire des critiques. Puis est né Pulse Noir : un groupe Facebook dédié au polar/thriller, avec aujourd’hui plus de 1500 membres dont environ 350 auteur·rices, où les gens partagent leurs lectures et mettent en avant leurs livres.",
+    "Il y a 35 ans que je suis un lecteur passionné de noir, de polar, de thriller. Et 20 ans que je travaille dans le web : développement, marketing digital, création de sites, optimisation de présence en ligne. J’ai d’abord lancé Bibliopulse, une bibliothèque en ligne pour chercher des livres, suivre ses lectures et écrire des critiques. Puis est né Pulse Noir : un groupe Facebook dédié au polar/thriller, avec aujourd’hui plus de 1500 membres dont environ 350 auteur·rices, où les gens partagent leurs lectures et mettent en avant leurs livres.",
     "En parallèle, des auteur·rices m’ont contacté : premier ou deuxième livre, peu ou pas de ventes, la sensation de parler dans le vide. J’ai commencé à les aider : création de sites, conseils sur leurs fiches Amazon, plans de promo adaptés au polar/thriller. Avec mon double profil de développeur et de marketeur web, j’ai conçu des outils et des méthodes dédiés à ce milieu très spécifique : le noir, le polar, le thriller. J’ai aussi créé studio.pulsenoir.be, un laboratoire pour écrire et structurer ses romans. La formation “Vendez vos polars – Plan de Guerre 90 Jours” est la synthèse de tout ça : 35 ans de lecture passionnée, 20 ans de web, et une obsession simple : que ton livre trouve vraiment ses lecteurs."
   ]
 };
 
 export const INSTRUCTOR_STATS = [
   {
+    value: "35 ans",
+    label: "LECTEUR PASSIONNÉ DE NOIR, POLAR & THRILLER"
+  },
+  {
+    value: "20 ans",
+    label: "D'EXPERTISE WEB, DEV & MARKETING DIGITAL"
+  },
+  {
     value: "1500+",
-    label: "membres du groupe Pulse Noir (Facebook)"
+    label: "MEMBRES DU GROUPE PULSE NOIR (FACEBOOK)"
+  },
+  {
+    value: "350",
+    label: "AUTEUR·RICES PRÉSENTS DANS LE CLAN"
   }
 ];
 
@@ -153,7 +165,7 @@ export const COURSE_MODULES: ModuleContent[] = [
     longDescription: "Ton identité numérique est ta vitrine 24h/24. Ce module t’aide à rendre tes profils (Instagram, Facebook, etc.) cohérents avec ton univers de noir, mémorables, et capables de transformer les curieux en vrais lecteurs. À la fin, tu auras une bio qui accroche, une image claire, et des profils alignés avec ton polar/thriller.",
     steps: [
       "Lire la section « L’anatomie d’une bio qui tue ».",
-      "Faire l’audit rapide de tes profils actuels.",
+      "Faire l’audit rapide de tes profils actifs.",
       "Utiliser les outils du Pack Bonus pour créer/mettre à jour ta bio, tes bannières et ton setup newsletter."
     ],
     transitionTitle: "Mettre en pratique avec les outils du module",
@@ -436,7 +448,7 @@ export const COURSE_MODULES: ModuleContent[] = [
         expectedResult: "À la fin de cette section, tu comprends pourquoi tout le plan de guerre vise à construire une base d’emails de lecteurs plutôt que de dépendre uniquement des algorithmes.",
         content: [
           "Pourquoi ta newsletter est plus importante que Facebook.",
-          "Comment récolter des emails dès la première page (backmatter, bonus, etc.).",
+          "How to harvest emails from the first page (backmatter, bonus, etc.).",
           "Le but ultime n'est pas seulement de vendre un livre, mais de posséder le lien direct avec ton audience pour tes lancements futurs."
         ]
       },
