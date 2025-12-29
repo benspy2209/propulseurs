@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vendez vos polars | PulseNoir Academy</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
       body {
         background-color: #000000;
@@ -15,16 +15,37 @@
         margin: 0;
         -webkit-font-smoothing: antialiased;
       }
-      .serif-font { font-family: 'Merriweather', serif; }
+      
+      /* Redéfinition de l'ancienne classe serif-font pour utiliser l'Inter Black du logo */
+      .serif-font { 
+        font-family: 'Inter', sans-serif; 
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+      }
+      
+      /* Style spécifique pour les titres de sections Polar */
+      .polar-title { 
+        font-family: 'Inter', sans-serif; 
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -0.06em;
+      }
+
       .tracking-tighter { letter-spacing: -0.05em; }
       
-      /* Scrollbar personnalisée style Noir */
       ::-webkit-scrollbar { width: 6px; }
       ::-webkit-scrollbar-track { background: #000; }
       ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
       ::-webkit-scrollbar-thumb:hover { background: #ff0000; }
 
-      .text-glow { text-shadow: 0 0 20px rgba(255, 0, 0, 0.4); }
+      .text-glow-red { 
+        text-shadow: 0 0 40px rgba(255, 0, 0, 0.6); 
+      }
+      
+      .text-glow-white {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      }
     </style>
   <script type="importmap">
 {

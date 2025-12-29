@@ -240,13 +240,13 @@ const App: React.FC = () => {
             Formation Marketing Auteurs
           </div>
           
-          <h1 className="text-[12vw] md:text-[120px] font-black leading-[0.85] tracking-tighter uppercase mb-6 italic serif-font">
-            <span className="text-[#ff0000] text-glow">Vendez</span><br/>
-            vos polars
+          <h1 className="text-[14vw] md:text-[160px] leading-[0.75] mb-12 polar-title">
+            <span className="text-[#ff0000] text-glow-red block">Vendez</span>
+            <span className="text-white text-glow-white block mt-2">vos polars</span>
           </h1>
 
-          <p className="max-w-4xl mx-auto text-2xl md:text-4xl text-white font-black uppercase tracking-tight italic border-y border-white/10 py-8 mb-12 bg-white/5 backdrop-blur-sm px-4">
-            Plan de Guerre 90 Jours pour Auteurs de Noir & Thriller.
+          <p className="max-w-4xl mx-auto text-xl md:text-3xl text-white font-black uppercase tracking-tight border-y border-white/10 py-8 mb-12 bg-white/5 backdrop-blur-sm px-4">
+            Plan de Guerre 90 Jours<br />pour Auteurs de Polar, Noir & Thriller.
           </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-16">
@@ -277,7 +277,7 @@ const App: React.FC = () => {
       <section id="pour-qui" className="py-32 bg-neutral-950 border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-white italic serif-font">Est-ce pour <span className="text-[#ff0000]">vous</span> ?</h2>
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-white">Est-ce pour <span className="text-[#ff0000]">vous</span> ?</h2>
             <div className="h-1 w-24 bg-[#ff0000] mx-auto mb-8" />
           </div>
 
@@ -297,12 +297,12 @@ const App: React.FC = () => {
               }
             ].map((profile, i) => (
               <div key={i} className="bg-black p-10 rounded-[2.5rem] border border-white/5 hover:border-[#ff0000]/30 transition-all group h-full">
-                <h3 className="text-2xl font-black text-white mb-4 uppercase italic serif-font group-hover:text-[#ff0000] transition-colors">{profile.title}</h3>
-                <p className="text-gray-500 leading-relaxed font-medium italic">{profile.desc}</p>
+                <h3 className="text-2xl font-black text-white mb-4 uppercase group-hover:text-[#ff0000] transition-colors">{profile.title}</h3>
+                <p className="text-gray-500 leading-relaxed font-medium">{profile.desc}</p>
               </div>
             ))}
           </div>
-          <p className="mt-16 text-center text-xl text-white font-black uppercase tracking-widest italic border border-[#ff0000]/20 py-8 px-4 rounded-3xl bg-[#ff0000]/5">
+          <p className="mt-16 text-center text-xl text-white font-black uppercase tracking-widest border border-[#ff0000]/20 py-8 px-4 rounded-3xl bg-[#ff0000]/5">
             Si tu écris du noir, du polar, du thriller et que tu veux des lecteurs, cette formation est pour toi.
           </p>
         </div>
@@ -311,7 +311,7 @@ const App: React.FC = () => {
       {/* Section Programme (Modules) */}
       <section id="programme" className="py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6 text-center mb-24">
-          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 italic serif-font leading-tight">Ce que tu vas <span className="text-[#ff0000]">maîtriser</span></h2>
+          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight">Ce que tu vas <span className="text-[#ff0000]">maîtriser</span></h2>
           <p className="text-gray-500 text-xs font-black uppercase tracking-[0.5em]">Une progression logique de l'ombre à la lumière.</p>
         </div>
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -350,10 +350,10 @@ const App: React.FC = () => {
           
           <div className="w-full md:w-[60%] text-left">
             <div className="relative h-16 md:h-20 mb-2 overflow-hidden">
-               <h2 className={`absolute inset-0 text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-white italic serif-font transition-all duration-700 ${isInstructorHovered ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
+               <h2 className={`absolute inset-0 text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-white transition-all duration-700 ${isInstructorHovered ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
                 {INSTRUCTOR.name}
               </h2>
-              <h2 className={`absolute inset-0 text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-[#ff0000] italic serif-font transition-all duration-700 ${isInstructorHovered ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
+              <h2 className={`absolute inset-0 text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-[#ff0000] transition-all duration-700 ${isInstructorHovered ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
                 Pulseman
               </h2>
             </div>
@@ -362,13 +362,13 @@ const App: React.FC = () => {
             </p>
             
             <div className="space-y-8">
-              <p className="text-gray-400 italic text-xl md:text-2xl leading-relaxed font-light border-l-4 border-[#ff0000] pl-6 py-2">
+              <p className="text-gray-400 text-xl md:text-2xl leading-relaxed font-light border-l-4 border-[#ff0000] pl-6 py-2">
                 {INSTRUCTOR.quote}
               </p>
               
               <div className="space-y-6">
                 {INSTRUCTOR.bioBlocks.map((block, idx) => (
-                  <p key={idx} className="text-gray-500 text-base md:text-lg leading-relaxed font-medium italic">
+                  <p key={idx} className="text-gray-500 text-base md:text-lg leading-relaxed font-medium">
                     {block}
                   </p>
                 ))}
