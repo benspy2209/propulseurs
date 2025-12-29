@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ArrowLeft, CheckCircle2, ShieldCheck, Lock, CreditCard, Sparkles } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ShieldCheck, Lock, Sparkles, Zap, ChevronRight } from 'lucide-react';
 
 interface PurchaseViewProps {
   onBack: () => void;
@@ -11,130 +11,105 @@ const PurchaseView: React.FC<PurchaseViewProps> = ({ onBack, onSuccess }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const STRIPE_URLS = {
-    oneTime: "https://buy.stripe.com/test_14k3f88wX0lT8N28ww", // Remplacer par l'URL réelle
-    twoTimes: "https://buy.stripe.com/test_5kAg1M9B10lT9R66op", // Remplacer par l'URL réelle
-    threeTimes: "https://buy.stripe.com/test_aEU7vofVpfAt8N2000" // Remplacer par l'URL réelle
-  };
+  /**
+   * Lien Stripe réel pour le paiement en 1 fois (297€)
+   */
+  const STRIPE_LINK = "https://buy.stripe.com/dRm9AS2UR0sXa7z4f443S01"; 
 
-  const handlePayment = (url: string) => {
-    // Dans une implémentation réelle, on redirige vers Stripe
-    // Pour la démo, on simule le succès ou on ouvre l'URL
-    window.open(url, '_blank');
-    // Simulation du retour après paiement réussi pour les tests d'interface :
-    // onSuccess(); 
+  const handlePayment = () => {
+    window.location.href = STRIPE_LINK;
   };
 
   return (
     <div className="min-h-screen bg-black text-white font-sans py-20 px-6 selection:bg-[#ff0000] selection:text-white relative overflow-hidden">
+      {/* Background Atmosphere */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[#ff0000]/5 blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-900/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto relative z-10">
         <button 
           onClick={onBack}
-          className="mb-12 flex items-center gap-2 text-gray-500 hover:text-white font-black uppercase tracking-widest text-xs transition-all group"
+          className="mb-12 flex items-center gap-2 text-gray-500 hover:text-white font-black uppercase tracking-[0.2em] text-[10px] transition-all group"
         >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Retour
+          <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Retour au site
         </button>
 
-        <header className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 italic serif-font">
-            Rejoindre la formation <br/>
-            <span className="text-[#ff0000] text-glow">“Vendez vos polars”</span>
-          </h1>
-          <p className="text-gray-400 text-lg md:text-xl italic font-light max-w-2xl mx-auto">
-            Plan de Guerre 90 Jours pour Auteurs de Noir & Thriller – choisis ton mode de paiement.
-          </p>
-        </header>
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
+          
+          {/* Left Side: Offer Details */}
+          <div className="lg:col-span-7">
+            <div className="inline-block px-4 py-1 mb-6 rounded-full border border-[#ff0000]/30 bg-[#ff0000]/5 text-[#ff0000] text-[9px] font-black uppercase tracking-[0.3em]">
+              Inscription Immédiate
+            </div>
+            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 italic serif-font leading-[0.9]">
+              Rejoins <br/>
+              <span className="text-[#ff0000] text-glow">le clan PulseNoir</span>.
+            </h1>
+            
+            <p className="text-xl text-gray-400 mb-12 italic font-light leading-relaxed">
+              Tout ce dont tu as besoin pour lancer ton polar et dominer ta niche en 90 jours est de l'autre côté de ce bouton.
+            </p>
 
-        {/* Rappel Offre */}
-        <div className="max-w-3xl mx-auto bg-neutral-900/40 rounded-[2.5rem] p-8 md:p-10 border border-white/5 mb-16">
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              "Accès aux 6 modules + tous les goodies (checklists, fichiers, templates).",
-              "Plan de Guerre 90 jours pour structurer ton lancement.",
-              "Mises à jour futures incluses sans surcoût."
-            ].map((text, i) => (
-              <div key={i} className="flex gap-3 items-start">
-                <CheckCircle2 size={18} className="text-[#ff0000] shrink-0 mt-0.5" />
-                <p className="text-[11px] font-bold text-gray-300 uppercase tracking-wide leading-relaxed">{text}</p>
+            <div className="space-y-4 mb-12">
+              {[
+                "Accès complet aux 6 modules stratégiques",
+                "Le Pack complet de Goodies (Checklists, Fichiers, Scripts)",
+                "Le Plan de Guerre 90 jours (Action par Action)",
+                "Mises à jour gratuites à vie (incluant les futures vidéos)",
+                "Accès au groupe privé Facebook des auteurs"
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 items-center bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
+                  <div className="w-6 h-6 bg-[#ff0000]/20 rounded-full flex items-center justify-center shrink-0">
+                    <CheckCircle2 size={14} className="text-[#ff0000]" />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-wide text-gray-300 italic">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Side: Pricing Card */}
+          <div className="lg:col-span-5">
+            <div className="bg-neutral-900 border border-white/10 rounded-[3rem] p-10 md:p-12 shadow-2xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
+                <Zap size={120} className="text-[#ff0000]" />
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Options de Paiement */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          {/* 1 Fois - Mis en avant */}
-          <div className="bg-neutral-900 border-2 border-[#ff0000] rounded-[3rem] p-10 flex flex-col items-center text-center relative shadow-[0_0_40px_rgba(255,0,0,0.2)]">
-            <div className="absolute -top-4 bg-[#ff0000] px-6 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-lg flex items-center gap-2">
-              <Sparkles size={12} /> Recommandé
+              <div className="text-center mb-10">
+                <div className="inline-flex items-center gap-2 bg-[#ff0000] text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest mb-6 shadow-[0_0_20px_rgba(255,0,0,0.4)]">
+                  <Sparkles size={10} /> Offre de lancement
+                </div>
+                <div className="flex justify-center items-baseline gap-1 mb-2">
+                   <span className="text-7xl font-black text-white tracking-tighter">297</span>
+                   <span className="text-2xl font-black text-[#ff0000]">€</span>
+                </div>
+                <p className="text-[10px] text-gray-500 font-black uppercase tracking-[0.3em] italic">Paiement Unique & Définitif</p>
+              </div>
+
+              <button 
+                onClick={handlePayment}
+                className="w-full py-7 bg-[#ff0000] text-white rounded-full font-black uppercase tracking-[0.2em] text-xs hover:scale-[1.03] transition-all shadow-[0_0_50px_rgba(255,0,0,0.4)] active:scale-95 flex items-center justify-center gap-3 mb-8"
+              >
+                Finaliser mon inscription <ChevronRight size={18} />
+              </button>
+
+              <div className="space-y-6 pt-8 border-t border-white/5">
+                <div className="flex items-center gap-4 text-gray-500">
+                  <Lock size={16} className="text-green-600 shrink-0" />
+                  <span className="text-[9px] font-black uppercase tracking-widest leading-tight">Paiement 100% sécurisé via Stripe</span>
+                </div>
+                <div className="flex items-center gap-4 text-gray-500">
+                  <ShieldCheck size={16} className="text-[#ff0000] shrink-0" />
+                  <span className="text-[9px] font-black uppercase tracking-widest leading-tight">Garantie 10 jours satisfait ou remboursé</span>
+                </div>
+              </div>
             </div>
-            <h3 className="text-xl font-black uppercase tracking-widest mb-2 italic serif-font">1 Fois</h3>
-            <div className="text-5xl font-black text-white mb-6 tracking-tighter">297€</div>
-            <p className="text-gray-400 text-sm italic mb-10 flex-grow">
-              1 paiement de 297€ aujourd’hui.<br/>
-              Accès immédiat et complet à vie.
+            
+            <p className="mt-8 text-center text-[9px] text-gray-700 font-bold uppercase tracking-[0.4em] italic leading-relaxed">
+              PulseNoir Academy • Academy Elite Group<br/>Propulsé par Hakuna Matata SRL
             </p>
-            <button 
-              onClick={() => handlePayment(STRIPE_URLS.oneTime)}
-              className="w-full py-5 bg-[#ff0000] text-white rounded-full font-black uppercase tracking-widest text-xs hover:scale-105 transition-all shadow-lg active:scale-95"
-            >
-              Payer 297€ en 1 fois
-            </button>
           </div>
 
-          {/* 2 Fois */}
-          <div className="bg-neutral-900/40 border border-white/5 rounded-[3rem] p-10 flex flex-col items-center text-center group hover:border-white/20 transition-all">
-            <h3 className="text-xl font-black uppercase tracking-widest mb-2 italic serif-font">2 Fois</h3>
-            <div className="text-4xl font-black text-white mb-1 tracking-tighter">148,50€</div>
-            <div className="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-6">par mois</div>
-            <p className="text-gray-400 text-sm italic mb-10 flex-grow">
-              1er paiement aujourd’hui, 2e dans 30 jours.<br/>
-              Accès immédiat à la formation.
-            </p>
-            <button 
-              onClick={() => handlePayment(STRIPE_URLS.twoTimes)}
-              className="w-full py-5 bg-white text-black rounded-full font-black uppercase tracking-widest text-xs hover:bg-[#ff0000] hover:text-white transition-all active:scale-95"
-            >
-              Payer en 2 fois
-            </button>
-          </div>
-
-          {/* 3 Fois */}
-          <div className="bg-neutral-900/40 border border-white/5 rounded-[3rem] p-10 flex flex-col items-center text-center group hover:border-white/20 transition-all">
-            <h3 className="text-xl font-black uppercase tracking-widest mb-2 italic serif-font">3 Fois</h3>
-            <div className="text-4xl font-black text-white mb-1 tracking-tighter">99€</div>
-            <div className="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-6">par mois</div>
-            <p className="text-gray-400 text-sm italic mb-10 flex-grow">
-              1er paiement aujourd’hui, puis 2 prélèvements mensuels.<br/>
-              Accès immédiat à la formation.
-            </p>
-            <button 
-              onClick={() => handlePayment(STRIPE_URLS.threeTimes)}
-              className="w-full py-5 bg-white text-black rounded-full font-black uppercase tracking-widest text-xs hover:bg-[#ff0000] hover:text-white transition-all active:scale-95"
-            >
-              Payer en 3 fois
-            </button>
-          </div>
-        </div>
-
-        {/* Rassurance */}
-        <div className="flex flex-col items-center gap-6">
-          <div className="flex flex-wrap justify-center items-center gap-8 text-gray-500">
-            <div className="flex items-center gap-2">
-              <Lock size={16} className="text-green-500" />
-              <span className="text-[10px] font-black uppercase tracking-widest">Paiement sécurisé via Stripe</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <ShieldCheck size={16} className="text-[#ff0000]" />
-              <span className="text-[10px] font-black uppercase tracking-widest">Garantie satisfait ou remboursé 10 jours</span>
-            </div>
-          </div>
-          <div className="h-px w-24 bg-white/10" />
-          <p className="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">
-            PulseNoir Academy - Propulsé par HAKUNA MATATA SRL
-          </p>
         </div>
       </div>
     </div>

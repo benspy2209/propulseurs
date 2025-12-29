@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { COURSE_MODULES, INSTRUCTOR, INSTRUCTOR_STATS, PULSENOIR_LINKS, FAQ_ITEMS } from './constants';
 import ModuleCard from './components/ModuleCard';
 import CoursePlayer from './components/CoursePlayer';
@@ -9,13 +9,6 @@ import PurchaseView from './components/PurchaseView';
 import SuccessView from './components/SuccessView';
 import { 
   ArrowRight, 
-  ExternalLink, 
-  Search, 
-  MessageSquare, 
-  TrendingUp, 
-  Users, 
-  Feather, 
-  Library,
   Instagram,
   Facebook,
   Check,
@@ -23,22 +16,10 @@ import {
   CheckCircle2,
   Copy,
   ChevronDown,
-  Clock,
   Zap,
-  FileText,
-  Target,
-  BarChart3,
-  Map,
   ShieldCheck,
-  Pointer,
-  HelpCircle,
-  Mail,
-  ListChecks,
-  FileSpreadsheet,
-  MessageCircle,
-  PlayCircle,
-  Info,
-  CalendarDays
+  CalendarDays,
+  PlayCircle
 } from 'lucide-react';
 
 type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success';
@@ -49,6 +30,16 @@ const App: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isInstructorHovered, setIsInstructorHovered] = useState(false);
   
+  // Simuler la détection du retour Stripe
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('status') === 'success') {
+      setCurrentView('success');
+      // Nettoyer l'URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, []);
+
   const PROMO_CODE = "JELANCEMONLIVRE";
 
   const handleCopyCode = () => {
@@ -62,6 +53,14 @@ const App: React.FC = () => {
   };
 
   const scrollToSection = (id: string) => {
+    if (currentView !== 'landing') {
+      setCurrentView('landing');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
       const offset = 100; 
@@ -144,23 +143,30 @@ const App: React.FC = () => {
               <span className="text-[#ff0000] font-black text-2xl tracking-tighter uppercase">Pulse</span>
               <span className="text-white font-black text-2xl tracking-tighter uppercase">Noir</span>
             </div>
-            <div className="h-6 w-px bg-white/20" />
-            <span className="text-gray-500 font-bold text-sm tracking-[0.25em] uppercase group-hover:text-gray-300 transition-colors">Academy</span>
           </div>
           
-          <div className="hidden lg:flex items-center gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+          <div className="hidden lg:flex items-center gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
             <button onClick={() => scrollToSection('pour-qui')} className="hover:text-white transition-colors cursor-pointer">Pour qui ?</button>
-            <button onClick={() => scrollToSection('programme')} className="hover:text-white transition-colors cursor-pointer">Programme</button>
-            <button onClick={() => scrollToSection('concret')} className="hover:text-white transition-colors cursor-pointer">Outils</button>
-            <button onClick={() => scrollToSection('instructeur')} className="hover:text-white transition-colors cursor-pointer">Instructeur</button>
+            <button onClick={() => scrollToSection('programme')} className="hover:text-white transition-colors cursor-pointer">Le Programme</button>
+            <button onClick={() => scrollToSection('format')} className="hover:text-white transition-colors cursor-pointer">Format & Outils</button>
+            <button onClick={() => scrollToSection('instructeur')} className="hover:text-white transition-colors cursor-pointer">L'Instructeur</button>
+            <button onClick={() => scrollToSection('faq')} className="hover:text-white transition-colors cursor-pointer">FAQ</button>
           </div>
 
-          <button 
-            onClick={() => setCurrentView('purchase')}
-            className="bg-[#ff0000] text-white px-6 py-2 rounded-full text-[11px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,0,0,0.4)]"
-          >
-            S'inscrire
-          </button>
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => setCurrentView('course')}
+              className="hidden sm:block text-gray-400 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors"
+            >
+              Accès Membre
+            </button>
+            <button 
+              onClick={() => setCurrentView('purchase')}
+              className="bg-[#ff0000] text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,0,0,0.4)] active:scale-95"
+            >
+              S'inscrire
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -330,7 +336,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Bloc Format & Mises à jour */}
-      <section className="py-24 bg-neutral-950 border-y border-white/5">
+      <section id="format" className="py-24 bg-neutral-950 border-y border-white/5">
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-black/40 p-10 md:p-16 rounded-[3rem] border border-[#ff0000]/20 shadow-2xl relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity">
