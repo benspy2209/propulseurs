@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModuleContent } from '../types';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Gift, Download } from 'lucide-react';
 
 interface ModuleCardProps {
   module: ModuleContent;
@@ -9,44 +9,46 @@ interface ModuleCardProps {
 
 const ModuleCard: React.FC<ModuleCardProps> = ({ module, index }) => {
   const Icon = module.icon;
+  const resourceCount = module.resources?.length || 0;
   
   return (
-    <div className="group relative bg-neutral-900 rounded-2xl shadow-lg hover:shadow-[0_0_30px_rgba(255,0,0,0.15)] transition-all duration-300 overflow-hidden border border-white/5 flex flex-col h-full hover:-translate-y-1">
-      {/* Top Accent Line - Red */}
-      <div className="h-1 w-full bg-[#ff0000]" />
-      
-      <div className="p-8 flex-1 flex flex-col">
-        <div className="flex justify-between items-start mb-6">
-          {/* Icon Box - Dark with Gold Icon */}
-          <div className="p-3 rounded-xl bg-white/5 text-[#f4c024] group-hover:scale-110 transition-transform duration-300 group-hover:bg-[#f4c024] group-hover:text-black">
-            <Icon size={28} strokeWidth={1.5} />
-          </div>
-          {/* Number - Subtle gray */}
-          <span className="text-4xl font-bold text-white/10 serif-font group-hover:text-white/20 transition-colors">
-            0{index + 1}
-          </span>
+    <div className="group relative bg-neutral-900/40 rounded-[2.5rem] p-10 border border-white/5 hover:border-[#ff0000]/30 transition-all duration-500 flex flex-col h-full hover:bg-neutral-900 shadow-xl overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-[#ff0000]/5 rounded-full blur-3xl group-hover:bg-[#ff0000]/10 transition-colors" />
+
+      <div className="flex justify-between items-start mb-10 relative z-10">
+        <div className="w-14 h-14 bg-[#ff0000]/10 text-[#ff0000] rounded-2xl flex items-center justify-center group-hover:bg-[#ff0000] group-hover:text-white transition-all duration-500 shadow-inner">
+          <Icon size={28} />
         </div>
-
-        <h3 className="text-xl font-bold text-white mb-2 serif-font group-hover:text-[#ff0000] transition-colors">
-          {module.title}
-        </h3>
-        <p className="text-sm font-semibold text-[#ff0000] mb-4 uppercase tracking-wide">
-          {module.subtitle}
-        </p>
-        
-        <p className="text-gray-400 mb-6 text-sm leading-relaxed">
-          {module.description}
-        </p>
-
-        <ul className="space-y-3 mt-auto">
-          {module.bullets.map((bullet, idx) => (
-            <li key={idx} className="flex items-start text-sm text-gray-300">
-              <CheckCircle2 size={16} className="mr-2 mt-0.5 text-[#f4c024] flex-shrink-0" />
-              <span>{bullet}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="flex flex-col items-end">
+          <span className="text-5xl font-black text-white/5 italic group-hover:text-[#ff0000]/10 transition-colors">0{index + 1}</span>
+          {resourceCount > 0 && (
+            <div className="flex items-center gap-1.5 mt-2 px-3 py-1 bg-[#ff0000] rounded-full text-[9px] font-black text-white uppercase tracking-widest shadow-[0_0_15px_rgba(255,0,0,0.5)]">
+              <Gift size={10} /> {resourceCount} Goodies Inclus
+            </div>
+          )}
+        </div>
       </div>
+
+      <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tighter italic serif-font group-hover:text-[#ff0000] transition-colors leading-tight relative z-10">
+        {module.title}
+      </h3>
+      <p className="text-[10px] font-black text-gray-500 mb-6 uppercase tracking-[0.2em] relative z-10">
+        {module.subtitle}
+      </p>
+      
+      <p className="text-gray-400 mb-8 text-sm leading-relaxed font-medium italic relative z-10">
+        {module.description}
+      </p>
+
+      <ul className="space-y-4 mt-auto relative z-10">
+        {module.bullets.map((bullet, idx) => (
+          <li key={idx} className="flex items-start text-[11px] text-gray-300 font-bold uppercase tracking-wider leading-snug">
+            <CheckCircle2 size={14} className="mr-3 mt-0.5 text-[#ff0000] flex-shrink-0 opacity-40 group-hover:opacity-100 transition-opacity" />
+            <span>{bullet}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

@@ -1,19 +1,103 @@
 import { 
   Target, 
-  Globe, 
+  UserCircle, 
   Share2, 
-  MessageCircle, 
+  Users, 
   TrendingUp,
   Map,
-  BookOpenCheck
+  BookOpen,
+  Sparkles,
+  Calendar,
+  CheckSquare,
+  Mail,
+  Zap,
+  BarChart3,
+  FileText,
+  MousePointer2
 } from 'lucide-react';
 import { ModuleContent } from './types';
 
 export const INSTRUCTOR = {
   name: "Benjamin de Bruijne",
-  role: "Fondateur PulseNoir & Stratège",
-  bio: "J'ai créé l'écosystème PulseNoir pour offrir aux auteurs de polar et thriller une structure de visibilité complète. Du Studio d'écriture gratuit (structuration et export pro) à la puissance communautaire de Bibliopulse, je vous donne les clés pour professionnaliser votre plume et atteindre vos lecteurs."
+  role: "Fondateur de Pulsenoir - Visibilité Noir & Thriller",
+  photo: "https://raw.githubusercontent.com/benspy2209/propulseurs/b432764d6f2f27df0da85a57446329dd5abb426a/public/benjamin.jpg",
+  hoverPhoto: "https://raw.githubusercontent.com/benspy2209/propulseurs/b9ec43f7844ebe6793b9d56d94145fcee25e39db/public/pulsemanprofilf.jpg",
+  quote: "« Aider les auteurs de noir à ne pas laisser leurs livres disparaître dans le noir des plateformes. »",
+  bioBlocks: [
+    "En 2025, j’ai vu la même scène se répéter encore et encore : des auteur·rices de polar, thriller, roman noir qui ont travaillé dur sur leur livre… et qui se retrouvent complètement perdu·es au moment de le faire connaître. Pas de méthode, pas de plan, un peu de posts “au hasard”, quelques pubs, beaucoup de frustration, et trop souvent cette phrase : “Mon livre ne se vend pas.” C’est pour ça que j’ai créé Pulsenoir et cette formation : pour donner aux auteurs de noir un plan concret, adapté à leur genre, et pas un énième bla-bla marketing généraliste.",
+    "Toute cette aventure Pulsenoir est récente : elle a commencé en 2025. Mais les racines, elles, remontent bien plus loin. Il y a 35 ans que je suis un lecteur passionné de noir, de polar, de thriller. Et 20 ans que je travaille dans le web : développement, marketing digital, création de sites, optimisation de présence en ligne. J’ai d’abord lancé Bibliopulse, une bibliothèque en ligne pour chercher des livres, suivre ses lectures et écrire des critiques. Puis est né Pulse Noir : un groupe Facebook dédié au polar/thriller, avec aujourd’hui plus de 1500 membres dont environ 350 auteur·rices, où les gens partagent leurs lectures et mettent en avant leurs livres.",
+    "En parallèle, des auteur·rices m’ont contacté : premier ou deuxième livre, peu ou pas de ventes, la sensation de parler dans le vide. J’ai commencé à les aider : création de sites, conseils sur leurs fiches Amazon, plans de promo adaptés au polar/thriller. Avec mon double profil de développeur et de marketeur web, j’ai conçu des outils et des méthodes dédiés à ce milieu très spécifique : le noir, le polar, le thriller. J’ai aussi créé studio.pulsenoir.be, un laboratoire pour écrire et structurer ses romans. La formation “Vendez vos polars – Plan de Guerre 90 Jours” est la synthèse de tout ça : 35 ans de lecture passionnée, 20 ans de web, et une obsession simple : que ton livre trouve vraiment ses lecteurs."
+  ]
 };
+
+export const INSTRUCTOR_STATS = [
+  {
+    value: "1500+",
+    label: "membres du groupe Pulse Noir (Facebook)"
+  }
+];
+
+export const FAQ_ITEMS = [
+  {
+    q: "À qui s’adresse cette formation exactement ?",
+    a: "La formation s’adresse aux auteur·rices de polar, thriller et roman noir qui ont un manuscrit terminé (ou presque) et qui veulent le faire connaître, obtenir des avis et générer des ventes, sans passer des heures à inventer une stratégie marketing compliquée. Elle convient autant aux auteur·rices autoédité·es qu’à celles et ceux en maison d’édition, dès le premier livre."
+  },
+  {
+    q: "Est-ce que c’est adapté si je n’ai encore jamais rien lancé / je suis nul·le en marketing ?",
+    a: "Oui, le contenu est pensé pour des auteur·rices qui partent de presque zéro en promo. Les modules avancent pas à pas, avec des checklists, des modèles de messages, des fichiers à remplir et un Plan de Guerre 90 jours très guidé. L’objectif est justement de t’éviter le jargon et les stratégies irréalistes."
+  },
+  {
+    q: "Est-ce que cela fonctionne aussi si mon livre est déjà publié ?",
+    a: "Oui. Si ton polar est déjà en ligne mais qu’il “dort” sur les plateformes, tu peux utiliser la formation pour relancer proprement : optimiser ta fiche Amazon, remettre à plat ton réseau (street team, chroniqueurs, lecteurs), travailler ta preuve sociale et dérouler un plan 90 jours pour redonner une vraie visibilité à ton livre."
+  },
+  {
+    q: "Combien de temps dois-je prévoir chaque semaine ?",
+    a: "Le plan est conçu pour être modulable. Tu peux suivre la formation avec : un profil “15 minutes par jour” (micro-actions guidées), un profil “1 heure par jour”, ou “1 demi-journée par semaine” en mode batch. Les goodies et le Plan de Guerre 90 jours t’aident à choisir ton niveau d’intensité sans culpabiliser."
+  },
+  {
+    q: "Est-ce que c’est uniquement valable pour le polar/thriller ?",
+    a: "Tout est pensé pour le noir : exemples, scripts, listes de groupes, mots-clés Amazon, psychologie des couvertures, etc. Si tu écris de la romance ou de la fantasy, certaines briques resteront utiles, mais la formation est optimisée pour les auteur·rices de polar, thriller et roman noir."
+  },
+  {
+    q: "Que vais-je concrètement obtenir en plus du contenu théorique ?",
+    a: "Tu reçois une série de goodies actionnables : blueprints, checklists, tableurs, fiches à remplir, scripts de messages, fichiers de suivi, listes de mots-clés, laboratoires de résumés, plan de guerre 90 jours, etc. L’idée est que tu n’aies pas à repartir d’une page blanche à chaque étape."
+  },
+  {
+    q: "Y a‑t‑il des vidéos dans la formation ?",
+    a: "La première version de la formation est 100% basée sur des documents, fiches, checklists et outils pratiques. Les vidéos arriveront dans une prochaine mise à jour. Toutes les personnes qui ont déjà acheté la formation auront accès à ces vidéos, et à toutes les mises à jour futures, gratuitement à vie."
+  },
+  {
+    q: "Pendant combien de temps ai-je accès à la formation ?",
+    a: "L’accès est prévu comme durable : tu peux revenir sur les modules et les outils à chaque nouveau lancement (ou relancement) de polar/thriller. Et toutes les futures mises à jour (ajouts de contenus, vidéos, nouveaux outils) sont incluses gratuitement pour les personnes qui ont déjà acheté la formation."
+  },
+  {
+    q: "Comment se passe le paiement ? Puis-je payer en plusieurs fois ?",
+    a: "Le paiement est géré de manière sécurisée via une solution de paiement professionnelle (Stripe). Le paiement en 3 fois est possible : tu choisis l’option qui te convient au moment du règlement, directement sur la page de paiement."
+  },
+  {
+    q: "Et si je manque de temps en plein milieu des 90 jours ?",
+    a: "Le Plan de Guerre 90 jours est un cadre, pas une prison. Tu peux ralentir le rythme, reprendre une phase plus tard, ou te concentrer uniquement sur les “actions essentielles” si tu n’as plus de bande passante. L’idée est de t’aider à avancer, pas de te mettre une pression supplémentaire."
+  },
+  {
+    q: "Je n’ai pas encore fini d’écrire mon livre, est‑ce pour moi ?",
+    a: "Oui, c’est même le meilleur moment. Tu construis ta visibilité pendant l’écriture pour être prêt·e le jour J, au lieu d’attendre le dernier chapitre pour te poser la question « et maintenant, je fais quoi ? »."
+  },
+  {
+    q: "Je suis nul·le en technique / pub, est‑ce que je vais suivre ?",
+    a: "Tout est guidé. Les outils (templates, checklists, fichiers à remplir) font 80% du travail technique pour toi. Tu suis les étapes, tu coches, tu adaptes à ton cas : pas besoin d’être marketeur ou geek."
+  },
+  {
+    q: "Je n’ai pas beaucoup de temps, est‑ce réaliste ?",
+    a: "Oui. Le plan est adaptable : de 15 minutes par jour à une demi‑journée par semaine. Tu choisis ton « mode » et tu avances à ton rythme ; ce qui compte, c’est la régularité, pas la perfection."
+  },
+  {
+    q: "Est‑ce réservé à l’autoédition ou aussi aux auteurs en maison ?",
+    a: "C’est pour les deux. Même en maison d’édition, l’auteur moderne doit aujourd’hui savoir gérer sa propre communauté, ses lecteurs et sa visibilité. La formation t’aide à prendre en main cette partie, quel que soit ton mode de publication."
+  }
+];
+
+// Export DRIVE_FOLDER constant
+export const DRIVE_FOLDER = "https://drive.google.com/drive/folders/1G9grASJgCql96ARQ7RHSj864Fe7sqNFg?usp=sharing";
 
 export const PULSENOIR_LINKS = {
   main: "https://pulsenoir.be/",
@@ -25,282 +109,199 @@ export const PULSENOIR_LINKS = {
 
 export const COURSE_MODULES: ModuleContent[] = [
   {
-    id: 'bases',
-    title: "Module 1 : Les Fondations PulseNoir",
-    subtitle: "Positionnement et Identité",
-    description: "Définir votre identité d'auteur noir/thriller en vous appuyant sur la force du collectif PulseNoir et de ses 1500 membres.",
-    longDescription: "Dans ce premier module, nous posons les bases. Vous n'êtes pas isolé : vous entrez dans une niche forte. Nous verrons comment utiliser la plateforme PulseNoir.be pour crédibiliser votre démarche et vous faire connaître auprès de notre communauté de passionnés.",
-    duration: "45 min",
+    id: 'fondations',
+    title: "Module 1 : L'ADN de l'Auteur de Noir",
+    subtitle: "Positionnement Radical & Domination de Niche",
+    description: "Posez les bases professionnelles indispensables : positionnement, chiffres et lecteur cible.",
+    duration: "1h 45",
     bullets: [
-      "Comprendre votre place dans l'écosystème PulseNoir",
-      "Définir votre 'Sous-Genre' pour le référencement",
-      "L'effet de levier : comment PulseNoir amplifie votre voix"
+      "La Pyramide de Visibilité : Bâtir son écosystème",
+      "Le 'Lecteur Avatar' : Profilage psychologique profond",
+      "L'Audit de Niche : Polar, Thriller ou Noir ?",
+      "La Promesse d'Auteur : Ce que vous vendez au-delà des mots"
     ],
     icon: Target,
-    color: "slate",
-    imageKeyword: "noir_detective",
+    color: "red",
+    imageKeyword: "strategy",
+    longDescription: "Ce module est la pierre angulaire. Nous allons transformer votre approche 'amateur' en une stratégie 'auteur-entrepreneur'. On ne lance pas un livre au hasard, on construit un écosystème de vente.",
     chapters: [
       {
-        title: "1. L'Intention : L'auteur est une marque",
-        type: "key-concept",
-        content: [
-          "PulseNoir est une plateforme communautaire dédiée. En créant votre profil auteur sur PulseNoir.be, vous bénéficiez immédiatement de notre image de marque.",
-          "Pour un nouvel auteur, le plus efficace est de construire progressivement une image cohérente sur notre réseau pour gagner en visibilité dès vos premières publications.",
-          "Vous n'êtes pas seul : vous rejoignez un réseau de plus de 1500 membres actifs sur Facebook et une plateforme qui centralise les talents du noir."
-        ]
-      },
-      {
-        title: "2. Définir votre Positionnement Unique",
+        title: "1. Construire progressivement son Écosystème",
         type: "text",
         content: [
-          "Votre positionnement sur PulseNoir repose sur trois piliers :",
-          "• Le Genre : Soyez précis pour les filtres de recherche de Bibliopulse (Polar rural, Thriller tech, etc.).",
-          "• Le Public : Ciblez les lecteurs qui cherchent du frisson et de l'enquête.",
-          "• Le Professionnalisme : Utilisez nos services comme le Pack Elite pour obtenir un site auteur professionnel."
-        ]
-      },
-      {
-        title: "Action PulseNoir : Votre Pitch",
-        type: "exercise",
-        content: [
-          "Rédigez votre pitch en pensant à votre future fiche sur Bibliopulse.com.",
-          "Modèle : « Mon livre est un [SOUS-GENRE] qui s’adresse aux fans de [AUTEUR RÉFÉRENCE] et promet [ÉMOTION : angoisse, adrénaline]. »",
-          "Ce pitch sera la pierre angulaire de votre visibilité sur nos outils."
+          "Pour un nouvel auteur, le plus efficace est de construire progressivement une présence cohérente. Cela commence par le choix d'une niche ultra-pécise. Ne cherchez pas à plaire à tout le monde.",
+          "La Loi des 1000 Fans : Pourquoi vous n'avez pas besoin de millions de vues, mais de 1000 lecteurs ultra-engagés qui achètent tout ce que vous produisez.",
+          "L'architecture de votre succès : Votre livre (le produit), Votre plateforme (le hub), Votre communauté (le moteur)."
         ]
       }
     ],
     resources: [
-      { title: "Fiche « Phrase de Positionnement » (Compatible Bibliopulse)", type: "template" },
-      { title: "Grille des sous-genres du Thriller", type: "sheet" },
-      { title: "Mini-Plan Marketing PulseNoir", type: "pdf" }
+      { title: "Blueprint : Écosystème Auteur 2026", type: "pdf", url: DRIVE_FOLDER },
+      { title: "Calculateur : Rentabilité (Ventes vs Pubs)", type: "sheet", url: DRIVE_FOLDER },
+      { title: "Template : Fiche Avatar Lecteur Psychologique", type: "template", url: DRIVE_FOLDER },
+      { title: "Checklist : Les 10 Piliers de l'Auteur Pro", type: "checklist", url: DRIVE_FOLDER }
     ]
   },
   {
-    id: 'presence',
-    title: "Module 2 : Maîtriser le Studio d'Écriture",
-    subtitle: "Productivité et Structuration",
-    description: "Utiliser le Studio PulseNoir pour structurer votre récit, gérer vos personnages et maintenir une discipline d'acier.",
-    longDescription: "Le Studio est votre quartier général. De la structuration narrative à l'export PDF professionnel, découvrez comment nos outils gratuits (Pomodoro, Heatmap, Streaks) transforment votre flux de travail.",
-    duration: "1h 10min",
+    id: 'identite',
+    title: "Module 2 : L'Identité Numérique Magnétique",
+    subtitle: "Bâtir son Hub et son Aura d'Auteur",
+    description: "Rendez votre profil identifiable et crédible en ligne pour attirer instantanément l'œil du lecteur.",
+    duration: "1h 15",
     bullets: [
-      "Structuration narrative et gestion de personnages",
-      "Pomodoro et Heatmap d'écriture pour la discipline",
-      "Export PDF professionnel de votre manuscrit"
+      "Psychologie de la Bio Auteur : Convertir en 3 secondes",
+      "Le Hub Central : Votre quartier général (Amazon vs Site)",
+      "L'Art du Storytelling Personnel : Quoi dire sans s'exposer",
+      "Le Lead Magnet : Offrir l'ombre pour vendre la lumière"
     ],
-    icon: Globe,
-    color: "emerald",
-    imageKeyword: "dark_network",
+    icon: UserCircle,
+    color: "red",
+    imageKeyword: "identity",
+    longDescription: "Votre identité numérique est votre vitrine 24h/24. Ce module vous apprend à structurer vos réseaux pour qu'ils convertissent les curieux en acheteurs compulsifs.",
     chapters: [
       {
-        title: "1. Structurer avec le Studio",
+        title: "L'Anatomie d'une Bio qui Tue",
         type: "text",
         content: [
-          "Le Studio PulseNoir offre des outils de gestion de personnages et de lieux indispensables pour les intrigues complexes du thriller.",
-          "Utilisez l'éditeur intégré pour centraliser vos recherches et votre manuscrit sans distraction.",
-          "Grâce à l'export PDF professionnel, votre texte est prêt pour l'envoi aux éditeurs ou pour vos bêta-lecteurs."
-        ]
-      },
-      {
-        title: "2. La Productivité de l'Auteur",
-        type: "key-concept",
-        content: [
-          "Maintenez votre 'streak' d'écriture : le Studio suit vos progrès quotidiens.",
-          "Utilisez le mode Pomodoro pour rester concentré sur vos chapitres les plus sombres.",
-          "Consultez votre Heatmap pour identifier vos moments de créativité maximale."
-        ]
-      },
-      {
-        title: "Action PulseNoir : Configuration Studio",
-        type: "exercise",
-        content: [
-          "Créez votre compte sur studio.pulsenoir.be.",
-          "Importez votre plan ou vos fiches personnages.",
-          "Lancez votre première session Pomodoro de 25 minutes aujourd'hui."
+          "Structure de conversion : [Accroche Choc] + [Preuve Sociale/Univers] + [Appel à l'action clair].",
+          "Pourquoi votre photo de profil doit être cohérente avec votre genre."
         ]
       }
     ],
     resources: [
-      { title: "Guide complet de l'Éditeur Studio", type: "pdf" },
-      { title: "Tutoriel : Exporter son manuscrit en PDF Pro", type: "pdf" },
-      { title: "Gabarit de fiche personnage 'Noir'", type: "template" }
+      { title: "Pack Graphique : Bannières Auteur Noir", type: "template", url: DRIVE_FOLDER },
+      { title: "Générateur : Bio Instagram Haute-Tension", type: "template", url: DRIVE_FOLDER },
+      { title: "Guide : Setup de Newsletter en 15 minutes", type: "pdf", url: DRIVE_FOLDER },
+      { title: "Checklist : Audit de Présence Digitale", type: "checklist", url: DRIVE_FOLDER }
     ]
   },
   {
     id: 'social',
-    title: "Module 3 : Stratégie Sociale & Communauté",
-    subtitle: "Dompter Facebook & Instagram",
-    description: "Utilisez le Groupe PulseNoir (1500 membres) comme tremplin pour votre visibilité.",
-    longDescription: "Fini de poster dans le vide. Nous allons utiliser la puissance du groupe Facebook PulseNoir comme terrain d'entraînement et Instagram comme vitrine de votre univers.",
-    duration: "55 min",
+    title: "Module 3 : Le Réseau d'Influence Noir",
+    subtitle: "Infiltration et Engagement Communautaire",
+    description: "Construisez votre réseau de visibilité auprès des chroniqueurs et des communautés de lecteurs.",
+    duration: "1h 50",
     bullets: [
-      "Interagir avec les 1500 membres du Groupe Facebook",
-      "Interviews et espaces d'entraide PulseNoir.be",
-      "Calendrier éditorial spécial 'Polar'"
+      "L'Algorithme du Noir : Ce qui fait réagir les fans",
+      "Calendrier de Guerre : 3 types de posts essentiels",
+      "L'Infiltration : Approcher les blogueurs avec élégance",
+      "La Puissance de Bibliopulse pour votre visibilité"
     ],
     icon: Share2,
-    color: "violet",
-    imageKeyword: "social_media_dark",
+    color: "red",
+    imageKeyword: "social",
+    longDescription: "Nous allons voir comment automatiser 80% de votre présence sociale pour vous laisser le temps d'écrire, tout en créant une interaction authentique.",
     chapters: [
       {
-        title: "1. Le Groupe Facebook : Votre Laboratoire",
-        type: "key-concept",
-        content: [
-          "Le groupe Facebook PulseNoir est un lieu d'entraide unique entre 1500 passionnés.",
-          "• Testez vos couvertures : Demandez l'avis des membres (souvent des lecteurs cibles).",
-          "• Participez aux interviews d'auteurs organisées par la plateforme.",
-          "• Profitez de l'espace d'entraide pour débloquer vos intrigues."
-        ]
-      },
-      {
-        title: "2. Instagram : La Vitrine Noire",
+        title: "Infiltrer les Groupes de Lecteurs",
         type: "text",
         content: [
-          "Observez le compte @pulsenoirbe : une esthétique marquée, des visuels soignés.",
-          "• Apprenez à utiliser @pulsenoirbe comme levier de crédibilité en étant relayé.",
-          "• Utilisez les hashtags de la communauté pour toucher les fans de frissons."
+          "Ne postez jamais votre lien de vente en premier. Apportez de la valeur d'abord.",
+          "La technique du 'Cheval de Troie' pour susciter l'intérêt."
         ]
       }
     ],
     resources: [
-      { title: "Calendrier Éditorial « Spécial Polar »", type: "template" },
-      { title: "Guide : Réussir son interview auteur", type: "pdf" }
+      { title: "Fichier : 50 Accroches de Posts Spécial Thriller", type: "sheet", url: DRIVE_FOLDER },
+      { title: "Template : Calendrier Éditorial 2026", type: "template", url: DRIVE_FOLDER },
+      { title: "Scripts : Approche Chroniqueurs (Copy/Paste)", type: "sheet", url: DRIVE_FOLDER },
+      { title: "Liste : Groupes & Comptes Lecteurs Polar/Thriller", type: "pdf", url: DRIVE_FOLDER }
     ]
   },
   {
-    id: 'avis',
-    title: "Module 4 : Le Levier Bibliopulse",
-    subtitle: "Visibilité & Preuve Sociale",
-    description: "Faites découvrir votre œuvre à plus de 1300 lecteurs passionnés et récoltez des avis certifiés.",
-    longDescription: "Bibliopulse n'est pas qu'une bibliothèque personnelle, c'est un moteur de découverte. Apprenez à intégrer les bibliothèques des lecteurs et à générer des recommandations au sein de ce réseau engagé.",
-    duration: "40 min",
+    id: 'cercle',
+    title: "Module 4 : L'Ingénierie de la Preuve Sociale",
+    subtitle: "Street Team, Bêta-lecture & Machine à Avis",
+    description: "Obtenez des retours et des avis structurés pour déclencher le bouche-à-oreille dès le premier jour.",
+    duration: "2h 10",
     bullets: [
-      "Cataloguer et promouvoir son livre sur Bibliopulse",
-      "Toucher les 1300+ membres de la communauté de lecteurs",
-      "Générer des avis et des coups de cœur certifiés"
+      "La Street Team : Recruter et motiver vos soldats",
+      "Protocole de Bêta-lecture : Améliorer le marketing",
+      "Chasse aux Avis : Stratégies Amazon & Babelio",
+      "L'Art du Service de Presse (SP) Gagnant-Gagnant"
     ],
-    icon: MessageCircle,
-    color: "amber",
-    imageKeyword: "reviews",
+    icon: Users,
+    color: "red",
+    imageKeyword: "community",
+    longDescription: "La preuve sociale est le SEUL moteur de vente organique puissant. Ce module vous montre comment orchestrer une sortie de livre fracassante.",
     chapters: [
       {
-        title: "1. Bibliopulse pour l'Auteur",
-        type: "key-concept",
-        content: [
-          "Bibliopulse permet aux lecteurs de cataloguer leurs livres et de suivre leurs lectures.",
-          "Pour vous, c'est l'opportunité d'apparaître dans les suggestions de 1300 lecteurs actifs.",
-          "Chaque ajout à une bibliothèque et chaque critique partagée augmente votre portée organique."
-        ]
-      },
-      {
-        title: "2. Centraliser la Preuve Sociale",
+        title: "Bâtir sa Street Team de A à Z",
         type: "text",
         content: [
-          "Les lecteurs partagent activement leurs coups de cœur sur Bibliopulse.",
-          "Encouragez vos lecteurs à poster leurs avis sur la plateforme pour rassurer les nouveaux acheteurs.",
-          "Plus votre livre est présent dans les bibliothèques, plus il remonte dans les tendances du réseau."
-        ]
-      },
-      {
-        title: "Action PulseNoir : Offensive Bibliopulse",
-        type: "exercise",
-        content: [
-          "Créez la fiche de votre livre sur Bibliopulse.",
-          "Incitez votre Street Team à l'ajouter à leur liste 'En cours' ou 'Lu'.",
-          "Partagez votre première critique positive sur vos réseaux."
+          "Recrutez vos 20-50 lecteurs les plus fidèles.",
+          "Le système de récompense immatériel."
         ]
       }
     ],
     resources: [
-      { title: "Check-list « Fiche Livre Bibliopulse »", type: "checklist" },
-      { title: "Guide : Recruter des lecteurs sur Bibliopulse", type: "pdf" }
+      { title: "Contrat : (Informel) de la Street Team", type: "template", url: DRIVE_FOLDER },
+      { title: "Questionnaire : Bêta-lecture Stratégique", type: "template", url: DRIVE_FOLDER },
+      { title: "Pack : 10 Mails de Relance Avis Lecteurs", type: "sheet", url: DRIVE_FOLDER },
+      { title: "Fichier de Suivi : Chroniqueurs & Avis", type: "sheet", url: DRIVE_FOLDER }
     ]
   },
   {
     id: 'ventes',
-    title: "Module 5 : Accélérer avec le Pack Elite",
-    subtitle: "Lancements & Sites Professionnels",
-    description: "Maximisez l'impact de vos publications avec des outils de vente professionnels et l'agenda PulseNoir.",
-    longDescription: "Passez au niveau supérieur. De la création de votre site auteur professionnel via le Pack Elite à la synchronisation de vos promos avec nos newsletters, transformez vos lecteurs en acheteurs.",
-    duration: "1h 30min",
+    title: "Module 5 : La Chirurgie du Best-Seller",
+    subtitle: "Copywriting de Thriller & Amazon Ads",
+    description: "Optimisez votre fiche produit et vos publicités pour transformer les clics en ventes.",
+    duration: "2h 30",
     bullets: [
-      "Création de site auteur professionnel (Pack Elite)",
-      "Coordonner sa promo avec l'agenda PulseNoir",
-      "Vendre via la vitrine Bibliopulse"
+      "Copywriting Hypnotique : Le résumé en 3 actes",
+      "Design de Couverture : Codes visuels du Thriller",
+      "Amazon Ads : Ciblage chirurgical de vos concurrents",
+      "L'Ingénierie du Titre et du Sous-titre SEO"
     ],
     icon: TrendingUp,
-    color: "rose",
-    imageKeyword: "sales_graph",
+    color: "red",
+    imageKeyword: "sales",
+    longDescription: "C'est ici que l'argent se gagne. Nous allons décortiquer les mécanismes psychologiques qui poussent au clic.",
     chapters: [
       {
-        title: "1. Votre Site Auteur Elite",
+        title: "Le Résumé 'Haute Tension'",
         type: "text",
         content: [
-          "Le Pack Elite de PulseNoir.be vous permet d'avoir un site professionnel sans technique.",
-          "Un site dédié est indispensable pour capturer des emails et vendre en direct ou via Amazon.",
-          "Intégrez vos fiches Bibliopulse sur votre site pour montrer la satisfaction de vos lecteurs."
-        ]
-      },
-      {
-        title: "2. Lancer avec la Force du Réseau",
-        type: "key-concept",
-        content: [
-          "Synchronisez vos sorties avec nos newsletters et événements de groupe.",
-          "Profitez de la vitrine Bibliopulse pour mettre en avant vos promotions flash.",
-          "Utilisez les interviews du Studio pour créer de l'attente autour de votre prochain titre."
+          "Le 'Hook' : La première phrase qui doit faire mal.",
+          "Utilisation des 'Power Words' du thriller."
         ]
       }
     ],
     resources: [
-      { title: "Checklist « Site Auteur Pro »", type: "checklist" },
-      { title: "Plan Promo Flash PulseNoir", type: "template" }
+      { title: "Swipe File : 50 Résumés de Best-Sellers", type: "pdf", url: DRIVE_FOLDER },
+      { title: "Liste : 1000 Mots-Clés Amazon Ads Polar", type: "sheet", url: DRIVE_FOLDER },
+      { title: "Kit : Carte ADN d’un Best-Seller Noir", type: "checklist", url: DRIVE_FOLDER },
+      { title: "Guide : Psychologie des Couvertures Noir", type: "pdf", url: DRIVE_FOLDER }
     ]
   },
   {
-    id: 'action',
-    title: "Bonus : Plan d'Action 90 Jours",
-    subtitle: "Votre feuille de route",
-    description: "3 mois pour s'intégrer totalement à l'écosystème et vendre.",
-    longDescription: "Ce plan transforme la formation en routine. Devenez un membre incontournable de PulseNoir et utilisez le Studio et Bibliopulse quotidiennement.",
-    duration: "20 min",
+    id: 'bonus',
+    title: "Module 6 : Le Plan de Guerre (90 Jours)",
+    subtitle: "Exécution Tactique & Maintenance de Carrière",
+    description: "Orchestrez concrètement votre lancement jour après jour sur les 3 prochains mois.",
+    duration: "1h 30",
     bullets: [
-      "Mois 1 : Studio & Structuration",
-      "Mois 2 : Bibliopulse & Visibilité",
-      "Mois 3 : PulseNoir Elite & Ventes"
+      "Compte à Rebours Lancement (J-30 à J+30)",
+      "Routine Quotidienne de l'Auteur-Entrepreneur",
+      "Gestion de la Liste Email : Votre trésor caché",
+      "Strategie Multi-Série : Vivre de sa plume"
     ],
     icon: Map,
-    color: "blue",
-    imageKeyword: "roadmap_dark",
+    color: "red",
+    imageKeyword: "roadmap",
+    longDescription: "La formation se termine, mais votre carrière commence. Ce plan d'action vous donne une direction claire pour les 90 prochains jours.",
     chapters: [
       {
-        title: "Mois 1 : Production",
+        title: "Le Pipeline de Vente Continu",
         type: "text",
         content: [
-          "Objectif : Écrire et structurer.",
-          "• Utilisation quotidienne du Studio (Pomodoro).",
-          "• Finalisation des personnages et de l'intrigue."
-        ]
-      },
-      {
-        title: "Mois 2 : Connexion",
-        type: "text",
-        content: [
-          "Objectif : Toucher les lecteurs.",
-          "• Présence sur Bibliopulse et interactions dans le groupe Facebook.",
-          "• Récolte des premiers avis."
-        ]
-      },
-      {
-        title: "Mois 3 : Explosion",
-        type: "text",
-        content: [
-          "Objectif : Professionnalisation.",
-          "• Lancement avec le Pack Elite (Site Auteur).",
-          "• Promotion coordonnée avec PulseNoir.be."
+          "Pourquoi votre newsletter est plus importante que Facebook.",
+          "Comment récolter des emails dès la première page."
         ]
       }
     ],
     resources: [
-      { title: "Calendrier d'Action 90 Jours PulseNoir", type: "sheet" }
+      { title: "Checklist : Plan de Guerre 90 Jours : Lancement Polar Total", type: "checklist", url: DRIVE_FOLDER }
     ]
   }
 ];

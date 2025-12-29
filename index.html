@@ -3,44 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formation Auteurs | Propulsée par PulseNoir</title>
+    <title>Vendez vos polars | PulseNoir Academy</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        background-color: #000000 !important;
+      body {
+        background-color: #000000;
         color: #ffffff;
         font-family: 'Inter', sans-serif;
+        margin: 0;
         -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
       }
+      .serif-font { font-family: 'Merriweather', serif; }
+      .tracking-tighter { letter-spacing: -0.05em; }
       
-      #root {
-        background-color: #000000 !important;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
+      /* Scrollbar personnalisée style Noir */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #000; }
+      ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #ff0000; }
 
-      nav {
-        background-color: rgba(0, 0, 0, 0.9);
-      }
-      
-      img {
-        display: block;
-      }
+      .text-glow { text-shadow: 0 0 20px rgba(255, 0, 0, 0.4); }
     </style>
   <script type="importmap">
 {
   "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
     "vite": "https://esm.sh/vite@^7.3.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3"
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>

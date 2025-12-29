@@ -1,203 +1,339 @@
 import React, { useState } from 'react';
-import { COURSE_MODULES, INSTRUCTOR, PULSENOIR_LINKS } from './constants';
+import { COURSE_MODULES, INSTRUCTOR, INSTRUCTOR_STATS, PULSENOIR_LINKS, FAQ_ITEMS } from './constants';
 import ModuleCard from './components/ModuleCard';
 import CoursePlayer from './components/CoursePlayer';
-import { BookOpen, Star, ChevronDown, Check, ArrowRight, Users, Feather, Library, Instagram, ExternalLink, TrendingUp, Search, MessageSquare } from 'lucide-react';
+import LegalView from './components/LegalView';
+import PrivacyPolicyView from './components/PrivacyPolicyView';
+import MentionsLegalesView from './components/MentionsLegalesView';
+import { 
+  ArrowRight, 
+  ExternalLink, 
+  Search, 
+  MessageSquare, 
+  TrendingUp, 
+  Users, 
+  Feather, 
+  Library,
+  Instagram,
+  Facebook,
+  Check,
+  Sparkles,
+  CheckCircle2,
+  Copy,
+  ChevronDown,
+  Clock,
+  Zap,
+  FileText,
+  Target,
+  BarChart3,
+  Map,
+  ShieldCheck,
+  Pointer,
+  HelpCircle,
+  Mail,
+  ListChecks,
+  FileSpreadsheet,
+  MessageCircle,
+  PlayCircle,
+  Info,
+  CalendarDays
+} from 'lucide-react';
 
-type ViewState = 'landing' | 'course';
+type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('landing');
+  const [copied, setCopied] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [isInstructorHovered, setIsInstructorHovered] = useState(false);
   
-  const scrollToModules = () => {
-    const element = document.getElementById('programme');
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  const PROMO_CODE = "JELANCEMONLIVRE";
+
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText(PROMO_CODE);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
-  // Si on est en mode "Cours", on affiche le lecteur
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 100; 
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   if (currentView === 'course') {
     return <CoursePlayer modules={COURSE_MODULES} onBack={() => setCurrentView('landing')} />;
   }
 
-  // Sinon, on affiche la page de vente (Vitrine)
+  if (currentView === 'cgv') {
+    return <LegalView onBack={() => setCurrentView('landing')} />;
+  }
+
+  if (currentView === 'privacy') {
+    return <PrivacyPolicyView onBack={() => setCurrentView('landing')} />;
+  }
+
+  if (currentView === 'mentions') {
+    return <MentionsLegalesView onBack={() => setCurrentView('landing')} />;
+  }
+
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-[#ff0000] selection:text-white">
       
+      {/* Promotional Subheader */}
+      <div className="fixed top-0 w-full bg-[#f4c024] z-[60] py-2.5 px-4 shadow-xl">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-center">
+          <Sparkles size={16} className="text-black hidden sm:block animate-pulse" />
+          <div className="flex items-center gap-2">
+            <p className="text-black text-[10px] sm:text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.25em]">
+              Promotion jusqu'au 15 janvier : <span className="bg-black/10 px-2 py-0.5 rounded">-30% sur la formation</span> avec le code : 
+            </p>
+            <button 
+              onClick={handleCopyCode}
+              className="flex items-center gap-2 bg-black text-[#f4c024] px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all group shadow-lg"
+            >
+              <span className="border-b border-[#f4c024]/30">{PROMO_CODE}</span>
+              {copied ? (
+                <CheckCircle2 size={14} className="text-green-400" />
+              ) : (
+                <Copy size={14} />
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => setCurrentView('landing')}>
-            <span className="text-[#ff0000] font-bold text-2xl tracking-tighter">PULSE<span className="text-white">NOIR</span></span>
-            <span className="text-xs text-gray-500 border-l border-gray-700 pl-2 ml-2 uppercase tracking-widest hidden sm:inline-block">Academy</span>
+      <nav className="fixed top-10 w-full bg-black/90 backdrop-blur-md z-50 border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-6 cursor-pointer group" onClick={() => setCurrentView('landing')}>
+            <div className="flex items-center">
+              <span className="text-[#ff0000] font-black text-2xl tracking-tighter uppercase">Pulse</span>
+              <span className="text-white font-black text-2xl tracking-tighter uppercase">Noir</span>
+            </div>
+            <div className="h-6 w-px bg-white/20" />
+            <span className="text-gray-500 font-bold text-sm tracking-[0.25em] uppercase group-hover:text-gray-300 transition-colors">Academy</span>
           </div>
-          <div className="hidden md:flex gap-8 text-sm font-medium text-gray-400">
-            <a href="#ecosysteme" className="hover:text-[#ff0000] transition-colors">L'Écosystème</a>
-            <a href="#programme" className="hover:text-[#ff0000] transition-colors">Programme</a>
-            <a href={PULSENOIR_LINKS.main} target="_blank" rel="noreferrer" className="hover:text-[#ff0000] transition-colors flex items-center gap-1">
-              Site Officiel <ExternalLink size={12}/>
-            </a>
+          
+          <div className="hidden lg:flex items-center gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+            <button onClick={() => scrollToSection('pour-qui')} className="hover:text-white transition-colors cursor-pointer">Pour qui ?</button>
+            <button onClick={() => scrollToSection('programme')} className="hover:text-white transition-colors cursor-pointer">Programme</button>
+            <button onClick={() => scrollToSection('concret')} className="hover:text-white transition-colors cursor-pointer">Outils</button>
+            <button onClick={() => scrollToSection('instructeur')} className="hover:text-white transition-colors cursor-pointer">Instructeur</button>
           </div>
+
           <button 
             onClick={() => setCurrentView('course')}
-            className="bg-[#ff0000] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-white hover:text-black transition-all shadow-[0_0_15px_rgba(255,0,0,0.5)] hover:shadow-none"
+            className="bg-[#ff0000] text-white px-6 py-2 rounded-full text-[11px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,0,0,0.4)]"
           >
             Accès Formation
           </button>
         </div>
       </nav>
 
-      {/* Hero Section Re-centrée sur l'Objectif */}
-      <header className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-black flex flex-col items-center">
-        {/* Background Image & Overlay */}
-        <div className="absolute inset-0 z-0 bg-neutral-900">
-          <div className="absolute inset-0 bg-neutral-900" />
-          <img 
-            src="https://images.unsplash.com/photo-1605806616949-1e87b487bc2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-            alt="Ambiance Polar Noir" 
-            className="w-full h-full object-cover opacity-20 grayscale transition-opacity duration-700 relative z-10"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black z-20"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black/50 z-20"></div>
-        </div>
-
-        <div className="relative z-30 max-w-5xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ff0000]/10 text-[#ff0000] border border-[#ff0000]/20 text-xs font-black uppercase tracking-[0.2em] mb-8">
+      {/* Hero Section */}
+      <header className="relative min-h-screen flex flex-col items-center justify-center pt-40 px-6 overflow-hidden bg-black">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff0000]/5 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="relative z-10 w-full max-w-6xl mx-auto text-center">
+          <div className="inline-block px-5 py-1.5 mb-8 rounded-full border border-[#ff0000]/30 bg-[#ff0000]/5 text-[#ff0000] text-[11px] font-black uppercase tracking-[0.3em]">
             Formation Marketing Auteurs
           </div>
           
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 serif-font leading-[0.9] tracking-tighter uppercase">
-            Trouvez vos lecteurs.<br/>
-            Récoltez des avis.<br/>
-            <span className="text-[#ff0000]">Vendez vos polars.</span>
+          <h1 className="text-[12vw] md:text-[120px] font-black leading-[0.85] tracking-tighter uppercase mb-6 italic serif-font">
+            <span className="text-[#ff0000] text-glow">Vendez</span><br/>
+            vos polars
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed font-light">
-            La méthode pensée pour les auteurs de noir qui veulent <strong className="text-white border-b-2 border-[#ff0000]">trouver leur public</strong>, <strong className="text-white border-b-2 border-[#ff0000]">cumuler les chroniques</strong> et <strong className="text-white border-b-2 border-[#ff0000]">vivre de leur plume</strong> sans s'épuiser inutilement sur les réseaux.
+          <p className="max-w-4xl mx-auto text-2xl md:text-4xl text-white font-black uppercase tracking-tight italic border-y border-white/10 py-8 mb-12 bg-white/5 backdrop-blur-sm px-4">
+            Plan de Guerre 90 Jours pour Auteurs de Noir & Thriller.
           </p>
-          
-          {/* Points Clés Rapides */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12 max-w-3xl mx-auto">
-             <div className="flex items-center justify-center gap-3 text-sm font-bold text-gray-400">
-                <Search size={18} className="text-[#ff0000]" /> Visibilité Ciblée
-             </div>
-             <div className="flex items-center justify-center gap-3 text-sm font-bold text-gray-400">
-                <MessageSquare size={18} className="text-[#ff0000]" /> Preuve Sociale Forte
-             </div>
-             <div className="flex items-center justify-center gap-3 text-sm font-bold text-gray-400">
-                <TrendingUp size={18} className="text-[#ff0000]" /> Ventes Prédictibles
-             </div>
-          </div>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-16 max-w-4xl mx-auto">
+            {[
+              "Construire ton écosystème d'auteur de noir moderne, sans te perdre.",
+              "Lancer ton polar avec un plan de guerre 90 jours, action par action.",
+              "Utiliser des checklists, scripts et fichiers prêts à l'emploi, pensés pour le noir."
+            ].map((text, i) => (
+              <div key={i} className="flex gap-4 items-start text-left bg-neutral-900/40 p-5 rounded-2xl border border-white/5">
+                <Check className="text-[#ff0000] shrink-0 mt-1" size={18} strokeWidth={3} />
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-wide leading-relaxed">{text}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="flex flex-col items-center gap-8">
             <button 
-              onClick={scrollToModules}
-              className="px-10 py-5 bg-[#ff0000] text-white text-xl font-black rounded-full shadow-[0_0_30px_rgba(255,0,0,0.5)] hover:bg-white hover:text-black transition-all flex items-center gap-3 group uppercase tracking-wider"
+              onClick={() => scrollToSection('programme')}
+              className="px-16 py-8 bg-[#ff0000] text-white text-base font-black rounded-full flex items-center gap-3 group uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-[0_0_60px_rgba(255,0,0,0.5)] active:scale-95"
             >
-              Lancer ma carrière
-              <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
+              Découvrir la formation
+              <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
             </button>
-            <a 
-              href={PULSENOIR_LINKS.group}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm text-gray-400 font-bold hover:text-[#ff0000] transition-colors flex items-center gap-2"
-            >
-              Rejoindre le Clan (1.5k membres) <ExternalLink size={14}/>
-            </a>
+            <div className="flex items-center gap-3 text-gray-500 text-[10px] font-black uppercase tracking-[0.4em]">
+              <ShieldCheck size={14} className="text-[#ff0000]" />
+              PulseNoir : La référence polar & thriller
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Ecosystem Section Update */}
-      <section id="ecosysteme" className="py-20 bg-neutral-900 border-y border-white/5 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 serif-font text-white uppercase tracking-tight">Plus qu'une formation, un Clan.</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Chaque outil de l'écosystème PulseNoir est une brique de votre futur succès commercial.
-            </p>
+      {/* Section Pour Qui ? */}
+      <section id="pour-qui" className="py-32 bg-neutral-950 border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-white italic serif-font">Est-ce pour <span className="text-[#ff0000]">vous</span> ?</h2>
+            <div className="h-1 w-24 bg-[#ff0000] mx-auto mb-8" />
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* PULSENOIR.BE */}
-            <a href={PULSENOIR_LINKS.main} target="_blank" rel="noreferrer" className="group bg-black p-6 rounded-2xl border border-white/10 hover:border-[#ff0000]/50 transition-all hover:-translate-y-1">
-              <div className="w-12 h-12 bg-red-600/20 text-red-500 rounded-xl flex items-center justify-center mb-4 group-hover:bg-red-600 group-hover:text-white transition-colors">
-                <Users size={24} />
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Le Nouveau Talent",
+                desc: "Auteur·rice de polar/thriller qui publie son premier roman et ne sait pas comment le faire connaître.",
+              },
+              {
+                title: "L'Expérimenté Stagnant",
+                desc: "Auteur·rice déjà publié·e, qui a tenté la promo 'au feeling' (posts, pubs isolées) sans vision d'ensemble.",
+              },
+              {
+                title: "L'Efficace Radical",
+                desc: "Auteur·rice qui aime le noir, mais déteste le blabla marketing et a besoin d'un plan simple à suivre.",
+              }
+            ].map((profile, i) => (
+              <div key={i} className="bg-black p-10 rounded-[2.5rem] border border-white/5 hover:border-[#ff0000]/30 transition-all group h-full">
+                <h3 className="text-2xl font-black text-white mb-4 uppercase italic serif-font group-hover:text-[#ff0000] transition-colors">{profile.title}</h3>
+                <p className="text-gray-500 leading-relaxed font-medium italic">{profile.desc}</p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">PulseNoir.be</h3>
-              <p className="text-sm text-gray-400">Plateforme communautaire : profil auteur, interviews et services <strong>Pack Elite</strong> pour votre site auteur pro.</p>
-            </a>
+            ))}
+          </div>
+          <p className="mt-16 text-center text-xl text-white font-black uppercase tracking-widest italic border border-[#ff0000]/20 py-8 px-4 rounded-3xl bg-[#ff0000]/5">
+            Si tu écris du noir, du polar, du thriller et que tu veux des lecteurs, cette formation est pour toi.
+          </p>
+        </div>
+      </section>
 
-            {/* STUDIO */}
-            <a href={PULSENOIR_LINKS.studio} target="_blank" rel="noreferrer" className="group bg-black p-6 rounded-2xl border border-white/10 hover:border-[#ff0000]/50 transition-all hover:-translate-y-1">
-              <div className="w-12 h-12 bg-purple-600/20 text-purple-500 rounded-xl flex items-center justify-center mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors">
-                <Feather size={24} />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Le Studio</h3>
-              <p className="text-sm text-gray-400">Studio d'écriture complet : Pomodoro, Heatmap et structuration narrative avec export PDF professionnel.</p>
-            </a>
+      {/* Section Programme (Modules) */}
+      <section id="programme" className="py-32 bg-black">
+        <div className="max-w-7xl mx-auto px-6 text-center mb-24">
+          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 italic serif-font leading-tight">Ce que tu vas <span className="text-[#ff0000]">maîtriser</span></h2>
+          <p className="text-gray-500 text-xs font-black uppercase tracking-[0.5em]">Une progression logique de l'ombre à la lumière.</p>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {COURSE_MODULES.map((module, index) => (
+            <ModuleCard key={module.id} module={module} index={index} />
+          ))}
+        </div>
+        <div className="mt-20 text-center">
+          <button onClick={() => setCurrentView('course')} className="text-[#ff0000] font-black uppercase tracking-[0.3em] text-sm hover:underline flex items-center gap-2 mx-auto">
+            Voir le détail complet de la formation <ArrowRight size={18} />
+          </button>
+        </div>
+      </section>
 
-             {/* BIBLIOPULSE */}
-             <a href={PULSENOIR_LINKS.biblio} target="_blank" rel="noreferrer" className="group bg-black p-6 rounded-2xl border border-white/10 hover:border-[#ff0000]/50 transition-all hover:-translate-y-1">
-              <div className="w-12 h-12 bg-amber-600/20 text-amber-500 rounded-xl flex items-center justify-center mb-4 group-hover:bg-amber-600 group-hover:text-white transition-colors">
-                <Library size={24} />
+      {/* Instructor Section */}
+      <section id="instructeur" className="py-32 bg-black">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+          <div className="w-full md:w-[40%]">
+            <div 
+              onMouseEnter={() => setIsInstructorHovered(true)}
+              onMouseLeave={() => setIsInstructorHovered(false)}
+              className="relative rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transition-all duration-700 group aspect-[4/5] md:aspect-auto cursor-help"
+            >
+              <img 
+                src={INSTRUCTOR.photo} 
+                alt={INSTRUCTOR.name} 
+                className="w-full h-auto object-cover transition-all duration-1000 group-hover:scale-105" 
+              />
+              <img 
+                src={INSTRUCTOR.hoverPhoto} 
+                alt={`${INSTRUCTOR.name} survol`} 
+                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-1000 scale-110 group-hover:scale-105" 
+              />
+            </div>
+          </div>
+          
+          <div className="w-full md:w-[60%] text-left">
+            <div className="relative h-16 md:h-20 mb-2 overflow-hidden">
+               <h2 className={`absolute inset-0 text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-white italic serif-font transition-all duration-700 ${isInstructorHovered ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
+                {INSTRUCTOR.name}
+              </h2>
+              <h2 className={`absolute inset-0 text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-[#ff0000] italic serif-font transition-all duration-700 ${isInstructorHovered ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
+                Pulseman
+              </h2>
+            </div>
+            <p className="text-[#ff0000] font-black uppercase tracking-[0.2em] text-xs md:text-sm mb-10 max-w-xl">
+              {INSTRUCTOR.role}
+            </p>
+            
+            <div className="space-y-8">
+              <p className="text-gray-400 italic text-xl md:text-2xl leading-relaxed font-light border-l-4 border-[#ff0000] pl-6 py-2">
+                {INSTRUCTOR.quote}
+              </p>
+              
+              <div className="space-y-6">
+                {INSTRUCTOR.bioBlocks.map((block, idx) => (
+                  <p key={idx} className="text-gray-500 text-base md:text-lg leading-relaxed font-medium italic">
+                    {block}
+                  </p>
+                ))}
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Bibliopulse</h3>
-              <p className="text-sm text-gray-400">Gestion de bibliothèque pour <strong>1300+ lecteurs</strong>. Faites découvrir, noter et recommander vos polars.</p>
-            </a>
+            </div>
 
-             {/* RESEAU FB/INSTA */}
-             <a href={PULSENOIR_LINKS.group} target="_blank" rel="noreferrer" className="group bg-black p-6 rounded-2xl border border-white/10 hover:border-[#ff0000]/50 transition-all hover:-translate-y-1">
-              <div className="w-12 h-12 bg-blue-600/20 text-blue-500 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                <MessageSquare size={24} />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Le Réseau</h3>
-              <p className="text-sm text-gray-400">Une communauté de <strong>1500 membres</strong> sur Facebook pour l'entraide, les tests et la promotion collective.</p>
-            </a>
+            <div className="mt-16 flex flex-wrap items-center gap-12">
+              {INSTRUCTOR_STATS.map((stat, i) => (
+                <div key={i} className="flex flex-col">
+                  {stat.value && (
+                    <span className="text-5xl font-black text-white tracking-tighter mb-1">{stat.value}</span>
+                  )}
+                  <span className="text-[#ff0000] font-black uppercase tracking-widest text-[10px] leading-relaxed max-w-[200px]">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Problem / Solution - IMAGE academy.png SANS FILTRE */}
-      <section className="py-24 bg-black">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative bg-neutral-900 rounded-2xl">
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#ff0000] rounded-full mix-blend-screen filter blur-3xl opacity-20"></div>
-              <div className="relative w-full h-full bg-neutral-800 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                <img 
-                  src="https://raw.githubusercontent.com/benspy2209/propulseurs/d29ca924fcad0ef80561967e51046aa519fe4c3e/public/academy.png" 
-                  alt="Écriture Noir" 
-                  className="w-full h-full object-cover" 
-                  loading="lazy"
-                />
-              </div>
+      {/* Bloc Format & Mises à jour */}
+      <section className="py-24 bg-neutral-950 border-y border-white/5">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="bg-black/40 p-10 md:p-16 rounded-[3rem] border border-[#ff0000]/20 shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity">
+              <Zap size={120} className="text-[#ff0000]" />
             </div>
-            <div>
-              <h2 className="text-3xl md:text-5xl font-black mb-6 serif-font text-white uppercase leading-none">
-                Vendre du Noir ne s'improvise pas.
-              </h2>
-              <p className="text-lg text-gray-400 mb-8 leading-relaxed font-light">
-                Le marché du thriller est saturé. Pour sortir de l'ombre, vous n'avez pas besoin d'être partout. Vous avez besoin d'être **là où sont les lecteurs**.
+            
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 bg-[#ff0000]/10 rounded-2xl text-[#ff0000]">
+                <CalendarDays size={24} />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic serif-font">Comment se présente la <span className="text-[#ff0000]">formation</span> ?</h2>
+            </div>
+            
+            <div className="space-y-6 text-gray-400 text-lg leading-relaxed font-medium italic">
+              <p>
+                Aujourd’hui, la formation est construite autour de documents, fiches, checklists, modèles et fichiers que tu peux utiliser immédiatement pour ton lancement : pas besoin de binge-watcher des heures de vidéos avant d’agir.
               </p>
-              <ul className="space-y-6 mb-10">
-                {[
-                  "Cesser de poster dans le vide sur Facebook",
-                  "Transformer chaque lecteur en ambassadeur (avis)",
-                  "Profitez de l'écosystème PulseNoir (Studio, Bibliopulse, Communauté)"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-4 group">
-                    <div className="p-1.5 bg-[#ff0000] rounded-full text-white shadow-[0_0_10px_rgba(255,0,0,0.4)] group-hover:scale-110 transition-transform">
-                      <Check size={16} strokeWidth={4} />
-                    </div>
-                    <span className="text-gray-200 font-bold text-lg uppercase tracking-tight">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="p-6 bg-neutral-900 rounded-2xl border border-white/10">
-                <p className="text-gray-300">
-                  <strong className="text-[#ff0000] font-black italic">La Promesse :</strong> Une stratégie chirurgicale pour dominer votre niche sans y passer 4h par jour.
+              <div className="relative p-6 bg-[#ff0000]/5 border-l-4 border-[#ff0000] rounded-r-2xl">
+                <p className="relative z-10">
+                  Des vidéos viendront compléter les modules dans une prochaine mise à jour. Et bonne nouvelle : toutes les personnes qui ont déjà acheté la formation auront accès à ces vidéos, et à toutes les mises à jour futures, <span className="inline-flex items-center gap-2 bg-[#ff0000] text-white px-3 py-1 rounded-full font-black not-italic shadow-[0_0_20px_rgba(255,0,0,0.4)] text-sm uppercase tracking-widest animate-pulse">
+                    <Sparkles size={14} /> Gratuitement, à vie.
+                  </span>
                 </p>
               </div>
             </div>
@@ -205,115 +341,88 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Programme Grid */}
-      <section id="programme" className="py-24 bg-neutral-950 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-black mb-4 serif-font text-white uppercase tracking-tight">Le Parcours Auteur Lu & Vendu</h2>
-            <p className="text-xl text-gray-400 font-light">
-              6 modules pour passer de l'ombre à la lumière (noire).
-            </p>
+      {/* Section FAQ – Questions fréquentes */}
+      <section id="faq" className="py-32 bg-black">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-white italic serif-font">FAQ – Questions <span className="text-[#ff0000]">fréquentes</span></h2>
+            <div className="h-1 w-24 bg-[#ff0000] mx-auto" />
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {COURSE_MODULES.map((module, index) => (
-              <ModuleCard key={module.id} module={module} index={index} />
+          <div className="grid gap-4">
+            {FAQ_ITEMS.map((item, i) => (
+              <div key={i} className="bg-neutral-900/20 border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#ff0000]/20">
+                <button 
+                  onClick={() => toggleFaq(i)} 
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-neutral-900/40 transition-colors group"
+                >
+                  <span className={`text-sm md:text-base font-black uppercase tracking-widest italic transition-colors flex gap-4 ${openFaq === i ? 'text-[#ff0000]' : 'text-white'}`}>
+                    <span className="text-[#ff0000]/40 font-sans not-italic">{i + 1}.</span>
+                    {item.q}
+                  </span>
+                  <ChevronDown size={20} className={`text-[#ff0000] shrink-0 transition-transform duration-500 ${openFaq === i ? 'rotate-180' : ''}`} />
+                </button>
+                <div className={`transition-all duration-500 ease-in-out overflow-hidden ${openFaq === i ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <div className="p-8 pt-0 text-gray-400 font-medium italic text-lg leading-relaxed border-t border-white/5 bg-neutral-950/20 ml-12">
+                    {item.a}
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Instructor Section */}
-      <section id="formateur" className="py-24 bg-neutral-900 text-white overflow-hidden relative border-t border-white/5">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 transform origin-top-right mix-blend-overlay"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="flex flex-col md:flex-row items-center gap-16">
-            <div className="w-full md:w-1/3">
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 bg-black">
-                <div className="absolute inset-0 bg-[#ff0000]/10 mix-blend-overlay z-10"></div>
-                <img 
-                  src="https://raw.githubusercontent.com/benspy2209/propulseurs/b432764d6f2f27df0da85a57446329dd5abb426a/public/benjamin.jpg"
-                  alt={INSTRUCTOR.name}
-                  className="w-full h-full object-cover" 
-                  loading="lazy"
-                />
-              </div>
-            </div>
-            <div className="w-full md:w-2/3">
-              <h2 className="text-4xl md:text-6xl font-black mb-4 serif-font uppercase">{INSTRUCTOR.name}</h2>
-              <p className="text-[#ff0000] text-2xl mb-8 font-black uppercase tracking-[0.2em]">{INSTRUCTOR.role}</p>
-              
-              <div className="space-y-6 text-xl text-gray-300 leading-relaxed max-w-2xl font-light italic">
-                <p>
-                  "Mon job, c'est de faire en sorte que votre polar ne finisse pas dans les oubliettes d'Amazon."
-                </p>
-                <p className="not-italic text-gray-400">
-                  {INSTRUCTOR.bio}
-                </p>
-              </div>
-
-              <div className="mt-12 flex gap-8">
-                <div className="flex flex-col">
-                  <span className="text-4xl font-black text-white">1.5k+</span>
-                  <span className="text-xs text-[#ff0000] font-black uppercase tracking-widest">Auteurs Engagés</span>
-                </div>
-                <div className="w-px bg-white/10 mx-2"></div>
-                <div className="flex flex-col">
-                  <span className="text-4xl font-black text-white">1.3k+</span>
-                  <span className="text-xs text-[#ff0000] font-black uppercase tracking-widest">Lecteurs Bibliopulse</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Final */}
-      <section className="py-24 bg-black text-center relative overflow-hidden border-t border-white/5">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ff0000] rounded-full blur-[160px] opacity-10 pointer-events-none"></div>
-
-        <div className="max-w-3xl mx-auto px-4 relative z-10">
-          <h2 className="text-4xl md:text-6xl font-black mb-8 serif-font text-white uppercase leading-[0.9]">
-            Ne laissez pas votre talent mourir dans l'ombre.
+      <section className="py-32 bg-black text-center px-6 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#ff0000]/5 blur-[150px] pointer-events-none" />
+        <div className="relative z-10 max-w-5xl mx-auto">
+          <h2 className="text-6xl md:text-[100px] font-black uppercase tracking-tighter leading-[0.8] mb-10 italic serif-font">
+            Vendez vos<br/>
+            <span className="text-[#ff0000] text-glow">Polars</span>.
           </h2>
-          <p className="text-xl text-gray-400 mb-12 font-light">
-            Rejoignez la PulseNoir Academy et commencez à récolter les fruits de votre écriture dès aujourd'hui.
+          <p className="text-xl md:text-2xl text-gray-500 mb-14 max-w-2xl mx-auto italic font-light">
+            Plan de Guerre 90 Jours pour Auteurs de Noir & Thriller. Rejoins le clan.
           </p>
-          
-          <div className="bg-neutral-900 p-10 rounded-3xl border border-white/10 inline-block w-full max-w-md shadow-2xl relative">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#ff0000] text-white text-[10px] font-black uppercase px-4 py-1 rounded-full tracking-tighter">Offre de Lancement</div>
-            <div className="text-gray-400 mb-2 font-bold uppercase text-xs tracking-widest">Accès Illimité Écosystème</div>
-            <div className="text-6xl font-black text-white mb-2">297€</div>
-            <div className="text-[#ff0000] text-xs font-bold mb-10 flex items-center justify-center gap-1 uppercase tracking-tighter">
-              <Star size={12} fill="currentColor" /> Formation + Bibliopulse + Studio Inclus
-            </div>
-            
-            <button 
-               onClick={() => setCurrentView('course')}
-               className="w-full py-5 bg-[#ff0000] text-white font-black text-xl rounded-xl hover:bg-white hover:text-black transition-all shadow-[0_0_30px_rgba(255,0,0,0.3)] mb-6 uppercase tracking-widest"
-            >
-              Rejoindre le Clan
-            </button>
-            <p className="text-[10px] text-gray-600 uppercase tracking-widest">Satisfait ou Remboursé sous 30 jours</p>
-          </div>
+          <button 
+            onClick={() => setCurrentView('course')}
+            className="px-16 py-8 bg-[#ff0000] text-white text-lg font-black rounded-full uppercase tracking-[0.2em] transition-all hover:scale-110 shadow-[0_0_80px_rgba(255,0,0,0.6)] active:scale-95 mb-8"
+          >
+            Rejoindre la formation
+          </button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-gray-600 py-16 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <span className="font-serif font-black text-2xl text-white tracking-tighter">PULSE<span className="text-[#ff0000]">NOIR</span></span>
-            <span className="text-xs uppercase font-black tracking-[0.3em]">Academy 2025</span>
+      <footer className="py-20 bg-black border-t border-white/5 text-center px-6">
+        <div className="mb-10 opacity-30 flex justify-center gap-8">
+           <a href={PULSENOIR_LINKS.instagram} target="_blank" className="hover:text-[#ff0000] transition-colors"><Instagram size={24} /></a>
+           <a href={PULSENOIR_LINKS.group} target="_blank" className="hover:text-[#ff0000] transition-colors"><Facebook size={24} /></a>
+        </div>
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex items-center gap-2">
+            <span className="text-[#ff0000] font-black text-lg tracking-tighter uppercase">Pulse</span>
+            <span className="text-white font-black text-lg tracking-tighter uppercase">Noir</span>
           </div>
-          <div className="text-[10px] uppercase font-bold tracking-widest">
-            © PulseNoir.be - Stratégies pour auteurs de l'ombre.
-          </div>
-          <div className="flex gap-8 text-[10px] font-black uppercase tracking-widest">
-             <a href={PULSENOIR_LINKS.main} className="hover:text-[#ff0000] transition-colors">Site Officiel</a>
-             <a href={PULSENOIR_LINKS.biblio} className="hover:text-[#ff0000] transition-colors">Bibliothèque</a>
-             <a href="mailto:contact@pulsenoir.be" className="hover:text-[#ff0000] transition-colors">Contact</a>
+          <p className="text-gray-800 text-[10px] font-black uppercase tracking-[0.5em] mb-4">© 2025 PulseNoir - Benjamin de Bruijne - Academy Elite</p>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <button 
+              onClick={() => setCurrentView('mentions')}
+              className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4"
+            >
+              Mentions Légales
+            </button>
+            <button 
+              onClick={() => setCurrentView('cgv')}
+              className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4"
+            >
+              Conditions Générales de Vente
+            </button>
+            <button 
+              onClick={() => setCurrentView('privacy')}
+              className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4"
+            >
+              Politique de confidentialité
+            </button>
           </div>
         </div>
       </footer>

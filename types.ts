@@ -9,6 +9,7 @@ export interface Chapter {
 export interface Resource {
   title: string;
   type: 'pdf' | 'template' | 'checklist' | 'sheet';
+  url?: string; // URL vers le fichier (ex: /downloads/mon-fichier.pdf)
 }
 
 export interface ModuleContent {
