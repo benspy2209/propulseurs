@@ -1,4 +1,3 @@
-// Ajout de l'import React pour corriger l'erreur de namespace sur React.FC
 import React, { useState } from 'react';
 import { ModuleContent, Chapter } from '../types';
 import { INSTRUCTOR, DRIVE_FOLDER, PULSENOIR_LINKS } from '../constants';
@@ -16,15 +15,17 @@ import {
   CheckSquare,
   BarChart3,
   Gift,
-  ExternalLink
+  ExternalLink,
+  LogOut
 } from 'lucide-react';
 
 interface CoursePlayerProps {
   modules: ModuleContent[];
   onBack: () => void;
+  onLogout?: () => void;
 }
 
-const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack }) => {
+const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }) => {
   const [activeModuleId, setActiveModuleId] = useState<string>(modules[0].id);
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
@@ -94,10 +95,15 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack }) => {
 
       {/* Sidebar Section */}
       <aside className={`fixed inset-y-0 left-0 z-40 w-80 bg-neutral-950 border-r border-white/5 flex flex-col transition-transform duration-500 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:relative lg:translate-x-0 shadow-2xl`}>
-        <div className="p-8 border-b border-white/5 bg-black">
+        <div className="p-8 border-b border-white/5 bg-black flex items-center justify-between">
            <button onClick={onBack} className="text-gray-500 hover:text-white flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] transition-all group">
-             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Quitter le Programme
+             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Accueil
            </button>
+           {onLogout && (
+             <button onClick={onLogout} className="text-gray-700 hover:text-[#ff0000] transition-colors" title="Se déconnecter">
+               <LogOut size={16} />
+             </button>
+           )}
         </div>
 
         <div className="flex-1 overflow-y-auto py-8 scrollbar-hide px-6">

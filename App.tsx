@@ -7,6 +7,7 @@ import PrivacyPolicyView from './components/PrivacyPolicyView';
 import MentionsLegalesView from './components/MentionsLegalesView';
 import PurchaseView from './components/PurchaseView';
 import SuccessView from './components/SuccessView';
+import LoginView from './components/LoginView';
 import { 
   ArrowRight, 
   Instagram,
@@ -19,10 +20,10 @@ import {
   Zap,
   ShieldCheck,
   CalendarDays,
-  PlayCircle
+  User
 } from 'lucide-react';
 
-type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success';
+type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success' | 'login';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('landing');
@@ -30,12 +31,15 @@ const App: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isInstructorHovered, setIsInstructorHovered] = useState(false);
   
+  // État de l'utilisateur (Simulation de session)
+  const [userEmail, setUserEmail] = useState<string | null>(localStorage.getItem('userEmail'));
+  const [hasAccess, setHasAccess] = useState<boolean>(localStorage.getItem('hasAccess') === 'true');
+
   // Simuler la détection du retour Stripe
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('status') === 'success') {
       setCurrentView('success');
-      // Nettoyer l'URL
       window.history.replaceState({}, document.title, window.location.pathname);
     }
   }, []);
@@ -50,6 +54,24 @@ const App: React.FC = () => {
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const handleLogin = (email: string) => {
+    // Ici, on simulera une vérification réussie
+    // En production, on interrogera Supabase ici
+    setUserEmail(email);
+    setHasAccess(true);
+    localStorage.setItem('userEmail', email);
+    localStorage.setItem('hasAccess', 'true');
+    setCurrentView('course');
+  };
+
+  const handleLogout = () => {
+    setUserEmail(null);
+    setHasAccess(false);
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('hasAccess');
+    setCurrentView('landing');
   };
 
   const scrollToSection = (id: string) => {
@@ -76,8 +98,15 @@ const App: React.FC = () => {
     }
   };
 
+  if (currentView === 'login') {
+    return <LoginView onBack={() => setCurrentView('landing')} onLogin={handleLogin} />;
+  }
+
   if (currentView === 'course') {
-    return <CoursePlayer modules={COURSE_MODULES} onBack={() => setCurrentView('landing')} />;
+    if (!hasAccess) {
+      return <LoginView onBack={() => setCurrentView('landing')} onLogin={handleLogin} />;
+    }
+    return <CoursePlayer modules={COURSE_MODULES} onBack={() => setCurrentView('landing')} onLogout={handleLogout} />;
   }
 
   if (currentView === 'cgv') {
@@ -104,7 +133,7 @@ const App: React.FC = () => {
   if (currentView === 'success') {
     return (
       <SuccessView 
-        onGoToCourse={() => setCurrentView('course')} 
+        onGoToCourse={() => setCurrentView('login')} 
       />
     );
   }
@@ -155,10 +184,11 @@ const App: React.FC = () => {
 
           <div className="flex items-center gap-4">
             <button 
-              onClick={() => setCurrentView('course')}
-              className="hidden sm:block text-gray-400 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors"
+              onClick={() => setCurrentView(userEmail ? 'course' : 'login')}
+              className="hidden sm:flex items-center gap-2 text-gray-400 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors"
             >
-              Accès Membre
+              <User size={14} className={userEmail ? "text-green-500" : "text-gray-600"} />
+              {userEmail ? 'Mon Espace' : 'Accès Membre'}
             </button>
             <button 
               onClick={() => setCurrentView('purchase')}

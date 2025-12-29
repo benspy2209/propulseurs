@@ -96,7 +96,6 @@ export const FAQ_ITEMS = [
   }
 ];
 
-// Export DRIVE_FOLDER constant
 export const DRIVE_FOLDER = "https://drive.google.com/drive/folders/1G9grASJgCql96ARQ7RHSj864Fe7sqNFg?usp=sharing";
 
 export const PULSENOIR_LINKS = {
@@ -123,15 +122,31 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: Target,
     color: "red",
     imageKeyword: "strategy",
-    longDescription: "Ce module est la pierre angulaire. Nous allons transformer votre approche 'amateur' en une stratégie 'auteur-entrepreneur'. On ne lance pas un livre au hasard, on construit un écosystème de vente.",
+    longDescription: "Ce module est la pierre angulaire de votre carrière. Nous allons transformer votre approche 'amateur' en une stratégie 'auteur-entrepreneur'. On ne lance pas un livre au hasard, on construit un écosystème de vente.",
     chapters: [
       {
         title: "1. Construire progressivement son Écosystème",
         type: "text",
         content: [
-          "Pour un nouvel auteur, le plus efficace est de construire progressivement une présence cohérente. Cela commence par le choix d'une niche ultra-pécise. Ne cherchez pas à plaire à tout le monde.",
-          "La Loi des 1000 Fans : Pourquoi vous n'avez pas besoin de millions de vues, mais de 1000 lecteurs ultra-engagés qui achètent tout ce que vous produisez.",
-          "L'architecture de votre succès : Votre livre (le produit), Votre plateforme (le hub), Votre communauté (le moteur)."
+          "Pour un nouvel auteur, le plus efficace est de construire progressivement une présence cohérente. Cela commence par le choix d'une niche ultra-précise. Ne cherchez pas à plaire à tout le monde, cherchez à devenir indispensable pour quelques-uns.",
+          "Plutôt que de viser la masse anonyme, l'objectif est de bâtir une 'forteresse de visibilité' brique par brique. Chaque interaction, chaque post et chaque mail doit renforcer votre image de spécialiste du noir.",
+          "La Loi des 1000 Fans : Pourquoi vous n'avez pas besoin de millions de vues, mais de 1000 lecteurs ultra-engagés qui achètent tout ce que vous produisez."
+        ]
+      },
+      {
+        title: "La Stratégie de l'Infiltration",
+        type: "key-concept",
+        content: [
+          "L'erreur fatale du débutant est de hurler 'ACHETEZ MON LIVRE' dans le vide. Le professionnel, lui, s'infiltre. Il se rend visible là où ses lecteurs dorment déjà : dans les groupes de fans, les blogs spécialisés et les communautés comme Bibliopulse.",
+          "On ne construit pas une audience en un jour, mais on peut construire une base solide en 90 jours avec de la méthode."
+        ]
+      },
+      {
+        title: "Exercice : Définir sa Promesse de Noir",
+        type: "exercise",
+        content: [
+          "Quel est le 'frisson' spécifique que vous apportez ? Est-ce le malaise psychologique ? L'adrénaline de la traque ? Le réalisme brut du polar social ?",
+          "Remplissez votre fiche 'ADN Auteur' disponible dans les ressources pour définir votre angle d'attaque unique."
         ]
       }
     ],
