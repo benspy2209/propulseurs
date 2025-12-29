@@ -1,3 +1,4 @@
+
 import { 
   Target, 
   UserCircle, 
@@ -122,11 +123,20 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: Target,
     color: "red",
     imageKeyword: "strategy",
-    longDescription: "Ce module est la pierre angulaire de votre carrière. Nous allons transformer votre approche 'amateur' en une stratégie 'auteur-entrepreneur'. On ne lance pas un livre au hasard, on construit un écosystème de vente.",
+    longDescription: "Ce module est la pierre angulaire de ta carrière d’auteur de noir. Il pose les bases de ton écosystème : ce que tu promets à tes lecteurs, comment tu te positionnes, et comment tu construis une présence cohérente au lieu de “publier dans le vide”. À la fin, tu auras une vision claire de ton ADN d’auteur et des briques à mettre en place.",
+    steps: [
+      "Lire la partie « Construire progressivement son écosystème ».",
+      "Faire l’exercice « Définir sa Promesse de Noir ».",
+      "Télécharger et remplir les 4 outils du Pack Bonus du module."
+    ],
+    transitionTitle: "Mettre en pratique avec les outils du module",
+    transitionText: "Une fois que tu as lu cette page et répondu à l’exercice sur ta Promesse de Noir, passe aux outils ci‑dessous. Ils te servent à concrétiser ton ADN d’auteur : ton écosystème, ton calcul de rentabilité, ton lecteur cible et tes piliers pro.",
+    transitionButtonText: "Descendre vers les outils",
     chapters: [
       {
-        title: "1. Construire progressivement son Écosystème",
+        title: "Construire progressivement son écosystème",
         type: "text",
+        expectedResult: "À la fin de cette section, tu sais ce que tu cherches à construire : un écosystème d’auteur de noir, pas seulement un livre isolé.",
         content: [
           "Pour un nouvel auteur, le plus efficace est de construire progressivement une présence cohérente. Cela commence par le choix d'une niche ultra-précise. Ne cherchez pas à plaire à tout le monde, cherchez à devenir indispensable pour quelques-uns.",
           "Plutôt que de viser la masse anonyme, l'objectif est de bâtir une 'forteresse de visibilité' brique par brique. Chaque interaction, chaque post et chaque mail doit renforcer votre image de spécialiste du noir.",
@@ -142,11 +152,16 @@ export const COURSE_MODULES: ModuleContent[] = [
         ]
       },
       {
-        title: "Exercice : Définir sa Promesse de Noir",
+        title: "Définir sa Promesse de Noir",
         type: "exercise",
+        guidedQuestions: [
+          "Quel type de frisson veux-tu provoquer (malaise psychologique, tension d’enquête, horreur, noir social…) ?",
+          "Quels sont 3 auteurs de noir/thriller dont la promesse te parle le plus, et pourquoi ?",
+          "Si un lecteur devait résumer ton univers en une phrase après plusieurs livres, quelle phrase aimerais-tu qu’il dise ?"
+        ],
         content: [
           "Quel est le 'frisson' spécifique que vous apportez ? Est-ce le malaise psychologique ? L'adrénaline de la traque ? Le réalisme brut du polar social ?",
-          "Remplissez votre fiche 'ADN Auteur' disponible dans les ressources pour définir votre angle d'attaque unique."
+          "Note tes réponses dans tes notes ET dans les outils du Pack Bonus (Blueprint + Fiche Avatar)."
         ]
       }
     ],
@@ -172,19 +187,54 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: UserCircle,
     color: "red",
     imageKeyword: "identity",
-    longDescription: "Votre identité numérique est votre vitrine 24h/24. Ce module vous apprend à structurer vos réseaux pour qu'ils convertissent les curieux en acheteurs compulsifs.",
+    longDescription: "Ton identité numérique est ta vitrine 24h/24. Ce module t’aide à rendre tes profils (Instagram, Facebook, etc.) cohérents avec ton univers de noir, mémorables, et capables de transformer les curieux en vrais lecteurs. À la fin, tu auras une bio qui accroche, une image claire, et des profils alignés avec ton polar/thriller.",
+    steps: [
+      "Lire la section « L’anatomie d’une bio qui tue ».",
+      "Faire l’audit rapide de tes profils actuels.",
+      "Utiliser les outils du Pack Bonus pour créer/mettre à jour ta bio, tes bannières et ton setup newsletter."
+    ],
+    transitionTitle: "Mettre en pratique avec les outils du module",
+    transitionText: "Une fois que tu as lu cette page et répondu à l’audit et à l’exercice sur ta bio, passe aux outils ci‑dessous. Ils t’aident à concrétiser ton identité numérique : pack de bannières auteur noir, générateur de bio haute‑tension, guide setup newsletter en 15 minutes et checklist d’audit de présence digitale.",
+    transitionButtonText: "Descendre vers les outils",
     chapters: [
       {
-        title: "L'Anatomie d'une Bio qui Tue",
+        title: "L’anatomie d’une bio qui tue",
         type: "text",
+        expectedResult: "À la fin de cette section, tu sais exactement comment construire une bio qui donne envie de te suivre et de découvrir tes livres.",
         content: [
-          "Structure de conversion : [Accroche Choc] + [Preuve Sociale/Univers] + [Appel à l'action clair].",
-          "Pourquoi votre photo de profil doit être cohérente avec votre genre."
+          "Structure de conversion : Accroche Choc + Preuve Sociale/Univers + Appel à l’action clair.",
+          "Pourquoi votre photo de profil doit être cohérente avec votre genre.",
+          "Chaque caractère compte : sur les réseaux sociaux, vous avez environ 3 secondes pour prouver que vous valez la peine d'être suivi par un fan de thriller."
+        ]
+      },
+      {
+        title: "Audit express de ton identité numérique",
+        type: "key-concept",
+        content: [
+          "Avant de tout refaire, prends 5 minutes pour regarder tes profils avec un œil neuf, comme si tu étais un lecteur qui ne te connaît pas.",
+          "Est-ce qu’en 3 secondes on comprend que tu écris du polar/thriller ?",
+          "Ta bio mentionne‑t‑elle clairement ton genre et ton univers ?",
+          "Tes visuels (photo, bannière) respirent‑ils ton ambiance (noir, urbain, rural, psychologique…) ?",
+          "Est-ce qu’il y a un lien clair vers ton livre ou ta newsletter ?",
+          "Si tu étais un lecteur, aurais‑tu envie de scroller et de suivre ce compte ?",
+          "Note tes réponses dans tes notes ou dans la checklist du pack bonus."
+        ]
+      },
+      {
+        title: "Exercice : Réécrire ta bio magnétique",
+        type: "exercise",
+        guidedQuestions: [
+          "Version courte (Instagram / bio courte) : ________",
+          "Version plus longue (site, Amazon, quatrième) : ________",
+          "Phrase de pitch noir/thriller à intégrer : ________"
+        ],
+        content: [
+          "À partir de la structure bio + de ton audit, réécris une version courte et une version longue de ta bio auteur. Utilise ton générateur de bio dans le pack bonus si tu veux un coup de main."
         ]
       }
     ],
     resources: [
-      { title: "Pack Graphique : Bannières Auteur Noir", type: "template", url: DRIVE_FOLDER },
+      { title: "Pack graphique : Bannières Auteur Noir", type: "template", url: DRIVE_FOLDER },
       { title: "Générateur : Bio Instagram Haute-Tension", type: "template", url: DRIVE_FOLDER },
       { title: "Guide : Setup de Newsletter en 15 minutes", type: "pdf", url: DRIVE_FOLDER },
       { title: "Checklist : Audit de Présence Digitale", type: "checklist", url: DRIVE_FOLDER }
@@ -205,14 +255,48 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: Share2,
     color: "red",
     imageKeyword: "social",
-    longDescription: "Nous allons voir comment automatiser 80% de votre présence sociale pour vous laisser le temps d'écrire, tout en créant une interaction authentique.",
+    longDescription: "Dans ce module, tu apprends à construire ton réseau d’influence noir : groupes de lecteurs, chroniqueurs, réseaux sociaux. Le but : automatiser jusqu’à 80% de ta présence tout en gardant des interactions authentiques, pour te laisser du temps pour écrire.",
+    steps: [
+      "Lire la section « Infiltrer les groupes de lecteurs ».",
+      "Noter 3–5 groupes / communautés où tu pourrais t’infiltrer.",
+      "Utiliser les outils du Pack Bonus pour planifier tes posts, approcher les chroniqueurs et cartographier ton réseau."
+    ],
+    transitionTitle: "Mettre en pratique avec les outils du module",
+    transitionText: "Une fois que tu as lu cette page, cartographié ton réseau et défini ton plan d’infiltration sur 30 jours, passe aux outils ci‑dessous. Ils t’aident à rendre tout ça concret : 50 accroches de posts spécial thriller, un calendrier éditorial prêt à remplir, des scripts d’approche chroniqueurs et une liste de groupes & comptes lecteurs polar/thriller.",
+    transitionButtonText: "Descendre vers les outils",
     chapters: [
       {
-        title: "Infiltrer les Groupes de Lecteurs",
+        title: "Infiltrer les groupes de lecteurs",
         type: "text",
+        expectedResult: "À la fin de cette section, tu sais comment entrer dans un groupe de lecteurs sans passer pour un spammeur, et comment amener naturellement ton livre dans la conversation.",
         content: [
-          "Ne postez jamais votre lien de vente en premier. Apportez de la valeur d'abord.",
-          "La technique du 'Cheval de Troie' pour susciter l'intérêt."
+          "Ne postez jamais votre lien de vente en premier. Apportez de la valeur d’abord.",
+          "La technique du “Cheval de Troie” pour susciter l’intérêt.",
+          "Interagir avec les autres membres, répondre aux questions, partager ses propres lectures : c'est ainsi que l'on devient une figure familière et respectée du clan."
+        ]
+      },
+      {
+        title: "Cartographier ton réseau d’influence noir",
+        type: "key-concept",
+        content: [
+          "Avant d’utiliser les outils, liste les lieux où ton livre peut rencontrer ses lecteurs : groupes Facebook, comptes Instagram, chroniqueurs, blogs, chaînes YouTube…",
+          "3 groupes de lecteurs polar/thriller à infiltrer : ________",
+          "3 chroniqueurs / comptes que tu aimerais approcher : ________",
+          "2–3 blogs, podcasts ou chaînes YouTube alignés avec ton univers : ________",
+          "Tu pourras ensuite reporter ces idées dans le fichier de suivi et le calendrier éditorial du pack bonus."
+        ]
+      },
+      {
+        title: "Exercice : Ton plan d’infiltration sur 30 jours",
+        type: "exercise",
+        guidedQuestions: [
+          "Groupes de lecteurs : dans quels groupes interviens‑tu chaque semaine ? (ex. 2 commentaires de valeur, 1 post par semaine)",
+          "Réseaux sociaux : quels types de posts liés à ton livre / à ton univers vas‑tu publier ? (stories, extraits, coulisses, jeux…)",
+          "Chroniqueurs : combien de nouveaux contacts par semaine ?"
+        ],
+        content: [
+          "Pour éviter de faire tout et n’importe quoi, définis un plan simple d’actions sur 30 jours : où tu interviens, à quelle fréquence, et avec quel type de contenu.",
+          "Tu peux détailler ce plan dans le Template Calendrier Éditorial 2026 du pack bonus."
         ]
       }
     ],
@@ -238,14 +322,49 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: Users,
     color: "red",
     imageKeyword: "community",
-    longDescription: "La preuve sociale est le SEUL moteur de vente organique puissant. Ce module vous montre comment orchestrer une sortie de livre fracassante.",
+    longDescription: "La preuve sociale est le moteur de vente organique le plus puissant : avis, chroniques, bouche‑à‑oreille. Ce module te montre comment préparer ta street team, organiser la bêta‑lecture et orchestrer une sortie de livre qui génère naturellement des retours.",
+    steps: [
+      "Lire la section « Bâtir sa Street Team de A à Z ».",
+      "Décider qui tu veux dans ta street team (liste courte).",
+      "Utiliser les outils du pack bonus pour formaliser la relation, organiser les bêta‑lectures et suivre les avis."
+    ],
+    transitionTitle: "Mettre en pratique avec les outils du module",
+    transitionText: "Une fois que tu as défini ta street team idéale et ton organisation de bêta‑lecture, passe aux outils ci‑dessous. Ils t’aident à formaliser l’accord moral, structurer les retours, relancer les avis sans être lourd et suivre précisément qui a chroniqué quoi.",
+    transitionButtonText: "Descendre vers les outils",
     chapters: [
       {
-        title: "Bâtir sa Street Team de A à Z",
+        title: "Bâtir sa street team de A à Z",
         type: "text",
+        expectedResult: "À la fin de cette section, tu sais à quoi sert une street team, qui y inviter, et comment la récompenser sans exploser ton budget.",
         content: [
-          "Recrutez vos 20-50 lecteurs les plus fidèles.",
-          "Le système de récompense immatériel."
+          "Recrutez vos 20–50 lecteurs les plus fidèles.",
+          "Le système de récompense immatériel : accès anticipé, coulisses de l'écriture, remerciements dans les crédits.",
+          "Une street team n'est pas un groupe de fans passifs, c'est une force d'intervention rapide pour vos avis et votre visibilité."
+        ]
+      },
+      {
+        title: "Qui recruter, comment les approcher ?",
+        type: "key-concept",
+        content: [
+          "La street team doit être composée de lecteurs motviés (pas toute ta famille).",
+          "Clarifier l’accord dès le départ : ce que tu offres (avant-première, bonus) et ce que tu demandes (avis honnête, partage).",
+          "5 personnes de ton entourage lecteur à qui tu pourrais proposer la street team : ________",
+          "5 lecteurs rencontrés via groupes / réseaux : ________",
+          "Message d’invitation type (à adapter) → renvoi au Contrat informel dans le pack bonus."
+        ]
+      },
+      {
+        title: "Organiser la bêta‑lecture et les avis",
+        type: "exercise",
+        guidedQuestions: [
+          "À qui j’envoie le Questionnaire de Bêta‑lecture Stratégique ?",
+          "À quel moment je déclenche le Pack de 10 mails de relance ? (avant / pendant / après lancement)",
+          "Où je note qui a reçu quoi ? → renvoi au Fichier de Suivi Chroniqueurs & Avis."
+        ],
+        content: [
+          "Distinguer bêta‑lecteurs (fond du livre) et street team (visibilité).",
+          "Donner un cadre clair : délai indicatif de lecture, type de retour attendu.",
+          "Préparer dès maintenant les futures demandes d’avis pour ne pas être pris de court au lancement."
         ]
       }
     ],
@@ -271,14 +390,48 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: TrendingUp,
     color: "red",
     imageKeyword: "sales",
-    longDescription: "C'est ici que l'argent se gagne. Nous allons décortiquer les mécanismes psychologiques qui poussent au clic.",
+    longDescription: "C’est ici que se joue une grande partie du potentiel de ventes : titre, résumé, couverture, positionnement. Dans ce module, on décortique les mécaniques des best‑sellers thriller/polar pour renforcer l’ADN de ton propre livre et écrire un résumé qui déclenche le clic.",
+    steps: [
+      "Lire la section « Le résumé haute tension ».",
+      "Choisir un best‑seller noir/thriller à analyser.",
+      "Utiliser les outils du pack bonus pour analyser, décortiquer et réécrire ton propre résumé."
+    ],
+    transitionTitle: "Mettre en pratique avec les outils du module",
+    transitionText: "Une fois que tu as compris ce qui fait la force d’un résumé et analysé un best‑seller, passe aux outils ci‑dessous. Ils t’aident à décortiquer en profondeur 50 résumés, à construire une base de 1000 mots‑clés Amazon Ads polar/thriller, à cartographier l’ADN d’un best‑seller noir et à travailler la psychologie de ta couverture.",
+    transitionButtonText: "Descendre vers les outils",
     chapters: [
       {
-        title: "Le Résumé 'Haute Tension'",
+        title: "Le résumé haute tension",
         type: "text",
+        expectedResult: "À la fin de cette section, tu comprends comment ouvrir ton résumé avec un hook fort et l’alimenter avec un vocabulaire qui donne une couleur thriller/polar nette.",
         content: [
-          "Le 'Hook' : La première phrase qui doit faire mal.",
-          "Utilisation des 'Power Words' du thriller."
+          "Le “Hook” : la première phrase qui doit faire mal. C'est l'hameçon qui doit capturer l'attention du lecteur en une fraction de seconde.",
+          "Utilisation des “power words” du thriller. Le vocabulaire employé doit évoquer la tension, le mystère et l'urgence dès les premiers mots."
+        ]
+      },
+      {
+        title: "Décortiquer un best-seller noir",
+        type: "key-concept",
+        content: [
+          "Choisis un best‑seller de ton genre et passe‑le sur la table d’opération : quelle est son accroche, quel est son enjeu, comment se termine le résumé, quelle promesse de lecture est faite ?",
+          "Quelle est la situation de départ présentée en 1–2 phrases ?",
+          "Quel est l’événement perturbateur mis en avant ?",
+          "Quel est l’enjeu principal (ce que le héros risque) ?",
+          "Quelle est la dernière phrase crochet du résumé ?",
+          "Tu peux répondre à ces questions dans le Swipe File : Laboratoire de Résumés de Thrillers et dans le Kit : Carte ADN d’un Best‑Seller Noir."
+        ]
+      },
+      {
+        title: "Réécrire ton résumé comme un best-seller",
+        type: "exercise",
+        guidedQuestions: [
+          "Hook (1 phrase) : ________",
+          "Résumé complet (3–5 phrases) : ________",
+          "Dernière phrase crochet : ________"
+        ],
+        content: [
+          "À partir de ce que tu as observé, réécris ton propre résumé en version “haute tension”. Concentre‑toi sur une accroche forte, un enjeu clair et une dernière phrase qui donne envie de cliquer.",
+          "Tu peux t’aider des gabarits et formules du Swipe File : Laboratoire de Résumés de Thrillers."
         ]
       }
     ],
@@ -304,14 +457,45 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: Map,
     color: "red",
     imageKeyword: "roadmap",
-    longDescription: "La formation se termine, mais votre carrière commence. Ce plan d'action vous donne une direction claire pour les 90 prochains jours.",
+    longDescription: "La formation se termine, mais ta carrière commence. Ce module te donne un plan d’action sur 90 jours pour lancer ton polar/thriller sans te perdre : quoi faire, dans quel ordre, et avec quel niveau d’intensité.",
+    steps: [
+      "Lire la section « Le pipeline de vente continu ».",
+      "Choisir ton niveau d’intensité (15 min/jour, 1 h/jour, ou 1 demi‑journée par semaine).",
+      "Utiliser la checklist Plan de Guerre 90 Jours pour planifier concrètement ton lancement."
+    ],
+    transitionTitle: "Mettre en pratique avec le Plan de Guerre",
+    transitionText: "Maintenant que tu connais la logique du pipeline de vente continu et des 3 phases, télécharge la checklist 90 jours ci‑dessous. Elle te donne, semaine après semaine, les actions essentielles à mener pour lancer ton polar : préparation, lancement, consolidation. Choisis ton niveau d’intensité et coche au fur et à mesure.",
+    transitionButtonText: "Descendre vers l'outil",
     chapters: [
       {
-        title: "Le Pipeline de Vente Continu",
+        title: "Le pipeline de vente continu",
         type: "text",
+        expectedResult: "À la fin de cette section, tu comprends pourquoi tout le plan de guerre vise à construire une base d’emails de lecteurs plutôt que de dépendre uniquement des algorithmes.",
         content: [
-          "Pourquoi votre newsletter est plus importante que Facebook.",
-          "Comment récolter des emails dès la première page."
+          "Pourquoi ta newsletter est plus importante que Facebook.",
+          "Comment récolter des emails dès la première page (backmatter, bonus, etc.).",
+          "Le but ultime n'est pas seulement de vendre un livre, mais de posséder le lien direct avec ton audience pour tes lancements futurs."
+        ]
+      },
+      {
+        title: "Choisir ton niveau d’intensité",
+        type: "key-concept",
+        content: [
+          "Le plan de guerre est modulable. Tu peux l’appliquer en mode léger ou en mode commando. L’important est de choisir une cadence réaliste que tu peux tenir.",
+          "Profil 1 : 15 minutes par jour – 1 micro‑action par jour (ex. 1 message à un lecteur, 1 post, 1 mail).",
+          "Profil 2 : 1 heure par jour – séquence type (20 min réseaux, 20 min contacts, 20 min suivi/stats).",
+          "Profil 3 : 1 demi‑journée par semaine – tout regrouper (programmation posts, mails, relances).",
+          "La checklist 90 jours te propose un cadre que tu peux adapter à l’un de ces trois profils."
+        ]
+      },
+      {
+        title: "Les 3 phases du Plan de Guerre",
+        type: "key-concept",
+        content: [
+          "Phase 1 : Préparation (J‑30 à J‑1) – optimiser la fiche Amazon, préparer les contenus, mobiliser street team et chroniqueurs.",
+          "Phase 2 : Lancement (J0 à J+30) – concentrer l’attention, obtenir les premiers avis, tester pubs/visibilité.",
+          "Phase 3 : Consolidation (J+31 à J+90) – maintenir la présence, exploiter les avis, préparer le livre suivant.",
+          "La checklist Plan de Guerre 90 Jours détaille semaine par semaine les actions proposées dans un cadre tactique précis."
         ]
       }
     ],

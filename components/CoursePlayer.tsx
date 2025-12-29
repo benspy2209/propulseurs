@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { ModuleContent, Chapter } from '../types';
 import { INSTRUCTOR, DRIVE_FOLDER, PULSENOIR_LINKS } from '../constants';
@@ -16,7 +17,9 @@ import {
   BarChart3,
   Gift,
   ExternalLink,
-  LogOut
+  LogOut,
+  ChevronRight,
+  Target
 } from 'lucide-react';
 
 interface CoursePlayerProps {
@@ -41,41 +44,79 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
     }
   };
 
+  const scrollToGoodies = () => {
+    const goodies = document.getElementById('goodies-section');
+    if (goodies) goodies.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const renderChapterContent = (chapter: Chapter, idx: number) => {
     switch (chapter.type) {
       case 'exercise':
         return (
-          <div key={idx} className="my-10 bg-[#ff0000]/5 border border-[#ff0000]/20 rounded-2xl p-10 relative shadow-2xl">
-            <div className="absolute -top-3 left-8 bg-[#ff0000] px-4 py-1 text-white text-[10px] font-black uppercase tracking-widest flex items-center gap-2 rounded-full shadow-lg">
-              <PenTool size={10} /> Travail Stratégique
+          <div key={idx} className="mb-20">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-1 w-full bg-gradient-to-r from-[#ff0000] to-transparent"></div>
+              <h3 className="text-xl font-black text-white uppercase tracking-widest italic shrink-0">Exercice pratique</h3>
             </div>
-            <h4 className="text-2xl font-serif font-bold text-white mb-6 italic">{chapter.title}</h4>
-            <div className="space-y-5 text-gray-300 text-base font-medium leading-relaxed">
-              {chapter.content.map((p, i) => <p key={i}>{p}</p>)}
+            <div className="bg-[#ff0000]/5 border border-[#ff0000]/20 rounded-2xl p-10 relative shadow-2xl">
+              <div className="absolute -top-3 left-8 bg-[#ff0000] px-4 py-1 text-white text-[10px] font-black uppercase tracking-widest flex items-center gap-2 rounded-full shadow-lg">
+                <PenTool size={10} /> Travail Stratégique
+              </div>
+              <h4 className="text-2xl font-serif font-bold text-white mb-6 italic">{chapter.title}</h4>
+              
+              <div className="space-y-5 text-gray-300 text-base font-medium leading-relaxed mb-8">
+                {chapter.content.map((p, i) => <p key={i}>{p}</p>)}
+              </div>
+
+              {chapter.guidedQuestions && (
+                <div className="space-y-4 pt-6 border-t border-white/5">
+                   <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-4 italic">Questions de réflexion :</p>
+                   {chapter.guidedQuestions.map((q, i) => (
+                     <div key={i} className="flex gap-4 items-start bg-black/40 p-5 rounded-xl border border-white/5 italic">
+                        <span className="text-[#ff0000] font-black">?</span>
+                        <p className="text-gray-400 text-sm leading-relaxed">{q}</p>
+                     </div>
+                   ))}
+                </div>
+              )}
             </div>
           </div>
         );
       case 'key-concept':
         return (
-          <div key={idx} className="my-10 bg-neutral-900 border-l-8 border-[#ff0000] p-10 rounded-r-2xl shadow-xl">
-             <div className="flex items-center gap-2 text-[#ff0000] mb-4 font-black uppercase text-[10px] tracking-widest">
-                <Lightbulb size={14} /> Concept Clé à Maîtriser
-             </div>
-            <h4 className="text-2xl font-serif font-bold text-white mb-4 italic">{chapter.title}</h4>
-            <div className="space-y-4 text-gray-400 text-base leading-relaxed">
-              {chapter.content.map((p, i) => <p key={i}>{p}</p>)}
+          <div key={idx} className="mb-20">
+             <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-1 w-full bg-gradient-to-r from-[#ff0000] to-transparent"></div>
+              <h3 className="text-xl font-black text-white uppercase tracking-widest italic shrink-0">Concept clé du module</h3>
+            </div>
+            <div className="bg-neutral-900 border-l-8 border-[#ff0000] p-10 rounded-r-2xl shadow-xl">
+               <div className="flex items-center gap-2 text-[#ff0000] mb-4 font-black uppercase text-[10px] tracking-widest">
+                  <Lightbulb size={14} /> CONCEPT CLÉ À MAÎTRISER
+               </div>
+              <h4 className="text-2xl font-serif font-bold text-white mb-4 italic">{chapter.title}</h4>
+              <div className="space-y-4 text-gray-400 text-base leading-relaxed">
+                {chapter.content.map((p, i) => <p key={i}>{p}</p>)}
+              </div>
             </div>
           </div>
         );
       default:
         return (
-          <div key={idx} className="mb-16">
-            <h3 className="text-3xl font-serif font-black text-white mb-8 flex items-center gap-6 italic uppercase tracking-tighter">
-              <span className="text-[#ff0000] text-lg bg-[#ff0000]/10 w-12 h-12 rounded-full flex items-center justify-center font-sans italic border border-[#ff0000]/20">0{idx + 1}</span>
-              {chapter.title}
-            </h3>
-            <div className="space-y-6 text-gray-400 leading-relaxed text-lg font-light">
-              {chapter.content.map((p, i) => <p key={i}>{p}</p>)}
+          <div key={idx} className="mb-20">
+            <div className="flex items-center gap-3 mb-10">
+              <div className="w-10 h-1 w-full bg-gradient-to-r from-[#ff0000] to-transparent"></div>
+              <h3 className="text-xl font-black text-white uppercase tracking-widest italic shrink-0">{idx + 1}. {chapter.title}</h3>
+            </div>
+            <div className="mb-10">
+              {chapter.expectedResult && (
+                <div className="mb-8 inline-flex items-start gap-4 p-4 bg-white/5 border border-white/5 rounded-2xl italic">
+                   <Target size={18} className="text-[#ff0000] shrink-0 mt-0.5" />
+                   <p className="text-xs text-gray-500"><span className="text-white font-black uppercase text-[9px] tracking-widest block mb-1">Résultat attendu :</span> {chapter.expectedResult}</p>
+                </div>
+              )}
+              <div className="space-y-6 text-gray-400 leading-relaxed text-lg font-light">
+                {chapter.content.map((p, i) => <p key={i}>{p}</p>)}
+              </div>
             </div>
           </div>
         );
@@ -194,9 +235,28 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
             <h1 className="text-5xl lg:text-7xl font-serif font-black text-white mb-10 tracking-tighter leading-[0.9] italic uppercase">
               {activeModule.title}
             </h1>
-            <p className="text-2xl text-gray-500 leading-relaxed font-light italic max-w-2xl">
+            <p className="text-2xl text-gray-500 leading-relaxed font-light italic max-w-2xl mb-12">
               {activeModule.longDescription || activeModule.description}
             </p>
+
+            {/* Section Par où commencer ? */}
+            {activeModule.steps && (
+              <div className="bg-neutral-900/50 border border-white/5 rounded-3xl p-10 mb-16 shadow-xl">
+                 <h2 className="text-2xl font-black text-white uppercase tracking-widest mb-8 flex items-center gap-4 italic serif-font">
+                   Par où commencer ?
+                 </h2>
+                 <div className="space-y-6">
+                    {activeModule.steps.map((step, i) => (
+                      <div key={i} className="flex gap-6 items-center">
+                         <div className="w-10 h-10 bg-[#ff0000] text-white font-black flex items-center justify-center rounded-xl shadow-lg shrink-0">
+                           {i + 1}
+                         </div>
+                         <p className="text-gray-300 font-medium italic">{step}</p>
+                      </div>
+                    ))}
+                 </div>
+              </div>
+            )}
             
             <div className="mt-16 aspect-video bg-neutral-900 rounded-[3rem] border border-white/5 flex items-center justify-center group cursor-pointer overflow-hidden relative shadow-2xl">
                <img src={`https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80`} className="absolute inset-0 w-full h-full object-cover grayscale opacity-20 group-hover:scale-105 transition-transform duration-1000" alt="Cover" />
@@ -215,8 +275,26 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
           <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000">
             {activeModule.chapters?.map((chapter, idx) => renderChapterContent(chapter, idx))}
             
+            {/* Bloc de Transition Dynamique */}
+            {(activeModule.transitionTitle || activeModule.transitionText) && (
+              <div className="mt-32 mb-16 p-10 bg-neutral-950 border border-white/5 rounded-3xl text-center">
+                 <h3 className="text-2xl font-black text-white uppercase tracking-widest mb-4 italic serif-font">
+                   {activeModule.transitionTitle || "Mettre en pratique avec les outils du module"}
+                 </h3>
+                 <p className="text-gray-400 font-medium italic mb-8 max-w-xl mx-auto">
+                   {activeModule.transitionText}
+                 </p>
+                 <button 
+                  onClick={scrollToGoodies}
+                  className="text-[#ff0000] font-black uppercase tracking-widest text-xs flex items-center gap-2 mx-auto hover:gap-4 transition-all"
+                 >
+                   {activeModule.transitionButtonText || "Descendre vers les outils"} <ChevronRight size={16} />
+                 </button>
+              </div>
+            )}
+
             {/* The Huge Goodies Call to Action */}
-            <div className="mt-32 p-16 bg-gradient-to-br from-neutral-900 to-black rounded-[4rem] border border-[#ff0000]/30 text-center relative overflow-hidden">
+            <div id="goodies-section" className="mt-20 p-16 bg-gradient-to-br from-neutral-900 to-black rounded-[4rem] border border-[#ff0000]/30 text-center relative overflow-hidden">
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#ff0000]/10 rounded-full blur-[100px]" />
               <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-900/10 rounded-full blur-[100px]" />
 
