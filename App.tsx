@@ -10,11 +10,13 @@ import PurchaseView from './components/PurchaseView';
 import SuccessView from './components/SuccessView';
 import LoginView from './components/LoginView';
 import InteractivePresentation from './components/InteractivePresentation';
+import TestimonialsSection from './components/TestimonialsSection';
 import { supabase } from './lib/supabase';
 import { 
   ArrowRight, 
   Instagram,
   Facebook,
+  Youtube,
   Check,
   Sparkles,
   CheckCircle2,
@@ -389,11 +391,15 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
       {/* Footer */}
       <footer className="py-20 bg-black border-t border-white/5 text-center px-6">
         <div className="mb-10 opacity-30 flex justify-center gap-8">
            <a href={PULSENOIR_LINKS.instagram} target="_blank" className="hover:text-[#ff0000] transition-colors"><Instagram size={24} /></a>
            <a href={PULSENOIR_LINKS.group} target="_blank" className="hover:text-[#ff0000] transition-colors"><Facebook size={24} /></a>
+           <a href={PULSENOIR_LINKS.youtube} target="_blank" className="hover:text-[#ff0000] transition-colors"><Youtube size={24} /></a>
         </div>
         <div className="flex flex-col items-center gap-4">
           <div className="flex items-center gap-2">

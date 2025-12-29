@@ -68,7 +68,8 @@ export const PULSENOIR_LINKS = {
   group: "https://www.facebook.com/groups/pulsenoir",
   studio: "https://studio.pulsenoir.be/",
   biblio: "https://bibliopulse.com/",
-  instagram: "https://www.instagram.com/pulsenoirbe/"
+  instagram: "https://www.instagram.com/pulsenoirbe/",
+  youtube: "https://www.youtube.com/@PulseNoirBe"
 };
 
 // Guide de mapping pour n8n / Automation
