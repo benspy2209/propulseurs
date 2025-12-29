@@ -175,36 +175,36 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-[#ff0000] selection:text-white">
       
-      {/* Promotional Subheader */}
-      <div className="fixed top-0 w-full bg-[#f4c024] z-[60] py-2.5 px-4 shadow-xl">
+      {/* Promotional Subheader - Fixed Height & Centered for Mobile */}
+      <div className="fixed top-0 w-full bg-[#f4c024] z-[60] py-2 px-4 shadow-xl min-h-[44px] flex items-center justify-center">
         <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-center">
-          <Sparkles size={16} className="text-black hidden sm:block animate-pulse" />
-          <div className="flex items-center gap-2">
-            <p className="text-black text-[10px] sm:text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.25em]">
-              Promotion jusqu'au 15 janvier : <span className="bg-black/10 px-2 py-0.5 rounded">-30% sur la formation</span> avec le code : 
+          <Sparkles size={14} className="text-black hidden sm:block animate-pulse shrink-0" />
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+            <p className="text-black text-[9px] sm:text-[11px] lg:text-xs font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] leading-tight">
+              Promotion jusqu'au 15 janvier : <span className="bg-black/10 px-1.5 py-0.5 rounded">-30% sur la formation</span> avec le code : 
             </p>
             <button 
               onClick={handleCopyCode}
-              className="flex items-center gap-2 bg-black text-[#f4c024] px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all group shadow-lg"
+              className="flex items-center gap-2 bg-black text-[#f4c024] px-3 py-1 rounded-full text-[9px] sm:text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all group shadow-lg shrink-0"
             >
               <span className="border-b border-[#f4c024]/30">{PROMO_CODE}</span>
               {copied ? (
-                <CheckCircle2 size={14} className="text-green-400" />
+                <CheckCircle2 size={12} className="text-green-400" />
               ) : (
-                <Copy size={14} />
+                <Copy size={12} />
               )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav className="fixed top-10 w-full bg-black/90 backdrop-blur-md z-50 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      {/* Navigation - Dynamic offset based on Promo height */}
+      <nav className="fixed top-[72px] lg:top-[44px] w-full bg-black/90 backdrop-blur-md z-50 border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 h-16 lg:h-20 flex items-center justify-between">
           <div className="flex items-center gap-6 cursor-pointer group" onClick={() => setCurrentView('landing')}>
             <div className="flex items-center">
-              <span className="text-[#ff0000] font-black text-2xl tracking-tighter uppercase">Pulse</span>
-              <span className="text-white font-black text-2xl tracking-tighter uppercase">Noir</span>
+              <span className="text-[#ff0000] font-black text-xl lg:text-2xl tracking-tighter uppercase">Pulse</span>
+              <span className="text-white font-black text-xl lg:text-2xl tracking-tighter uppercase">Noir</span>
             </div>
           </div>
           
@@ -216,17 +216,17 @@ const App: React.FC = () => {
             <button onClick={() => scrollToSection('faq')} className="hover:text-white transition-colors cursor-pointer">FAQ</button>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 lg:gap-4">
             <button 
               onClick={() => setCurrentView(userEmail ? 'course' : 'login')}
-              className="hidden sm:flex items-center gap-2 text-gray-400 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors"
+              className="hidden sm:flex items-center gap-2 text-gray-400 hover:text-white text-[9px] lg:text-[10px] font-black uppercase tracking-widest transition-colors"
             >
               <User size={14} className={userEmail ? "text-green-500" : "text-gray-600"} />
               {userEmail ? 'Mon Espace' : 'Accès Membre'}
             </button>
             <button 
               onClick={() => setCurrentView('purchase')}
-              className="bg-[#ff0000] text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,0,0,0.4)] active:scale-95"
+              className="bg-[#ff0000] text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-full text-[9px] lg:text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,0,0,0.4)] active:scale-95"
             >
               S'inscrire
             </button>
@@ -234,8 +234,8 @@ const App: React.FC = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <header className="relative min-h-screen flex flex-col items-center justify-center pt-40 px-6 overflow-hidden bg-black">
+      {/* Hero Section - Increased pt-52 for Mobile to clear Navs */}
+      <header className="relative min-h-screen flex flex-col items-center justify-center pt-52 lg:pt-40 px-6 overflow-hidden bg-black">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff0000]/5 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="relative z-10 w-full max-w-6xl mx-auto text-center">
@@ -248,21 +248,21 @@ const App: React.FC = () => {
             <span className="text-white text-glow-white block mt-2">vos polars</span>
           </h1>
 
-          <p className="max-w-4xl mx-auto text-xl md:text-3xl text-white font-black uppercase tracking-tight border-y border-white/10 py-8 mb-12 bg-white/5 backdrop-blur-sm px-4">
+          <p className="max-w-4xl mx-auto text-lg md:text-3xl text-white font-black uppercase tracking-tight border-y border-white/10 py-6 lg:py-8 mb-12 bg-white/5 backdrop-blur-sm px-4">
             Plan de Guerre 90 Jours<br />pour Auteurs de Polar, Noir & Thriller.
           </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-16">
             <button 
               onClick={() => setCurrentView('purchase')}
-              className="px-12 py-7 bg-[#ff0000] text-white text-base font-black rounded-full flex items-center gap-3 group uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-[0_0_60px_rgba(255,0,0,0.5)] active:scale-95"
+              className="w-full md:w-auto px-12 py-7 bg-[#ff0000] text-white text-base font-black rounded-full flex items-center justify-center gap-3 group uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-[0_0_60px_rgba(255,0,0,0.5)] active:scale-95"
             >
               Rejoindre la formation
               <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
             </button>
             <button 
               onClick={() => setShowPresentation(true)}
-              className="px-12 py-7 bg-white/5 border border-white/10 text-white text-base font-black rounded-full flex items-center gap-3 group uppercase tracking-[0.2em] transition-all hover:bg-white hover:text-black active:scale-95"
+              className="w-full md:w-auto px-12 py-7 bg-white/5 border border-white/10 text-white text-base font-black rounded-full flex items-center justify-center gap-3 group uppercase tracking-[0.2em] transition-all hover:bg-white hover:text-black active:scale-95"
             >
               <Play size={20} className="fill-current" />
               Découvrir la méthode
