@@ -15,7 +15,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
   { name: "Nelly Topscher", text: "Ce groupe est le plus bienveillant et sympathique qui existe. Ta passion et ton énergie sont fédératrices. Je suis trop fière de faire partie de cette aventure.", highlight: true },
   { name: "Nicole Joye", text: "Ce groupe est incroyable : on papote, on partage, on découvre plein de nouveaux auteurs. Vive le groupe et merci à toi. Trop contente d’en faire partie.", highlight: true },
   { name: "Bénédicte Herbin", text: "Benjamin, un énorme merci. Ton groupe Pulse Noir et toi, Benjamin, vous êtes géniaux. Je ne crains rien à vos forces noires.", highlight: true },
-  { name: "Catherine Jmottier", text: "Un grand merci Benjamin pour ce cadeau de Noël ! Me lire c’est comme un cadeau", highlight: true },
   { name: "Sébastien Cheruel", text: "Bravo à toi et aux autres modérateurs pour toute cette énergie positive. Le meilleur groupe littéraire.", highlight: false },
   { name: "Fredrik Serres", text: "Merci pour cette idée et pour la vie du groupe. Très heureux d’être là pour partager mes lectures et bientôt mon écriture.", highlight: false },
   { name: "Olivier Sebbah", text: "Longue vie à ce groupe. Grand respect : quand on voit comment tu le fais vivre, ce n’est que justice.", highlight: false },
@@ -28,6 +27,10 @@ const ALL_TESTIMONIALS: Testimonial[] = [
   { name: "Rémy Vivancos", text: "Merci à toi pour la création du groupe. Une bonne ambiance, pas de prise de tête et des règles simples.", highlight: false },
   { name: "Caitlin O-Malley", text: "Merci à toi de faire vivre ce groupe et de nous laisser la possibilité de nous exprimer.", highlight: false },
   { name: "Clarence Pitz", text: "Longue vie au groupe.", highlight: false },
+  { name: "Catherine Jmottier", text: "Énormément de travail, bravo.", highlight: false },
+  { name: "René Manzor", text: "Une belle aventure que ce groupe.", highlight: false },
+  { name: "Cyril Carrère Perso", text: "Sacré boulot, bravo.", highlight: false },
+  { name: "Pierre Pepito", text: "Ce groupe est très vivant, bien plus que beaucoup d’autres.", highlight: false },
   { name: "Mimie Lasouris", text: "Je me sens bien ici, comme à la maison. Pulse Man, Waouh.", highlight: false },
   { name: "Io Antique", text: "Ça pulse dans nos veines. Quand il fait chaud ailleurs, on vient pulser ici.", highlight: false },
   { name: "Alba Ombieri", text: "Longue vie à Pulse Noir. Bravo pour tout ce que tu as construit.", highlight: false },
@@ -42,9 +45,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
   { name: "Alexandre Thomas", text: "Merci pour l’accueil et les chroniques. Attention toutefois au risque d’être victime de son succès.", highlight: false },
   { name: "Olivier Patry", text: "Merci infiniment pour cette magnifique présentation. Ravi de notre échange à l’Iris Noir.", highlight: false },
   { name: "Annie Soyer", text: "Heureuse d’être là avec toi.", highlight: false },
-  { name: "René Manzor", text: "Une belle aventure que ce groupe.", highlight: false },
-  { name: "Cyril Carrère Perso", text: "Sacré boulot, bravo.", highlight: false },
-  { name: "Pierre Pepito", text: "Ce groupe est très vivant, bien plus que beaucoup d’autres.", highlight: false },
   { name: "Benjamin de Bruijne", text: "Ici, broyer du noir, c’est un cadeau. Pulse Noir est une communauté qui palpite.", highlight: true }
 ];
 
@@ -153,7 +153,7 @@ const TestimonialsSection: React.FC = () => {
           <div className="inline-block relative">
             <div className="absolute -inset-4 bg-[#ff0000]/5 blur-xl rounded-full opacity-50"></div>
             <p className="relative text-white font-black uppercase italic serif-font text-2xl md:text-4xl tracking-tight">
-              {ALL_TESTIMONIALS.length} voix. <span className="text-[#ff0000]">Un seul clan.</span>
+              37 voix. <span className="text-[#ff0000]">Un seul clan.</span>
             </p>
             <p className="text-[#ff0000] font-black uppercase tracking-[0.6em] text-[10px] md:text-xs mt-4 opacity-80">
               Pulse Noir Academy Elite
