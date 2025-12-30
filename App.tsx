@@ -27,7 +27,10 @@ import {
   ShieldCheck,
   CalendarDays,
   User,
-  Play
+  Play,
+  HelpCircle,
+  Plus,
+  Minus
 } from 'lucide-react';
 
 type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success' | 'login';
@@ -175,7 +178,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-[#ff0000] selection:text-white">
       
-      {/* Promotional Subheader - Fixed Height & Centered for Mobile */}
+      {/* Promotional Subheader */}
       <div className="fixed top-0 w-full bg-[#f4c024] z-[60] py-2 px-4 shadow-xl min-h-[44px] flex items-center justify-center">
         <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-center">
           <Sparkles size={14} className="text-black hidden sm:block animate-pulse shrink-0" />
@@ -198,7 +201,7 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* Navigation - Dynamic offset based on Promo height */}
+      {/* Navigation */}
       <nav className="fixed top-[72px] lg:top-[44px] w-full bg-black/90 backdrop-blur-md z-50 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-16 lg:h-20 flex items-center justify-between">
           <div className="flex items-center gap-6 cursor-pointer group" onClick={() => setCurrentView('landing')}>
@@ -234,7 +237,7 @@ const App: React.FC = () => {
         </div>
       </nav>
 
-      {/* Hero Section - Increased pt-52 for Mobile to clear Navs */}
+      {/* Hero Section */}
       <header className="relative min-h-screen flex flex-col items-center justify-center pt-52 lg:pt-40 px-6 overflow-hidden bg-black">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff0000]/5 rounded-full blur-[120px] pointer-events-none" />
         
@@ -268,135 +271,139 @@ const App: React.FC = () => {
               Découvrir la méthode
             </button>
           </div>
-          
-          <div className="flex items-center justify-center gap-3 text-gray-500 text-[10px] font-black uppercase tracking-[0.4em]">
-            <ShieldCheck size={14} className="text-[#ff0000]" />
-            PulseNoir : La référence polar & thriller
-          </div>
         </div>
       </header>
 
       {/* Section Pour Qui ? */}
       <section id="pour-qui" className="py-32 bg-neutral-950 border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-white">Est-ce pour <span className="text-[#ff0000]">vous</span> ?</h2>
-            <div className="h-1 w-24 bg-[#ff0000] mx-auto mb-8" />
-          </div>
-
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-20 text-white italic serif-font">Est-ce pour <span className="text-[#ff0000]">vous</span> ?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              {
-                title: "Le Nouveau Talent",
-                desc: "Auteur·rice de polar/thriller qui publie son premier roman et ne sait pas comment le faire connaître.",
-              },
-              {
-                title: "L'Expérimenté Stagnant",
-                desc: "Auteur·rice déjà publié·e, qui a tenté la promo 'au feeling' (posts, pubs isolées) sans vision d'ensemble.",
-              },
-              {
-                title: "L'Efficace Radical",
-                desc: "Auteur·rice qui aime le noir, mais déteste le blabla marketing et a besoin d'un plan simple à suivre.",
-              }
+              { title: "Le Nouveau Talent", desc: "Auteur·rice de polar/thriller qui publie son premier roman et ne sait pas comment le faire connaître." },
+              { title: "L'Expérimenté Stagnant", desc: "Auteur·rice déjà publié·e, qui a tenté la promo 'au feeling' sans vision d'ensemble." },
+              { title: "L'Efficace Radical", desc: "Auteur·rice qui aime le noir, mais déteste le blabla marketing et a besoin d'un plan simple." }
             ].map((profile, i) => (
               <div key={i} className="bg-black p-10 rounded-[2.5rem] border border-white/5 hover:border-[#ff0000]/30 transition-all group h-full">
                 <h3 className="text-2xl font-black text-white mb-4 uppercase group-hover:text-[#ff0000] transition-colors">{profile.title}</h3>
-                <p className="text-gray-500 leading-relaxed font-medium">{profile.desc}</p>
+                <p className="text-gray-500 leading-relaxed font-medium italic">{profile.desc}</p>
               </div>
             ))}
           </div>
-          <p className="mt-16 text-center text-xl text-white font-black uppercase tracking-widest border border-[#ff0000]/20 py-8 px-4 rounded-3xl bg-[#ff0000]/5">
-            Si tu écris du noir, du polar, du thriller<br />et que tu veux des lecteurs, cette formation est pour toi.
-          </p>
         </div>
       </section>
 
-      {/* Section Programme (Modules) */}
+      {/* Section Programme */}
       <section id="programme" className="py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6 text-center mb-24">
-          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight">Ce que tu vas <span className="text-[#ff0000]">maîtriser</span></h2>
-          <p className="text-gray-500 text-xs font-black uppercase tracking-[0.5em]">Une progression logique de l'ombre à la lumière.</p>
+          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight italic serif-font">Ce que tu vas <span className="text-[#ff0000]">maîtriser</span></h2>
         </div>
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {COURSE_MODULES.map((module, index) => (
             <ModuleCard key={module.id} module={module} index={index} />
           ))}
         </div>
-        <div className="mt-20 text-center">
-          <button onClick={() => setCurrentView('purchase')} className="text-[#ff0000] font-black uppercase tracking-[0.3em] text-sm hover:underline flex items-center gap-2 mx-auto">
-            Voir le détail complet de la formation <ArrowRight size={18} />
-          </button>
-        </div>
       </section>
 
       {/* Instructor Section */}
       <section id="instructeur" className="py-32 bg-black">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-start gap-12 lg:gap-20">
           <div className="w-full md:w-[40%]">
             <div 
               onMouseEnter={() => setIsInstructorHovered(true)}
               onMouseLeave={() => setIsInstructorHovered(false)}
-              className="relative rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transition-all duration-700 group aspect-[4/5] md:aspect-auto cursor-help"
+              className="relative rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transition-all duration-700 group aspect-[4/5] md:aspect-auto cursor-help mb-12"
             >
-              <img 
-                src={INSTRUCTOR.photo} 
-                alt={INSTRUCTOR.name} 
-                className="w-full h-auto object-cover transition-all duration-1000 group-hover:scale-105" 
-              />
-              <img 
-                src={INSTRUCTOR.hoverPhoto} 
-                alt={`${INSTRUCTOR.name} survol`} 
-                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-1000 scale-110 group-hover:scale-105" 
-              />
+              <img src={INSTRUCTOR.photo} alt={INSTRUCTOR.name} className="w-full h-auto object-cover transition-all duration-1000 group-hover:scale-105" />
+              <img src={INSTRUCTOR.hoverPhoto} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-1000 scale-110 group-hover:scale-105" />
+            </div>
+
+            {/* Statistiques Cartouches */}
+            <div className="grid grid-cols-2 gap-4">
+              {INSTRUCTOR_STATS.map((stat, i) => (
+                <div key={i} className="bg-neutral-900/40 p-6 rounded-3xl border border-white/5 hover:border-[#ff0000]/30 transition-all group">
+                   <div className="text-2xl font-black text-white group-hover:text-[#ff0000] transition-colors mb-2 serif-font italic tracking-tighter">
+                     {stat.value}
+                   </div>
+                   <div className="text-[8px] font-black text-gray-500 uppercase tracking-widest leading-tight italic">
+                     {stat.label}
+                   </div>
+                </div>
+              ))}
             </div>
           </div>
           
           <div className="w-full md:w-[60%] text-left">
-            <div className="relative h-16 md:h-20 mb-2 overflow-hidden">
-               <h2 className={`absolute inset-0 text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-white transition-all duration-700 ${isInstructorHovered ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
-                {INSTRUCTOR.name}
-              </h2>
-              <h2 className={`absolute inset-0 text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-[#ff0000] transition-all duration-700 ${isInstructorHovered ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
-                Pulseman
-              </h2>
-            </div>
-            <p className="text-[#ff0000] font-black uppercase tracking-[0.2em] text-xs md:text-sm mb-10 max-w-xl">
-              {INSTRUCTOR.role}
-            </p>
-            
+            <h2 className={`text-4xl md:text-6xl font-black uppercase tracking-tighter italic serif-font mb-4 transition-colors duration-500 ${isInstructorHovered ? 'text-[#ff0000]' : 'text-white'}`}>
+              {isInstructorHovered ? 'Pulseman' : INSTRUCTOR.name}
+            </h2>
+            <p className="text-[#ff0000] font-black uppercase tracking-[0.2em] text-xs mb-10">{INSTRUCTOR.role}</p>
             <div className="space-y-8">
-              <p className="text-gray-400 text-xl md:text-2xl leading-relaxed font-light border-l-4 border-[#ff0000] pl-6 py-2">
+              <p className="text-gray-400 text-xl md:text-2xl leading-relaxed font-light border-l-4 border-[#ff0000] pl-6 py-2 italic">
                 {INSTRUCTOR.quote}
               </p>
-              
-              <div className="space-y-6">
-                {INSTRUCTOR.bioBlocks.map((block, idx) => (
-                  <p key={idx} className="text-gray-500 text-base md:text-lg leading-relaxed font-medium">
-                    {block}
-                  </p>
-                ))}
+              <div className="space-y-6 text-gray-500 text-base md:text-lg leading-relaxed font-medium italic">
+                {INSTRUCTOR.bioBlocks.map((block, idx) => <p key={idx}>{block}</p>)}
               </div>
-            </div>
-
-            <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-y-12 gap-x-8">
-              {INSTRUCTOR_STATS.map((stat, i) => ( stat.value && (
-                <div key={i} className="flex flex-col">
-                  <span className="text-5xl font-black text-white tracking-tighter mb-1">{stat.value}</span>
-                  <span className="text-[#ff0000] font-black uppercase tracking-widest text-[10px] leading-relaxed max-w-[240px]">
-                    {stat.label}
-                  </span>
-                </div>
-              )))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Testimonials */}
       <TestimonialsSection />
 
-      {/* Lead Magnet Section */}
+      {/* Lead Magnet */}
       <LeadMagnetSection />
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-32 bg-black relative border-t border-white/5">
+        <div className="absolute top-0 right-0 p-12 opacity-[0.02] pointer-events-none select-none italic font-black text-[15vw] leading-none uppercase">Questions</div>
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 border border-[#ff0000]/30 bg-[#ff0000]/5 text-[#ff0000] text-[10px] font-black uppercase tracking-[0.4em]">
+              <HelpCircle size={14} /> Dossier : Clarification
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white italic serif-font">
+              FAQ : OPÉRATION <span className="text-[#ff0000]">PLAN DE GUERRE</span>
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {FAQ_ITEMS.map((item, i) => (
+              <div 
+                key={i} 
+                className={`group border border-white/5 rounded-3xl overflow-hidden transition-all duration-500 ${openFaq === i ? 'bg-neutral-900/50 border-[#ff0000]/30 shadow-2xl' : 'bg-neutral-950 hover:border-white/10'}`}
+              >
+                <button 
+                  onClick={() => toggleFaq(i)}
+                  className="w-full p-8 text-left flex items-center justify-between gap-6"
+                >
+                  <span className={`text-lg md:text-xl font-black uppercase tracking-tight italic transition-colors ${openFaq === i ? 'text-[#ff0000]' : 'text-white'}`}>
+                    {item.q}
+                  </span>
+                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center border transition-all ${openFaq === i ? 'bg-[#ff0000] border-[#ff0000] text-white rotate-180' : 'bg-black border-white/10 text-gray-500 group-hover:border-white/20'}`}>
+                    {openFaq === i ? <Minus size={16} /> : <Plus size={16} />}
+                  </div>
+                </button>
+                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <div className="px-8 pb-8 pt-0">
+                    <div className="h-px w-12 bg-[#ff0000]/30 mb-6" />
+                    <p className="text-gray-400 text-lg italic leading-relaxed font-light">
+                      {item.a}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-20 text-center p-12 bg-[#ff0000]/5 border border-[#ff0000]/10 rounded-[3rem]">
+            <p className="text-white font-black uppercase tracking-widest text-sm mb-6 italic">Une autre question en tête ?</p>
+            <a href="mailto:debruijneb@gmail.com" className="text-[#ff0000] font-black uppercase tracking-[0.3em] text-xs hover:underline decoration-white/20 underline-offset-8">Envoyez un message direct à l'instructeur</a>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="py-20 bg-black border-t border-white/5 text-center px-6">

@@ -32,32 +32,60 @@ export const INSTRUCTOR = {
 };
 
 export const INSTRUCTOR_STATS = [
-  {
-    value: "35 ans",
-    label: "LECTEUR PASSIONNÉ DE NOIR, POLAR & THRILLER"
-  },
-  {
-    value: "20 ans",
-    label: "D'EXPERTISE WEB, DEV & MARKETING DIGITAL"
-  },
-  {
-    value: "1500+",
-    label: "MEMBRES DU GROUPE PULSE NOIR (FACEBOOK)"
-  },
-  {
-    value: "350",
-    label: "AUTEUR·RICES PRÉSENTS DANS LE CLAN"
-  }
+  { value: "35 ans", label: "LECTEUR PASSIONNÉ DE NOIR, POLAR & THRILLER" },
+  { value: "20 ans", label: "D'EXPERTISE WEB, DEV & MARKETING DIGITAL" },
+  { value: "1500+", label: "MEMBRES DU GROUPE PULSE NOIR (FACEBOOK)" },
+  { value: "350", label: "AUTEUR·RICES PRÉSENTS DANS LE CLAN" }
 ];
 
 export const FAQ_ITEMS = [
   {
-    q: "À qui s’adresse cette formation exactement ?",
-    a: "La formation s’adresse aux auteur·rices de polar, thriller et roman noir qui ont un manuscrit terminé (ou presque) et qui veulent le faire connaître, obtenir des avis et générer des ventes, sans passer des heures à inventer une stratégie marketing compliquée. Elle convient autant aux auteur·rices autoédité·es qu’à celles et ceux en maison d’édition, dès le premier livre."
+    q: "Cette formation est-elle vraiment réservée au Polar et au Thriller ?",
+    a: "Oui. Chaque exemple, chaque mot-clé et chaque stratégie est ici injectée de l'ADN 'Noir'. On ne vend pas un thriller comme on vend de la romance ou du développement personnel. C’est cette spécialisation qui fait ta force."
   },
   {
-    q: "Est-ce que c’est adapté si je n’ai encore jamais rien lancé / je suis nul·le en marketing ?",
-    a: "Oui, le contenu est pensé pour des auteur·rices qui partent de presque zéro en promo. Les modules avancent pas à pas, avec des checklists, des modèles de messages, des fichiers à remplir et un Plan de Guerre 90 jours très guidé. L’objectif est justement de t’éviter le jargon et les stratégies irréalistes."
+    q: "Je n’ai pas encore fini mon livre, est-ce trop tôt ?",
+    a: "Au contraire. Le Module 1 (ADN) et le Module 2 (Identité) sont cruciaux à mettre en place pendant que tu termines ton manuscrit. Cela te permet d’avoir une communauté qui t'attend au tournant le jour de ta sortie."
+  },
+  {
+    q: "Je suis publié en Maison d'Édition, est-ce utile pour moi ?",
+    a: "Absolument. Aujourd'hui, l'auteur doit être le premier moteur de sa visibilité. La méthode t'apprend à bâtir ton propre 'Clan' de lecteurs et ton aura numérique, des actifs qui t'appartiennent peu importe ton éditeur."
+  },
+  {
+    q: "Je déteste le marketing et la technique, vais-je m'en sortir ?",
+    a: "C’est précisément pour ça que le 'Plan de Guerre' existe. On évite le jargon. Tout est traduit en actions concrètes : des checklists, des modèles de messages à copier-coller et des fichiers pré-remplis."
+  },
+  {
+    q: "Combien de temps dois-je consacrer à la formation chaque semaine ?",
+    a: "Tu peux choisir le mode 'Léger' (15 min/jour), 'Efficace' (1h/jour) ou 'Commando' (une demi-journée par semaine). L'important n'est pas l'intensité, mais la régularité."
+  },
+  {
+    q: "Est-ce que la formation inclut de la publicité payante (Amazon Ads) ?",
+    a: "Oui, le Module 5 traite de la 'Chirurgie du Best-Seller'. Tu apprendras à dompter l'algorithme et à lancer des publicités rentables sans jeter ton argent par les fenêtres."
+  },
+  {
+    q: "Qu’est-ce que le 'Clan des 50' dont tu parles ?",
+    a: "C’est ta force de frappe. On t'enseigne comment recruter tes 50 premiers lecteurs 'soldats' pour rédiger tes premiers avis Amazon et propulser ton livre dès le jour J."
+  },
+  {
+    q: "Ai-je accès à Benjamin pour poser mes questions ?",
+    a: "L'accès inclut l'entrée dans le Groupe Privé du Clan où Benjamin répond régulièrement aux questions et partage ses analyses. Tu ne seras jamais seul face à ton écran."
+  },
+  {
+    q: "Le contenu est-il disponible immédiatement ?",
+    a: "Dès la validation de ton inscription, 100% des modules et des goodies (les 20+ outils, checklists et templates) sont débloqués immédiatement."
+  },
+  {
+    q: "Qu'en est-il des mises à jour ? Le web change vite.",
+    a: "Toutes les futures mises à jour sont incluses gratuitement. Si Amazon change ses règles ou si une nouvelle tactique apparaît, elle sera ajoutée à ton espace membre."
+  },
+  {
+    q: "Et si je réalise que la formation ne me convient pas ?",
+    a: "Tu bénéficies d'une garantie 'Satisfait ou Remboursé' de 10 jours. Si après avoir exploré les premiers modules tu penses que ce n'est pas pour toi, un simple mail suffit."
+  },
+  {
+    q: "Puis-je payer en plusieurs fois ?",
+    a: "Oui. Tu as le choix entre un paiement unique ou un règlement fractionné en 2 ou 3 fois via notre plateforme sécurisée Stripe."
   }
 ];
 
@@ -70,18 +98,8 @@ export const PULSENOIR_LINKS = {
   biblio: "https://bibliopulse.com/",
   instagram: "https://www.instagram.com/pulsenoirbe/",
   youtube: "https://www.youtube.com/@PulseNoirBe",
-  leadMagnetDoc: "https://drive.google.com/file/d/1A_3xB_TOWQaOMU5CJXD9LAkjXGJb3PTM/view?usp=drive_link"
-};
-
-// Guide de mapping pour n8n / Automation
-export const AUTOMATION_GUIDE = {
-  stripe_trigger: "checkout.session.completed",
-  supabase_table: "utilisateurs",
-  mapping: [
-    { source: "customer_details.email", target: "email", type: "string" },
-    { source: "fixed_value: true", target: "acces_formation", type: "boolean" },
-    { source: "auto_generated", target: "id", type: "uuid" }
-  ]
+  leadMagnetDoc: "https://drive.google.com/file/d/1A_3xB_TOWQaOMU5CJXD9LAkjXGJb3PTM/view?usp=drive_link",
+  leadMagnetAutoedition: "https://drive.google.com/file/d/1GUz-z2ENCpF_ZdSTbXLNX2UFQyZtyqkM/view?usp=drive_link"
 };
 
 export const COURSE_MODULES: ModuleContent[] = [
@@ -191,7 +209,7 @@ export const COURSE_MODULES: ModuleContent[] = [
           "Avant de tout refaire, prends 5 minutes pour regarder tes profils avec un œil neuf, comme si tu étais un lecteur qui ne te connaît pas.",
           "Est-ce qu’en 3 secondes on comprend que tu écris du polar/thriller ?",
           "Ta bio mentionne‑t‑elle clairement ton genre et ton univers ?",
-          "Tes visuels (photo, bannière) respirent‑ils ton ambiance (noir, urbain, rural, psychologique…) ?",
+          "Tes visuels (photo, bannière) respirer‑ils ton ambiance (noir, urbain, rural, psychologique…) ?",
           "Est-ce qu’il y a un lien clair vers ton livre ou ta newsletter ?",
           "Si tu étais un lecteur, aurais‑tu envie de scroller et de suivre ce compte ?",
           "Note tes réponses dans tes notes ou dans la checklist du pack bonus."
