@@ -138,7 +138,7 @@ const LeadMagnetCard: React.FC<LeadMagnetProps> = ({ title, description, image, 
 
 const LeadMagnetSection: React.FC = () => {
   return (
-    <section id="format" className="py-32 bg-neutral-950 border-t border-white/5 relative overflow-hidden">
+    <section id="ressources" className="py-32 bg-neutral-950 border-t border-white/5 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff0000]/5 rounded-full blur-[150px] pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">

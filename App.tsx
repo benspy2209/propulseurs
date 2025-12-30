@@ -156,7 +156,14 @@ const App: React.FC = () => {
       setCurrentView('landing');
       setTimeout(() => {
         const element = document.getElementById(id);
-        if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (element) {
+          const offset = 100;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
       }, 100);
       return;
     }
@@ -253,9 +260,10 @@ const App: React.FC = () => {
           </button>
           
           <div className="hidden lg:flex items-center gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
+            <button onClick={() => scrollToSection('autopsie')} className="hover:text-white transition-colors cursor-pointer">L'Analyse</button>
             <button onClick={() => scrollToSection('pour-qui')} className="hover:text-white transition-colors cursor-pointer">Pour qui ?</button>
             <button onClick={() => scrollToSection('programme')} className="hover:text-white transition-colors cursor-pointer">Le Programme</button>
-            <button onClick={() => scrollToSection('format')} className="hover:text-white transition-colors cursor-pointer">Format & Outils</button>
+            <button onClick={() => scrollToSection('ressources')} className="hover:text-white transition-colors cursor-pointer">Plan d'Attaque</button>
             <button onClick={() => scrollToSection('instructeur')} className="hover:text-white transition-colors cursor-pointer">L'Instructeur</button>
             <button onClick={() => scrollToSection('faq')} className="hover:text-white transition-colors cursor-pointer">FAQ</button>
           </div>
@@ -316,7 +324,7 @@ const App: React.FC = () => {
       </header>
 
       {/* NOUVELLE SECTION : Autopsie du Marché */}
-      <section className="py-32 bg-neutral-950 relative border-y border-white/5 overflow-hidden">
+      <section id="autopsie" className="py-32 bg-neutral-950 relative border-y border-white/5 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,rgba(255,0,0,0.05),transparent_50%)]"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-20">
