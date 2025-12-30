@@ -35,6 +35,51 @@ import {
 
 type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success' | 'login';
 
+const Logo: React.FC<{ size?: 'sm' | 'md' | 'lg', className?: string }> = ({ size = 'md', className = '' }) => {
+  const sizeClasses = {
+    sm: 'text-lg lg:text-xl',
+    md: 'text-xl lg:text-2xl',
+    lg: 'text-2xl lg:text-3xl'
+  };
+  const heartSize = size === 'sm' ? 16 : size === 'md' ? 22 : 28;
+
+  return (
+    <div className={`flex items-center gap-0 group/logo select-none ${className}`}>
+      <span className={`text-[#ff0000] font-black tracking-tighter uppercase ${sizeClasses[size]}`}>Pulse</span>
+      <div className="relative group-hover/logo:scale-110 group-active/logo:scale-95 transition-transform duration-300 mx-[-1px] lg:mx-[-2px]">
+        <svg 
+          width={heartSize} 
+          height={heartSize} 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+          className="drop-shadow-[0_0_10px_rgba(255,0,0,0.3)]"
+        >
+          <defs>
+            <clipPath id="left-half">
+              <rect x="0" y="0" width="12" height="24" />
+            </clipPath>
+            <clipPath id="right-half">
+              <rect x="12" y="0" width="12" height="24" />
+            </clipPath>
+          </defs>
+          <path 
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" 
+            fill="#ffffff" 
+            clipPath="url(#left-half)" 
+          />
+          <path 
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" 
+            fill="#ff0000" 
+            clipPath="url(#right-half)" 
+          />
+        </svg>
+      </div>
+      <span className={`text-white font-black tracking-tighter uppercase ${sizeClasses[size]}`}>Noir</span>
+    </div>
+  );
+};
+
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('landing');
   const [showPresentation, setShowPresentation] = useState(false);
@@ -42,20 +87,16 @@ const App: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isInstructorHovered, setIsInstructorHovered] = useState(false);
   
-  // État de l'utilisateur
   const [userEmail, setUserEmail] = useState<string | null>(localStorage.getItem('userEmail'));
   const [hasAccess, setHasAccess] = useState<boolean>(localStorage.getItem('hasAccess') === 'true');
 
-  // 1. Écouter les changements d'auth (Magic Link retour)
   useEffect(() => {
-    // Vérifier la session actuelle au chargement
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user?.email) {
         handleLogin(session.user.email);
       }
     });
 
-    // Écouter les changements d'état (clic sur le lien dans le mail)
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' && session?.user?.email) {
         handleLogin(session.user.email);
@@ -69,7 +110,6 @@ const App: React.FC = () => {
     };
   }, []);
 
-  // 2. Détection du retour Stripe
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('status') === 'success') {
@@ -204,12 +244,9 @@ const App: React.FC = () => {
       {/* Navigation */}
       <nav className="fixed top-[72px] lg:top-[44px] w-full bg-black/90 backdrop-blur-md z-50 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-16 lg:h-20 flex items-center justify-between">
-          <div className="flex items-center gap-6 cursor-pointer group" onClick={() => setCurrentView('landing')}>
-            <div className="flex items-center">
-              <span className="text-[#ff0000] font-black text-xl lg:text-2xl tracking-tighter uppercase">Pulse</span>
-              <span className="text-white font-black text-xl lg:text-2xl tracking-tighter uppercase">Noir</span>
-            </div>
-          </div>
+          <button onClick={() => setCurrentView('landing')} className="hover:opacity-80 transition-opacity">
+            <Logo size="md" />
+          </button>
           
           <div className="hidden lg:flex items-center gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
             <button onClick={() => scrollToSection('pour-qui')} className="hover:text-white transition-colors cursor-pointer">Pour qui ?</button>
@@ -321,7 +358,7 @@ const App: React.FC = () => {
             {/* Statistiques Cartouches */}
             <div className="grid grid-cols-2 gap-4">
               {INSTRUCTOR_STATS.map((stat, i) => (
-                <div key={i} className="bg-neutral-900/40 p-6 rounded-3xl border border-white/5 hover:border-[#ff0000]/30 transition-all group">
+                <div key={i} className="bg-neutral-900/40 p-6 rounded-3xl border border-white/5 hover:border-[#ff0000]/30 transition-all group text-center">
                    <div className="text-2xl font-black text-white group-hover:text-[#ff0000] transition-colors mb-2 serif-font italic tracking-tighter">
                      {stat.value}
                    </div>
@@ -412,11 +449,8 @@ const App: React.FC = () => {
            <a href={PULSENOIR_LINKS.group} target="_blank" className="hover:text-[#ff0000] transition-colors"><Facebook size={24} /></a>
            <a href={PULSENOIR_LINKS.youtube} target="_blank" className="hover:text-[#ff0000] transition-colors"><Youtube size={24} /></a>
         </div>
-        <div className="flex flex-col items-center gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-[#ff0000] font-black text-lg tracking-tighter uppercase">Pulse</span>
-            <span className="text-white font-black text-lg tracking-tighter uppercase">Noir</span>
-          </div>
+        <div className="flex flex-col items-center gap-6">
+          <Logo size="sm" />
           <p className="text-gray-800 text-[10px] font-black uppercase tracking-[0.5em] mb-4">© 2025 PulseNoir - Benjamin de Bruijne - Academy Elite</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <button onClick={() => setCurrentView('mentions')} className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4">Mentions Légales</button>
