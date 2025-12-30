@@ -105,15 +105,15 @@ export const PULSENOIR_LINKS = {
 export const COURSE_MODULES: ModuleContent[] = [
   {
     id: 'fondations',
-    title: "Module 1 : L'ADN de l'Auteur de Noir",
+    title: "Module 1 : La Forteresse de Visibilité",
     subtitle: "Positionnement Radical & Domination de Niche",
-    description: "Posez les bases professionnelles indispensables : positionnement, chiffres et lecteur cible.",
+    description: "Cessez de plaire à tout le monde. Devenez indispensable pour votre niche de lecteurs de Noir.",
     duration: "1h 45",
     bullets: [
       "La Pyramide de Visibilité : Bâtir son écosystème",
       "Le 'Lecteur Avatar' : Profilage psychologique profond",
       "L'Audit de Niche : Polar, Thriller ou Noir ?",
-      "La Promesse d'Auteur : Ce que vous vendez au-delà des mots"
+      "L'Ancre de Sécurité : Devenir une 'Valeur Sûre'"
     ],
     icon: Target,
     color: "red",
@@ -169,15 +169,15 @@ export const COURSE_MODULES: ModuleContent[] = [
   },
   {
     id: 'identite',
-    title: "Module 2 : L'Identité Numérique Magnétique",
-    subtitle: "Bâtir son Hub et son Aura d'Auteur",
-    description: "Rendez votre profil identifiable et crédible en ligne pour attirer instantanément l'œil du lecteur.",
+    title: "Module 2 : Le Scanner de Crédibilité",
+    subtitle: "Rassurer le lecteur en 3 secondes",
+    description: "Votre aura numérique doit envoyer des signaux de 'Valeur Sûre' pour lever les doutes des lecteurs méfiants.",
     duration: "1h 15",
     bullets: [
-      "Psychologie de la Bio Auteur : Convertir en 3 secondes",
-      "Le Hub Central : Votre quartier général (Amazon vs Site)",
-      "L'Art du Storytelling Personnel : Quoi dire sans s'exposer",
-      "Le Lead Magnet : Offrir l'ombre pour vendre la lumière"
+      "Psychologie de la Bio : Convertir le méfiant en 3s",
+      "Le Hub Central : Votre quartier général professionnel",
+      "L'Audit de Présence : Chasser les signaux 'Amateur'",
+      "Storytelling Noir : Captiver sans s'exposer"
     ],
     icon: UserCircle,
     color: "red",
@@ -237,15 +237,15 @@ export const COURSE_MODULES: ModuleContent[] = [
   },
   {
     id: 'social',
-    title: "Module 3 : Le Réseau d'Influence Noir",
-    subtitle: "Infiltration et Engagement Communautaire",
-    description: "Construisez votre réseau de visibilité auprès des chroniqueurs et des communautés de lecteurs.",
+    title: "Module 3 : L'Infiltration du Réseau",
+    subtitle: "Rétablir le contact avec le Lecteur",
+    description: "Les salons se raréfient ? Apprenez à recréer l'effet 'Rencontre' numériquement.",
     duration: "1h 50",
     bullets: [
-      "L'Algorithme du Noir : Ce qui fait réagir les fans",
-      "Calendrier de Guerre : 3 types de posts essentiels",
-      "L'Infiltration : Approcher les blogueurs avec élégance",
-      "La Puissance de Bibliopulse pour votre visibilité"
+      "L'Algorithme du Noir : Hacker la visibilité",
+      "Technique du Cheval de Troie : Infiltration élégante",
+      "Engagement Direct : Sortir du monologue marketing",
+      "Bibliopulse : Votre levier de croissance"
     ],
     icon: Share2,
     color: "red",
@@ -304,15 +304,15 @@ export const COURSE_MODULES: ModuleContent[] = [
   },
   {
     id: 'cercle',
-    title: "Module 4 : L'Ingénierie de la Preuve Sociale",
-    subtitle: "Street Team, Bêta-lecture & Machine à Avis",
-    description: "Obtenez des retours et des avis structurés pour déclencher le bouche-à-oreille dès le premier jour.",
+    title: "Module 4 : Hacker l'Algorithme",
+    subtitle: "Preuve Sociale Massive & Force de Frappe",
+    description: "Le système aide ceux qui brillent déjà. Orchestrez votre signal de succès.",
     duration: "2h 10",
     bullets: [
-      "La Street Team : Recruter et motiver vos soldats",
-      "Protocole de Bêta-lecture : Améliorer le marketing",
-      "Chasse aux Avis : Stratégies Amazon & Babelio",
-      "L'Art du Service de Presse (SP) Gagnant-Gagnant"
+      "Le Clan des 50 : Vos soldats du premier jour",
+      "Le Protocole de Bêta-lecture Stratégique",
+      "Machine à Avis : Sortir du désert Amazon",
+      "Service de Presse (SP) : L'art du Gagnant-Gagnant"
     ],
     icon: Users,
     color: "red",
@@ -374,13 +374,13 @@ export const COURSE_MODULES: ModuleContent[] = [
     id: 'ventes',
     title: "Module 5 : La Chirurgie du Best-Seller",
     subtitle: "Copywriting de Thriller & Amazon Ads",
-    description: "Optimisez votre fiche produit et vos publicités pour transformer les clics en ventes.",
+    description: "La 4ème de couverture est décisive. Apprenez à forcer le clic et l'achat.",
     duration: "2h 30",
     bullets: [
-      "Copywriting Hypnotique : Le résumé en 3 actes",
-      "Design de Couverture : Codes visuels du Thriller",
-      "Amazon Ads : Ciblage chirurgical de vos concurrents",
-      "L'Ingénierie du Titre et du Sous-titre SEO"
+      "Résumé Haute-Tension : Les 5 modèles gagnants",
+      "Codes Visuels : La couverture qui rassure l'acheteur",
+      "Amazon Ads : Ciblage chirurgical des concurrents",
+      "SEO Amazon : Mots-clés et Titres de Best-Seller"
     ],
     icon: TrendingUp,
     color: "red",
@@ -439,15 +439,15 @@ export const COURSE_MODULES: ModuleContent[] = [
   },
   {
     id: 'bonus',
-    title: "Module 6 : Le Plan de Guerre (90 Jours)",
-    subtitle: "Exécution Tactique & Maintenance de Carrière",
-    description: "Orchestrez concrètement votre lancement jour après jour sur les 3 prochains mois.",
+    title: "Module 6 : L'Offensive Finale (90 Jours)",
+    subtitle: "Plan de Guerre & Maintenance de Carrière",
+    description: "Le calendrier de précision pour briser l'anonymat en 3 mois.",
     duration: "1h 30",
     bullets: [
       "Compte à Rebours Lancement (J-30 à J+30)",
-      "Routine Quotidienne de l'Auteur-Entrepreneur",
-      "Gestion de la Liste Email : Votre trésor caché",
-      "Strategie Multi-Série : Vivre de sa plume"
+      "Routine de l'Auteur-Entrepreneur",
+      "Le Pipeline de Vente Continu",
+      "Vivre de sa plume : Stratégie Multi-Série"
     ],
     icon: Map,
     color: "red",

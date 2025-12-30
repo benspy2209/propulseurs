@@ -30,7 +30,11 @@ import {
   Play,
   HelpCircle,
   Plus,
-  Minus
+  Minus,
+  Search,
+  EyeOff,
+  TrendingDown,
+  Repeat
 } from 'lucide-react';
 
 type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success' | 'login';
@@ -280,16 +284,16 @@ const App: React.FC = () => {
         
         <div className="relative z-10 w-full max-w-6xl mx-auto text-center">
           <div className="inline-block px-5 py-1.5 mb-8 rounded-full border border-[#ff0000]/30 bg-[#ff0000]/5 text-[#ff0000] text-[11px] font-black uppercase tracking-[0.3em]">
-            Formation Marketing Auteurs
+            Dossier : Rupture de l'Anonymat
           </div>
           
-          <h1 className="text-[14vw] md:text-[160px] leading-[0.75] mb-12 polar-title">
-            <span className="text-[#ff0000] text-glow-red block">Vendez</span>
-            <span className="text-white text-glow-white block mt-2">vos polars</span>
+          <h1 className="text-[12vw] md:text-[140px] leading-[0.85] mb-12 polar-title">
+            Pourquoi les bons polars restent-ils <span className="text-[#ff0000] text-glow-red">invisibles</span> ?
           </h1>
 
-          <p className="max-w-4xl mx-auto text-lg md:text-3xl text-white font-black uppercase tracking-tight border-y border-white/10 py-6 lg:py-8 mb-12 bg-white/5 backdrop-blur-sm px-4">
-            Plan de Guerre 90 Jours<br />pour Auteurs de Polar, Noir & Thriller.
+          <p className="max-w-4xl mx-auto text-lg md:text-2xl text-white font-black uppercase tracking-tight border-y border-white/10 py-6 lg:py-8 mb-12 bg-white/5 backdrop-blur-sm px-4 leading-relaxed">
+            Ce n'est pas une question de talent. C'est un système biaisé et un lecteur qui a peur de l'inconnu. <br />
+            En 90 jours, brisez le plafond de verre et devenez une valeur sûre.
           </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-16">
@@ -297,7 +301,7 @@ const App: React.FC = () => {
               onClick={() => setCurrentView('purchase')}
               className="w-full md:w-auto px-12 py-7 bg-[#ff0000] text-white text-base font-black rounded-full flex items-center justify-center gap-3 group uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-[0_0_60px_rgba(255,0,0,0.5)] active:scale-95"
             >
-              Rejoindre la formation
+              Rejoindre l'offensive
               <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
             </button>
             <button 
@@ -311,19 +315,58 @@ const App: React.FC = () => {
         </div>
       </header>
 
+      {/* NOUVELLE SECTION : Autopsie du Marché */}
+      <section className="py-32 bg-neutral-950 relative border-y border-white/5 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,rgba(255,0,0,0.05),transparent_50%)]"></div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white italic serif-font">L'Autopsie du <span className="text-[#ff0000]">Marché</span></h2>
+            <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4">Pourquoi la qualité ne suffit plus en 2025</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-10">
+            {[
+              { 
+                icon: <EyeOff size={40} className="text-[#ff0000]" />, 
+                title: "Le Mur du Lecteur", 
+                desc: "Le budget se resserre. Le lecteur ne prend plus de risque. S'il ne voit pas de signaux de rassurance immédiats, il retourne vers les auteurs 'bankables'." 
+              },
+              { 
+                icon: <TrendingDown size={40} className="text-[#ff0000]" />, 
+                title: "L'Étranglement", 
+                desc: "400 polars par mois. Les algorithmes et les libraires ne voient que ce qui brille déjà. Sans machine de guerre, votre texte est noyé dans la masse." 
+              },
+              { 
+                icon: <Repeat size={40} className="text-[#ff0000]" />, 
+                title: "La Boucle de l'Oubli", 
+                desc: "Pas vu → Pas acheté → Moins vu. C'est un cercle vicieux systémique. Pour en sortir, il ne faut pas 'faire de la promo', il faut bâtir un écosystème." 
+              }
+            ].map((item, i) => (
+              <div key={i} className="bg-black/40 p-10 rounded-[3rem] border border-white/5 hover:border-[#ff0000]/20 transition-all group">
+                <div className="mb-8 p-4 bg-white/5 rounded-2xl w-fit group-hover:scale-110 transition-transform">
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-black text-white mb-4 uppercase italic serif-font tracking-tight">{item.title}</h3>
+                <p className="text-gray-400 leading-relaxed font-medium italic text-lg">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Section Pour Qui ? */}
-      <section id="pour-qui" className="py-32 bg-neutral-950 border-y border-white/5">
+      <section id="pour-qui" className="py-32 bg-black border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-20 text-white italic serif-font">Est-ce pour <span className="text-[#ff0000]">vous</span> ?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Le Nouveau Talent", desc: "Auteur·rice de polar/thriller qui publie son premier roman et ne sait pas comment le faire connaître." },
-              { title: "L'Expérimenté Stagnant", desc: "Auteur·rice déjà publié·e, qui a tenté la promo 'au feeling' sans vision d'ensemble." },
-              { title: "L'Efficace Radical", desc: "Auteur·rice qui aime le noir, mais déteste le blabla marketing et a besoin d'un plan simple." }
+              { title: "Le Nouveau Talent", desc: "Pour ne pas griller votre première cartouche dans le vide et sortir de l'anonymat dès le premier jour." },
+              { title: "L'Expérimenté", desc: "Pour briser le plafond de verre qui vous empêche de percer et transformer vos ventes stagnantes." },
+              { title: "L'Efficace Radical", desc: "Pour ceux qui veulent des armes, une méthode chirurgicale, et pas un énième blabla marketing." }
             ].map((profile, i) => (
-              <div key={i} className="bg-black p-10 rounded-[2.5rem] border border-white/5 hover:border-[#ff0000]/30 transition-all group h-full">
-                <h3 className="text-2xl font-black text-white mb-4 uppercase group-hover:text-[#ff0000] transition-colors">{profile.title}</h3>
-                <p className="text-gray-500 leading-relaxed font-medium italic">{profile.desc}</p>
+              <div key={i} className="bg-neutral-950 p-10 rounded-[2.5rem] border border-white/5 hover:border-[#ff0000]/30 transition-all group h-full">
+                <h3 className="text-2xl font-black text-white mb-4 uppercase group-hover:text-[#ff0000] transition-colors tracking-tight italic serif-font">{profile.title}</h3>
+                <p className="text-gray-500 leading-relaxed font-medium italic text-lg">{profile.desc}</p>
               </div>
             ))}
           </div>
@@ -333,7 +376,8 @@ const App: React.FC = () => {
       {/* Section Programme */}
       <section id="programme" className="py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6 text-center mb-24">
-          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight italic serif-font">Ce que tu vas <span className="text-[#ff0000]">maîtriser</span></h2>
+          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight italic serif-font">Votre arsenal de <span className="text-[#ff0000]">guerre</span></h2>
+          <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4 italic">6 étapes pour rassurer le lecteur et dominer les algorithmes</p>
         </div>
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {COURSE_MODULES.map((module, index) => (
