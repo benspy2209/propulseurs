@@ -46,7 +46,7 @@ const Logo: React.FC<{ size?: 'sm' | 'md' | 'lg', className?: string }> = ({ siz
   return (
     <div className={`flex items-center gap-0 group/logo select-none ${className}`}>
       <span className={`text-[#ff0000] font-black tracking-tighter uppercase ${sizeClasses[size]}`}>Pulse</span>
-      <div className="relative group-hover/logo:scale-110 group-active/logo:scale-95 transition-transform duration-300 mx-[-1px] lg:mx-[-2px]">
+      <div className="relative group-hover/logo:scale-110 group-active/logo:scale-95 transition-transform duration-300 mx-[-6px] lg:mx-[-7px]">
         <svg 
           width={heartSize} 
           height={heartSize} 
@@ -259,14 +259,14 @@ const App: React.FC = () => {
           <div className="flex items-center gap-3 lg:gap-4">
             <button 
               onClick={() => setCurrentView(userEmail ? 'course' : 'login')}
-              className="hidden sm:flex items-center gap-2 text-gray-400 hover:text-white text-[9px] lg:text-[10px] font-black uppercase tracking-widest transition-colors"
+              className="flex items-center gap-1.5 lg:gap-2 text-gray-400 hover:text-white text-[9px] lg:text-[10px] font-black uppercase tracking-widest transition-colors"
             >
               <User size={14} className={userEmail ? "text-green-500" : "text-gray-600"} />
-              {userEmail ? 'Mon Espace' : 'Accès Membre'}
+              <span>{userEmail ? 'Mon Espace' : 'Accès Membre'}</span>
             </button>
             <button 
               onClick={() => setCurrentView('purchase')}
-              className="bg-[#ff0000] text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-full text-[9px] lg:text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,0,0,0.4)] active:scale-95"
+              className="bg-[#ff0000] text-white px-3 lg:px-6 py-2 lg:py-2.5 rounded-full text-[9px] lg:text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,0,0,0.4)] active:scale-95"
             >
               S'inscrire
             </button>
