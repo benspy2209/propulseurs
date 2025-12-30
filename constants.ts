@@ -32,7 +32,7 @@ export const INSTRUCTOR = {
   bioBlocks: [
     "En 2025, j’ai vu la même scène se répéter encore et encore : des auteur·rices de polar, thriller, roman noir qui ont travaillé dur sur leur livre… et qui se retrouvent complètement perdu·es au moment de le faire connaître. Pas de méthode, pas de plan, un peu de posts “au hasard”, quelques pubs, beaucoup de frustration, et trop souvent cette phrase : “Mon livre ne se vend pas.” C’est pour ça que j’ai créé Pulsenoir et cette formation : pour donner aux auteurs de noir un plan concret, adapté à leur genre, et pas un énième bla-bla marketing généraliste.",
     "Il y a 35 ans que je suis un lecteur passionné de noir, de polar, de thriller. Et 20 ans que je travaille dans le web : développement, marketing digital, création de sites, optimisation de présence en ligne. J’ai d’abord lancé Bibliopulse, une bibliothèque en ligne pour chercher des livres, suivre ses lectures et écrire des critiques. Puis est né Pulse Noir : un groupe Facebook dédié au polar/thriller, avec aujourd’hui plus de 1500 membres dont environ 350 auteur·rices, où les gens partagent leurs lectures et mettent en avant leurs livres.",
-    "En parallèle, des auteur·rices m’ont contacté : premier ou deuxième livre, peu ou pas de ventes, la sensation de parler dans le vide. J’ai commencé à les aider : création de sites, conseils sur leurs fiches Amazon, plans de promo adaptés au polar/thriller. Avec mon double profil de développeur et de marketeur web, j’ai conçu des outils et des méthodes dédiés à ce milieu très spécifique : le noir, le polar, le thriller. J’ai aussi créé studio.pulsenoir.be, un laboratoire pour écrire et structurer ses romans. La formation “Vendez vos polars – Plan de Guerre 90 Jours” est la synthèse de tout ça : 35 ans de lecture passionnée, 20 ans de web, et une obsession simple : que ton livre trouve vraiment ses lecteurs."
+    "En parallèle, des auteur·rices m’ont contacté : premier ou deuxième livre, peu ou pas de ventes, la sensation de parler dans le vide. J’ai commencé à les aider : création de sites, conseils sur leurs fiches Amazon, plans de promo adaptés au polar/thriller. Avec mon double profil de développeur et de marketeur web, j’ai conçu des outils et des méthodes dédiés à ce milieu très spécifique : le noir, le polar, le thriller. J’ai aussi créé studio.pulsenoir.be, un laboratoire pour écrire et structurer ses romans. La méthode « Pourquoi les bons polars restent-ils invisibles ? – En 90 jours, brisez le plafond de verre et devenez une valeur sûre. » est la synthèse de tout ça : 35 ans de lecture passionnée, 20 ans de web, une obsession simple – que ton livre trouve vraiment ses lecteurs, et une attention constante à ce que vous vivez et partagez chaque jour dans la communauté."
   ]
 };
 
@@ -147,7 +147,7 @@ export const COURSE_MODULES: ModuleContent[] = [
         title: "La Stratégie de l'Infiltration",
         type: "key-concept",
         content: [
-          "L'erreur fatale du débutant est de hurler 'ACHETEZ MON LIVRE' dans le vide. Le professionnel, lui, s'infiltre. Il se rend visible là où ses lecteurs dorment déjà : dans les groupes de fans, les blogs spécialisés et les communautés comme Bibliopulse.",
+          "L'erreur fatale du débutant est de hurler 'ACHETEZ MON LIVRE' dans le vide. Le professionnel, lui, s'infoltre. Il se rend visible là où ses lecteurs dorment déjà : dans les groupes de fans, les blogs spécialisés et les communautés comme Bibliopulse.",
           "On ne construit pas une audience en un jour, mais on peut construire une base solide en 90 jours avec de la méthode."
         ]
       },
@@ -244,7 +244,7 @@ export const COURSE_MODULES: ModuleContent[] = [
     id: 'social',
     title: "Module 3 : La Stratégie d'Infiltration",
     subtitle: "Être là où vos lecteurs dorment",
-    description: "Les salons se raréfient ? Apprenez à vous infiltrer élégamment dans les poches numériques des lecteurs.",
+    description: "Les salons se raréfient ? Apprenez à vous infiltrez élégamment dans les poches numériques des lecteurs.",
     duration: "1h 50",
     bullets: [
       "L'Algorithme du Noir : Hacker la visibilité",
