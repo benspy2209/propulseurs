@@ -64,13 +64,13 @@ const LeadMagnetCard: React.FC<LeadMagnetCardProps> = ({
   return (
     <div className="bg-black border border-white/10 rounded-[3rem] p-8 md:p-12 flex flex-col h-full shadow-2xl overflow-hidden relative group hover:border-[#ff0000]/30 transition-all duration-500">
       
-      {/* Visual Header */}
-      <div className="relative aspect-[16/9] mb-8 bg-neutral-900 rounded-2xl border border-white/10 overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-500 shadow-xl">
+      {/* Visual Header - Modified to show full image without cropping or filters */}
+      <div className="relative aspect-[4/5] md:aspect-[3/4] mb-8 bg-neutral-900 rounded-2xl border border-white/10 overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-500 shadow-xl flex items-center justify-center">
         {image ? (
           <img 
             src={image} 
             alt={title} 
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+            className="w-full h-full object-contain transition-all duration-700"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-900 to-black p-8">
@@ -80,15 +80,15 @@ const LeadMagnetCard: React.FC<LeadMagnetCardProps> = ({
           </div>
         )}
         
-        <div className="absolute top-4 right-4 bg-[#ff0000] text-white text-[8px] font-black px-2 py-1 rounded-sm rotate-12 shadow-lg z-10">
+        <div className="absolute top-4 right-4 bg-[#ff0000] text-white text-[10px] font-black px-3 py-1 rounded-sm rotate-12 shadow-lg z-10 uppercase tracking-widest">
           TOP SECRET
         </div>
       </div>
 
       {/* Content */}
       <div className="flex-1 flex flex-col">
-        <div className="inline-flex items-center gap-2 mb-4 text-[#ff0000] text-[9px] font-black uppercase tracking-widest italic opacity-70">
-          <Sparkles size={10} /> {subtitle}
+        <div className="inline-flex items-center gap-2 mb-4 text-[#ff0000] text-[10px] font-black uppercase tracking-[0.2em] italic opacity-70">
+          <Sparkles size={12} /> {subtitle}
         </div>
         
         <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter mb-4 italic serif-font leading-tight">
