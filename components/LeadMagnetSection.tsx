@@ -156,7 +156,7 @@ const LeadMagnetSection: React.FC = () => {
           {/* Lead Magnet 1: Power Words */}
           <LeadMagnetCard 
             title="Le Lexique des 10 Power Words"
-            description="Ne laisse pas ton livre mourir dans l'indifférence. Récupère le lexique des 10 mots de pouvoir que les lecteurs de thriller repèrent instinctivement pour cliquer."
+            description="Brisez l'indifférence du lecteur. Récupérez le lexique des 10 mots de pouvoir qui activent le clic instinctif et rassurent immédiatement les fans de thriller les plus méfiants."
             image="https://raw.githubusercontent.com/benspy2209/propulseurs/ca9723bf220a444a1f67a478d54e3f28f578d187/power.png"
             link={PULSENOIR_LINKS.leadMagnetDoc}
             source="lead_magnet_10_power_words"
@@ -164,10 +164,10 @@ const LeadMagnetSection: React.FC = () => {
             icon={<Sparkles size={10} />}
           />
 
-          {/* Lead Magnet 2: Plan d'attaque 7 étapes */}
+          {/* Lead Magnet 2: Plan d'attaque 7 étapes -> Le Protocole Anti-Invisibilité */}
           <LeadMagnetCard 
-            title="Lancer son polar : Le Plan d'Attaque"
-            description="Le guide étape par étape pour réussir son auto-édition. 7 briques stratégiques pour transformer un manuscrit en succès commercial sans se perdre."
+            title="Le Protocole Anti-Invisibilité"
+            description="Comment forcer le mur de l'algorithme et rassurer un lecteur méfiant en 7 briques stratégiques. Le guide étape par étape pour transformer un manuscrit ignoré en une valeur sûre."
             image="https://raw.githubusercontent.com/benspy2209/propulseurs/10707a5e1d1eae7bf26f636ce3e67218dfaa8854/Lancer%20son%20polar%20en%20auto%20edition%20-%20le%20plan%20d%E2%80%99attaque%20en%207%20etapes.png"
             link={PULSENOIR_LINKS.leadMagnetAutoedition}
             source="lead_magnet_7_steps_autoedition"

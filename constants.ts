@@ -14,7 +14,12 @@ import {
   Zap,
   BarChart3,
   FileText,
-  MousePointer2
+  MousePointer2,
+  Shield,
+  Search,
+  Crosshair,
+  // Fix: Import Repeat icon which was missing and causing a reference error
+  Repeat
 } from 'lucide-react';
 import { ModuleContent } from './types';
 
@@ -45,7 +50,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Je n’ai pas encore fini mon livre, est-ce trop tôt ?",
-    a: "Au contraire. Le Module 1 (ADN) et le Module 2 (Identité) sont cruciaux à mettre en place pendant que tu termines ton manuscrit. Cela te permet d’avoir une communauté qui t'attend au tournant le jour de ta sortie."
+    a: "Au contraire. Le Module 1 (Ancre) et le Module 2 (Scanner) sont cruciaux à mettre en place pendant que tu termines ton manuscrit. Cela te permet d’avoir une communauté qui t'attend au tournant le jour de ta sortie."
   },
   {
     q: "Je suis publié en Maison d'Édition, est-ce utile pour moi ?",
@@ -61,7 +66,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Est-ce que la formation inclut de la publicité payante (Amazon Ads) ?",
-    a: "Oui, le Module 5 traite de la 'Chirurgie du Best-Seller'. Tu apprendras à dompter l'algorithme et à lancer des publicités rentables sans jeter ton argent par les fenêtres."
+    a: "Oui, le Module 5 traite de la 'Chirurgie de Conversion'. Tu apprendras à dompter l'algorithme et à lancer des publicités rentables sans jeter ton argent par les fenêtres."
   },
   {
     q: "Qu’est-ce que le 'Clan des 50' dont tu parles ?",
@@ -105,20 +110,20 @@ export const PULSENOIR_LINKS = {
 export const COURSE_MODULES: ModuleContent[] = [
   {
     id: 'fondations',
-    title: "Module 1 : La Forteresse de Visibilité",
-    subtitle: "Positionnement Radical & Domination de Niche",
-    description: "Cessez de plaire à tout le monde. Devenez indispensable pour votre niche de lecteurs de Noir.",
+    title: "Module 1 : L'Ancre de Sécurité",
+    subtitle: "Briser l'anonymat & Rassurer le lecteur",
+    description: "Cessez de plaire à tout le monde. Devenez une 'valeur sûre' pour votre niche de lecteurs de Noir.",
     duration: "1h 45",
     bullets: [
       "La Pyramide de Visibilité : Bâtir son écosystème",
       "Le 'Lecteur Avatar' : Profilage psychologique profond",
       "L'Audit de Niche : Polar, Thriller ou Noir ?",
-      "L'Ancre de Sécurité : Devenir une 'Valeur Sûre'"
+      "Stratégie Anti-Invisibilité : Le mur de rassurance"
     ],
     icon: Target,
     color: "red",
     imageKeyword: "strategy",
-    longDescription: "Ce module est la pierre angulaire de ta carrière d’auteur de noir. Il pose les bases de ton écosystème : ce que tu promets à tes lecteurs, comment tu te positionnes, et comment tu construis une présence cohérente au lieu de “publier dans le vide”. À la fin, tu auras une vision claire de ton ADN d’auteur et des briques à mettre en place.",
+    longDescription: "Ce module est la pierre angulaire de ta carrière d’auteur de noir. Il pose les bases de ton écosystème : ce que tu promets à tes lecteurs, comment tu te positionnes pour ne plus être perçu comme un 'risque' par le lecteur méfiant. À la fin, tu auras une vision claire de ton ADN d’auteur et des briques à mettre en place.",
     steps: [
       "Lire la partie « Construire progressivement son écosystème ».",
       "Faire l’exercice « Définir sa Promesse de Noir ».",
@@ -134,7 +139,7 @@ export const COURSE_MODULES: ModuleContent[] = [
         expectedResult: "À la fin de cette section, tu sais ce que tu cherches à construire : un écosystème d’auteur de noir, pas seulement un livre isolé.",
         content: [
           "Pour un nouvel auteur, le plus efficace est de construire progressivement une présence cohérente. Cela commence par le choix d'une niche ultra-précise. Ne cherchez pas à plaire à tout le monde, cherchez à devenir indispensable pour quelques-uns.",
-          "Plutôt que de viser la masse anonyme, l'objectif est de bâtir une 'forteresse de visibilité' brique par brique. Chaque interaction, chaque post et chaque mail doit renforcer votre image de spécialiste du noir.",
+          "Plutôt que de viser la masse anonyme, l'objectif est de bâtir une 'ancre de sécurité' brique par brique. Chaque interaction, chaque post et chaque mail doit renforcer votre image de spécialiste du noir.",
           "La Loi des 1000 Fans : Pourquoi vous n'avez pas besoin de millions de vues, mais de 1000 lecteurs ultra-engagés qui achètent tout ce que vous produisez."
         ]
       },
@@ -170,7 +175,7 @@ export const COURSE_MODULES: ModuleContent[] = [
   {
     id: 'identite',
     title: "Module 2 : Le Scanner de Crédibilité",
-    subtitle: "Rassurer le lecteur en 3 secondes",
+    subtitle: "Nettoyer les signaux amateurs",
     description: "Votre aura numérique doit envoyer des signaux de 'Valeur Sûre' pour lever les doutes des lecteurs méfiants.",
     duration: "1h 15",
     bullets: [
@@ -182,7 +187,7 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: UserCircle,
     color: "red",
     imageKeyword: "identity",
-    longDescription: "Ton identité numérique est ta vitrine 24h/24. Ce module t’aide à rendre tes profils (Instagram, Facebook, etc.) cohérents avec ton univers de noir, mémorables, et capables de transformer les curieux en vrais lecteurs. À la fin, tu auras une bio qui accroche, une image claire, et des profils alignés avec ton polar/thriller.",
+    longDescription: "Ton identité numérique est ta vitrine 24h/24. Ce module t’aide à passer tes profils au scanner pour supprimer tout ce qui fait 'amateur' et refroidit le lecteur. À la fin, tu auras une bio qui accroche, une image claire, et des profils alignés avec ton polar/thriller.",
     steps: [
       "Lire la section « L’anatomie d’une bio qui tue ».",
       "Faire l’audit rapide de tes profils actifs.",
@@ -237,9 +242,9 @@ export const COURSE_MODULES: ModuleContent[] = [
   },
   {
     id: 'social',
-    title: "Module 3 : L'Infiltration du Réseau",
-    subtitle: "Rétablir le contact avec le Lecteur",
-    description: "Les salons se raréfient ? Apprenez à recréer l'effet 'Rencontre' numériquement.",
+    title: "Module 3 : La Stratégie d'Infiltration",
+    subtitle: "Être là où vos lecteurs dorment",
+    description: "Les salons se raréfient ? Apprenez à vous infiltrer élégamment dans les poches numériques des lecteurs.",
     duration: "1h 50",
     bullets: [
       "L'Algorithme du Noir : Hacker la visibilité",
@@ -250,7 +255,7 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: Share2,
     color: "red",
     imageKeyword: "social",
-    longDescription: "Dans ce module, tu apprends à construire ton réseau d’influence noir : groupes de lecteurs, chroniqueurs, réseaux sociaux. Le but : automatiser jusqu’à 80% de ta présence tout en gardant des interactions authentiques, pour te laisser du temps pour écrire.",
+    longDescription: "Dans ce module, tu apprends à t'infiltrer dans les réseaux d’influence noir : groupes de lecteurs, chroniqueurs, réseaux sociaux. On ne fait pas du 'réseautage', on construit une présence là où le lecteur passe déjà son temps.",
     steps: [
       "Lire la section « Infiltrer les groupes de lecteurs ».",
       "Noter 3–5 groupes / communautés où tu pourrais t’infiltrer.",
@@ -304,9 +309,9 @@ export const COURSE_MODULES: ModuleContent[] = [
   },
   {
     id: 'cercle',
-    title: "Module 4 : Hacker l'Algorithme",
-    subtitle: "Preuve Sociale Massive & Force de Frappe",
-    description: "Le système aide ceux qui brillent déjà. Orchestrez votre signal de succès.",
+    title: "Module 4 : Le Protocole du Clan des 50",
+    subtitle: "L'opération commando pour vos avis",
+    description: "Le système aide ceux qui brillent déjà. Orchestrez votre signal de succès avec vos soldats du premier jour.",
     duration: "2h 10",
     bullets: [
       "Le Clan des 50 : Vos soldats du premier jour",
@@ -317,7 +322,7 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: Users,
     color: "red",
     imageKeyword: "community",
-    longDescription: "La preuve sociale est le moteur de vente organique le plus puissant : avis, chroniques, bouche‑à‑oreille. Ce module te montre comment préparer ta street team, organiser la bêta‑lecture et orchestrer une sortie de livre qui génère naturellement des retours.",
+    longDescription: "La preuve sociale est le moteur de vente organique le plus puissant. Ce module te montre comment monter ton 'Clan' (street team), organiser la bêta‑lecture comme une opération tactique et orchestrer une sortie de livre qui force l'algorithme Amazon à vous voir.",
     steps: [
       "Lire la section « Bâtir sa Street Team de A à Z ».",
       "Décider qui tu veux dans ta street team (liste courte).",
@@ -372,9 +377,9 @@ export const COURSE_MODULES: ModuleContent[] = [
   },
   {
     id: 'ventes',
-    title: "Module 5 : La Chirurgie du Best-Seller",
-    subtitle: "Copywriting de Thriller & Amazon Ads",
-    description: "La 4ème de couverture est décisive. Apprenez à forcer le clic et l'achat.",
+    title: "Module 5 : La Chirurgie de Conversion",
+    subtitle: "Forcer le clic et l'achat compulsif",
+    description: "La 4ème de couverture et vos Ads sont votre scalpel. Apprenez à disséquer la psychologie de l'acheteur.",
     duration: "2h 30",
     bullets: [
       "Résumé Haute-Tension : Les 5 modèles gagnants",
@@ -385,7 +390,7 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: TrendingUp,
     color: "red",
     imageKeyword: "sales",
-    longDescription: "C’est ici que se joue une grande partie du potentiel de ventes : titre, résumé, couverture, positionnement. Dans ce module, on décortique les mécaniques des best‑sellers thriller/polar pour renforcer l’ADN de ton propre livre et écrire un résumé qui déclenche le clic.",
+    longDescription: "C’est ici que se joue une grande partie du potentiel de ventes. Ce module applique une chirurgie précise à ton titre, ton résumé et ta couverture pour forcer le lecteur à cliquer, puis à acheter. On ne fait pas de la littérature, on fait de la conversion.",
     steps: [
       "Lire la section « Le résumé haute tension ».",
       "Choisir un best‑seller noir/thriller à analyser.",
@@ -439,9 +444,9 @@ export const COURSE_MODULES: ModuleContent[] = [
   },
   {
     id: 'bonus',
-    title: "Module 6 : L'Offensive Finale (90 Jours)",
-    subtitle: "Plan de Guerre & Maintenance de Carrière",
-    description: "Le calendrier de précision pour briser l'anonymat en 3 mois.",
+    title: "Module 6 : Le Pipeline de Vente Continu",
+    subtitle: "La machine de guerre automatique",
+    description: "Ne repartez plus jamais de zéro. Construisez la machine qui alimente vos ventes sur le long terme.",
     duration: "1h 30",
     bullets: [
       "Compte à Rebours Lancement (J-30 à J+30)",
@@ -449,13 +454,13 @@ export const COURSE_MODULES: ModuleContent[] = [
       "Le Pipeline de Vente Continu",
       "Vivre de sa plume : Stratégie Multi-Série"
     ],
-    icon: Map,
+    icon: Repeat,
     color: "red",
     imageKeyword: "roadmap",
-    longDescription: "La formation se termine, mais ta carrière commence. Ce module te donne un plan d’action sur 90 jours pour lancer ton polar/thriller sans te perdre : quoi faire, dans quel ordre, et avec quel niveau d’intensité.",
+    longDescription: "La formation se termine, mais ta carrière commence. Ce module te donne la structure du 'Pipeline' : comment capturer l'email de chaque lecteur pour que ton prochain livre soit un succès garanti avant même de l'écrire.",
     steps: [
       "Lire la section « Le pipeline de vente continu ».",
-      "Choisir ton niveau d’intensité (15 min/jour, 1 h/jour, ou 1 demi‑journée par semaine).",
+      "Choisir ton niveau d’intensity (15 min/jour, 1 h/jour, ou 1 demi‑journée par semaine).",
       "Utiliser la checklist Plan de Guerre 90 Jours pour planifier concrètement ton lancement."
     ],
     transitionTitle: "Mettre en pratique avec le Plan de Guerre",
@@ -468,7 +473,7 @@ export const COURSE_MODULES: ModuleContent[] = [
         expectedResult: "À la fin de cette section, tu comprends pourquoi tout le plan de guerre vise à construire une base d’emails de lecteurs plutôt que de dépendre uniquement des algorithmes.",
         content: [
           "Pourquoi ta newsletter est plus importante que Facebook.",
-          "How to harvest emails from the first page (backmatter, bonus, etc.).",
+          "Comment récolter des emails dès la première page et dans les bonus de fin.",
           "Le but ultime n'est pas seulement de vendre un livre, mais de posséder le lien direct avec ton audience pour tes lancements futurs."
         ]
       },

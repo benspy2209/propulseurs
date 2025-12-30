@@ -377,7 +377,7 @@ const App: React.FC = () => {
       <section id="programme" className="py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6 text-center mb-24">
           <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight italic serif-font">Votre arsenal de <span className="text-[#ff0000]">guerre</span></h2>
-          <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4 italic">6 étapes pour rassurer le lecteur et dominer les algorithmes</p>
+          <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4 italic">6 étapes tactiques pour rassurer le lecteur et briser l'invisibilité</p>
         </div>
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {COURSE_MODULES.map((module, index) => (
@@ -439,7 +439,7 @@ const App: React.FC = () => {
 
       {/* FAQ Section */}
       <section id="faq" className="py-32 bg-black relative border-t border-white/5">
-        <div className="absolute top-0 right-0 p-12 opacity-[0.02] pointer-events-none select-none italic font-black text-[15vw] leading-none uppercase">Questions</div>
+        <div className="absolute top-0 right-0 p-12 opacity-[0.02] pointer-events-none select-none italic font-black text-[15vw] masonry-none uppercase">Questions</div>
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 border border-[#ff0000]/30 bg-[#ff0000]/5 text-[#ff0000] text-[10px] font-black uppercase tracking-[0.4em]">

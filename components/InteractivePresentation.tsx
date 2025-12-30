@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, ArrowRight, X, BookOpen, Target, Users, Zap, Award, Shield } from 'lucide-react';
+import { ArrowLeft, ArrowRight, X, BookOpen, Target, Users, Zap, Shield, TrendingUp, Repeat, UserCircle, Share2 } from 'lucide-react';
 
 interface Slide {
   title: string;
@@ -11,34 +11,40 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    title: "L'Écosystème de Visibilité",
-    subtitle: "La Stratégie de Base",
-    content: "Pour un nouvel auteur, le plus efficace est de construire progressivement une présence cohérente. On ne devient pas un best-seller par accident, on le devient par architecture et persévérance.",
+    title: "L'Ancre de Sécurité",
+    subtitle: "Module 1 : Positionnement",
+    content: "Pour un auteur de noir, la confiance est la clé. On ne devient pas un best-seller par accident, mais en construisant un écosystème qui rassure immédiatement le lecteur méfiant.",
     icon: <Target size={64} />,
   },
   {
-    title: "La Niche Radicale",
-    subtitle: "Brique n°1 : Le Positionnement",
-    content: "Ne cherchez pas à plaire à tout le monde. Dans le Noir, la spécialisation est votre armure. Devenez la référence d'un sous-genre précis : Polar Social, Thriller Tech, ou Noir Rural.",
-    icon: <BookOpen size={64} />,
+    title: "Le Scanner de Crédibilité",
+    subtitle: "Module 2 : Identité Digitale",
+    content: "Votre aura numérique doit être impeccable. On passe vos profils au scanner pour supprimer les signaux 'amateurs' qui font fuir vos futurs fans.",
+    icon: <UserCircle size={64} />,
   },
   {
-    title: "L'Identité Magnétique",
-    subtitle: "Brique n°2 : Votre Aura",
-    content: "Votre bio, vos visuels et votre ton doivent crier 'NOIR'. Un lecteur doit ressentir l'ambiance de vos livres avant même d'avoir cliqué sur le bouton 'Acheter'.",
-    icon: <Zap size={64} />,
+    title: "La Stratégie d'Infiltration",
+    subtitle: "Module 3 : Réseaux & Influence",
+    content: "Infiltrez-vous là où vos lecteurs dorment. Ne hurlez pas dans le vide : soyez présent là où la passion du noir palpite déjà.",
+    icon: <Share2 size={64} />,
   },
   {
-    title: "Le Réseau d'Influence",
-    subtitle: "Brique n°3 : Le Clan",
-    content: "Le succès est une affaire de clan. Recrutez vos 50 premiers lecteurs ultra-fidèles. Ils sont vos soldats, ceux qui propulsent vos avis Amazon dès le premier jour.",
+    title: "Le Clan des 50",
+    subtitle: "Module 4 : Preuve Sociale",
+    content: "Le succès est une opération commando. Recrutez vos 50 premiers lecteurs soldats pour forcer les algorithmes et dominer les avis Amazon.",
     icon: <Users size={64} />,
   },
   {
-    title: "Dominer les 90 Jours",
-    subtitle: "Brique n°4 : Le Plan de Guerre",
-    content: "Une action par jour pendant trois mois. C'est la différence entre un auteur qui attend et un auteur qui règne. Votre écosystème est votre forteresse contre l'oubli.",
-    icon: <Shield size={64} />,
+    title: "La Chirurgie de Conversion",
+    subtitle: "Module 5 : Copywriting & Ads",
+    content: "Appliquez le scalpel à votre 4ème de couverture. On ne fait pas que du marketing, on force l'achat compulsif par une psychologie chirurgicale.",
+    icon: <TrendingUp size={64} />,
+  },
+  {
+    title: "Le Pipeline de Vente",
+    subtitle: "Module 6 : Système de Vente",
+    content: "Ne repartez jamais de zéro. Construisez une machine de guerre qui tourne en continu et alimente vos succès futurs, livre après livre.",
+    icon: <Repeat size={64} />,
   }
 ];
 
