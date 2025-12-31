@@ -45,6 +45,12 @@ const ALL_TESTIMONIALS: Testimonial[] = [
   { name: "Alexandre Thomas", text: "Merci pour l’accueil et les chroniques. Attention toutefois au risque d’être victime de son succès.", highlight: false },
   { name: "Olivier Patry", text: "Merci infiniment pour cette magnifique présentation. Ravi de notre échange à l’Iris Noir.", highlight: false },
   { name: "Annie Soyer", text: "Heureuse d’être là avec toi.", highlight: false },
+  { name: "Nathalie Nogrette", text: "« J’aime les discussions constructives et bienveillantes, ce qui n’est pas évident sur les réseaux sociaux. »", highlight: false },
+  { name: "Ma Rina Bez", text: "« J’ai adoré grâce à ce groupe découvrir de nouveaux auteurs que je ne serais pas allée commander dans ma librairie si je ne les avais pas vu passer ici. »", highlight: false },
+  { name: "Ma Rina Bez", text: "« Parfois trop d’engouement autour d’un auteur me freine. »", highlight: false },
+  { name: "Nathalie Hubert", text: "« Et le risque, c’est de lire des critiques dithyrambiques alors que lorsque je lis le roman, ce n’est pas fou. »", highlight: false },
+  { name: "Nathalie Hubert", text: "« Moi, j’aime bien lire les critiques négatives par ex. »", highlight: false },
+  { name: "Olivier Sebbah", text: "« Le plus difficile étant de rester respectueux envers l’auteur malgré le fait que l’on écrit que le livre en question n’est pas apprécié et que la critique sera visible par beaucoup de lecteurs. »", highlight: false },
   { name: "Benjamin de Bruijne", text: "Ici, broyer du noir, c’est un cadeau. Pulse Noir est une communauté qui palpite.", highlight: true }
 ];
 
@@ -153,7 +159,7 @@ const TestimonialsSection: React.FC = () => {
           <div className="inline-block relative">
             <div className="absolute -inset-4 bg-[#ff0000]/5 blur-xl rounded-full opacity-50"></div>
             <p className="relative text-white font-black uppercase italic serif-font text-2xl md:text-4xl tracking-tight">
-              37 voix. <span className="text-[#ff0000]">Un seul clan.</span>
+              La force du Clan. <span className="text-[#ff0000]">Une seule voix.</span>
             </p>
             <p className="text-[#ff0000] font-black uppercase tracking-[0.6em] text-[10px] md:text-xs mt-4 opacity-80">
               Pulse Noir Academy Elite

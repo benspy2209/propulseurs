@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { ModuleContent } from '../types';
-import { CheckCircle2, Gift, Download } from 'lucide-react';
+import { CheckCircle2, Gift } from 'lucide-react';
 
 interface ModuleCardProps {
   module: ModuleContent;
@@ -9,7 +10,6 @@ interface ModuleCardProps {
 
 const ModuleCard: React.FC<ModuleCardProps> = ({ module, index }) => {
   const Icon = module.icon;
-  const resourceCount = module.resources?.length || 0;
   
   return (
     <div className="group relative bg-neutral-900/40 rounded-[2.5rem] p-10 border border-white/5 hover:border-[#ff0000]/30 transition-all duration-500 flex flex-col h-full hover:bg-neutral-900 shadow-xl overflow-hidden">
@@ -22,11 +22,10 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ module, index }) => {
         </div>
         <div className="flex flex-col items-end">
           <span className="text-5xl font-black text-white/5 italic group-hover:text-[#ff0000]/10 transition-colors">0{index + 1}</span>
-          {resourceCount > 0 && (
-            <div className="flex items-center gap-1.5 mt-2 px-3 py-1 bg-[#ff0000] rounded-full text-[9px] font-black text-white uppercase tracking-widest shadow-[0_0_15px_rgba(255,0,0,0.5)]">
-              <Gift size={10} /> {resourceCount} Goodies Inclus
-            </div>
-          )}
+          {/* Badge Goodies en Jaune avec texte noir, forcé à 4 par carte comme demandé */}
+          <div className="flex items-center gap-1.5 mt-2 px-3 py-1 bg-[#f4c024] rounded-full text-[9px] font-black text-black uppercase tracking-widest shadow-[0_0_15px_rgba(244,192,36,0.4)]">
+            <Gift size={10} /> 4 GOODIES INCLUS
+          </div>
         </div>
       </div>
 

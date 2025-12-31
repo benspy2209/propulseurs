@@ -57,11 +57,11 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Je déteste le marketing et la technique, vais-je m'en sortir ?",
-    a: "C’est précisément pour ça que le 'Plan de Guerre' existe. On évite le jargon. Tout est traduit en actions concrètes : des checklists, des modèles de messages à copier-coller et des fichiers pré-remplis."
+    a: "C’est précisément pour ça que le 'Plan de Guerre' existe. J'évite le jargon. Tout est traduit pour toi en actions concrètes : des checklists, des modèles de messages à copier-coller et des fichiers pré-remplis."
   },
   {
     q: "Combien de temps dois-je consacrer à la formation chaque semaine ?",
-    a: "Tu peux choisir le mode 'Léger' (15 min/jour), 'Efficace' (1h/jour) ou 'Commando' (une demi-journée par semaine). L'important n'est pas l'intensité, mais la régularité."
+    a: "Tu peux choisir ton mode : 'Léger' (15 min/jour), 'Efficace' (1h/jour) ou 'Commando' (une demi-journée par semaine). L'important n'est pas l'intensité, mais ta régularité."
   },
   {
     q: "Est-ce que la formation inclut de la publicité payante (Amazon Ads) ?",
@@ -69,19 +69,19 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Qu’est-ce que le 'Clan des 50' dont tu parles ?",
-    a: "C’est ta force de frappe. On t'enseigne comment recruter tes 50 premiers lecteurs 'soldats' pour rédiger tes premiers avis Amazon et propulser ton livre dès le jour J."
+    a: "C’est ta force de frappe. Je t'enseigne comment recruter tes 50 premiers lecteurs 'soldats' pour rédiger tes premiers avis Amazon et propulser ton livre dès le jour J."
   },
   {
     q: "Est-ce que je peux te contacter si j'ai une question ?",
-    a: "Absolument. L'accès inclut l'entrée dans le Groupe Privé du Clan où je réponds personnellement à vos questions et je partage mes analyses. Je ne vous laisse pas seul face à votre écran, je suis présent pour vous accompagner."
+    a: "Absolument. Ton accès inclut l'entrée dans le Groupe Privé du Clan où je réponds personnellement à tes questions. Je ne te laisse pas seul face à ton écran, je suis là pour t'accompagner."
   },
   {
     q: "Le contenu est-il disponible immédiatement ?",
-    a: "Dès la validation de ton inscription, 100% des modules et des goodies (les 20+ outils, checklists et templates) sont débloqués immédiatement."
+    a: "Dès la validation de ton inscription, 100% des modules et des goodies (les 20+ outils, checklists et templates) sont débloqués immédiatement pour toi."
   },
   {
     q: "Qu'en est-il des mises à jour ? Le web change vite.",
-    a: "Toutes les futures mises à jour sont incluses gratuitement. Si Amazon change ses règles ou si une nouvelle tactique apparaît, elle sera ajoutée à ton espace membre."
+    a: "Toutes les futures mises à jour sont incluses gratuitement pour toi. Si Amazon change ses règles ou si une nouvelle tactique apparaît, je l'ajouterai à ton espace membre."
   },
   {
     q: "Et si je réalise que la formation ne me convient pas ?",
