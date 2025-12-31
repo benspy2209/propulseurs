@@ -97,7 +97,7 @@ const CoachingBonusSection: React.FC = () => {
           </div>
           
           <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-[#ff0000] text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full shadow-lg">
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-[#f4c024] text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full shadow-lg">
               <Zap size={14} fill="currentColor" /> BONUS MASTER : ACCOMPAGNEMENT HUMAIN
             </div>
             
@@ -352,24 +352,21 @@ const App: React.FC = () => {
             </button>
             <button 
               onClick={() => setShowPresentation(true)}
-              className="w-full md:w-auto px-12 py-7 bg-white/5 border border-white/10 text-white text-base font-black rounded-full flex items-center justify-center gap-3 group uppercase tracking-[0.2em] transition-all hover:bg-white hover:text-black active:scale-95"
+              className="w-full md:w-auto px-12 py-7 bg-white/5 border border-[#f4c024] text-[#f4c024] text-base font-black rounded-full flex items-center justify-center gap-3 group uppercase tracking-[0.2em] transition-all hover:bg-[#f4c024] hover:text-black active:scale-95"
             >
               <Play size={20} className="fill-current" />
               Découvrir la méthode
             </button>
           </div>
 
-          {/* New Coaching Mention in Hero */}
           <div className="flex items-center justify-center gap-3 text-white/60 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs italic bg-white/5 py-3 px-6 rounded-full border border-white/5 backdrop-blur-sm">
-            <Video size={16} className="text-[#ff0000]" />
-            Inclus : 1h de coaching privé avec Benjamin (AKA Pulseman) <span className="text-[#ff0000]">(Offert aux 10 premiers)</span>
+            <Video size={16} className="text-[#f4c024]" />
+            Inclus : 1h de coaching privé avec Benjamin (AKA Pulseman) <span className="text-[#f4c024]">(Offert aux 10 premiers)</span>
           </div>
         </div>
       </header>
 
-      {/* ... (rest of the sections: Autopsie, Pour qui, Programme, etc.) */}
-      
-      {/* NOUVELLE SECTION : Autopsie du Marché */}
+      {/* Autopsie Section */}
       <section id="autopsie" className="py-32 bg-neutral-950 relative border-y border-white/5 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,rgba(255,0,0,0.05),transparent_50%)]"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -438,20 +435,20 @@ const App: React.FC = () => {
             <ModuleCard key={module.id} module={module} index={index} />
           ))}
           
-          {/* Bonus Master Block in Program */}
-          <div className="group relative bg-[#ff0000]/5 rounded-[2.5rem] p-10 border-2 border-[#ff0000]/30 transition-all duration-500 flex flex-col h-full hover:bg-[#ff0000]/10 shadow-[0_0_30px_rgba(255,0,0,0.1)] overflow-hidden">
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-[#ff0000]/10 rounded-full blur-3xl" />
+          {/* Master Bonus Block */}
+          <div className="group relative bg-[#ff0000]/5 rounded-[2.5rem] p-10 border-2 border-[#f4c024]/30 transition-all duration-500 flex flex-col h-full hover:bg-[#ff0000]/10 shadow-[0_0_30px_rgba(244,192,36,0.1)] overflow-hidden">
+            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-[#f4c024]/5 rounded-full blur-3xl" />
             
             <div className="flex justify-between items-start mb-10 relative z-10">
-              <div className="w-14 h-14 bg-[#ff0000] text-white rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(255,0,0,0.4)]">
+              <div className="w-14 h-14 bg-[#f4c024] text-black rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(244,192,36,0.4)]">
                 <Video size={28} />
               </div>
-              <div className="px-3 py-1 bg-[#ff0000] rounded-full text-[9px] font-black text-white uppercase tracking-widest shadow-lg">
+              <div className="px-3 py-1 bg-[#f4c024] rounded-full text-[9px] font-black text-black uppercase tracking-widest shadow-lg">
                 MASTER BONUS
               </div>
             </div>
 
-            <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tighter italic serif-font group-hover:text-[#ff0000] transition-colors leading-tight relative z-10">
+            <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tighter italic serif-font group-hover:text-[#f4c024] transition-colors leading-tight relative z-10">
               Le Coaching Commando
             </h3>
             <p className="text-[10px] font-black text-gray-500 mb-6 uppercase tracking-[0.2em] relative z-10">
@@ -470,7 +467,7 @@ const App: React.FC = () => {
                 "Je réponds à vos blocages précis"
               ].map((bullet, idx) => (
                 <li key={idx} className="flex items-start text-[11px] text-gray-200 font-bold uppercase tracking-wider leading-snug">
-                  <CheckCircle2 size={14} className="mr-3 mt-0.5 text-[#ff0000] flex-shrink-0" />
+                  <CheckCircle2 size={14} className="mr-3 mt-0.5 text-[#f4c024] flex-shrink-0" />
                   <span>{bullet}</span>
                 </li>
               ))}
@@ -492,7 +489,6 @@ const App: React.FC = () => {
               <img src={INSTRUCTOR.hoverPhoto} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-1000 scale-110 group-hover:scale-105" />
             </div>
 
-            {/* Statistiques Cartouches */}
             <div className="grid grid-cols-2 gap-4">
               {INSTRUCTOR_STATS.map((stat, i) => (
                 <div key={i} className="bg-neutral-900/40 p-6 rounded-3xl border border-white/5 hover:border-[#ff0000]/30 transition-all group text-center">
@@ -524,13 +520,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
       <TestimonialsSection />
-
-      {/* Lead Magnet */}
       <LeadMagnetSection />
-
-      {/* Coaching Bonus Section */}
       <CoachingBonusSection />
 
       {/* FAQ Section */}

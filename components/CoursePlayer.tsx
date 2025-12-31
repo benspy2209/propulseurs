@@ -56,7 +56,7 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
     <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000">
       <header className="mb-20 border-b border-white/5 pb-16">
         <div className="flex items-center gap-6 text-[#ff0000] mb-8">
-           <span className="px-5 py-1.5 bg-[#ff0000] text-white rounded-full text-[10px] font-black uppercase tracking-[0.25em] shadow-[0_0_20px_rgba(255,0,0,0.4)]">Bonus Master Elite</span>
+           <span className="px-5 py-1.5 bg-[#f4c024] text-black rounded-full text-[10px] font-black uppercase tracking-[0.25em] shadow-[0_0_20px_rgba(244,192,36,0.4)]">Bonus Master Elite</span>
         </div>
         <h1 className="text-5xl lg:text-7xl font-serif font-black text-white mb-10 tracking-tighter leading-[0.9] italic uppercase">
           Mon Coaching <span className="text-[#ff0000]">Privé</span>
@@ -66,9 +66,9 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
         </p>
       </header>
 
-      <div className="bg-neutral-900 border border-[#ff0000]/30 rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-2xl mb-16">
+      <div className="bg-neutral-900 border border-[#f4c024]/30 rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-2xl mb-16">
         <div className="absolute top-0 right-0 p-8 opacity-[0.03]">
-          <Video size={160} className="text-[#ff0000]" />
+          <Video size={160} className="text-[#f4c024]" />
         </div>
         
         <div className="relative z-10">
@@ -82,11 +82,11 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
             </p>
             
             <div className="flex items-start gap-6 bg-black/40 p-8 rounded-2xl border border-white/5">
-              <div className="w-12 h-12 bg-[#ff0000] rounded-xl flex items-center justify-center shrink-0 shadow-lg">
-                <MessageCircle size={24} className="text-white" />
+              <div className="w-12 h-12 bg-[#f4c024] rounded-xl flex items-center justify-center shrink-0 shadow-lg">
+                <MessageCircle size={24} className="text-black" />
               </div>
               <div>
-                <p className="text-white font-black uppercase text-xs tracking-widest mb-2">Étape Unique</p>
+                <p className="text-[#f4c024] font-black uppercase text-xs tracking-widest mb-2">Étape Unique</p>
                 <p className="text-gray-300">
                   Contacte-moi directement via **Messenger** (Benjamin de Bruijne / Pulse Noir). Précise-moi ton nom d'achat et l'univers de ton livre. Nous fixerons alors ensemble un créneau pour notre visio d'une heure.
                 </p>
@@ -98,7 +98,7 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
             href={PULSENOIR_LINKS.group}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-[#ff0000] text-white rounded-full font-black uppercase tracking-[0.2em] text-xs transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,0,0,0.4)]"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-[#f4c024] text-black rounded-full font-black uppercase tracking-[0.2em] text-xs transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(244,192,36,0.4)]"
           >
             Me contacter sur Messenger <ChevronRight size={16} />
           </a>
@@ -241,16 +241,19 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
           <div className="space-y-1 mb-12">
             <button
               onClick={() => setIsCoachingActive(true)}
-              className={`w-full p-4 flex items-center gap-4 transition-all rounded-2xl relative ${isCoachingActive ? 'bg-[#ff0000]/10 border border-[#ff0000]/20' : 'hover:bg-white/[0.03] border border-transparent'}`}
+              className={`w-full p-4 flex items-center gap-4 transition-all rounded-2xl relative ${isCoachingActive ? 'bg-[#ff0000]/10 border border-[#f4c024]/20' : 'hover:bg-white/[0.03] border border-transparent'}`}
             >
-              <div className={`${isCoachingActive ? 'text-[#ff0000]' : 'text-gray-700'}`}>
+              <div className={`${isCoachingActive ? 'text-[#f4c024]' : 'text-gray-700'}`}>
                 <Video size={18} />
               </div>
               <div className="text-left">
                 <div className={`text-[11px] font-black uppercase tracking-tight ${isCoachingActive ? 'text-white' : 'text-gray-500'}`}>Mon Coaching Privé</div>
-                <div className="text-[9px] text-[#ff0000] font-black uppercase italic">Bonus Inclus</div>
+                <div className="flex items-center gap-2">
+                  <div className="text-[9px] text-[#f4c024] font-black uppercase italic">OFFERT</div>
+                  <div className="px-1.5 py-0.5 bg-[#f4c024] text-black text-[7px] font-black rounded-sm uppercase tracking-tighter">CADEAU</div>
+                </div>
               </div>
-              {isCoachingActive && <div className="ml-auto w-1.5 h-1.5 bg-[#ff0000] rounded-full" />}
+              {isCoachingActive && <div className="ml-auto w-1.5 h-1.5 bg-[#f4c024] rounded-full" />}
             </button>
           </div>
 
@@ -378,7 +381,6 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
                   </div>
                 )}
 
-                {/* The Huge Goodies Call to Action */}
                 <div id="goodies-section" className="mt-20 p-16 bg-gradient-to-br from-neutral-900 to-black rounded-[4rem] border border-[#ff0000]/30 text-center relative overflow-hidden">
                   <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#ff0000]/10 rounded-full blur-[100px]" />
                   <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-900/10 rounded-full blur-[100px]" />
