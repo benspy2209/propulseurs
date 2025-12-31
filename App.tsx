@@ -34,7 +34,10 @@ import {
   Search,
   EyeOff,
   TrendingDown,
-  Repeat
+  Repeat,
+  UserCircle,
+  Video,
+  Mic
 } from 'lucide-react';
 
 type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success' | 'login';
@@ -81,6 +84,40 @@ const Logo: React.FC<{ size?: 'sm' | 'md' | 'lg', className?: string }> = ({ siz
       </div>
       <span className={`text-white font-black tracking-tighter uppercase ${sizeClasses[size]}`}>Noir</span>
     </div>
+  );
+};
+
+const CoachingBonusSection: React.FC = () => {
+  return (
+    <section id="coaching" className="py-24 bg-black relative border-t border-white/5">
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="bg-neutral-900/50 border-2 border-[#ff0000]/30 rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 right-0 p-8 opacity-5">
+            <UserCircle size={120} className="text-[#ff0000]" />
+          </div>
+          
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-[#ff0000] text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full shadow-lg">
+              <Zap size={14} fill="currentColor" /> BONUS MASTER : ACCOMPAGNEMENT HUMAIN
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white italic serif-font mb-6 leading-tight">
+              1 Heure de <span className="text-[#ff0000]">Coaching Individuel</span> Offerte
+            </h2>
+            
+            <p className="text-gray-300 text-lg md:text-xl italic font-light leading-relaxed mb-10">
+              Pour les 10 premiers inscrits uniquement, **je m'immerge** personnellement dans votre projet pour débloquer votre visibilité et valider votre plan d'attaque personnalisé. Ce n'est pas un appel de courtoisie, c'est une séance de travail chirurgicale que **je mène avec vous** pour votre carrière d'auteur de noir.
+            </p>
+            
+            <div className="pt-8 border-t border-white/5">
+              <p className="text-gray-400 text-xs italic font-medium leading-relaxed">
+                * L'attribution se fait selon l'ordre d'arrivée des commandes Stripe. Une fois les 10 places envolées, cette offre disparaîtra définitivement pour préserver la qualité de l'accompagnement.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
@@ -265,6 +302,7 @@ const App: React.FC = () => {
             <button onClick={() => scrollToSection('programme')} className="hover:text-white transition-colors cursor-pointer">Le Programme</button>
             <button onClick={() => scrollToSection('ressources')} className="hover:text-white transition-colors cursor-pointer">Plan d'Attaque</button>
             <button onClick={() => scrollToSection('instructeur')} className="hover:text-white transition-colors cursor-pointer">L'Instructeur</button>
+            <button onClick={() => scrollToSection('coaching')} className="hover:text-white transition-colors cursor-pointer">Coaching</button>
             <button onClick={() => scrollToSection('faq')} className="hover:text-white transition-colors cursor-pointer">FAQ</button>
           </div>
 
@@ -295,16 +333,16 @@ const App: React.FC = () => {
             Dossier : Rupture de l'Anonymat
           </div>
           
-          <h1 className="text-[12vw] md:text-[140px] leading-[0.85] mb-12 polar-title">
+          <h1 className="text-[10vw] md:text-[120px] leading-[0.85] mb-12 polar-title">
             Pourquoi les bons polars restent-ils <span className="text-[#ff0000] text-glow-red">invisibles</span> ?
           </h1>
 
-          <p className="max-w-4xl mx-auto text-lg md:text-2xl text-white font-black uppercase tracking-tight border-y border-white/10 py-6 lg:py-8 mb-12 bg-white/5 backdrop-blur-sm px-4 leading-relaxed">
+          <p className="max-w-4xl mx-auto text-lg md:text-2xl text-white font-black uppercase tracking-tight border-y border-white/10 py-6 lg:py-8 mb-8 bg-white/5 backdrop-blur-sm px-4 leading-relaxed">
             Ce n'est pas une question de talent. C'est un système biaisé et un lecteur qui a peur de l'inconnu. <br />
             En 90 jours, brisez le plafond de verre et devenez une valeur sûre.
           </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-16">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
             <button 
               onClick={() => setCurrentView('purchase')}
               className="w-full md:w-auto px-12 py-7 bg-[#ff0000] text-white text-base font-black rounded-full flex items-center justify-center gap-3 group uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-[0_0_60px_rgba(255,0,0,0.5)] active:scale-95"
@@ -320,9 +358,17 @@ const App: React.FC = () => {
               Découvrir la méthode
             </button>
           </div>
+
+          {/* New Coaching Mention in Hero */}
+          <div className="flex items-center justify-center gap-3 text-white/60 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs italic bg-white/5 py-3 px-6 rounded-full border border-white/5 backdrop-blur-sm">
+            <Video size={16} className="text-[#ff0000]" />
+            Inclus : 1h de coaching privé avec Benjamin (AKA Pulseman) <span className="text-[#ff0000]">(Offert aux 10 premiers)</span>
+          </div>
         </div>
       </header>
 
+      {/* ... (rest of the sections: Autopsie, Pour qui, Programme, etc.) */}
+      
       {/* NOUVELLE SECTION : Autopsie du Marché */}
       <section id="autopsie" className="py-32 bg-neutral-950 relative border-y border-white/5 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,rgba(255,0,0,0.05),transparent_50%)]"></div>
@@ -385,12 +431,51 @@ const App: React.FC = () => {
       <section id="programme" className="py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6 text-center mb-24">
           <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight italic serif-font">Votre arsenal de <span className="text-[#ff0000]">guerre</span></h2>
-          <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4 italic">6 étapes tactiques pour rassurer le lecteur et briser l'invisibilité</p>
+          <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4 italic">6 étapes tactiques + 1 Master Bonus pour briser l'invisibilité</p>
         </div>
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {COURSE_MODULES.map((module, index) => (
             <ModuleCard key={module.id} module={module} index={index} />
           ))}
+          
+          {/* Bonus Master Block in Program */}
+          <div className="group relative bg-[#ff0000]/5 rounded-[2.5rem] p-10 border-2 border-[#ff0000]/30 transition-all duration-500 flex flex-col h-full hover:bg-[#ff0000]/10 shadow-[0_0_30px_rgba(255,0,0,0.1)] overflow-hidden">
+            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-[#ff0000]/10 rounded-full blur-3xl" />
+            
+            <div className="flex justify-between items-start mb-10 relative z-10">
+              <div className="w-14 h-14 bg-[#ff0000] text-white rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(255,0,0,0.4)]">
+                <Video size={28} />
+              </div>
+              <div className="px-3 py-1 bg-[#ff0000] rounded-full text-[9px] font-black text-white uppercase tracking-widest shadow-lg">
+                MASTER BONUS
+              </div>
+            </div>
+
+            <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tighter italic serif-font group-hover:text-[#ff0000] transition-colors leading-tight relative z-10">
+              Le Coaching Commando
+            </h3>
+            <p className="text-[10px] font-black text-gray-500 mb-6 uppercase tracking-[0.2em] relative z-10">
+              Accompagnement Humain Direct
+            </p>
+            
+            <p className="text-gray-400 mb-8 text-sm leading-relaxed font-medium italic relative z-10">
+              **Je m'immerge** personnellement dans votre projet lors d'une session privée d'une heure.
+            </p>
+
+            <ul className="space-y-4 mt-auto relative z-10">
+              {[
+                "1h de Visio privée avec moi",
+                "J'audite directement votre visibilité",
+                "Je valide votre plan d'attaque",
+                "Je réponds à vos blocages précis"
+              ].map((bullet, idx) => (
+                <li key={idx} className="flex items-start text-[11px] text-gray-200 font-bold uppercase tracking-wider leading-snug">
+                  <CheckCircle2 size={14} className="mr-3 mt-0.5 text-[#ff0000] flex-shrink-0" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -444,6 +529,9 @@ const App: React.FC = () => {
 
       {/* Lead Magnet */}
       <LeadMagnetSection />
+
+      {/* Coaching Bonus Section */}
+      <CoachingBonusSection />
 
       {/* FAQ Section */}
       <section id="faq" className="py-32 bg-black relative border-t border-white/5">

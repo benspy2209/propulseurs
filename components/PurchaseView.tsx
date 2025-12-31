@@ -1,5 +1,6 @@
+
 import React, { useEffect } from 'react';
-import { ArrowLeft, CheckCircle2, ShieldCheck, Lock, Sparkles, Zap, ChevronRight, CreditCard } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ShieldCheck, Lock, Sparkles, Zap, ChevronRight, CreditCard, Video, Mic } from 'lucide-react';
 
 interface PurchaseViewProps {
   onBack: () => void;
@@ -47,9 +48,25 @@ const PurchaseView: React.FC<PurchaseViewProps> = ({ onBack, onSuccess }) => {
           <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-4 italic serif-font leading-none">
             Rejoins <span className="text-[#ff0000] text-glow">le clan</span>.
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl italic font-light max-w-2xl mx-auto">
-            Accès immédiat à l'intégralité de la méthode "Vendez vos polars".
+          <p className="text-gray-400 text-lg md:text-xl italic font-light max-w-2xl mx-auto mb-10">
+            Accès immédiat à la méthode : <br/>
+            <span className="text-white font-black">"Pourquoi les bons polars restent-ils invisibles ? - En 90 jours, brisez le plafond de verre et devenez une valeur sûre."</span>
           </p>
+
+          {/* Updated Coaching Bonus Banner */}
+          <div className="max-w-3xl mx-auto mb-16 bg-[#ff0000]/10 border border-[#ff0000]/30 rounded-[2.5rem] p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#ff0000]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div className="w-16 h-16 bg-[#ff0000] rounded-[1.5rem] flex items-center justify-center text-white shrink-0 shadow-[0_0_30px_rgba(255,0,0,0.3)] relative z-10">
+              <Video size={32} />
+            </div>
+            <div className="text-center md:text-left relative z-10">
+              <p className="text-[#ff0000] font-black uppercase text-[10px] tracking-[0.3em] mb-1 italic">CADEAU : ACCOMPAGNEMENT INDIVIDUEL</p>
+              <p className="text-white font-bold text-lg italic leading-snug">
+                Votre session de coaching chirurgical d'une heure <span className="text-[#ff0000]">(Valeur 150€)</span> est <span className="underline decoration-[#ff0000] underline-offset-4">OFFERTE</span> avec votre accès. **Je m'immerge** personnellement dans votre projet pour propulser votre visibilité.
+              </p>
+              <p className="text-gray-500 text-[10px] mt-2 font-black uppercase tracking-widest italic">* Limité aux 10 premiers inscrits (C'est mon cadeau)</p>
+            </div>
+          </div>
         </header>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto items-center">
@@ -75,8 +92,8 @@ const PurchaseView: React.FC<PurchaseViewProps> = ({ onBack, onSuccess }) => {
 
             <div className="space-y-4 mb-10 flex-1">
               {[
+                "1h Coaching Master inclus (si places)",
                 "Allège ta trésorerie ce mois-ci",
-                "Moins de frais que le 3 fois",
                 "Accès complet dès le 1er versement",
                 "Idéal pour investir sereinement",
                 "Prélèvement automatique simple"
@@ -120,10 +137,10 @@ const PurchaseView: React.FC<PurchaseViewProps> = ({ onBack, onSuccess }) => {
 
             <div className="space-y-4 mb-10 flex-1">
               {[
+                "1h Coaching Master inclus (si places)",
                 "Zéro frais de gestion additionnels",
                 "Tous les modules débloqués à vie",
                 "Le Pack de Goodies complet",
-                "Le Plan de Guerre 90 jours",
                 "Priorité sur le groupe privé"
               ].map((benefit, i) => (
                 <div key={i} className="flex gap-3 items-center">
@@ -135,7 +152,7 @@ const PurchaseView: React.FC<PurchaseViewProps> = ({ onBack, onSuccess }) => {
 
             <button 
               onClick={() => handlePayment(STRIPE_LINK_1X)}
-              className="w-full py-6 bg-[#ff0000] text-white rounded-full font-black uppercase tracking-[0.2em] text-[11px] transition-all shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] active:scale-95 flex items-center justify-center gap-2"
+              className="w-full py-6 bg-[#ff0000] text-white rounded-full font-black uppercase tracking-[0.2em] text-[11px] transition-all shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] active:scale-95 flex items-center justify-center gap-3 group"
             >
               Choisir 1x <ChevronRight size={16} />
             </button>
@@ -162,8 +179,8 @@ const PurchaseView: React.FC<PurchaseViewProps> = ({ onBack, onSuccess }) => {
 
             <div className="space-y-4 mb-10 flex-1">
               {[
+                "1h Coaching Master inclus (si places)",
                 "La mensualité la plus petite",
-                "Idéal pour les petits budgets",
                 "Accès au groupe privé inclus",
                 "Mises à jour à vie incluses",
                 "Gestion automatique par Stripe"

@@ -18,7 +18,6 @@ import {
   Shield,
   Search,
   Crosshair,
-  // Fix: Import Repeat icon which was missing and causing a reference error
   Repeat
 } from 'lucide-react';
 import { ModuleContent } from './types';
@@ -73,8 +72,8 @@ export const FAQ_ITEMS = [
     a: "C’est ta force de frappe. On t'enseigne comment recruter tes 50 premiers lecteurs 'soldats' pour rédiger tes premiers avis Amazon et propulser ton livre dès le jour J."
   },
   {
-    q: "Ai-je accès à Benjamin pour poser mes questions ?",
-    a: "L'accès inclut l'entrée dans le Groupe Privé du Clan où Benjamin répond régulièrement aux questions et partage ses analyses. Tu ne seras jamais seul face à ton écran."
+    q: "Est-ce que je peux te contacter si j'ai une question ?",
+    a: "Absolument. L'accès inclut l'entrée dans le Groupe Privé du Clan où je réponds personnellement à vos questions et je partage mes analyses. Je ne vous laisse pas seul face à votre écran, je suis présent pour vous accompagner."
   },
   {
     q: "Le contenu est-il disponible immédiatement ?",
@@ -363,7 +362,7 @@ export const COURSE_MODULES: ModuleContent[] = [
         ],
         content: [
           "Distinguer bêta‑lecteurs (fond du livre) et street team (visibilité).",
-          "Donner un cadre clair : délai indicatif de lecture, type de retour attendu.",
+          "Donner un cadre futur clair : délai indicatif de lecture, type de retour attendu.",
           "Préparer dès maintenant les futures demandes d’avis pour ne pas être pris de court au lancement."
         ]
       }
