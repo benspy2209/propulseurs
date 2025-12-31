@@ -19,7 +19,9 @@ import {
   ExternalLink,
   LogOut,
   ChevronRight,
-  Target
+  Target,
+  Video,
+  MessageCircle
 } from 'lucide-react';
 
 interface CoursePlayerProps {
@@ -30,6 +32,7 @@ interface CoursePlayerProps {
 
 const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }) => {
   const [activeModuleId, setActiveModuleId] = useState<string>(modules[0].id);
+  const [isCoachingActive, setIsCoachingActive] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const activeModule = modules.find(m => m.id === activeModuleId) || modules[0];
@@ -48,6 +51,66 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
     const goodies = document.getElementById('goodies-section');
     if (goodies) goodies.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const renderCoachingContent = () => (
+    <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000">
+      <header className="mb-20 border-b border-white/5 pb-16">
+        <div className="flex items-center gap-6 text-[#ff0000] mb-8">
+           <span className="px-5 py-1.5 bg-[#ff0000] text-white rounded-full text-[10px] font-black uppercase tracking-[0.25em] shadow-[0_0_20px_rgba(255,0,0,0.4)]">Bonus Master Elite</span>
+        </div>
+        <h1 className="text-5xl lg:text-7xl font-serif font-black text-white mb-10 tracking-tighter leading-[0.9] italic uppercase">
+          Mon Coaching <span className="text-[#ff0000]">Privé</span>
+        </h1>
+        <p className="text-2xl text-gray-500 leading-relaxed font-light italic max-w-2xl">
+          Comme tu fais partie des premiers inscrits, tu as droit à ton heure de coaching chirurgical. **Je m'immerge** personnellement dans ton projet pour propulser ta visibilité.
+        </p>
+      </header>
+
+      <div className="bg-neutral-900 border border-[#ff0000]/30 rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-2xl mb-16">
+        <div className="absolute top-0 right-0 p-8 opacity-[0.03]">
+          <Video size={160} className="text-[#ff0000]" />
+        </div>
+        
+        <div className="relative z-10">
+          <h2 className="text-3xl font-black text-white uppercase tracking-widest mb-8 italic serif-font">
+            Comment planifier ton heure ?
+          </h2>
+          
+          <div className="space-y-8 text-gray-300 text-lg italic font-light leading-relaxed mb-12">
+            <p>
+              Pour que nous puissions fixer ce rendez-vous ensemble et que je puisse préparer notre session de travail, la procédure est simple :
+            </p>
+            
+            <div className="flex items-start gap-6 bg-black/40 p-8 rounded-2xl border border-white/5">
+              <div className="w-12 h-12 bg-[#ff0000] rounded-xl flex items-center justify-center shrink-0 shadow-lg">
+                <MessageCircle size={24} className="text-white" />
+              </div>
+              <div>
+                <p className="text-white font-black uppercase text-xs tracking-widest mb-2">Étape Unique</p>
+                <p className="text-gray-300">
+                  Contacte-moi directement via **Messenger** (Benjamin de Bruijne / Pulse Noir). Précise-moi ton nom d'achat et l'univers de ton livre. Nous fixerons alors ensemble un créneau pour notre visio d'une heure.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <a 
+            href={PULSENOIR_LINKS.group}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-[#ff0000] text-white rounded-full font-black uppercase tracking-[0.2em] text-xs transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,0,0,0.4)]"
+          >
+            Me contacter sur Messenger <ChevronRight size={16} />
+          </a>
+        </div>
+      </div>
+
+      <div className="p-8 bg-neutral-950 border border-white/5 rounded-2xl italic text-gray-500 text-sm">
+        <p className="font-black text-white uppercase text-[10px] tracking-widest mb-4">Note importante :</p>
+        <p>Le coaching est réservé aux 10 premiers inscrits (validé par l'ordre des transactions Stripe). Si tu vois cet onglet, c'est que tu as sécurisé ta place. Prépare tes questions les plus épineuses, on va aller droit au but.</p>
+      </div>
+    </div>
+  );
 
   const renderChapterContent = (chapter: Chapter, idx: number) => {
     switch (chapter.type) {
@@ -148,14 +211,17 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
         </div>
 
         <div className="flex-1 overflow-y-auto py-8 scrollbar-hide px-6">
-          <div className="mb-4 text-[10px] font-black text-gray-700 uppercase tracking-widest px-2">Progression Modules</div>
-          <div className="space-y-1 mb-12">
+          <div className="mb-4 text-[10px] font-black text-gray-700 uppercase tracking-widest px-2">Espace Formation</div>
+          <div className="space-y-1 mb-8">
             {modules.map((module) => {
-              const isActive = module.id === activeModuleId;
+              const isActive = module.id === activeModuleId && !isCoachingActive;
               return (
                 <button
                   key={module.id}
-                  onClick={() => setActiveModuleId(module.id)}
+                  onClick={() => {
+                    setActiveModuleId(module.id);
+                    setIsCoachingActive(false);
+                  }}
                   className={`w-full p-4 flex items-center gap-4 transition-all rounded-2xl relative ${isActive ? 'bg-[#ff0000]/10 border border-[#ff0000]/20' : 'hover:bg-white/[0.03] border border-transparent'}`}
                 >
                   <div className={`${isActive ? 'text-[#ff0000]' : 'text-gray-700'}`}>
@@ -171,7 +237,24 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
             })}
           </div>
 
-          {activeModule.resources && (
+          <div className="mb-4 text-[10px] font-black text-gray-700 uppercase tracking-widest px-2">Accompagnement</div>
+          <div className="space-y-1 mb-12">
+            <button
+              onClick={() => setIsCoachingActive(true)}
+              className={`w-full p-4 flex items-center gap-4 transition-all rounded-2xl relative ${isCoachingActive ? 'bg-[#ff0000]/10 border border-[#ff0000]/20' : 'hover:bg-white/[0.03] border border-transparent'}`}
+            >
+              <div className={`${isCoachingActive ? 'text-[#ff0000]' : 'text-gray-700'}`}>
+                <Video size={18} />
+              </div>
+              <div className="text-left">
+                <div className={`text-[11px] font-black uppercase tracking-tight ${isCoachingActive ? 'text-white' : 'text-gray-500'}`}>Mon Coaching Privé</div>
+                <div className="text-[9px] text-[#ff0000] font-black uppercase italic">Bonus Inclus</div>
+              </div>
+              {isCoachingActive && <div className="ml-auto w-1.5 h-1.5 bg-[#ff0000] rounded-full" />}
+            </button>
+          </div>
+
+          {activeModule.resources && !isCoachingActive && (
             <div className="mt-8">
               <div className="flex items-center justify-between mb-6 px-2">
                 <div className="text-[10px] font-black text-[#ff0000] uppercase tracking-[0.2em] flex items-center gap-2">
@@ -227,134 +310,138 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
       <main className="flex-1 overflow-y-auto bg-black relative">
         <div className="max-w-4xl mx-auto px-8 py-20 lg:px-24 lg:py-32">
           
-          <header className="mb-20 border-b border-white/5 pb-16">
-            <div className="flex items-center gap-6 text-[#ff0000] mb-8">
-               <span className="px-5 py-1.5 bg-[#ff0000] text-white rounded-full text-[10px] font-black uppercase tracking-[0.25em] shadow-[0_0_20px_rgba(255,0,0,0.4)]">Session Elite</span>
-               <span className="text-[11px] font-black text-gray-600 uppercase tracking-[0.3em]">{activeModule.duration} • 0% Complété</span>
-            </div>
-            <h1 className="text-5xl lg:text-7xl font-serif font-black text-white mb-10 tracking-tighter leading-[0.9] italic uppercase">
-              {activeModule.title}
-            </h1>
-            <p className="text-2xl text-gray-500 leading-relaxed font-light italic max-w-2xl mb-12">
-              {activeModule.longDescription || activeModule.description}
-            </p>
+          {isCoachingActive ? renderCoachingContent() : (
+            <>
+              <header className="mb-20 border-b border-white/5 pb-16">
+                <div className="flex items-center gap-6 text-[#ff0000] mb-8">
+                   <span className="px-5 py-1.5 bg-[#ff0000] text-white rounded-full text-[10px] font-black uppercase tracking-[0.25em] shadow-[0_0_20px_rgba(255,0,0,0.4)]">Session Elite</span>
+                   <span className="text-[11px] font-black text-gray-600 uppercase tracking-[0.3em]">{activeModule.duration} • 0% Complété</span>
+                </div>
+                <h1 className="text-5xl lg:text-7xl font-serif font-black text-white mb-10 tracking-tighter leading-[0.9] italic uppercase">
+                  {activeModule.title}
+                </h1>
+                <p className="text-2xl text-gray-500 leading-relaxed font-light italic max-w-2xl mb-12">
+                  {activeModule.longDescription || activeModule.description}
+                </p>
 
-            {/* Section Par où commencer ? */}
-            {activeModule.steps && (
-              <div className="bg-neutral-900/50 border border-white/5 rounded-3xl p-10 mb-16 shadow-xl">
-                 <h2 className="text-2xl font-black text-white uppercase tracking-widest mb-8 flex items-center gap-4 italic serif-font">
-                   Par où commencer ?
-                 </h2>
-                 <div className="space-y-6">
-                    {activeModule.steps.map((step, i) => (
-                      <div key={i} className="flex gap-6 items-center">
-                         <div className="w-10 h-10 bg-[#ff0000] text-white font-black flex items-center justify-center rounded-xl shadow-lg shrink-0">
-                           {i + 1}
-                         </div>
-                         <p className="text-gray-300 font-medium italic">{step}</p>
-                      </div>
-                    ))}
-                 </div>
-              </div>
-            )}
-            
-            <div className="mt-16 aspect-video bg-neutral-900 rounded-[3rem] border border-white/5 flex items-center justify-center group cursor-pointer overflow-hidden relative shadow-2xl">
-               <img src={`https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80`} className="absolute inset-0 w-full h-full object-cover grayscale opacity-20 group-hover:scale-105 transition-transform duration-1000" alt="Cover" />
-               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
-               <div className="w-24 h-24 bg-[#ff0000] rounded-full flex items-center justify-center text-white shadow-[0_0_50px_rgba(255,0,0,0.6)] group-hover:scale-110 transition-transform z-10 relative">
-                  <div className="absolute inset-0 bg-white rounded-full animate-ping opacity-20"></div>
-                  <PlayCircle size={48} />
-               </div>
-               <div className="absolute bottom-8 left-8 z-20 flex items-center gap-3">
-                  <div className="w-2 h-2 bg-[#ff0000] rounded-full animate-pulse"></div>
-                  <span className="text-[10px] font-black text-white uppercase tracking-widest">Masterclass Vidéo HD</span>
-               </div>
-            </div>
-          </header>
+                {/* Section Par où commencer ? */}
+                {activeModule.steps && (
+                  <div className="bg-neutral-900/50 border border-white/5 rounded-3xl p-10 mb-16 shadow-xl">
+                     <h2 className="text-2xl font-black text-white uppercase tracking-widest mb-8 flex items-center gap-4 italic serif-font">
+                       Par où commencer ?
+                     </h2>
+                     <div className="space-y-6">
+                        {activeModule.steps.map((step, i) => (
+                          <div key={i} className="flex gap-6 items-center">
+                             <div className="w-10 h-10 bg-[#ff0000] text-white font-black flex items-center justify-center rounded-xl shadow-lg shrink-0">
+                               {i + 1}
+                             </div>
+                             <p className="text-gray-300 font-medium italic">{step}</p>
+                          </div>
+                        ))}
+                     </div>
+                  </div>
+                )}
+                
+                <div className="mt-16 aspect-video bg-neutral-900 rounded-[3rem] border border-white/5 flex items-center justify-center group cursor-pointer overflow-hidden relative shadow-2xl">
+                   <img src={`https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80`} className="absolute inset-0 w-full h-full object-cover grayscale opacity-20 group-hover:scale-105 transition-transform duration-1000" alt="Cover" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                   <div className="w-24 h-24 bg-[#ff0000] rounded-full flex items-center justify-center text-white shadow-[0_0_50px_rgba(255,0,0,0.6)] group-hover:scale-110 transition-transform z-10 relative">
+                      <div className="absolute inset-0 bg-white rounded-full animate-ping opacity-20"></div>
+                      <PlayCircle size={48} />
+                   </div>
+                   <div className="absolute bottom-8 left-8 z-20 flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[#ff0000] rounded-full animate-pulse"></div>
+                      <span className="text-[10px] font-black text-white uppercase tracking-widest">Masterclass Vidéo HD</span>
+                   </div>
+                </div>
+              </header>
 
-          <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000">
-            {activeModule.chapters?.map((chapter, idx) => renderChapterContent(chapter, idx))}
-            
-            {/* Bloc de Transition Dynamique */}
-            {(activeModule.transitionTitle || activeModule.transitionText) && (
-              <div className="mt-32 mb-16 p-10 bg-neutral-950 border border-white/5 rounded-3xl text-center">
-                 <h3 className="text-2xl font-black text-white uppercase tracking-widest mb-4 italic serif-font">
-                   {activeModule.transitionTitle || "Mettre en pratique avec les outils du module"}
-                 </h3>
-                 <p className="text-gray-400 font-medium italic mb-8 max-w-xl mx-auto">
-                   {activeModule.transitionText}
-                 </p>
-                 <button 
-                  onClick={scrollToGoodies}
-                  className="text-[#ff0000] font-black uppercase tracking-widest text-xs flex items-center gap-2 mx-auto hover:gap-4 transition-all"
-                 >
-                   {activeModule.transitionButtonText || "Descendre vers les outils"} <ChevronRight size={16} />
-                 </button>
-              </div>
-            )}
+              <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000">
+                {activeModule.chapters?.map((chapter, idx) => renderChapterContent(chapter, idx))}
+                
+                {/* Bloc de Transition Dynamique */}
+                {(activeModule.transitionTitle || activeModule.transitionText) && (
+                  <div className="mt-32 mb-16 p-10 bg-neutral-950 border border-white/5 rounded-3xl text-center">
+                     <h3 className="text-2xl font-black text-white uppercase tracking-widest mb-4 italic serif-font">
+                       {activeModule.transitionTitle || "Mettre en pratique avec les outils du module"}
+                     </h3>
+                     <p className="text-gray-400 font-medium italic mb-8 max-w-xl mx-auto">
+                       {activeModule.transitionText}
+                     </p>
+                     <button 
+                      onClick={scrollToGoodies}
+                      className="text-[#ff0000] font-black uppercase tracking-widest text-xs flex items-center gap-2 mx-auto hover:gap-4 transition-all"
+                     >
+                       {activeModule.transitionButtonText || "Descendre vers les outils"} <ChevronRight size={16} />
+                     </button>
+                  </div>
+                )}
 
-            {/* The Huge Goodies Call to Action */}
-            <div id="goodies-section" className="mt-20 p-16 bg-gradient-to-br from-neutral-900 to-black rounded-[4rem] border border-[#ff0000]/30 text-center relative overflow-hidden">
-              <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#ff0000]/10 rounded-full blur-[100px]" />
-              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-900/10 rounded-full blur-[100px]" />
+                {/* The Huge Goodies Call to Action */}
+                <div id="goodies-section" className="mt-20 p-16 bg-gradient-to-br from-neutral-900 to-black rounded-[4rem] border border-[#ff0000]/30 text-center relative overflow-hidden">
+                  <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#ff0000]/10 rounded-full blur-[100px]" />
+                  <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-900/10 rounded-full blur-[100px]" />
 
-              <div className="w-24 h-24 bg-[#ff0000] text-white rounded-[2rem] flex items-center justify-center mx-auto mb-10 shadow-[0_0_40px_rgba(255,0,0,0.4)] rotate-12">
-                <Gift size={48} />
-              </div>
-              
-              <h3 className="text-4xl font-serif font-black text-white mb-6 uppercase italic tracking-tighter">Votre Pack Bonus Elite</h3>
-              <p className="text-xl text-gray-500 mb-12 max-w-xl mx-auto italic font-light">Pour passer de la théorie à la pratique, nous avons préparé des outils exclusifs disponibles dans notre Hub central.</p>
-              
-              <div className="flex flex-wrap justify-center gap-4 mb-12">
-                {activeModule.resources?.map((res, i) => {
-                  const isExternal = res.url?.startsWith('http');
-                  return (
+                  <div className="w-24 h-24 bg-[#ff0000] text-white rounded-[2rem] flex items-center justify-center mx-auto mb-10 shadow-[0_0_40px_rgba(255,0,0,0.4)] rotate-12">
+                    <Gift size={48} />
+                  </div>
+                  
+                  <h3 className="text-4xl font-serif font-black text-white mb-6 uppercase italic tracking-tighter">Votre Pack Bonus Elite</h3>
+                  <p className="text-xl text-gray-500 mb-12 max-w-xl mx-auto italic font-light">Pour passer de la théorie à la pratique, nous avons préparé des outils exclusifs disponibles dans notre Hub central.</p>
+                  
+                  <div className="flex flex-wrap justify-center gap-4 mb-12">
+                    {activeModule.resources?.map((res, i) => {
+                      const isExternal = res.url?.startsWith('http');
+                      return (
+                        <a 
+                          key={i} 
+                          href={res.url || '#'} 
+                          download={(!isExternal && res.url) ? res.title : undefined}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-between p-6 bg-black/50 border border-white/5 rounded-[1.5rem] hover:border-[#ff0000]/50 transition-all group no-underline w-full max-w-md"
+                        >
+                          <div className="flex items-center gap-4">
+                            <div className="text-[#ff0000]">{getResourceIcon(res.type)}</div>
+                            <span className="text-[11px] font-black text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">{res.title}</span>
+                          </div>
+                          {isExternal ? (
+                            <ExternalLink size={16} className="text-gray-800 group-hover:text-[#ff0000] transition-colors" />
+                          ) : (
+                            <Download size={16} className="text-gray-800 group-hover:text-[#ff0000] transition-colors" />
+                          )}
+                        </a>
+                      );
+                    })}
+                  </div>
+
+                  <div className="text-center">
+                    <p className="text-xs text-gray-600 mb-6 font-bold uppercase tracking-widest italic">Accédez au dossier partagé pour récupérer vos outils</p>
                     <a 
-                      key={i} 
-                      href={res.url || '#'} 
-                      download={(!isExternal && res.url) ? res.title : undefined}
+                      href={DRIVE_FOLDER}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-6 bg-black/50 border border-white/5 rounded-[1.5rem] hover:border-[#ff0000]/50 transition-all group no-underline w-full max-w-md"
+                      className="px-12 py-6 bg-[#ff0000] text-white rounded-full font-black text-sm uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,0,0,0.5)] inline-flex items-center gap-3 no-underline"
                     >
-                      <div className="flex items-center gap-4">
-                        <div className="text-[#ff0000]">{getResourceIcon(res.type)}</div>
-                        <span className="text-[11px] font-black text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">{res.title}</span>
-                      </div>
-                      {isExternal ? (
-                        <ExternalLink size={16} className="text-gray-800 group-hover:text-[#ff0000] transition-colors" />
-                      ) : (
-                        <Download size={16} className="text-gray-800 group-hover:text-[#ff0000] transition-colors" />
-                      )}
+                      Accéder au Hub Drive <ExternalLink size={20} />
                     </a>
-                  );
-                })}
+                  </div>
+                </div>
               </div>
 
-              <div className="text-center">
-                <p className="text-xs text-gray-600 mb-6 font-bold uppercase tracking-widest italic">Accédez au dossier partagé pour récupérer vos outils</p>
-                <a 
-                  href={DRIVE_FOLDER}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-12 py-6 bg-[#ff0000] text-white rounded-full font-black text-sm uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,0,0,0.5)] inline-flex items-center gap-3 no-underline"
-                >
-                  Accéder au Hub Drive <ExternalLink size={20} />
-                </a>
+              <div className="mt-32 flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-16 gap-8">
+                 <div className="flex items-center gap-6">
+                    <a href={PULSENOIR_LINKS.group} target="_blank" className="text-gray-600 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors italic flex items-center gap-2">
+                      Poser une question au Clan <ExternalLink size={14} />
+                    </a>
+                 </div>
+                 <button className="px-12 py-6 bg-white text-black rounded-full font-black text-sm uppercase tracking-widest transition-all hover:bg-[#ff0000] hover:text-white hover:scale-105 active:scale-95 shadow-2xl flex items-center gap-4 group">
+                   Module Terminé <CheckCircle size={20} className="group-hover:animate-bounce" />
+                 </button>
               </div>
-            </div>
-          </div>
-
-          <div className="mt-32 flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-16 gap-8">
-             <div className="flex items-center gap-6">
-                <a href={PULSENOIR_LINKS.group} target="_blank" className="text-gray-600 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors italic flex items-center gap-2">
-                  Poser une question au Clan <ExternalLink size={14} />
-                </a>
-             </div>
-             <button className="px-12 py-6 bg-white text-black rounded-full font-black text-sm uppercase tracking-widest transition-all hover:bg-[#ff0000] hover:text-white hover:scale-105 active:scale-95 shadow-2xl flex items-center gap-4 group">
-               Module Terminé <CheckCircle size={20} className="group-hover:animate-bounce" />
-             </button>
-          </div>
+            </>
+          )}
         </div>
       </main>
     </div>
