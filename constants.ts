@@ -18,7 +18,15 @@ import {
   Shield,
   Search,
   Crosshair,
-  Repeat
+  Repeat,
+  PenTool,
+  Brain,
+  Layout,
+  Palette,
+  Type,
+  Video,
+  Briefcase,
+  Rocket
 } from 'lucide-react';
 import { ModuleContent } from './types';
 
@@ -27,69 +35,40 @@ export const INSTRUCTOR = {
   role: "Fondateur de Pulsenoir - Visibilité Noir & Thriller",
   photo: "https://raw.githubusercontent.com/benspy2209/propulseurs/b432764d6f2f27df0da85a57446329dd5abb426a/public/benjamin.jpg",
   hoverPhoto: "https://raw.githubusercontent.com/benspy2209/propulseurs/b9ec43f7844ebe6793b9d56d94145fcee25e39db/public/pulsemanprofilf.jpg",
-  quote: "« Aider les auteurs de noir à ne pas laisser leurs livres disparaître dans le noir des plateformes. »",
+  quote: "« Aider les auteurs de noir à ne pas laisser leurs livres disparaître dans l'ombre des plateformes. »",
   bioBlocks: [
-    "En 2025, j’ai vu la même scène se répéter encore et encore : des auteur·rices de polar, thriller, roman noir qui ont travaillé dur sur leur livre… et qui se retrouvent complètement perdu·es au moment de le faire connaître. Pas de méthode, pas de plan, un peu de posts “au hasard”, quelques pubs, beaucoup de frustration, et trop souvent cette phrase : “Mon livre ne se vend pas.” C’est pour ça que j’ai créé Pulsenoir et cette formation : pour donner aux auteurs de noir un plan concret, adapté à leur genre, et pas un énième bla-bla marketing généraliste.",
-    "Il y a 35 ans que je suis un lecteur passionné de noir, de polar, de thriller. Et 20 ans que je travaille dans le web : développement, marketing digital, création de sites, optimisation de présence en ligne. J’ai d’abord lancé Bibliopulse, une bibliothèque en ligne pour chercher des livres, suivre ses lectures et écrire des critiques. Puis est né Pulse Noir : un groupe Facebook dédié au polar/thriller, avec aujourd’hui plus de 1500 membres dont environ 350 auteur·rices, où les gens partagent leurs lectures et mettent en avant leurs livres.",
-    "En parallèle, des auteur·rices m’ont contacté : premier ou deuxième livre, peu ou pas de ventes, la sensation de parler dans le vide. J’ai commencé à les aider : création de sites, conseils sur leurs fiches Amazon, plans de promo adaptés au polar/thriller. Avec mon double profil de développeur et de marketeur web, j’ai conçu des outils et des méthodes dédiés à ce milieu très spécifique : le noir, le polar, le thriller. J’ai aussi créé studio.pulsenoir.be, un laboratoire pour écrire et structurer ses romans. La méthode « AUTEUR INVISIBLE » est la synthèse de tout ça : 35 ans de lecture passionnée, 20 ans de web, une obsession simple – que ton livre trouve vraiment ses lecteurs, et une attention constante à ce que vous vivez et partagez chaque jour dans la communauté."
+    "En 2026, j’ai vu la même scène se répététer : des auteur·rices de polar, thriller, roman noir qui ont travaillé dur on leur livre… et qui se retrouvent bloqué·es au moment de le faire connaître. Pas de méthode, pas de plan, et trop souvent cette phrase : “Mon livre ne se vend pas.” C’est pour cela que j’ai créé Pulsenoir et cette Intervention : pour vous donner un plan concret, adapté à votre genre, loin des généralités marketing habituelles.",
+    "Lecteur passionné de noir depuis 35 ans et expert du web depuis 20 ans, j'ai conçu des méthodes dédiées à ce milieu très spécifique. La méthode « AUTEUR INVISIBLE » est la synthèse de cette expertise : une obsession simple – que votre livre trouve ses lecteurs, en s'appuyant on les mécaniques réelles de la communauté Noir & Thriller."
   ]
 };
 
 export const INSTRUCTOR_STATS = [
   { value: "35 ans", label: "LECTEUR PASSIONNÉ DE NOIR, POLAR & THRILLER" },
-  { value: "20 ans", label: "D'EXPERTISE WEB, DEV & MARKETING DIGITAL" },
-  { value: "1500+", label: "MEMBRES DU GROUPE PULSE NOIR (FACEBOOK)" },
+  { value: "20 ans", label: "D'EXPERTISE WEB, DEV & STRATÉGIE DIGITALE" },
+  { value: "1500+", label: "MEMBRES DU CLAN PULSE NOIR (FACEBOOK)" },
   { value: "350", label: "AUTEUR·RICES PRÉSENTS DANS LE CLAN" }
 ];
 
 export const FAQ_ITEMS = [
   {
-    q: "Cette formation est-elle vraiment réservée au Polar et au Thriller ?",
-    a: "Oui. Chaque exemple, chaque mot-clé et chaque stratégie est ici injectée de l'ADN 'Noir'. On ne vend pas un thriller comme on vend de la romance ou du développement personnel. C’est cette spécialisation qui fait ta force."
+    q: "Cette opération est-elle vraiment réservée au Polar et au Thriller ?",
+    a: "Oui. Chaque instrument, chaque mot-clé et chaque module de relance est injecté de l'ADN 'Noir'. On ne relance pas un thriller comme on vend de la romance. C’est cette spécialisation qui fait l'efficacité de l'Intervention."
   },
   {
-    q: "Je n’ai pas encore fini mon livre, est-ce trop tôt ?",
-    a: "Au contraire. Le Module 1 (Ancre) et le Module 2 (Scanner) sont cruciaux à mettre en place pendant que tu termines ton manuscrit. Cela te permet d’avoir une communauté qui t'attend au tournant le jour de ta sortie."
+    q: "Mon livre est déjà publié longtemps, est-ce utile ?",
+    a: "C’est l'objectif même de l'Intervention AUTEUR INVISIBLE. Nous diagnostiquons ce qui bloque on votre livre existant, nous réparons la vitrine et nous orchestrons une séquence de relance stratégique."
   },
   {
-    q: "Je suis publié en Maison d'Édition, est-ce utile pour moi ?",
-    a: "Absolument. Aujourd'hui, l'auteur doit être le premier moteur de sa visibilité. La méthode t'apprend à bâtir ton propre 'Clan' de lecteurs et ton aura numérique, des actifs qui t'appartiennent peu importe ton éditeur."
+    q: "Je n'aime pas la technique, vais-je m'en sortir ?",
+    a: "L'Intervention évite tout jargon inutile. Tout est traduit en actions de correction concrètes : des instruments de diagnostic, des modèles de messages et des fichiers de suivi prêts à l'emploi."
   },
   {
-    q: "Je déteste le marketing et la technique, vais-je m'en sortir ?",
-    a: "C’est précisément pour ça que le 'Plan de Guerre' existe. J'évite le jargon. Tout est traduit pour toi en actions concrètes : des checklists, des modèles de messages à copier-coller et des fichiers pré-remplis."
+    q: "Combien de temps dois-je y consacrer ?",
+    a: "Vous choisissez votre intensité : de 15 min par jour pour les corrections légères à une demi-journée par semaine pour une relance complète. L'important est d'appliquer les corrections méthodiquement."
   },
   {
-    q: "Combien de temps dois-je consacrer à la formation chaque semaine ?",
-    a: "Tu peux choisir ton mode : 'Léger' (15 min/jour), 'Efficace' (1h/jour) ou 'Commando' (une demi-journée par semaine). L'important n'est pas l'intensité, mais ta régularité."
-  },
-  {
-    q: "Est-ce que la formation inclut de la publicité payante (Amazon Ads) ?",
-    a: "Oui, le Module 5 traite de la 'Chirurgie de Conversion'. Tu apprendras à maîtriser l'algorithme et à lancer des publicités rentables sans jeter ton argent par les fenêtres."
-  },
-  {
-    q: "Qu’est-ce que le 'Clan des 50' dont tu parles ?",
-    a: "C’est ta force de frappe. Je t'enseigne comment recruter tes 50 premiers lecteurs 'soldats' pour rédiger tes premiers avis Amazon et propulser ton livre dès le jour J."
-  },
-  {
-    q: "Est-ce que je peux te contacter si j'ai une question ?",
-    a: "Absolument. Ton accès inclut l'entrée dans le Groupe Privé du Clan où je réponds personnellement à tes questions. Je ne te laisse pas seul face à ton écran, je suis là pour t'accompagner."
-  },
-  {
-    q: "Le contenu est-il disponible immédiatement ?",
-    a: "Dès la validation de ton inscription, 100% des modules et des ressources (les 20+ outils, checklists et templates) sont débloqués immédiatement pour toi."
-  },
-  {
-    q: "Qu'en est-il des mises à jour ? Le web change vite.",
-    a: "Toutes les futures mises à jour sont incluses gratuitement pour toi. Si Amazon change ses règles ou si une nouvelle tactique apparaît, je l'ajouterai à ton espace membre."
-  },
-  {
-    q: "Et si je réalise que la formation ne me convient pas ?",
-    a: "Tu bénéficies d'une garantie 'Satisfait ou Remboursé' de 10 jours. Si après avoir exploré les premiers modules tu penses que ce n'est pas pour toi, un simple mail suffit."
-  },
-  {
-    q: "Puis-je payer en plusieurs fois ?",
-    a: "Oui. Tu as le choix entre un paiement unique ou un règlement fractionné en 2 ou 3 fois via notre plateforme sécurisée Stripe."
+    q: "Et si je réalise que l'opération ne me convient pas ?",
+    a: "Vous bénéficiez d'une garantie de 10 jours. Si après avoir exploré les premiers modules de diagnostic vous estimez que l'approche ne vous correspond pas, un simple mail suffit."
   }
 ];
 
@@ -106,400 +85,551 @@ export const PULSENOIR_LINKS = {
   leadMagnetAutoedition: "https://drive.google.com/file/d/1GUz-z2ENCpF_ZdSTbXLNX2UFQyZtyqkM/view?usp=drive_link"
 };
 
+export const AUTHOR_TOOLBOX = [
+  {
+    id: "writing",
+    title: "ÉCRITURE & STRUCTURATION",
+    icon: PenTool,
+    items: [
+      { name: "studio.pulsenoir.be", url: "https://studio.pulsenoir.be", internal: true },
+      { name: "Scrivener", url: "https://www.literatureandlatte.com/scrivener/overview" },
+      { name: "Google Docs", url: "https://docs.google.com" },
+      { name: "Notion", url: "https://www.notion.so" },
+      { name: "Ulysses", url: "https://ulysses.app" },
+      { name: "LibreOffice Writer", url: "https://www.libreoffice.org" },
+      { name: "Manuskript", url: "https://www.theologeek.ch/manuskript" },
+      { name: "FocusWriter", url: "https://gottcode.org/focuswriter" },
+      { name: "Obsidian", url: "https://obsidian.md" },
+      { name: "LivingWriter", url: "https://livingwriter.com" }
+    ]
+  },
+  {
+    id: "correction",
+    title: "CORRECTION & STYLE",
+    icon: Brain,
+    items: [
+      { name: "Antidote", url: "https://www.antidote.info" },
+      { name: "LanguageTool", url: "https://languagetool.org" },
+      { name: "ProWritingAid", url: "https://prowritingaid.com" },
+      { name: "Grammarly", url: "https://www.grammarly.com" },
+      { name: "MerciApp", url: "https://www.merci-app.com" },
+      { name: "Scribens", url: "https://www.scribens.fr" }
+    ]
+  },
+  {
+    id: "layout",
+    title: "MISE EN PAGE & EXPORT",
+    icon: Layout,
+    items: [
+      { name: "Reedsy Book Editor", url: "https://reedsy.com/write-a-book" },
+      { name: "Vellum", url: "https://vellum.pub" },
+      { name: "Adobe InDesign", url: "https://www.adobe.com/products/indesign.html" },
+      { name: "Calibre", url: "https://calibre-ebook.com" },
+      { name: "Atticus", url: "https://www.atticus.io" },
+      { name: "Papyrus Author", url: "https://www.papyrusauthor.com" }
+    ]
+  },
+  {
+    id: "design",
+    title: "COUVERTURE & DESIGN",
+    icon: Palette,
+    items: [
+      { name: "Canva", url: "https://www.canva.com" },
+      { name: "Adobe Photoshop", url: "https://www.adobe.com/products/photoshop.html" },
+      { name: "Affinity Designer", url: "https://affinity.serif.com/designer" },
+      { name: "GIMP", url: "https://www.gimp.org" },
+      { name: "Midjourney", url: "https://www.midjourney.com" },
+      { name: "Leonardo AI", url: "https://leonardo.ai" },
+      { name: "Stable Diffusion", url: "https://stability.ai" },
+      { name: "BookBrush", url: "https://bookbrush.com" }
+    ]
+  },
+  {
+    id: "copywriting",
+    title: "4E & COPYWRITING",
+    icon: Type,
+    items: [
+      { name: "ChatGPT", url: "https://chat.openai.com" },
+      { name: "Jasper", url: "https://www.jasper.ai" },
+      { name: "Writesonic", url: "https://writesonic.com" },
+      { name: "Copy.ai", url: "https://www.copy.ai" },
+      { name: "Anyword", url: "https://anyword.com" }
+    ]
+  },
+  {
+    id: "video",
+    title: "PROMOTION & VIDÉO",
+    icon: Video,
+    items: [
+      { name: "CapCut", url: "https://www.capcut.com" },
+      { name: "Canva Video", url: "https://www.capcanva.com/video-editor" },
+      { name: "InShot", url: "https://inshot.com" },
+      { name: "Adobe Premiere Pro", url: "https://www.adobe.com/products/premiere.html" },
+      { name: "Descript", url: "https://www.descript.com" }
+    ]
+  },
+  {
+    id: "productivity",
+    title: "ORGANISATION",
+    icon: Briefcase,
+    items: [
+      { name: "Trello", url: "https://trello.com" },
+      { name: "Todoist", url: "https://todoist.com" },
+      { name: "ClickUp", url: "https://clickup.com" },
+      { name: "Asana", url: "https://asana.com" },
+      { name: "Evernote", url: "https://evernote.com" }
+    ]
+  },
+  {
+    id: "distribution",
+    title: "PUBLICATION",
+    icon: Rocket,
+    items: [
+      { name: "Amazon KDP", url: "https://kdp.amazon.com" },
+      { name: "Draft2Digital", url: "https://www.draft2digital.com" },
+      { name: "Kobo Writing Life", url: "https://www.kobo.com/writinglife" },
+      { name: "IngramSpark", url: "https://www.ingramspark.com" },
+      { name: "Lulu", url: "https://www.lulu.com" }
+    ]
+  }
+];
+
 export const COURSE_MODULES: ModuleContent[] = [
   {
     id: 'fondations',
-    title: "Module 1 : L'Ancre de Sécurité",
-    subtitle: "Briser l'anonymat & Rassurer le lecteur",
-    description: "Cessez de plaire à tout le monde. Devenez une 'valeur sûre' pour votre niche de lecteurs de Noir.",
+    title: "Module 1 — Diagnostic de l’Invisibilité",
+    subtitle: "Identifier précisément ce qui empêche votre polar déjà publié de se vendre",
+    description: "Transformez le flou en diagnostic clair pour comprendre pourquoi votre livre ne trouve pas son public.",
     duration: "1h 45",
     bullets: [
-      "La Pyramide de Visibilité : Bâtir son écosystème",
-      "Le 'Lecteur Avatar' : Profilage psychologique profond",
-      "L'Audit de Niche : Polar, Thriller ou Noir ?",
-      "Stratégie de Rassurance : Le mur de crédibilité"
+      "Repérer les ruptures de signal technique et vitrine",
+      "Identifier votre lecteur réel et sa psychologie",
+      "Vérifier la lisibilité de votre positionnement",
+      "Constater l’état réel de votre crédibilité visible"
     ],
     icon: Target,
     color: "red",
-    imageKeyword: "strategy",
-    longDescription: "Ce module est la pierre angulaire de ta carrière d’auteur de noir. Il pose les bases de ton écosystème : ce que tu promets à tes lecteurs, comment tu te positionnes pour ne plus être perçu comme un 'risque' par le lecteur méfiant. À la fin, tu auras une vision claire de ton ADN d’auteur et des briques à mettre en place.",
+    imageKeyword: "diagnostic",
+    longDescription: "Votre polar est publié. Vous avez investi du temps, de l’énergie, parfois de l’argent. Pourtant, il reste invisible : peu ou pas de ventes, peu ou pas de signaux qui remontent. Ce module a un objectif unique : transformer ce flou en diagnostic clair. Vous allez regarder votre livre non plus comme son auteur, mais comme un analyste qui cherche où le signal se casse entre votre texte et le lecteur. Ce module n’est pas là pour rassurer, il est là pour mesurer. Vous allez passer en revue, point par point, la présence de votre livre sur le marché : disponibilité technique, qualité de la vitrine, clarté du positionnement, cohérence du prix, quantité et qualité des preuves sociales, mais aussi adéquation avec votre lecteur réel. À la fin, vous surez pourquoi votre livre est invisible aujourd’hui et où intervenir en priorité dans les modules suivants.",
     steps: [
-      "Lire la partie « Construire progressivement son écosystème ».",
-      "Faire l’exercice « Définir sa Promesse de Noir ».",
-      "Télécharger et remplir les 4 outils du Pack Ressources du module."
+      "Préparez l’accès à vos fiches produits (Amazon, Kobo, Fnac, autres plateformes).",
+      "Téléchargez et ouvrez l’Audit de l’Invisibilité (Ressource 1).",
+      "Téléchargez et ouvrez le Profilage du Lecteur Réel (Ressource 2).",
+      "Téléchargez et ouvrez le Positionnement de Niche : Polar, Thriller ou Noir ? (Ressource 3).",
+      "Téléchargez et ouvrez la Stratégie de Rassurance – Mur de crédibilité (Ressource 4).",
+      "Procédez au scan clinique sans complaisance : d’abord l’état objectif de votre livre, ensuite votre lecteur réel, puis votre niche, enfin la solidité de vos preuves de crédibilité."
     ],
-    transitionTitle: "Mettre en pratique avec les ressources du module",
-    transitionText: "Une fois que tu as lu cette page et répondu à l’exercice sur ta promesse de Noir, passe aux ressources ci‑dessous. Elles te servent à concrétiser ton ADN d’auteur.",
-    transitionButtonText: "Descendre vers les ressources",
+    transitionTitle: "Établissez votre diagnostic",
+    transitionText: "Ce module pose le diagnostic. Tant qu’il n’est pas fait, toutes les idées de relance ou de pub restent des paris au hasard.",
+    transitionButtonText: "Accéder aux instruments",
     chapters: [
       {
-        title: "Construire progressivement son écosystème",
-        type: "text",
-        expectedResult: "À la fin de cette section, tu sais ce que tu cherches à construire : un écosystème d’auteur de noir, pas seulement un livre isolé.",
-        content: [
-          "Pour un nouvel auteur, le plus efficace est de construire progressivement une présence cohérente. Cela commence par le choix d'une niche ultra-précise. Ne cherchez pas à plaire à tout le monde, cherchez à devenir indispensable pour quelques-uns.",
-          "Plutôt que de viser la masse anonyme, l'objectif est de bâtir une 'ancre de sécurité' brique par brique. Chaque interaction, chaque post et chaque mail doit renforcer votre image de spécialiste du noir.",
-          "La Loi des 1000 Fans : Pourquoi vous n'avez pas besoin de millions de vues, mais de 1000 lecteurs ultra-engagés qui achètent tout ce que vous produisez."
-        ]
-      },
-      {
-        title: "La Stratégie de l'Infiltration",
+        title: "Ce que vous allez corriger dans ce module",
         type: "key-concept",
+        expectedResult: "Une compréhension chirurgicale des freins de votre livre.",
         content: [
-          "L'erreur fatale est de hurler 'ACHETEZ MON LIVRE' dans le vide. Le professionnel, lui, s'infiltre stratégiquement. Il se rend visible là où ses lecteurs dorment déjà : dans les groupes de fans, les blogs spécialisés et les communautés comme Bibliopulse.",
-          "On ne construit pas une audience en un jour, mais on peut construire une base solide en 90 jours avec de la méthode."
+          "À la fin du Module 1, vous serez capable de :",
+          "• Repérer les ruptures de signal : problèmes techniques, fiches incomplètes, vitrine peu claire, mauvais choix de catégories ou de prix.",
+          "• Identifier votre lecteur réel et vérifier si votre livre lui parle vraiment dans la forme où il est présenté aujourd’hui.",
+          "• Vérifier si votre positionnement de niche (polar, thriller, noir et sous-genre) est livible pour un lecteur qui ne vous connaît pas.",
+          "• Constater l’état réel de votre crédibilité visible : avis, chroniques, éléments de preuve, ou au contraire “mur de silence”, puis structurer un mur de crédibilité à afficher.",
+          "Ce module pose le diagnostic. Tant qu’il n’est pas fait, toutes les idées de relance ou de pub restent des paris au hasard."
         ]
       },
       {
-        title: "Définir sa Promesse de Noir",
+        title: "Module pratique – Utilisation des ressources",
         type: "exercise",
+        expectedResult: "Diagnostic complet et identification des 3 zones rouges prioritaires.",
         guidedQuestions: [
-          "Quel type de frisson veux-tu provoquer (malaise psychologique, tension d’enquête, horreur, noir social…) ?",
-          "Quels sont 3 auteurs de noir/thriller dont la promesse te parle le plus, et pourquoi ?",
-          "Si un lecteur devait résumer ton univers en une phrase après plusieurs livres, quelle phrase aimerais-tu qu’il dise ?"
+          "Quels sont les trois points de rupture techniques immédiats qui ressortent de l’audit ?",
+          "Qui est exactement votre lecteur réel, et votre vitrine lui parle-t-elle vraiment ?",
+          "Votre genre et votre sous-niche sont-ils livibles pour un lecteur de polar/thriller ?",
+          "De quelles preuves de crédibilité visibles dispose un lecteur qui arrive on votre fiche aujourd’hui, et que manque-t-ils à votre mur de crédibilité ?",
+          "Quel est votre score final d’invisibilité et quelles sont vos trois zones rouges ?"
         ],
         content: [
-          "Quel est le 'frisson' spécifique que vous apportez ? Est-ce le malaise psychologique ? L'adrénaline de la traque ? Le réalisme brut du polar social ?",
-          "Note tes réponses dans tes notes ET dans les ressources du Pack Bonus."
+          "Pour travailler ce module, vous disposez de quatre documents téléchargeables :",
+          "• Ressource 1 – Audit de l’Invisibilité : Scan complet de la situation : checklists, tableaux, score d’invisibilité et trois zones rouges prioritaires.",
+          "• Ressource 2 – Profilage du Lecteur Réel : Fiche “acheteur instinctif” : portrait, habitudes de lecture polar/thriller, attentes, peurs et déclencheurs d’achat.",
+          "• Ressource 3 – Positionnement de Niche : Polar, Thriller ou Noir ? : Fiche de positionnement : genre principal, sous-niche précise, auteurs comparables et cohérences / incohérences avec ta vitrine actuelle.",
+          "• Ressource 4 – Stratégie de Rassurance : Construire votre mur de crédibilité : Inventaire de toutes vos preuves, sélection des avis forts, extraction de citations et assemblage d’un mur de crédibilité prêt à être affiché on vos fiches et bios.",
+          "Prenez ces PDF comme un examen clinique : répondez honnêtement, sans chercher à vous justifier. Le but n’est pas de juger votre travail d’auteur, mais d’identifier les points de rupture entre un livre écrit… et un livre visible, rassurant et crédible pour le bon lecteur, dans la bonne niche."
+        ]
+      },
+      {
+        title: "Le Verdict Final",
+        type: "text",
+        expectedResult: "Base stratégique pour les modules 2 à 6.",
+        content: [
+          "Quand ce module est terminé, vous devez pouvoir formuler en une phrase :",
+          "“Mon livre est invisible principalement parce que ___, ___ et ___.”",
+          "Cette phrase, appuyée par vos quatre ressources, devient le point de départ de toutes les corrections à venir : vitrine, crédibilité, relance, algorithmes et trajectoire long terme."
         ]
       }
     ],
     resources: [
-      { title: "Blueprint : Écosystème Auteur 2026", type: "pdf", url: DRIVE_FOLDER },
-      { title: "Calculateur : Rentabilité (Ventes vs Pubs)", type: "sheet", url: DRIVE_FOLDER },
-      { title: "Template : Fiche Avatar Lecteur Psychologique", type: "template", url: DRIVE_FOLDER },
-      { title: "Checklist : Les 10 Piliers de l'Auteur Pro", type: "checklist", url: DRIVE_FOLDER }
+      { title: "Ressource 1 — Audit de l’Invisibilité", type: "pdf", url: DRIVE_FOLDER },
+      { title: "Ressource 2 — Profilage du Lecteur Réel", type: "template", url: DRIVE_FOLDER },
+      { title: "Ressource 3 — Positionnement de Niche : Polar, Thriller ou Noir ?", type: "template", url: DRIVE_FOLDER },
+      { title: "Ressource 4 — Stratégie de Rassurance : Votre Mur de Crédibilité", type: "checklist", url: DRIVE_FOLDER }
+    ]
+  },
+  {
+    id: 'vitrine',
+    title: "Module 2 — Réparer la vitrine du livre",
+    subtitle: "Intervention on cover, titre et 4e",
+    description: "Correction technique de votre vitrine pour lever les doutes et déclencher enfin le clic de l'acheteur.",
+    duration: "1h 15",
+    bullets: [
+      "Psychologie du Clic : Réparer la 4ème de couv",
+      "Codes Visuels : Chasser les signaux 'Amateurs'",
+      "Hook Haute-Tension : Captiver dès la première ligne de votre 4e de couverture et de votre page produit.",
+      "Signal d'Achat : Convertir le lecteur méfiant"
+    ],
+    icon: BookOpen,
+    color: "red",
+    imageKeyword: "repair",
+    longDescription: "Vous allez aborder votre livre comme un produit en rayon. Plus de “j’aime / j’aime pas”, mais une seule question : est-ce que cette vitrine donne envie à mon lecteur réel, dans ma niche, de risquer son temps et son argent ? À la fin du module, vous aurez une 4e de couverture resserrée, une première impression plus pro, et une vitrine cohérente avec le diagnostic du Module 1. Votre texte existe déjà. Ce qui bloque maintenant, c’est la vitrine : ce que voit le lecteur avant même de lire une ligne. Couverture, titre, sous-titre, 4e de couverture et premières lignes de la page produit décident en quelques secondes si un lecteur clic… ou passe au suivant. Ce module vise une chose : corriger techniquement cette vitrine pour lever les doutes et déclencher enfin le clic de l’acheteur méfiant.",
+    steps: [
+      "Utilisez la Ressource 2 pour passer votre couverture au crible des codes visuels.",
+      "Utilisez la Ressource 1 pour transformer votre 4e actuelle en outil de décision.",
+      "Utilisez la Ressource 3 pour travailler spécifiquement votre première ligne.",
+      "Utilisez la Ressource 4 pour vérifier l'ensemble de votre fiche produit."
+    ],
+    transitionTitle: "Restaurez votre vitrine",
+    transitionText: "Ce module intervient uniquement on l’enveloppe visible de votre livre, là où se joue la majorité des décisions d’achat.",
+    transitionButtonText: "Accéder aux instruments",
+    chapters: [
+      {
+        title: "Ce que vous allez corriger dans ce module",
+        type: "key-concept",
+        expectedResult: "Une vitrine qui convertit le lecteur méfiant.",
+        content: [
+          "À la fin du Module 2, vous serez capable de :",
+          "• Voir votre 4e de couverture comme un outil de décision, et pas comme un résumé littéraire, puis la réécrire pour qu’elle réponde aux attentes et déclencheurs d’achat de votre lecteur réel.",
+          "• Détecter et éliminer les signaux “amateurs” dans votre couverture (composition, typographie, codes de genre) qui font fuir un lecteur de polar/thriller avant même qu’il lise le titre.",
+          "• Créer un hook haute-tension en première ligne de 4e / de description, qui capte l’attention en moins de trois secondes.",
+          "• Ajuster les éléments-clés de votre fiche (titre, sous-titre, mentions, citations) pour envoyer un signal d’achat clair : “ce livre est pour toi, c’est un pari raisonnable”.",
+          "Ce module ne touche pas à votre texte intérieur. Il intervient uniquement on l’enveloppe visible de votre livre."
+        ]
+      },
+      {
+        title: "Module pratique – Les instruments d’intervention",
+        type: "text",
+        expectedResult: "Maîtrise des instruments de conversion visuelle.",
+        content: [
+          "Pour travailler ce module, vous utiliserez quatre instruments :",
+          "• Ressource 1 — Psychologie du Clic – Réparer votre 4e de couverture : Vous transformez votre 4e actuelle en un texte orienté lecteur : promesse claire, enjeu livible, tension, éléments de crédibilité, au lieu d’un résumé flou ou littéraire.",
+          "• Ressource 2 — Codes Visuels Polar/Thriller – Chasser les signaux “amateurs” : Vous passez votre couverture au crible des codes de votre niche (polar, thriller, noir) afin d’identifier ce qui fait “autoédition bricolée” et ce qui, au contraire, rassure immédiatement.",
+          "• Ressource 3 — Hook Haute-Tension – La première ligne qui arrête le lecteur : Vous travaillez spécifiquement la première phrase de votre 4e et de votre page produit pour qu’elle arrête le regard, crée une question, et pousse à lire le reste.",
+          "• Ressource 4 — Signal d’Achat – Vérifier que ta vitrine donne envie de cliquer : Vous vérifiez que l’ensemble de la fiche (titre, sous-titre, 4e, citations, éléments de rassurance issus du Module 1) fonctionne comme un ensemble cohérent qui donne envie de cliquer on “Acheter”."
+        ]
+      },
+      {
+        title: "Questions de diagnostic pour valider le module",
+        type: "exercise",
+        expectedResult: "Validation finale de la vitrine réparée.",
+        guidedQuestions: [
+          "Un lecteur qui ne vous connaît pas peut-il dire en une phrase quel type de polar/thriller vous proposez, rien qu’en voyant la couverture et la première ligne de la 4e ?",
+          "Votre couverture ressemble-t-elle à ce qu’on trouve dans les rayons pro de votre sous-niche, ou continue-t-elle à envoyer des signaux “premier essai amateur” ?",
+          "Votre 4e de couverture répond-elle aux attentes et déclencheurs d’achat de votre lecteur réel, tels que définis dans le Module 1 ?",
+          "Si vous comparez votre fiche à celles de 3 livres concurrents, auriez-vous envie de cliquer on la vôtre ?"
+        ],
+        content: [
+          "Quand ces questions appellent enfin des “oui” honnêtes, vous pouvez considérer que la vitrine de votre polar a été réparée et qu’elle est prête pour la relance et la réactivation des algorithmes."
+        ]
+      }
+    ],
+    resources: [
+      { title: "Ressource 1 — Psychologie du Clic – Réparer votre 4e de couverture", type: "template", url: DRIVE_FOLDER },
+      { title: "Ressource 2 — Codes Visuels Polar/Thriller – Chasser les signaux “amateurs”", type: "template", url: DRIVE_FOLDER },
+      { title: "Ressource 3 — Hook Haute-Tension – La première ligne qui arrête le lecteur", type: "pdf", url: DRIVE_FOLDER },
+      { title: "Ressource 4 — Signal d’Achat – Vérifier que ta vitrine donne envie de cliquer", type: "checklist", url: DRIVE_FOLDER }
     ]
   },
   {
     id: 'identite',
-    title: "Module 2 : Le Scanner de Crédibilité",
-    subtitle: "Nettoyer les signaux amateurs",
-    description: "Votre aura numérique doit envoyer des signaux de 'Valeur Sûre' pour lever les doutes des lecteurs méfiants.",
-    duration: "1h 15",
+    title: "Module 3 — Restaurer votre crédibilité d’auteur",
+    subtitle: "Nettoyage et repositionnement de présence",
+    description: "Reprenez le contrôle de votre image numérique pour devenir lisible et crédible aux yeux du Clan.",
+    duration: "1h 50",
     bullets: [
-      "Psychologie de la Bio : Convertir le méfiant en 3s",
-      "Le Hub Central : Votre quartier général professionnel",
-      "L'Audit de Présence : Chasser les signaux 'Amateur'",
-      "Storytelling Noir : Captiver sans s'exposer"
+      "Psychologie de la Bio : Convertir le visiteur en 3s",
+      "Le Hub Auteur : Votre quartier général professionnel",
+      "Infiltration Stratégique : Être là où le Clan palpite",
+      "Aura Numérique : Restaurer la confiance"
     ],
     icon: UserCircle,
     color: "red",
-    imageKeyword: "identity",
-    longDescription: "Ton identité numérique est ta vitrine 24h/24. Ce module t’aide à passer tes profils au scanner pour supprimer tout ce qui fait 'amateur' et refroidit le lecteur. À la fin, tu auras une bio qui accroche, une image claire, et des profils alignés avec ton polar/thriller.",
+    imageKeyword: "authority",
+    longDescription: "Votre livre n’est pas seulement jugé on sa couverture. Il est aussi jugé on vous : votre nom, votre bio, votre page auteur, votre manière d’apparaître (ou non) dans l’écosystème noir/polar/thriller. Si votre présence numérique est floue, absente ou “amateur”, le lecteur et les algorithmes en déduisent une chose simple : pari risqué. Ce module a pour but de réparer cette image pour que votre profil d’auteur cesse de saboter vos efforts de relance. Après avoir diagnostiqué l’invisibilité (Module 1) et réparé la vitrine du livre (Module 2), vous allez maintenant vous occuper de la vitrine de l’auteur : bio, hub central, lieux où vous apparaissez, signaux de sérieux et de constance. L’objectif n’est pas de devenir une “marque personnelle” abstraite, mais de paraître livible, crédible et cohérent pour un lecteur qui découvre votre nom pour la première fois.",
     steps: [
-      "Lire la section « L’anatomie d’une bio qui tue ».",
-      "Faire l’audit rapide de tes profils actifs.",
-      "Utiliser les outils du Pack Ressources pour créer/mettre à jour ta bio, tes bannières et ton setup newsletter."
+      "Récupérez ce que vous avez déjà : bio(s), pages auteur, profils réseaux, site ou blog, pages on plateformes (Amazon, Kobo, Fnac, Babelio…).",
+      "Clarifiez qui vous êtes pour le lecteur polar/thriller à partir de votre diagnostic et de votre niche (Modules 1 et 2).",
+      "Reconcevez une bio courte et une bio longue orientées “rassurance” lecteur.",
+      "Posez ou ajustez votre Hub Auteur : un point central où tout converge (page auteur, mini-site, page dédiée).",
+      "Décidez où vous devez être présent dans le “Clan” (lecteurs, groupes, médias, événements) et ce que vous y montrez."
     ],
-    transitionTitle: "Mettre en pratique avec les ressources du module",
-    transitionText: "Une fois que tu as lu cette page et répondu à l’audit et à l’exercice sur ta bio, passe aux ressources ci‑dessous.",
-    transitionButtonText: "Descendre vers les ressources",
+    transitionTitle: "Restaurez votre crédibilité",
+    transitionText: "Votre livre ne sera plus porté par une vitrine solide (Module 2) posée on une identité floue, mais par un ensemble cohérent : auteur livible, livre livible, niche livible.",
+    transitionButtonText: "Accéder aux instruments",
     chapters: [
       {
-        title: "L’anatomie d’une bio qui tue",
-        type: "text",
-        expectedResult: "À la fin de cette section, tu sais exactement comment construire une bio qui donne envie de te suivre et de découvrir tes livres.",
-        content: [
-          "Structure de conversion : Accroche Choc + Preuve Sociale/Univers + Appel à l’action clair.",
-          "Pourquoi votre photo de profil doit être cohérente avec votre genre.",
-          "Chaque caractère compte : sur les réseaux sociaux, vous avez environ 3 secondes pour prouver que vous valez la peine d'être suivi par un fan de thriller."
-        ]
-      },
-      {
-        title: "Audit express de ton identité numérique",
+        title: "Ce que vous allez corriger dans ce module",
         type: "key-concept",
+        expectedResult: "Bio d’auteur polarisée, Hub Auteur clair, et nettoyage des profils existants.",
         content: [
-          "Avant de tout refaire, prends 5 minutes pour regarder tes profils avec un œil neuf, comme si tu étais un lecteur qui ne te connaît pas.",
-          "Est-ce qu’en 3 secondes on comprend que tu écris du polar/thriller ?",
-          "Ta bio mentionne‑t‑elle clairement ton genre et ton univers ?",
-          "Tes visuels (photo, bannière) respirer‑ils ton ambiance (noir, urbain, rural, psychologique…) ?",
-          "Est-ce qu’il y a un lien clair vers ton livre ou ta newsletter ?",
-          "Si tu étais un lecteur, aurais‑tu envie de scroller et de suivre ce compte ?",
-          "Note tes réponses dans tes notes ou dans la checklist du pack bonus."
+          "À la fin du Module 3, vous serez capable de :",
+          "• Écrire une bio d’auteur polarisée : en 3 secondes, le lecteur comprend qui vous êtes, ce que vous écrivez, et pourquoi vous êtes légitime dans cette niche.",
+          "• Mettre en place un Hub Auteur clair (page auteur / mini-site) qui rassemble vos livres, vos preuves de crédibilité et vos points de contact, au lieu de tout laisser éparpillé.",
+          "• Choisir les bons terrains d’infiltration : groupes, communautés, événements et plateformes où se trouve réellement votre lectorat noir/polar/thriller.",
+          "• Nettoyer vos profils existants pour qu’ils renvoient tous la même image professionnelle, cohérente avec le mur de crédibilité construit au Module 1.",
+          "Ce module ne vous demande pas d’être partout ni tout le temps. Il vous demande d’être livible là où ça compte, pour ne plus perdre des lecteurs potentiels au moment où ils se renseignent on vous."
         ]
       },
       {
-        title: "Exercice : Réécrire ta bio magnétique",
+        title: "Module pratique – Les instruments d’intervention",
+        type: "text",
+        expectedResult: "Mise en œuvre des instruments de crédibilité.",
+        content: [
+          "Pour travailler ce module, vous utiliserez quatre instruments (ressources téléchargeables) :",
+          "• Psychologie de la Bio : Convertir le visiteur en 3 secondes. Vous reformulez vos bios (courte, moyenne, longue) pour qu’elles parlent au lecteur de polar/thriller : genre, univers, légitimité, ton, en évitant les formulations floues et génériques.",
+          "• Le Hub Auteur : Votre quartier général professionnel. Vous concevez le plan de votre “maison d’auteur” : quelles sections, quels liens, quelles preuves y afficher pour qu’un lecteur ou un libraire comprenne en un coup d’œil qui vous êtes et ce que vous écrivez.",
+          "• Infiltration Stratégique : Être là où le Clan palpite. Vous cartographiez les lieux où se trouvent vos lecteurs et vos pairs (groupes, festivals, médias, communautés en ligne) et vous décidez où vous allez réellement vous investir, with quel type de présence.",
+          "• Aura Numérique : Audit et nettoyage de vos profils. Vous passez vos profils existants (Amazon, réseaux, Babelio, etc.) au crible et vous listez toutes les corrections à faire pour qu’aucun ne renvoie une image contradictoire, vide ou amateur."
+        ]
+      },
+      {
+        title: "Questions de diagnostic",
         type: "exercise",
+        expectedResult: "Validation de la crédibilité d'auteur.",
         guidedQuestions: [
-          "Version courte (Instagram / bio courte) : ________",
-          "Version plus longue (site, Amazon, quatrième) : ________",
-          "Phrase de pitch noir/thriller à intégrer : ________"
+          "Un lecteur qui tombe on votre nom pour la première fois peut-il dire en une phrase qui vous êtes et quel type de polar/thriller vous écrivez ?",
+          "Existe-t-il un endroit central où il peut voir vos livres, vos preuves de crédibilité et vos liens sans devoir fouiller partout ?",
+          "Vos différents profils (plateformes, réseaux, pages auteur) racontent-ils la même histoire ou donnent-ils des versions contradictoires de vous ?",
+          "Êtes-vous présent, même modestement, là où votre lectorat se trouve vraiment, ou restez-vous cantonné à des endroits où personne ne cherche de polar ?"
         ],
         content: [
-          "À partir de la structure bio + de ton audit, réécris une version courte et une version longue de ta bio auteur. Utilise ton générateur de bio dans le pack bonus si tu veux un coup de main."
+          "Quand ces questions obtiennent des réponses claires, vous pouvez considérer que votre crédibilité d’auteur est restaurée au niveau minimum pro."
         ]
       }
     ],
     resources: [
-      { title: "Pack graphique : Bannières Auteur Noir", type: "template", url: DRIVE_FOLDER },
-      { title: "Générateur : Bio Instagram Haute-Tension", type: "template", url: DRIVE_FOLDER },
-      { title: "Guide : Setup de Newsletter en 15 minutes", type: "pdf", url: DRIVE_FOLDER },
-      { title: "Checklist : Audit de Présence Digitale", type: "checklist", url: DRIVE_FOLDER }
-    ]
-  },
-  {
-    id: 'social',
-    title: "Module 3 : La Stratégie d'Infiltration",
-    subtitle: "Être là où vos lecteurs dorment",
-    description: "Les salons se raréfient ? Apprenez à vous infiltrez élégamment dans les poches numériques des lecteurs.",
-    duration: "1h 50",
-    bullets: [
-      "L'Algorithme du Noir : Maîtriser la visibilité",
-      "Technique du Cheval de Troie : Infiltration élégante",
-      "Engagement Direct : Sortir du monologue marketing",
-      "Bibliopulse : Votre levier de croissance"
-    ],
-    icon: Share2,
-    color: "red",
-    imageKeyword: "social",
-    longDescription: "Dans ce module, tu apprends à t'infiltrer dans les réseaux d’influence noir : groupes de lecteurs, chroniqueurs, réseaux sociaux. On ne fait pas du 'réseautage', on construit une présence là où le lecteur passe déjà son temps.",
-    steps: [
-      "Lire la section « Infiltrer les groupes de lecteurs ».",
-      "Noter 3–5 groupes / communautés où tu pourrais t’infiltrer.",
-      "Utiliser les outils du Pack Ressources pour planifier tes posts, approcher les chroniqueurs et cartographier ton réseau."
-    ],
-    transitionTitle: "Mettre en pratique avec les ressources du module",
-    transitionText: "Une fois que tu as lu cette page, cartographié ton réseau et défini ton plan d’infiltration sur 30 jours, passe aux ressources ci‑dessous.",
-    transitionButtonText: "Descendre vers les ressources",
-    chapters: [
-      {
-        title: "Infiltrer les groupes de lecteurs",
-        type: "text",
-        expectedResult: "À la fin de cette section, tu sais comment entrer dans un groupe de lecteurs sans passer pour un spammeur, et comment amener naturellement ton livre dans la conversation.",
-        content: [
-          "Ne postez jamais votre lien de vente en premier. Apportez de la valeur d’abord.",
-          "La technique du “Cheval de Troie” pour susciter l’intérêt.",
-          "Interagir avec les autres membres, répondre aux questions, partager ses propres lectures : c'est ainsi que l'on devient une figure familière et respectée du clan."
-        ]
-      },
-      {
-        title: "Cartographier ton réseau d’influence noir",
-        type: "key-concept",
-        content: [
-          "Avant d’utiliser les outils, liste les lieux où ton livre peut rencontrer ses lecteurs : groupes Facebook, comptes Instagram, chroniqueurs, blogs, chaînes YouTube…",
-          "3 groupes de lecteurs polar/thriller à infiltrer : ________",
-          "3 chroniqueurs / comptes que tu aimerais approcher : ________",
-          "2–3 blogs, podcasts ou chaînes YouTube alignés avec ton univers : ________",
-          "Tu pourras ensuite reporter ces idées dans le fichier de suivi et le calendrier éditorial du pack bonus."
-        ]
-      },
-      {
-        title: "Exercice : Ton plan d’infiltration sur 30 jours",
-        type: "exercise",
-        guidedQuestions: [
-          "Groupes de lecteurs : dans quels groupes interviens‑tu chaque semaine ? (ex. 2 commentaires de valeur, 1 post par semaine)",
-          "Réseaux sociaux : quels types de posts liés à ton livre / à ton univers vas‑tu publier ? (stories, extraits, coulisses, jeux…)",
-          "Chroniqueurs : combien de nouveaux contacts par semaine ?"
-        ],
-        content: [
-          "Pour éviter de faire tout et n’importe quoi, définis un plan simple d’actions sur 30 jours : où tu interviens, à quelle fréquence, et avec quel type de contenu.",
-          "Tu peux détailler ce plan dans le Template Calendrier Éditorial 2026 du pack bonus."
-        ]
-      }
-    ],
-    resources: [
-      { title: "Fichier : 50 Accroches de Posts Spécial Thriller", type: "sheet", url: DRIVE_FOLDER },
-      { title: "Template : Calendrier Éditorial 2026", type: "template", url: DRIVE_FOLDER },
-      { title: "Scripts : Approche Chroniqueurs (Copy/Paste)", type: "sheet", url: DRIVE_FOLDER },
-      { title: "Liste : Groupes & Comptes Lecteurs Polar/Thriller", type: "pdf", url: DRIVE_FOLDER }
+      { title: "Psychologie de la Bio : Convertir le visiteur en 3 secondes", type: "template", url: DRIVE_FOLDER },
+      { title: "Le Hub Auteur : Votre quartier général professionnel", type: "sheet", url: DRIVE_FOLDER },
+      { title: "Infiltration Stratégique : Être là où le Clan palpite", type: "pdf", url: DRIVE_FOLDER },
+      { title: "Aura Numérique : Audit et nettoyage de vos profils", type: "pdf", url: DRIVE_FOLDER }
     ]
   },
   {
     id: 'cercle',
-    title: "Module 4 : Le Protocole Tactique du Clan",
-    subtitle: "L'opération stratégique pour vos avis",
-    description: "Le système aide ceux qui brillent déjà. Orchestrez votre signal de succès avec vos soldats du premier jour.",
+    title: "Module 4 — Relancer un livre invisible",
+    subtitle: "Orchestration de la séquence de relance",
+    description: "Mobilisez votre Clan initial pour forcer les algorithmes à reconsidérer votre livre déjà publié.",
     duration: "2h 10",
     bullets: [
-      "Le Clan des 50 : Vos soldats du premier jour",
-      "Le Protocole de Bêta-lecture Stratégique",
-      "Machine à Avis : Sortir du désert Amazon",
-      "Service de Presse (SP) : L'art du Gagnant-Gagnant"
+      "Protocole du Clan : Mobiliser vos membres fidèles",
+      "Opération Avis : Sortir du désert Amazon",
+      "Relance Tactique : Le timing de la seconde chance",
+      "Service de Presse : Correction de trajectoire avis"
     ],
     icon: Users,
     color: "red",
-    imageKeyword: "community",
-    longDescription: "La preuve sociale est le moteur de vente organique le plus puissant. Ce module te montre comment monter ton 'Clan' (street team), organiser la bêta‑lecture comme une opération tactique et orchestrer une sortie de livre qui force l'algorithme Amazon à vous voir.",
+    imageKeyword: "relaunch",
+    longDescription: "Votre polar est déjà publié. Il a eu une sortie timide, peu structurée, ou il a simplement disparu dans le flux. Ce module existe pour une seule chose : organiser une vraie opération de relance autour de ce livre, comme s’il bénéficiait enfin du lancement qu’il n’a jamais eu. Il ne s’agit pas de “faire un peu plus de posts”, mais de dérouler une séquence précise qui envoie un signal fort au lecteur, aux algorithmes et à votre Clan.\n\nAprès le diagnostic (Module 1), la réparation de la vitrine (Module 2) et la restauration de votre crédibilité d’auteur (Module 3), vous allez maintenant mettre tout cela en mouvement. L’objectif : concentrer vos efforts on une période courte, pour créer un pic de visibilité livible par les plateformes et générer de nouveaux avis, de nouveaux clics, de nouveaux lecteurs.",
     steps: [
-      "Lire la section « Bâtir sa Street Team de A à Z ».",
-      "Décider qui tu veux dans ta street team (liste courte).",
-      "Utiliser les outils du pack ressources pour formaliser la relation, organiser les bêta‑lectures et suivre les avis."
+      "Choisissez un livre cible : un polar/thriller déjà publié que vous voulez sortir de l’oubli en priorité.",
+      "Fixez une fenêtre de relance (10 à 14 jours) pendant laquelle vous acceptez de concentrer vos actions on ce livre.",
+      "Mobilisez votre Clan existant (lecteurs, proches, communauté, newsletter) avec une démarche claire : “opération seconde chance” autour de ce titre.",
+      "Lancez une Opération Avis pour sortir du désert et renforcer votre mur de crédibilité.",
+      "Déployez une Relance Tactique jour par jour : contenus, rappels, offres ponctuelles éventuelles.",
+      "Envoyez un Service de Presse ciblé à des relais pertinents (blogs, chroniqueurs, bookstagram, médias spécialisés) en cohérence with votre niche."
     ],
-    transitionTitle: "Mettre en pratique avec les ressources du module",
-    transitionText: "Une fois que tu as défini ta street team idéale et ton organisation de bêta‑lecture, passe aux ressources ci‑dessous.",
-    transitionButtonText: "Descendre vers les ressources",
+    transitionTitle: "Actionnez la relance",
+    transitionText: "Le diagnostic et la réparation sont faits. Passez à l'action coordonnée with ces instruments de relance.",
+    transitionButtonText: "Accéder aux instruments",
     chapters: [
       {
-        title: "Bâtir sa street team de A à Z",
-        type: "text",
-        expectedResult: "À la fin de cette section, tu sais à quoi sert une street team, qui y inviter, et comment la récompenser sans exploser ton budget.",
-        content: [
-          "Recrutez vos 20–50 lecteurs les plus fidèles.",
-          "Le système de récompense immatériel : accès anticipé, coulisses de l'écriture, remerciements dans les crédits.",
-          "Une street team n'est pas un groupe de fans passifs, c'est une force d'intervention rapide pour vos avis et votre visibilité."
-        ]
-      },
-      {
-        title: "Qui recruter, comment les approcher ?",
+        title: "Ce que vous allez corriger dans ce module",
         type: "key-concept",
+        expectedResult: "Passer d’un livre “posé sur les plateformes” à un livre porté par une campagne de relance structurée.",
         content: [
-          "La street team doit être composée de lecteurs motviés (pas toute ta famille).",
-          "Clarifier l’accord dès le départ : ce que tu offres (avant-première, bonus) et ce que tu demandes (avis honnête, partage).",
-          "5 personnes de ton entourage lecteur à qui tu pourrais proposer la street team : ________",
-          "5 lecteurs rencontrés via groupes / réseaux : ________",
-          "Message d’invitation type (à adapter) → renvoi au Contrat informel dans le pack bonus."
+          "À la fin du Module 4, vous serez capable de :",
+          "• Passer d’un livre “posé sur les plateformes” à un livre porté par une campagne de relance structurée.",
+          "• Activer votre Clan sans gêne ni mendicité : avec des messages précis, limités dans le temps, qui donnent envie d’aider.",
+          "• Sortir du désert d’avis et enclencher une dynamique de preuves sociales visibles sur les fiches produit.",
+          "• Utiliser un service de presse post-publication comme un instrument stratégique, pas comme une tentative désespérée.",
+          "Ce module ne vous demande pas d’être omniprésent. Il vous demande d’être intentionnel : choisir un livre, un créneau de relance, des actions claires, puis les exécuter sans dispersion."
         ]
       },
       {
-        title: "Organiser la bêta‑lecture et les avis",
+        title: "Module pratique – Comment utiliser les instruments de relance",
+        type: "text",
+        expectedResult: "Maîtrise des protocoles de mobilisation et de service de presse.",
+        content: [
+          "Pour dérouler cette opération, vous utiliserez quatre instruments (ressources) :",
+          "• Protocole du Clan – Mobiliser vos membres fidèles : Vous planifiez ce que vous demandez à votre entourage et à votre communauté (lecteurs existants, groupe Pulse Noir, newsletter) : quel message, à quel moment, avec quel lien. L’idée est de transformer une bonne volonté diffuse en actions concrètes (avis, partages, commentaires, participation à une promo).",
+          "• Opération Avis – Sortir du désert Amazon : Vous dressez la liste des personnes que vous pouvez légitimement solliciter, vous notez qui a déjà lu, qui pourrait lire, et vous organisez vos demandes d’avis dans le temps. L’objectif : atteindre un niveau d’avis qui rassure un lecteur inconnu et déclenche mieux les algorithmes.",
+          "• Relance Tactique – Le timing de la seconde chance : Vous construisez un mini-calendrier de 10 à 14 jours autour de votre livre : quels posts, quels emails, quels rappels, quels extraits, quels signaux mettre en avant et à quel moment. Vous arrêtez “l’impro quotidienne” pour adopter un plan clair.",
+          "• Service de Presse – Correction de trajectoire avis : Vous créez un pack propre (mail, fiche, éléments clés) pour proposer votre livre à des chroniqueurs et médias ciblés, même s’il est déjà sorti. Le but : obtenir quelques chroniques structurantes qui nourriront votre mur de crédibilité et vos futures communications."
+        ]
+      },
+      {
+        title: "Questions de diagnostic",
         type: "exercise",
+        expectedResult: "Validation de la Relance.",
         guidedQuestions: [
-          "À qui j’envoie le Questionnaire de Bêta‑lecture Stratégique ?",
-          "À quel moment je déclenche le Pack de 10 mails de relance ? (avant / pendant / après lancement)",
-          "Où je note qui a reçu quoi ? → renvoi au Fichier de Suivi Chroniqueurs & Avis."
+          "Votre livre cible a-t-il, pour la première fois, une fenêtre de relance définie avec un début, un milieu et une fin clairs ?",
+          "Pouvez-vous nommer au moins 10 personnes ou relais que vous avez contactés dans le cadre de l’Opération Avis et/ou du Service de Presse ?",
+          "Avez-vous publié / envoyé une suite de contenus cohérents (et non des posts isolés) pendant la période de relance ?",
+          "À la fin de ce module, pouvez-vous constater au moins un changement concret : nouveaux avis, nouvelles ventes, nouveaux lecteurs entrés dans votre écosystème ?"
         ],
         content: [
-          "Distinguer bêta‑lecteurs (fond du livre) et street team (visibilité).",
-          "Donner un cadre futur clair : délai indicatif de lecture, type de retour attendu.",
-          "Préparer dès maintenant les futures demandes d’avis pour ne pas être pris de court au lancement."
+          "Si vous pouvez répondre honnêtement “oui” à ces questions, votre livre n’est plus un simple fichier oublié : il a bénéficié d’une vraie intervention de relance, et vous avez un protocole que vous pourrez réutiliser pour vos prochains titres."
         ]
       }
     ],
     resources: [
-      { title: "Contrat : (Informel) de la Street Team", type: "template", url: DRIVE_FOLDER },
-      { title: "Questionnaire : Bêta-lecture Stratégique", type: "template", url: DRIVE_FOLDER },
-      { title: "Pack : 10 Mails de Relance Avis Lecteurs", type: "sheet", url: DRIVE_FOLDER },
-      { title: "Fichier de Suivi : Chroniqueurs & Avis", type: "sheet", url: DRIVE_FOLDER }
+      { title: "Protocole du Clan : Mobiliser vos membres fidèles", type: "template", url: DRIVE_FOLDER },
+      { title: "Opération Avis : Sortir du désert Amazon", type: "template", url: DRIVE_FOLDER },
+      { title: "Relance Tactique : Le timing de la seconde chance", type: "sheet", url: DRIVE_FOLDER },
+      { title: "Service de Presse : Correction de trajectoire avis", type: "sheet", url: DRIVE_FOLDER }
     ]
   },
   {
     id: 'ventes',
-    title: "Module 5 : La Chirurgie de Conversion",
-    subtitle: "Forcer le clic et l'achat compulsif",
-    description: "La 4ème de couverture et vos Ads sont votre scalpel. Apprenez à disséquer la psychologie de l'acheteur.",
+    title: "Module 5 — Réactiver les algorithmes",
+    subtitle: "Signaux de visibilité et relance des ventes",
+    description: "Ce module montre comment utiliser la psychologie de l’acheteur et les leviers techniques des plateformes (surtout Amazon) pour déclencher un nouveau cycle de ventes, sans repartir de zéro à chaque livre.",
     duration: "2h 30",
     bullets: [
-      "Résumé Haute-Tension : Les 5 modèles gagnants",
-      "Codes Visuels : La couverture qui rassure l'acheteur",
       "Amazon Ads : Ciblage chirurgical des concurrents",
-      "SEO Amazon : Mots-clés et Titres de Best-Seller"
+      "SEO Amazon : Réparer vos Mots-clés et Titres",
+      "Déclencheur d'Achat : Activer la visibilité",
+      "Ads Diagnostic : Tester votre nouvelle vitrine"
     ],
     icon: TrendingUp,
     color: "red",
-    imageKeyword: "sales",
-    longDescription: "C’est ici que se joue une grande partie du potentiel de ventes. Ce module applique une chirurgie précise à ton titre, ton résumé et ta couverture pour forcer le lecteur à cliquer, puis à acheter. On ne fait pas de la littérature, on fait de la conversion.",
+    imageKeyword: "algorithm",
+    longDescription: "C’est le module de réactivation. Le Module 5 sert à réactiver les algorithmes en s’appuyant sur les signaux que vous avez déjà remis en place dans les modules précédents (vitrine, crédibilité, relance). On utilise la publicité Amazon comme un scalpel, pas comme un arrosoir. L'objectif est de transformer votre livre réparé et relancé en un actif qui tourne grâce aux algorithmes, en corrigeant les failles de mots-clés et en installant des déclencheurs d'achat clairs.",
     steps: [
-      "Lire la section « Le résumé haute tension ».",
-      "Choisir un best‑seller noir/thriller à analyser.",
-      "Utiliser les outils du pack ressources pour analyser, décortiquer et réécrire ton propre résumé."
+      "Diagnostic SEO : Repérez les failles de mots-clés et de titres qui empêchent votre livre d’être trouvé.",
+      "Activation du Crochet : Installez un déclencheur d’achat clair et visible sur votre fiche produit.",
+      "Test micro-Ads : Lancez une campagne de diagnostic pour tester votre nouvelle vitrine avec un budget maîtrisé.",
+      "Interprétation des chiffres : Apprenez à lire les données (impressions, clics, ventes) pour prendre des décisions rationnelles."
     ],
-    transitionTitle: "Mettre en pratique avec les ressources du module",
-    transitionText: "Une fois que tu as compris ce qui fait la force d’un résumé et analysé un best‑seller, passe aux ressources ci‑dessous.",
-    transitionButtonText: "Descendre vers les ressources",
+    transitionTitle: "Relancez la machine",
+    transitionText: "Utilisez ces instruments techniques pour forcer la visibilité et réactiver vos courbes de ventes.",
+    transitionButtonText: "Accéder aux instruments",
     chapters: [
       {
-        title: "Le résumé haute tension",
-        type: "text",
-        expectedResult: "À la fin de cette section, tu comprends comment ouvrir ton résumé avec un hook fort et l’alimenter avec un vocabulaire qui donne une couleur thriller/polar nette.",
-        content: [
-          "Le “Hook” : la première phrase qui doit faire mal. C'est l'hameçon qui doit capturer l'attention du lecteur en une fraction de seconde.",
-          "Utilisation des “power words” du thriller. Le vocabulaire employé doit évoquer la tension, le mystère et l'urgence dès les premiers mots."
-        ]
-      },
-      {
-        title: "Décortiquer un best-seller noir",
+        title: "La Logique du Signal",
         type: "key-concept",
+        expectedResult: "Compréhension des mécanismes de visibilité algorithmique.",
         content: [
-          "Choisis un best‑seller de ton genre et passe‑le sur la table d’opération : quelle est son accroche, quel est son enjeu, comment se termine le résumé, quelle promesse de lecture est faite ?",
-          "Quelle est la situation de départ présentée en 1–2 phrases ?",
-          "Quel est l’événement perturbateur mis en avant ?",
-          "Quel est l’enjeu principal (ce que le héros risque) ?",
-          "Quelle est la dernière phrase crochet du résumé ?",
-          "Tu peux répondre à ces questions dans le Swipe File : Laboratoire de Résumés de Thrillers et dans le Kit : Carte ADN d’un Best‑Seller Noir."
+          "On n’achète pas la visibilité : on nourrit des algorithmes avec des signaux cohérents (clics, conversions, avis, temps de lecture), déclenchés par un positionnement clair et une fiche crédible.",
+          "Ce module utilise la pub et le SEO comme un après‑coup du travail déjà fait (diagnostic, vitrine, crédibilité, relance), pas comme un pansement qui masquerait une fiche bancale."
         ]
       },
       {
-        title: "Réécrire ton résumé comme un best-seller",
+        title: "Les Instruments de Réactivation",
+        type: "text",
+        expectedResult: "Maîtrise des outils Amazon Ads et SEO.",
+        content: [
+          "Utilisez vos 4 nouveaux instruments pour passer de la pub “au hasard” à une visibilité ciblée.",
+          "• Amazon Ads : Ciblage chirurgical des concurrents. Fiche de travail pour choisir vos cibles, structurer vos campagnes et suivre vos résultats.",
+          "• SEO Amazon : Réparer vos mots‑clés et titres. Diagnostic de votre fiche et optimisation des back-end keywords.",
+          "• Déclencheur d’achat : Activer la visibilité. Travaillez votre phrase‑crochet et vos éléments de singularité pour arrêter le regard du lecteur.",
+          "• Ads Diagnostic : Tester votre nouvelle vitrine. Feuille de route pour lancer de petites campagnes‑tests, lire les chiffres essentiels (impressions, clics, conversions) et en déduire quoi ajuster sur votre fiche ou vos ciblages avant d’augmenter les budgets."
+        ]
+      },
+      {
+        title: "La Grille d'Interprétation",
         type: "exercise",
+        expectedResult: "Capacité à diagnostiquer les performances publicitaires.",
         guidedQuestions: [
-          "Hook (1 phrase) : ________",
-          "Résumé complet (3–5 phrases) : ________",
-          "Dernière phrase crochet : ________"
+          "Bon taux d’impressions mais très peu de clics → Quel est le problème de votre couverture ?",
+          "Beaucoup de clics mais peu de ventes → Comment est perçue votre fiche produit (avis, prix, 4e) ?",
+          "Très peu d’impressions → Vos enchères ou vos mots‑clés sont-ils pertinents ?",
+          "Quelle décision prenez-vous pour votre vitrine avant de relancer une campagne ?"
         ],
         content: [
-          "À partir de ce que tu as observé, réécris ton propre résumé en version “haute tension”. Concentre‑toi sur une accroche forte, un enjeu clair et une dernière phrase qui donne envie de cliquer.",
-          "Tu peux t’aider des gabarits et formules du Swipe File : Laboratoire de Résumés de Thrillers."
+          "Utilisez de petites campagnes de publicité comme outil de diagnostic de la fiche et non comme solution magique de ventes.",
+          "Le tableau de suivi vous permettra de noter ce que disent les chiffres : impressions, clics, taux de clic, conversions approximatives.",
+          "Prenez vos décisions après test : que changer sur la vitrine avant de réinvestir ?"
         ]
       }
     ],
     resources: [
-      { title: "Swipe File : 50 Résumés de Best-Sellers", type: "pdf", url: DRIVE_FOLDER },
-      { title: "Liste : 1000 Mots-Clés Amazon Ads Polar", type: "sheet", url: DRIVE_FOLDER },
-      { title: "Kit : Carte ADN d’un Best-Seller Noir", type: "checklist", url: DRIVE_FOLDER },
-      { title: "Guide : Psychologie des Couvertures Noir", type: "pdf", url: DRIVE_FOLDER }
+      { title: "Amazon Ads : Ciblage chirurgical des concurrents", type: "sheet", url: DRIVE_FOLDER },
+      { title: "SEO Amazon : Réparer vos mots‑clés et titres", type: "sheet", url: DRIVE_FOLDER },
+      { title: "Déclencheur d’achat : Activer la visibilité", type: "template", url: DRIVE_FOLDER },
+      { title: "Ads Diagnostic : Tester votre nouvelle vitrine", type: "checklist", url: DRIVE_FOLDER }
     ]
   },
   {
     id: 'bonus',
-    title: "Module 6 : Le Pipeline de Vente Continu",
-    subtitle: "La machine de visibilité automatique",
-    description: "Ne repartez plus jamais de zéro. Construisez la machine qui alimente vos ventes sur le long terme.",
+    title: "Module 6 — Sortir durablement de l’invisibilité",
+    subtitle: "Bâtir votre rampe de lancement de carrière",
+    description: "Construisez le système qui sécurise vos succès futurs et transforme chaque livre en moteur de croissance.",
     duration: "1h 30",
     bullets: [
-      "Compte à Rebours Lancement (J-30 à J+30)",
-      "Routine de l'Auteur-Entrepreneur",
-      "Le Pipeline de Vente Continu",
-      "Vivre de sa plume : Stratégie Multi-Série"
+      "Protocole Pipeline : Capturer chaque lecteur anonyme",
+      "Plan de Relance 90 Jours : L'opération continue"
     ],
     icon: Repeat,
     color: "red",
-    imageKeyword: "roadmap",
-    longDescription: "La formation se termine, mais ta carrière commence. Ce module te donne la structure du 'Pipeline' : comment capturer l'email de chaque lecteur pour que ton prochain livre soit un succès garanti avant même de l'écrire.",
+    imageKeyword: "legacy",
+    longDescription: "Votre polar n’est plus invisible, mais rien n’est encore acquis. Ce module existe pour une chose : construire le système qui transforme chaque nouveau lecteur en contact durable et chaque sortie de livre en marche supplémentaire de votre carrière. Il ne s’agit plus seulement de réparer un titre ou de relancer une fiche, mais d’installer une mécanique qui continue à tourner quand vous écrivez le prochain roman. À la fin de ce module, vous aurez une pipeline claire pour capturer les lecteurs anonymes et un plan de relance 90 jours pour éviter le retour au silence.",
     steps: [
-      "Lire la section « Le pipeline de vente continu ».",
-      "Choisir ton niveau d’intensité (15 min/jour, 1 h/jour, ou 1 demi‑journée par semaine).",
-      "Utiliser la checklist Plan de Guerre 90 Jours pour planifier concrètement ton lancement."
+      "Clarifiez votre objectif de carrière sur 12 à 24 mois : nombre de livres, séries, formats, temps disponible.",
+      "Choisissez votre canal principal de capture (newsletter, communauté privée, plateforme auteur) et vos points d’entrée visibles sur chaque fiche livre.",
+      "Mettez en place votre Protocole Pipeline : comment un lecteur qui découvre votre polar aujourd’hui peut s’abonner, recevoir une première séquence de bienvenue et rester dans votre écosystème.",
+      "Construisez un Plan de Relance 90 jours qui synchronise écriture, communication et mises en avant de catalogue, pour que chaque trimestre comporte un mini‑événement autour de vos titres.",
+      "Faites le lien entre vos modules précédents (diagnostic, vitrine, crédibilité, relance, algorithmes) et ce système de long terme, de manière à ce que chaque nouveau livre arrive sur une piste déjà balisée."
     ],
-    transitionTitle: "Mettre en pratique avec le Plan de Guerre",
-    transitionText: "Maintenant que tu connais la logique du pipeline de vente continu et des 3 phases, télécharge la checklist 90 jours ci‑dessous.",
-    transitionButtonText: "Descendre vers l'outil",
+    transitionTitle: "Sécurisez votre avenir",
+    transitionText: "L'opération touche à sa fin. Sécurisez vos acquis et construisez votre trajectoire with ces instruments de long terme.",
+    transitionButtonText: "Accéder aux instruments",
     chapters: [
       {
-        title: "Le pipeline de vente continu",
+        title: "Ce que vous allez corriger dans ce module",
+        type: "key-concept",
+        expectedResult: "Vision stratégique long terme et rituels de visibilité.",
+        content: [
+          "À la fin du Module 6, vous serez capable de :",
+          "• Passer d’une logique de “coup de projecteur ponctuel” à une rampe de carrière où chaque livre nourrit les suivants.",
+          "• Capturer vos lecteurs au moment précis où ils sont le plus chauds (après lecture, après une pub, après une promo) au lieu de les laisser repartir anonymes.",
+          "• Organiser vos 90 prochains jours autour d’un petit nombre de rituels de visibilité réalistes, alignés sur votre temps d’écriture.",
+          "• Réutiliser vos instruments des modules 3, 4 et 5 (mur de crédibilité, relances, ads) à l’intérieur d’un calendrier récurrent, plutôt que de tout réinventer à chaque fois."
+        ]
+      },
+      {
+        title: "2 instruments d’intervention du Module 6",
         type: "text",
-        expectedResult: "À la fin de cette section, tu comprends pourquoi tout le plan de guerre vise à construire une base d’emails de lecteurs plutôt que de dépendre uniquement des algorithmes.",
+        expectedResult: "Mise en place de la pipeline de capture et du calendrier 90 jours.",
         content: [
-          "Pourquoi ta newsletter est plus importante que Facebook.",
-          "Comment récolter des emails dès la première page et dans les bonus de fin.",
-          "Le but ultime n'est pas seulement de vendre un livre, mais de posséder le lien direct avec ton audience pour tes lancements futurs."
+          "• Protocole Pipeline : Capturer chaque lecteur anonyme. Vous dessinez le trajet idéal d’un lecteur qui découvre votre polar : de la fiche Amazon à votre liste email ou votre communauté, puis à la découverte de vos autres livres. Vous identifiez vos points de capture (bonus, extraits, nouvelles, formulaires, liens en fin d’ebook) et vous structurez une courte séquence d’accueil qui transforme un lecteur isolé en membre de votre base.",
+          "• Plan de Relance 90 jours : L’opération continue. Vous construisez un calendrier simple sur trois mois, avec des jalons précis : rappels autour de vos titres existants, mise en avant de preuves sociales, mini‑événements pour votre Clan, tests publicitaires ciblés. L’objectif : éviter le trou noir après une sortie et installer un rythme de visibilité régulier, compatible avec l’écriture du prochain manuscrit."
         ]
       },
       {
-        title: "Choisir ton niveau d’intensité",
-        type: "key-concept",
+        title: "Question de diagnostic",
+        type: "exercise",
+        expectedResult: "Validation finale de votre autonomie stratégique.",
+        guidedQuestions: [
+          "Chaque nouveau lecteur qui termine un de vos polars a‑t‑il une proposition claire pour rester en contact avec vous (et la voit‑il vraiment) ?",
+          "Pouvez‑vous montrer, noir sur blanc, ce qui est prévu pour vos livres sur les 90 prochains jours sans ouvrir les réseaux “au feeling” ?",
+          "Êtes‑vous capable d’indiquer, pour chaque action de visibilité (relance, promo, pub), où elle mène votre lecteur dans votre pipeline ?"
+        ],
         content: [
-          "Le plan de guerre est modulable. Tu peux l’appliquer en mode léger ou en mode commando. L’important est de choisir une cadence réaliste que tu peux tenir.",
-          "Profil 1 : 15 minutes par jour – 1 micro‑action par jour (ex. 1 message à un lecteur, 1 post, 1 mail).",
-          "Profil 2 : 1 heure par jour – séquence type (20 min réseaux, 20 min contacts, 20 min suivi/stats).",
-          "Profil 3 : 1 demi‑journée par semaine – tout regrouper (programmation posts, mails, relances).",
-          "La checklist 90 jours te propose un cadre que tu peux adapter à l’un de ces trois profils."
-        ]
-      },
-      {
-        title: "Les 3 phases du Plan de Guerre",
-        type: "key-concept",
-        content: [
-          "Phase 1 : Préparation (J‑30 à J‑1) – optimiser la fiche Amazon, préparer les contenus, mobiliser street team et chroniqueurs.",
-          "Phase 2 : Lancement (J0 à J+30) – concentrer l’attention, obtenir les premiers avis, tester visibilité.",
-          "Phase 3 : Consolidation (J+31 à J+90) – maintenir la présence, exploiter les avis, préparer le livre suivant.",
-          "La checklist Plan de Guerre 90 Jours détaille semaine par semaine les actions proposées dans un cadre tactique précis."
+          "Si vous pouvez répondre honnêtement “oui” à ces questions, vous avez cessé de dépendre du hasard pour votre visibilité. Si la réponse est non à au moins une de ces questions, ce module devient votre chantier prioritaire pour sortir durablement de l’invisibilité."
         ]
       }
     ],
     resources: [
-      { title: "Checklist : Plan de Guerre 90 Jours : Lancement Polar Total", type: "checklist", url: DRIVE_FOLDER }
+      { title: "Protocole : Le Pipeline de Vente", type: "checklist", url: DRIVE_FOLDER },
+      { title: "Checklist : Opération Relance Durable 90 Jours", type: "checklist", url: DRIVE_FOLDER }
     ]
   }
 ];

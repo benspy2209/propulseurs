@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { COURSE_MODULES, INSTRUCTOR, INSTRUCTOR_STATS, PULSENOIR_LINKS, FAQ_ITEMS } from './constants';
+import { COURSE_MODULES as DEFAULT_MODULES, INSTRUCTOR as DEFAULT_INSTRUCTOR, INSTRUCTOR_STATS as DEFAULT_STATS, PULSENOIR_LINKS, FAQ_ITEMS as DEFAULT_FAQ } from './constants';
 import ModuleCard from './components/ModuleCard';
 import CoursePlayer from './components/CoursePlayer';
 import LegalView from './components/LegalView';
@@ -9,10 +9,12 @@ import MentionsLegalesView from './components/MentionsLegalesView';
 import PurchaseView from './components/PurchaseView';
 import SuccessView from './components/SuccessView';
 import LoginView from './components/LoginView';
+import AdminDashboard from './components/AdminDashboard';
 import InteractivePresentation from './components/InteractivePresentation';
 import TestimonialsSection from './components/TestimonialsSection';
 import LeadMagnetSection from './components/LeadMagnetSection';
 import { supabase } from './lib/supabase';
+import { ModuleContent } from './types';
 import { 
   ArrowRight, 
   Instagram,
@@ -45,10 +47,11 @@ import {
   ShieldAlert,
   AlertTriangle,
   XCircle,
-  Target
+  Target,
+  Settings
 } from 'lucide-react';
 
-type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success' | 'login';
+type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success' | 'login' | 'admin';
 
 const Logo: React.FC<{ size?: 'sm' | 'md' | 'lg', className?: string }> = ({ size = 'md', className = '' }) => {
   const sizeClasses = {
@@ -114,12 +117,12 @@ const CoachingBonusSection: React.FC = () => {
             </h2>
             
             <p className="text-gray-300 text-lg md:text-xl italic font-light leading-relaxed mb-10">
-              Pour les 10 premiers inscrits uniquement, **je m'immerge** personnellement dans votre projet pour lever vos blocages et valider votre système de visibilité personnalisé. C’est votre levier anti-erreur pour bâtir une carrière d’auteur de noir solide.
+              Pour les 10 premiers inscrits uniquement, **je m'immerge** personnellement dans votre projet pour lever vos blocages et valider votre système de relance personnalisé. Cette session vous évite des mois d’actions inutiles, d’erreurs coûteuses et de fausses bonnes idées. C’est votre levier anti-erreur indispensable pour briser durablement l'invisibilité.
             </p>
             
             <div className="pt-8 border-t border-white/5">
               <p className="text-gray-400 text-xs italic font-medium leading-relaxed">
-                * L'attribution se fait selon l'ordre d'arrivée des commandes Stripe. Une fois les 10 places envolées, cette offre disparaîtra définitivement pour préserver la qualité de l'accompagnement.
+                * L'attribution se fait selon l'ordre d'arrivée des transactions. Une fois les 10 places envolées, cette offre disparaîtra définitivement pour préserver la qualité de l'accompagnement.
               </p>
             </div>
           </div>
@@ -138,8 +141,20 @@ const App: React.FC = () => {
   
   const [userEmail, setUserEmail] = useState<string | null>(localStorage.getItem('userEmail'));
   const [hasAccess, setHasAccess] = useState<boolean>(localStorage.getItem('hasAccess') === 'true');
+  
+  // Dynamic Content State
+  const [modules, setModules] = useState<ModuleContent[]>(DEFAULT_MODULES);
+  const [instructor, setInstructor] = useState(DEFAULT_INSTRUCTOR);
+  const [instructorStats, setInstructorStats] = useState(DEFAULT_STATS);
+  const [faqItems, setFaqItems] = useState(DEFAULT_FAQ);
+  const [landingContent, setLandingContent] = useState({
+    heroTitle: "AUTEUR INVISIBLE",
+    heroSubtitle: "Pourquoi votre polar ne trouve pas ses lecteurs (et comment y remédier)"
+  });
 
   useEffect(() => {
+    loadDynamicContent();
+
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user?.email) {
         handleLogin(session.user.email);
@@ -158,6 +173,27 @@ const App: React.FC = () => {
       subscription.unsubscribe();
     };
   }, []);
+
+  const loadDynamicContent = async () => {
+    try {
+      const { data: contentData } = await supabase.from('site_content').select('*');
+      if (contentData) {
+        const mods = contentData.find(c => c.key === 'modules')?.data;
+        const inst = contentData.find(c => c.key === 'instructor')?.data;
+        const land = contentData.find(c => c.key === 'landing')?.data;
+        const s = contentData.find(c => c.key === 'stats')?.data;
+        const f = contentData.find(c => c.key === 'faq')?.data;
+        
+        if (mods) setModules(mods);
+        if (inst) setInstructor(inst);
+        if (land) setLandingContent(land);
+        if (s) setInstructorStats(s);
+        if (f) setFaqItems(f);
+      }
+    } catch (err) {
+      console.error("Failed to load dynamic content", err);
+    }
+  };
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -227,6 +263,8 @@ const App: React.FC = () => {
     }
   };
 
+  const isAdmin = userEmail === 'debruijneb@gmail.com';
+
   if (showPresentation) {
     return <InteractivePresentation onExit={() => setShowPresentation(false)} />;
   }
@@ -235,11 +273,22 @@ const App: React.FC = () => {
     return <LoginView onBack={() => setCurrentView('landing')} onLogin={handleLogin} />;
   }
 
+  if (currentView === 'admin') {
+    if (!isAdmin) {
+      setCurrentView('landing');
+      return null;
+    }
+    return <AdminDashboard onBack={() => {
+      loadDynamicContent();
+      setCurrentView('landing');
+    }} />;
+  }
+
   if (currentView === 'course') {
     if (!hasAccess) {
       return <LoginView onBack={() => setCurrentView('landing')} onLogin={handleLogin} />;
     }
-    return <CoursePlayer modules={COURSE_MODULES} onBack={() => setCurrentView('landing')} onLogout={handleLogout} />;
+    return <CoursePlayer modules={modules} onBack={() => setCurrentView('landing')} onLogout={handleLogout} />;
   }
 
   if (currentView === 'cgv') {
@@ -280,7 +329,7 @@ const App: React.FC = () => {
           <Sparkles size={14} className="text-black hidden sm:block animate-pulse shrink-0" />
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
             <p className="text-black text-[9px] sm:text-[11px] lg:text-xs font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] leading-tight">
-              Promotion jusqu'au 15 janvier : <span className="bg-black/10 px-1.5 py-0.5 rounded">-30% sur la formation</span> avec le code : 
+              Promotion jusqu'au 15 janvier : <span className="bg-black/10 px-1.5 py-0.5 rounded">-30% sur l'opération</span> avec le code : 
             </p>
             <button 
               onClick={handleCopyCode}
@@ -307,14 +356,23 @@ const App: React.FC = () => {
           <div className="hidden lg:flex items-center gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
             <button onClick={() => scrollToSection('autopsie')} className="hover:text-white transition-colors cursor-pointer">L'Analyse</button>
             <button onClick={() => scrollToSection('pour-qui')} className="hover:text-white transition-colors cursor-pointer">Pour qui ?</button>
-            <button onClick={() => scrollToSection('programme')} className="hover:text-white transition-colors cursor-pointer">Le Programme</button>
-            <button onClick={() => scrollToSection('ressources')} className="hover:text-white transition-colors cursor-pointer">Ressources</button>
-            <button onClick={() => scrollToSection('instructeur')} className="hover:text-white transition-colors cursor-pointer">L'Instructeur</button>
+            <button onClick={() => scrollToSection('programme')} className="hover:text-white transition-colors cursor-pointer">La Méthode</button>
+            <button onClick={() => scrollToSection('ressources')} className="hover:text-white transition-colors cursor-pointer">Instruments</button>
+            <button onClick={() => scrollToSection('instructeur')} className="hover:text-white transition-colors cursor-pointer">L'Intervenant</button>
             <button onClick={() => scrollToSection('coaching')} className="hover:text-white transition-colors cursor-pointer">Coaching</button>
             <button onClick={() => scrollToSection('faq')} className="hover:text-white transition-colors cursor-pointer">FAQ</button>
           </div>
 
           <div className="flex items-center gap-3 lg:gap-4">
+            {isAdmin && (
+              <button 
+                onClick={() => setCurrentView('admin')}
+                className="flex items-center gap-1.5 lg:gap-2 text-[#f4c024] hover:text-white text-[9px] lg:text-[10px] font-black uppercase tracking-widest transition-colors"
+              >
+                <Settings size={14} />
+                <span>Admin</span>
+              </button>
+            )}
             <button 
               onClick={() => setCurrentView(userEmail ? 'course' : 'login')}
               className="flex items-center gap-1.5 lg:gap-2 text-gray-400 hover:text-white text-[9px] lg:text-[10px] font-black uppercase tracking-widest transition-colors"
@@ -324,32 +382,33 @@ const App: React.FC = () => {
             </button>
             <button 
               onClick={() => setCurrentView('purchase')}
-              className="bg-[#ff0000] text-white px-3 lg:px-6 py-2 lg:py-2.5 rounded-full text-[9px] lg:text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,0,0,0.4)] active:scale-95"
+              className="bg-[#ff0000] text-white px-3 lg:px-6 py-2 lg:py-2.5 rounded-full text-[9px] lg:text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(244,192,36,0.4)] active:scale-95"
             >
-              S'inscrire
+              Lancer la relance
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section - Header Unique "AUTEUR INVISIBLE" */}
+      {/* Hero Section */}
       <header className="relative min-h-screen flex flex-col items-center justify-center pt-52 lg:pt-32 px-6 overflow-hidden bg-black">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff0000]/5 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="relative z-10 w-full max-w-6xl mx-auto text-center">
           <h1 className="text-[10vw] md:text-[120px] leading-[0.85] mb-4 md:mb-6 polar-title animate-in fade-in slide-in-from-top-12 duration-1000">
-            AUTEUR <span className="text-[#ff0000] text-glow-red">INVISIBLE</span>
+            {landingContent.heroTitle.split(' ').map((word, i) => (
+              word === 'INVISIBLE' ? <span key={i} className="text-[#ff0000] text-glow-red">INVISIBLE </span> : <span key={i}>{word} </span>
+            ))}
           </h1>
 
           <h2 className="text-xl md:text-3xl lg:text-4xl text-gray-400 font-black uppercase tracking-tight leading-snug italic mb-12 animate-in fade-in slide-in-from-top-8 duration-1000 delay-100">
-            Pourquoi votre polar ne trouve pas ses lecteurs <br className="hidden md:block"/>
-            (et comment y remédier)
+            {landingContent.heroSubtitle}
           </h2>
 
           <div className="max-w-4xl mx-auto mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
             <p className="text-2xl md:text-5xl text-white font-black uppercase tracking-tighter leading-[1.1] mb-6">
               Votre polar est publié. <br/>
-              <span className="text-[#ff0000] italic">Il ne se vend pas.</span>
+              <span className="text-[#ff0000] italic">Il est invisible.</span>
             </p>
             <p className="text-base md:text-xl text-gray-300 font-bold uppercase tracking-tight leading-relaxed mb-6">
               Ce n’est pas un problème de talent. <br className="md:hidden"/>
@@ -366,7 +425,7 @@ const App: React.FC = () => {
                 onClick={() => setCurrentView('purchase')}
                 className="w-full md:w-auto px-12 py-7 bg-[#ff0000] text-white text-base font-black rounded-full flex items-center justify-center gap-3 group uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-[0_0_60px_rgba(255,0,0,0.5)] active:scale-95"
               >
-                Rejoindre le programme AUTEUR INVISIBLE
+                Rejoindre l'Intervention AUTEUR INVISIBLE
                 <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
               </button>
             </div>
@@ -378,24 +437,23 @@ const App: React.FC = () => {
 
           <div className="flex items-center justify-center gap-3 text-white/60 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs italic bg-white/5 py-4 px-8 rounded-full border border-white/5 backdrop-blur-sm shadow-xl">
             <Users size={16} className="text-[#f4c024]" />
-            <span className="text-[#f4c024] font-black">+1500 membres</span> • +350 auteurs dans le clan Pulse Noir
+            <span className="text-[#f4c024] font-black">+1500 membres</span> • +350 auteurs dans le Clan Pulse Noir
           </div>
         </div>
       </header>
 
-      {/* Section Cible Prioritaire - Hiérarchie Radicale */}
+      {/* Section Cible de l'Opération */}
       <section id="pour-qui" className="py-32 bg-black border-b border-white/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-24">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 border border-[#f4c024]/30 bg-[#f4c024]/5 text-[#f4c024] text-[10px] font-black uppercase tracking-[0.4em]">
-              <Crosshair size={12} /> Cible Prioritaire
+              <Crosshair size={12} /> Cible de l'Opération
             </div>
             <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white italic serif-font leading-tight">
-              Pour qui est cette <span className="text-[#ff0000]">Méthode</span> ?
+              Pour qui est cette <span className="text-[#ff0000]">Opération</span> ?
             </h2>
           </div>
 
-          {/* Profil Principal : Mis en avant radicalement */}
           <div className="max-w-4xl mx-auto mb-16">
             <div className="bg-neutral-900 border-2 border-[#f4c024] p-10 md:p-16 rounded-[4rem] relative overflow-hidden shadow-[0_0_50px_rgba(244,192,36,0.2)] group">
               <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity">
@@ -403,12 +461,12 @@ const App: React.FC = () => {
               </div>
               <div className="relative z-10">
                 <div className="inline-block px-4 py-1 bg-[#f4c024] text-black text-[9px] font-black uppercase tracking-widest rounded-full mb-6">FOCUS PRINCIPAL</div>
-                <h3 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight italic serif-font">L'Auteur Déjà Publié (1-5 livres)</h3>
+                <h3 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight italic serif-font">L'Auteur Déjà Publié mais Invisible</h3>
                 <p className="text-gray-300 text-xl md:text-2xl leading-relaxed font-light italic mb-8 border-l-4 border-[#f4c024] pl-8">
-                  Vos ventes stagnent ou sont inexistantes. Vous avez le texte, mais pas les lecteurs. On va structurer une méthode claire ensemble pour briser votre plafond de verre et bâtir un système fiable.
+                  Vos ventes stagnent ou sont inexistantes. Vous disposez du texte, mais pas encore des lecteurs. Nous allons diagnostiquer, corriger et bâtir un système fiable de relance stratégique.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  {["Ventes faibles", "Algorithmes sourds", "Manque de système", "Prêt à l'offensive"].map((tag, i) => (
+                  {["Ventes à l'arrêt", "Algorithmes sourds", "Manque de méthode", "Prêt à l'action"].map((tag, i) => (
                     <span key={i} className="px-3 py-1 bg-white/5 border border-white/10 text-[10px] font-bold text-gray-500 uppercase tracking-widest">{tag}</span>
                   ))}
                 </div>
@@ -416,23 +474,22 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          {/* Profils Secondaires */}
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-24">
             {[
               { 
                 icon: <Rocket className="text-[#ff0000]" />,
                 title: "Fin de Manuscrit", 
-                desc: "Vous avez compris que finir n'est que 50% du travail. Vous préparez votre système de visibilité AVANT la sortie." 
+                desc: "Vous avez compris que finir n’est qu’une partie du travail. Vous préparez votre système de visibilité en vous appuyant déjà sur un premier titre publié ou une publication imminente, avant que l’invisibilité ne s’installe." 
               },
               { 
                 icon: <ShieldAlert className="text-[#ff0000]" />,
-                title: "Édité mais Abandonné", 
-                desc: "Votre éditeur ne fait rien ? Reprenez le contrôle et bâtissez votre propre cercle de lecteurs fidèles." 
+                title: "Auteur Édité", 
+                desc: "Votre éditeur ne soutient plus votre ouvrage ? Reprenez le contrôle et bâtissez votre propre écosystème de relance indépendant." 
               },
               { 
                 icon: <Zap className="text-[#ff0000]" />,
                 title: "Auto-édition Pro", 
-                desc: "Vous voulez des systèmes robustes, des automatisations et des résultats concrets, pas du bricolage." 
+                desc: "Vous recherchez des instruments robustes, des automatisations et des résultats concrets pour vos livres existants." 
               }
             ].map((profile, i) => (
               <div key={i} className="bg-neutral-950 p-10 rounded-[3rem] border border-white/5 hover:border-[#ff0000]/30 transition-all duration-500 group flex flex-col">
@@ -445,7 +502,6 @@ const App: React.FC = () => {
             ))}
           </div>
 
-          {/* Section d'Exclusion : Clivant */}
           <div className="max-w-2xl mx-auto bg-red-950/20 border border-red-900/30 p-10 rounded-[3rem] text-center">
             <h3 className="text-[#ff0000] font-black uppercase tracking-[0.3em] text-xs mb-8 flex items-center justify-center gap-2">
               <XCircle size={14} /> Ce n'est PAS pour vous si...
@@ -453,8 +509,8 @@ const App: React.FC = () => {
             <ul className="space-y-4">
               {[
                 "Vous n'avez pas encore commencé à écrire une seule ligne.",
-                "Vous cherchez une recette miracle sans effort de mise en place.",
-                "Vous refusez de voir votre livre comme un projet professionnel à structurer."
+                "Vous recherchez une solution miracle sans effort de mise en place.",
+                "Vous refusez de considérer votre livre comme un projet professionnel à structurer."
               ].map((txt, i) => (
                 <li key={i} className="text-gray-500 text-sm italic font-medium flex items-start gap-4 justify-center">
                   <span className="text-red-900/40">•</span> {txt}
@@ -471,7 +527,7 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white italic serif-font">L'Autopsie du <span className="text-[#ff0000]">Marché</span></h2>
-            <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4">Pourquoi la qualité ne suffit plus en 2025</p>
+            <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4">Pourquoi la qualité ne suffit plus en 2026</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-10">
@@ -479,7 +535,7 @@ const App: React.FC = () => {
               { 
                 icon: <EyeOff size={40} className="text-[#ff0000]" />, 
                 title: "Le Mur du Lecteur", 
-                desc: "Le budget se resserre. Le lecteur ne prend plus de risque. S'il ne voit pas de signaux de rassurance immédiats, il retourne vers les auteurs 'reconnus'." 
+                desc: "Le budget se resserre. Le lecteur ne prend plus de risque. S'il ne voit pas de signaux de rassurance immédiats, il retourne vers les auteurs reconnus." 
               },
               { 
                 icon: <TrendingDown size={40} className="text-[#ff0000]" />, 
@@ -489,7 +545,7 @@ const App: React.FC = () => {
               { 
                 icon: <Repeat size={40} className="text-[#ff0000]" />, 
                 title: "La Boucle de l'Oubli", 
-                desc: "Pas vu → Pas acheté → Moins vu. C'est un cercle vicieux systémique. Pour en sortir, il ne faut pas 'faire de la promo', il faut bâtir un écosystème." 
+                desc: "Pas vu → Pas acheté → Moins vu. C'est un cercle vicieux. Pour en sortir, il ne s'agit plus de promo occasionnelle, mais de bâtir un véritable écosystème." 
               }
             ].map((item, i) => (
               <div key={i} className="bg-black/40 p-10 rounded-[3rem] border border-white/5 hover:border-[#ff0000]/20 transition-all group">
@@ -504,14 +560,14 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Section Programme */}
+      {/* Section Programme - Les 6 Phases */}
       <section id="programme" className="py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6 text-center mb-24">
-          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight italic serif-font">Votre arsenal de <span className="text-[#ff0000]">visibilité</span></h2>
-          <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4 italic">6 étapes méthodiques + 1 Master Bonus pour briser l'invisibilité</p>
+          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight italic serif-font">Votre <span className="text-[#ff0000]">Plan d'Action</span></h2>
+          <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4 italic">6 phases d'intervention + 1 Master Bonus pour briser l'invisibilité</p>
         </div>
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {COURSE_MODULES.map((module, index) => (
+          {modules.map((module, index) => (
             <ModuleCard key={module.id} module={module} index={index} />
           ))}
           
@@ -536,7 +592,7 @@ const App: React.FC = () => {
             </p>
             
             <p className="text-gray-400 mb-8 text-sm leading-relaxed font-medium italic relative z-10">
-              **Je m'immerge** personnellement dans votre projet lors d'une session privée d'une heure. C’est votre levier anti-erreur pour bâtir une carrière solide.
+              **Je m'immerge** personnellement dans votre projet lors d'une session privée d'une heure. Cette session vous évite des mois d’actions inutiles, d’erreurs coûteuses et de fausses bonnes idées. C’est votre levier anti-erreur indispensable pour bâtir une trajectoire solide.
             </p>
 
             <ul className="space-y-4 mt-auto relative z-10">
@@ -565,12 +621,12 @@ const App: React.FC = () => {
               onMouseLeave={() => setIsInstructorHovered(false)}
               className="relative rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transition-all duration-700 group aspect-[4/5] md:aspect-auto cursor-help mb-12"
             >
-              <img src={INSTRUCTOR.photo} alt={INSTRUCTOR.name} className="w-full h-auto object-cover transition-all duration-1000 group-hover:scale-105" />
-              <img src={INSTRUCTOR.hoverPhoto} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-1000 scale-110 group-hover:scale-105" />
+              <img src={instructor.photo} alt={instructor.name} className="w-full h-auto object-cover transition-all duration-1000 group-hover:scale-105" />
+              <img src={instructor.hoverPhoto} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-1000 scale-110 group-hover:scale-105" />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              {INSTRUCTOR_STATS.map((stat, i) => (
+              {instructorStats.map((stat, i) => (
                 <div key={i} className="bg-neutral-900/40 p-6 rounded-3xl border border-white/5 hover:border-[#ff0000]/30 transition-all group text-center">
                    <div className="text-2xl font-black text-white group-hover:text-[#ff0000] transition-colors mb-2 serif-font italic tracking-tighter">
                      {stat.value}
@@ -585,15 +641,15 @@ const App: React.FC = () => {
           
           <div className="w-full md:w-[60%] text-left">
             <h2 className={`text-4xl md:text-6xl font-black uppercase tracking-tighter italic serif-font mb-4 transition-colors duration-500 ${isInstructorHovered ? 'text-[#ff0000]' : 'text-white'}`}>
-              {isInstructorHovered ? 'Pulseman' : INSTRUCTOR.name}
+              {isInstructorHovered ? 'Pulseman' : instructor.name}
             </h2>
-            <p className="text-[#ff0000] font-black uppercase tracking-[0.2em] text-xs mb-10">{INSTRUCTOR.role}</p>
+            <p className="text-[#ff0000] font-black uppercase tracking-[0.2em] text-xs mb-10">L'Intervenant Stratégique</p>
             <div className="space-y-8">
               <p className="text-gray-400 text-xl md:text-2xl leading-relaxed font-light border-l-4 border-[#ff0000] pl-6 py-2 italic">
-                {INSTRUCTOR.quote}
+                {instructor.quote}
               </p>
               <div className="space-y-6 text-gray-500 text-base md:text-lg leading-relaxed font-medium italic">
-                {INSTRUCTOR.bioBlocks.map((block, idx) => <p key={idx}>{block}</p>)}
+                {instructor.bioBlocks.map((block, idx) => <p key={idx}>{block}</p>)}
               </div>
             </div>
           </div>
@@ -613,12 +669,12 @@ const App: React.FC = () => {
               <HelpCircle size={14} /> Dossier : Clarification
             </div>
             <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white italic serif-font">
-              FAQ : PROGRAMME <span className="text-[#ff0000]">AUTEUR INVISIBLE</span>
+              FAQ : INTERVENTION <span className="text-[#ff0000]">AUTEUR INVISIBLE</span>
             </h2>
           </div>
 
           <div className="space-y-4">
-            {FAQ_ITEMS.map((item, i) => (
+            {faqItems.map((item, i) => (
               <div 
                 key={i} 
                 className={`group border border-white/5 rounded-3xl overflow-hidden transition-all duration-500 ${openFaq === i ? 'bg-neutral-900/50 border-[#ff0000]/30 shadow-2xl' : 'bg-neutral-950 hover:border-white/10'}`}
@@ -648,7 +704,7 @@ const App: React.FC = () => {
 
           <div className="mt-20 text-center p-12 bg-[#ff0000]/5 border border-[#ff0000]/10 rounded-[3rem]">
             <p className="text-white font-black uppercase tracking-widest text-sm mb-6 italic">Une autre question en tête ?</p>
-            <a href="mailto:debruijneb@gmail.com" className="text-[#ff0000] font-black uppercase tracking-[0.3em] text-xs hover:underline decoration-white/20 underline-offset-8">Envoyez un message direct à l'instructeur</a>
+            <a href="mailto:debruijneb@gmail.com" className="text-[#ff0000] font-black uppercase tracking-[0.3em] text-xs hover:underline decoration-white/20 underline-offset-8">Envoyez un message direct à l'intervenant</a>
           </div>
         </div>
       </section>
@@ -662,7 +718,7 @@ const App: React.FC = () => {
         </div>
         <div className="flex flex-col items-center gap-6">
           <Logo size="sm" />
-          <p className="text-gray-800 text-[10px] font-black uppercase tracking-[0.5em] mb-4">© 2025 PulseNoir - Benjamin de Bruijne - Academy Elite</p>
+          <p className="text-gray-800 text-[10px] font-black uppercase tracking-[0.5em] mb-4">© 2026 PulseNoir - Benjamin de Bruijne - Academy Elite</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <button onClick={() => setCurrentView('mentions')} className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4">Mentions Légales</button>
             <button onClick={() => setCurrentView('cgv')} className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4">Conditions Générales de Vente</button>

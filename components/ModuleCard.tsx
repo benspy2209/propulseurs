@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { ModuleContent } from '../types';
-import { CheckCircle2, Gift } from 'lucide-react';
+import { CheckCircle2, Crosshair } from 'lucide-react';
 
 interface ModuleCardProps {
   module: ModuleContent;
@@ -23,9 +23,9 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ module, index }) => {
         <div className="flex flex-col items-end">
           {/* Chiffre en Jaune PulseNoir avec opacité augmentée au survol */}
           <span className="text-6xl font-black text-[#f4c024]/10 italic group-hover:text-[#f4c024]/40 transition-all duration-500 scale-110">0{index + 1}</span>
-          {/* Badge Ressources en Jaune avec texte noir */}
+          {/* Badge Instruments en Jaune avec texte noir */}
           <div className="flex items-center gap-1.5 mt-2 px-3 py-1 bg-[#f4c024] rounded-full text-[9px] font-black text-black uppercase tracking-widest shadow-[0_0_15px_rgba(244,192,36,0.4)]">
-            <Gift size={10} /> 4 RESSOURCES INCLUSES
+            <Crosshair size={10} /> {module.resources?.length || 4} INSTRUMENTS D'INTERVENTION
           </div>
         </div>
       </div>

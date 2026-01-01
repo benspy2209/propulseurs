@@ -47,7 +47,7 @@ const LeadMagnetCard: React.FC<LeadMagnetProps> = ({ title, description, image, 
     } catch (err: any) {
       console.error("Erreur d'inscription:", err);
       setStatus('error');
-      setErrorMessage("Une erreur est survenue. Réessaie plus tard.");
+      setErrorMessage("Une erreur est survenue. Réessayez plus tard.");
     }
   };
 
@@ -91,7 +91,7 @@ const LeadMagnetCard: React.FC<LeadMagnetProps> = ({ title, description, image, 
                 type="email" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Ton email d'auteur..."
+                placeholder="Votre email d'auteur..."
                 className="w-full bg-neutral-900 border border-white/10 rounded-full py-4 px-6 text-white placeholder:text-gray-700 focus:outline-none focus:border-[#ff0000] transition-all font-mono text-xs"
                 required
               />
@@ -147,13 +147,12 @@ const LeadMagnetSection: React.FC = () => {
             <Sparkles size={12} /> Ressources Gratuites PulseNoir
           </div>
           <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-4 italic serif-font">
-            Préparez votre <span className="text-[#ff0000]">offensive</span>
+            Préparez votre <span className="text-[#ff0000]">relance</span>
           </h2>
-          <p className="text-gray-500 text-xs font-black uppercase tracking-[0.5em] mt-4 italic">Deux outils tactiques offerts pour muscler votre visibilité</p>
+          <p className="text-gray-500 text-xs font-black uppercase tracking-[0.5em] mt-4 italic">Deux instruments stratégiques offerts pour corriger votre visibilité</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
-          {/* Lead Magnet 1: Power Words */}
           <LeadMagnetCard 
             title="Le Lexique des 10 Power Words"
             description="Brisez l'indifférence du lecteur. Récupérez le lexique des 10 mots de pouvoir qui activent le clic instinctif et rassurent immédiatement les fans de thriller les plus méfiants."
@@ -164,14 +163,13 @@ const LeadMagnetSection: React.FC = () => {
             icon={<Sparkles size={10} />}
           />
 
-          {/* Lead Magnet 2: Plan d'attaque 7 étapes -> Le Protocole Anti-Invisibilité */}
           <LeadMagnetCard 
             title="Le Protocole Anti-Invisibilité"
-            description="Comment lever le mur de l'algorithme et rassurer un lecteur méfiant avec une méthode structurée en 7 briques stratégiques. Le guide étape par étape pour transformer un manuscrit ignoré en une valeur sûre."
+            description="Comment lever le mur de l'algorithme et rassurer un lecteur méfiant avec une méthode structurée en 7 briques stratégiques. Le guide étape par étape pour transformer un ouvrage ignoré en une valeur sûre."
             image="https://raw.githubusercontent.com/benspy2209/propulseurs/10707a5e1d1eae7bf26f636ce3e67218dfaa8854/Lancer%20son%20polar%20en%20auto%20edition%20-%20le%20plan%20d%E2%80%99attaque%20en%207%20etapes.png"
             link={PULSENOIR_LINKS.leadMagnetAutoedition}
             source="lead_magnet_7_steps_autoedition"
-            badge="Méthode Elite"
+            badge="Méthode Stratégique"
             icon={<Target size={10} />}
           />
         </div>

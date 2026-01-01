@@ -54,6 +54,12 @@ const LoginView: React.FC<LoginViewProps> = ({ onBack, onLogin }) => {
         return;
       }
 
+      // ACCÈS VIP : debruijneb@gmail.com bypass le Magic Link
+      if (cleanEmail === 'debruijneb@gmail.com') {
+        onLogin(cleanEmail);
+        return;
+      }
+
       // 2. Déclenchement du Magic Link Supabase
       const { error: authError } = await supabase.auth.signInWithOtp({
         email: cleanEmail,
