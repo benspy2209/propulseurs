@@ -332,7 +332,7 @@ const App: React.FC = () => {
         </div>
       </nav>
 
-      {/* Hero Section - Optimized Header "AUTEUR INVISIBLE" */}
+      {/* Hero Section - Header Unique "AUTEUR INVISIBLE" */}
       <header className="relative min-h-screen flex flex-col items-center justify-center pt-52 lg:pt-32 px-6 overflow-hidden bg-black">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff0000]/5 rounded-full blur-[120px] pointer-events-none" />
         
@@ -383,7 +383,7 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {/* Section Cible Hiérarchisée - Lexique Nettoyé */}
+      {/* Section Cible Prioritaire - Hiérarchie Radicale */}
       <section id="pour-qui" className="py-32 bg-black border-b border-white/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-24">
@@ -405,7 +405,7 @@ const App: React.FC = () => {
                 <div className="inline-block px-4 py-1 bg-[#f4c024] text-black text-[9px] font-black uppercase tracking-widest rounded-full mb-6">FOCUS PRINCIPAL</div>
                 <h3 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight italic serif-font">L'Auteur Déjà Publié (1-5 livres)</h3>
                 <p className="text-gray-300 text-xl md:text-2xl leading-relaxed font-light italic mb-8 border-l-4 border-[#f4c024] pl-8">
-                  Vos ventes stagnent ou sont inexistantes. Vous avez le texte, mais pas les lecteurs. On va structurer une méthode claire ensemble pour briser votre plafond de verre.
+                  Vos ventes stagnent ou sont inexistantes. Vous avez le texte, mais pas les lecteurs. On va structurer une méthode claire ensemble pour briser votre plafond de verre et bâtir un système fiable.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   {["Ventes faibles", "Algorithmes sourds", "Manque de système", "Prêt à l'offensive"].map((tag, i) => (
@@ -536,14 +536,14 @@ const App: React.FC = () => {
             </p>
             
             <p className="text-gray-400 mb-8 text-sm leading-relaxed font-medium italic relative z-10">
-              **Je m'immerge** personnellement dans votre projet lors d'une session privée d'une heure.
+              **Je m'immerge** personnellement dans votre projet lors d'une session privée d'une heure. C’est votre levier anti-erreur pour bâtir une carrière solide.
             </p>
 
             <ul className="space-y-4 mt-auto relative z-10">
               {[
                 "1h de Visio privée avec moi",
                 "J'audite directement votre visibilité",
-                "Je valide votre système d'attaque",
+                "Je valide votre système stratégique",
                 "Je réponds à vos blocages précis"
               ].map((bullet, idx) => (
                 <li key={idx} className="flex items-start text-[11px] text-gray-200 font-bold uppercase tracking-wider leading-snug">

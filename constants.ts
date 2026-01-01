@@ -31,7 +31,7 @@ export const INSTRUCTOR = {
   bioBlocks: [
     "En 2025, j’ai vu la même scène se répéter encore et encore : des auteur·rices de polar, thriller, roman noir qui ont travaillé dur sur leur livre… et qui se retrouvent complètement perdu·es au moment de le faire connaître. Pas de méthode, pas de plan, un peu de posts “au hasard”, quelques pubs, beaucoup de frustration, et trop souvent cette phrase : “Mon livre ne se vend pas.” C’est pour ça que j’ai créé Pulsenoir et cette formation : pour donner aux auteurs de noir un plan concret, adapté à leur genre, et pas un énième bla-bla marketing généraliste.",
     "Il y a 35 ans que je suis un lecteur passionné de noir, de polar, de thriller. Et 20 ans que je travaille dans le web : développement, marketing digital, création de sites, optimisation de présence en ligne. J’ai d’abord lancé Bibliopulse, une bibliothèque en ligne pour chercher des livres, suivre ses lectures et écrire des critiques. Puis est né Pulse Noir : un groupe Facebook dédié au polar/thriller, avec aujourd’hui plus de 1500 membres dont environ 350 auteur·rices, où les gens partagent leurs lectures et mettent en avant leurs livres.",
-    "En parallèle, des auteur·rices m’ont contacté : premier ou deuxième livre, peu ou pas de ventes, la sensation de parler dans le vide. J’ai commencé à les aider : création de sites, conseils sur leurs fiches Amazon, plans de promo adaptés au polar/thriller. Avec mon double profil de développeur et de marketeur web, j’ai conçu des outils et des méthodes dédiés à ce milieu très spécifique : le noir, le polar, le thriller. J’ai aussi créé studio.pulsenoir.be, un laboratoire pour écrire et structurer ses romans. La méthode « Pourquoi les bons polars restent-ils invisibles ? – En 90 jours, brisez le plafond de verre et devenez une valeur sûre. » est la synthèse de tout ça : 35 ans de lecture passionnée, 20 ans de web, une obsession simple – que ton livre trouve vraiment ses lecteurs, et une attention constante à ce que vous vivez et partagez chaque jour dans la communauté."
+    "En parallèle, des auteur·rices m’ont contacté : premier ou deuxième livre, peu ou pas de ventes, la sensation de parler dans le vide. J’ai commencé à les aider : création de sites, conseils sur leurs fiches Amazon, plans de promo adaptés au polar/thriller. Avec mon double profil de développeur et de marketeur web, j’ai conçu des outils et des méthodes dédiés à ce milieu très spécifique : le noir, le polar, le thriller. J’ai aussi créé studio.pulsenoir.be, un laboratoire pour écrire et structurer ses romans. La méthode « AUTEUR INVISIBLE » est la synthèse de tout ça : 35 ans de lecture passionnée, 20 ans de web, une obsession simple – que ton livre trouve vraiment ses lecteurs, et une attention constante à ce que vous vivez et partagez chaque jour dans la communauté."
   ]
 };
 
@@ -65,7 +65,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Est-ce que la formation inclut de la publicité payante (Amazon Ads) ?",
-    a: "Oui, le Module 5 traite de la 'Chirurgie de Conversion'. Tu apprendras à dompter l'algorithme et à lancer des publicités rentables sans jeter ton argent par les fenêtres."
+    a: "Oui, le Module 5 traite de la 'Chirurgie de Conversion'. Tu apprendras à maîtriser l'algorithme et à lancer des publicités rentables sans jeter ton argent par les fenêtres."
   },
   {
     q: "Qu’est-ce que le 'Clan des 50' dont tu parles ?",
@@ -77,7 +77,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Le contenu est-il disponible immédiatement ?",
-    a: "Dès la validation de ton inscription, 100% des modules et des goodies (les 20+ outils, checklists et templates) sont débloqués immédiatement pour toi."
+    a: "Dès la validation de ton inscription, 100% des modules et des ressources (les 20+ outils, checklists et templates) sont débloqués immédiatement pour toi."
   },
   {
     q: "Qu'en est-il des mises à jour ? Le web change vite.",
@@ -117,7 +117,7 @@ export const COURSE_MODULES: ModuleContent[] = [
       "La Pyramide de Visibilité : Bâtir son écosystème",
       "Le 'Lecteur Avatar' : Profilage psychologique profond",
       "L'Audit de Niche : Polar, Thriller ou Noir ?",
-      "Stratégie Anti-Invisibilité : Le mur de rassurance"
+      "Stratégie de Rassurance : Le mur de crédibilité"
     ],
     icon: Target,
     color: "red",
@@ -126,11 +126,11 @@ export const COURSE_MODULES: ModuleContent[] = [
     steps: [
       "Lire la partie « Construire progressivement son écosystème ».",
       "Faire l’exercice « Définir sa Promesse de Noir ».",
-      "Télécharger et remplir les 4 outils du Pack Bonus du module."
+      "Télécharger et remplir les 4 outils du Pack Ressources du module."
     ],
-    transitionTitle: "Mettre en pratique avec les outils du module",
-    transitionText: "Une fois que tu as lu cette page et répondu à l’exercice sur ta promesse de Noir, passe aux outils ci‑dessous. Ils te servent à concrétiser ton ADN d’auteur : ton écosystème, ton calcul de rentabilité, ton lecteur cible et tes piliers pro.",
-    transitionButtonText: "Descendre vers les outils",
+    transitionTitle: "Mettre en pratique avec les ressources du module",
+    transitionText: "Une fois que tu as lu cette page et répondu à l’exercice sur ta promesse de Noir, passe aux ressources ci‑dessous. Elles te servent à concrétiser ton ADN d’auteur.",
+    transitionButtonText: "Descendre vers les ressources",
     chapters: [
       {
         title: "Construire progressivement son écosystème",
@@ -146,7 +146,7 @@ export const COURSE_MODULES: ModuleContent[] = [
         title: "La Stratégie de l'Infiltration",
         type: "key-concept",
         content: [
-          "L'erreur fatale du débutant est de hurler 'ACHETEZ MON LIVRE' dans le vide. Le professionnel, lui, s'infoltre. Il se rend visible là où ses lecteurs dorment déjà : dans les groupes de fans, les blogs spécialisés et les communautés comme Bibliopulse.",
+          "L'erreur fatale est de hurler 'ACHETEZ MON LIVRE' dans le vide. Le professionnel, lui, s'infiltre stratégiquement. Il se rend visible là où ses lecteurs dorment déjà : dans les groupes de fans, les blogs spécialisés et les communautés comme Bibliopulse.",
           "On ne construit pas une audience en un jour, mais on peut construire une base solide en 90 jours avec de la méthode."
         ]
       },
@@ -160,7 +160,7 @@ export const COURSE_MODULES: ModuleContent[] = [
         ],
         content: [
           "Quel est le 'frisson' spécifique que vous apportez ? Est-ce le malaise psychologique ? L'adrénaline de la traque ? Le réalisme brut du polar social ?",
-          "Note tes réponses dans tes notes ET dans les outils du Pack Bonus (Blueprint + Fiche Avatar)."
+          "Note tes réponses dans tes notes ET dans les ressources du Pack Bonus."
         ]
       }
     ],
@@ -190,11 +190,11 @@ export const COURSE_MODULES: ModuleContent[] = [
     steps: [
       "Lire la section « L’anatomie d’une bio qui tue ».",
       "Faire l’audit rapide de tes profils actifs.",
-      "Utiliser les outils du Pack Bonus pour créer/mettre à jour ta bio, tes bannières et ton setup newsletter."
+      "Utiliser les outils du Pack Ressources pour créer/mettre à jour ta bio, tes bannières et ton setup newsletter."
     ],
-    transitionTitle: "Mettre en pratique avec les outils du module",
-    transitionText: "Une fois que tu as lu cette page et répondu à l’audit et à l’exercice sur ta bio, passe aux outils ci‑dessous. Ils t’aident à concrétiser ton identité numérique : pack de bannières auteur noir, générateur de bio haute‑tension, guide setup newsletter en 15 minutes et checklist d’audit de présence digitale.",
-    transitionButtonText: "Descendre vers les outils",
+    transitionTitle: "Mettre en pratique avec les ressources du module",
+    transitionText: "Une fois que tu as lu cette page et répondu à l’audit et à l’exercice sur ta bio, passe aux ressources ci‑dessous.",
+    transitionButtonText: "Descendre vers les ressources",
     chapters: [
       {
         title: "L’anatomie d’une bio qui tue",
@@ -246,7 +246,7 @@ export const COURSE_MODULES: ModuleContent[] = [
     description: "Les salons se raréfient ? Apprenez à vous infiltrez élégamment dans les poches numériques des lecteurs.",
     duration: "1h 50",
     bullets: [
-      "L'Algorithme du Noir : Hacker la visibilité",
+      "L'Algorithme du Noir : Maîtriser la visibilité",
       "Technique du Cheval de Troie : Infiltration élégante",
       "Engagement Direct : Sortir du monologue marketing",
       "Bibliopulse : Votre levier de croissance"
@@ -258,11 +258,11 @@ export const COURSE_MODULES: ModuleContent[] = [
     steps: [
       "Lire la section « Infiltrer les groupes de lecteurs ».",
       "Noter 3–5 groupes / communautés où tu pourrais t’infiltrer.",
-      "Utiliser les outils du Pack Bonus pour planifier tes posts, approcher les chroniqueurs et cartographier ton réseau."
+      "Utiliser les outils du Pack Ressources pour planifier tes posts, approcher les chroniqueurs et cartographier ton réseau."
     ],
-    transitionTitle: "Mettre en pratique avec les outils du module",
-    transitionText: "Une fois que tu as lu cette page, cartographié ton réseau et défini ton plan d’infiltration sur 30 jours, passe aux outils ci‑dessous. Ils t’aident à rendre tout ça concret : 50 accroches de posts spécial thriller, un calendrier éditorial prêt à remplir, des scripts d’approche chroniqueurs et une liste de groupes & comptes lecteurs polar/thriller.",
-    transitionButtonText: "Descendre vers les outils",
+    transitionTitle: "Mettre en pratique avec les ressources du module",
+    transitionText: "Une fois que tu as lu cette page, cartographié ton réseau et défini ton plan d’infiltration sur 30 jours, passe aux ressources ci‑dessous.",
+    transitionButtonText: "Descendre vers les ressources",
     chapters: [
       {
         title: "Infiltrer les groupes de lecteurs",
@@ -308,8 +308,8 @@ export const COURSE_MODULES: ModuleContent[] = [
   },
   {
     id: 'cercle',
-    title: "Module 4 : Le Protocole du Clan des 50",
-    subtitle: "L'opération commando pour vos avis",
+    title: "Module 4 : Le Protocole Tactique du Clan",
+    subtitle: "L'opération stratégique pour vos avis",
     description: "Le système aide ceux qui brillent déjà. Orchestrez votre signal de succès avec vos soldats du premier jour.",
     duration: "2h 10",
     bullets: [
@@ -325,11 +325,11 @@ export const COURSE_MODULES: ModuleContent[] = [
     steps: [
       "Lire la section « Bâtir sa Street Team de A à Z ».",
       "Décider qui tu veux dans ta street team (liste courte).",
-      "Utiliser les outils du pack bonus pour formaliser la relation, organiser les bêta‑lectures et suivre les avis."
+      "Utiliser les outils du pack ressources pour formaliser la relation, organiser les bêta‑lectures et suivre les avis."
     ],
-    transitionTitle: "Mettre en pratique avec les outils du module",
-    transitionText: "Une fois que tu as défini ta street team idéale et ton organisation de bêta‑lecture, passe aux outils ci‑dessous. Ils t’aident à formaliser l’accord moral, structurer les retours, relancer les avis sans être lourd et suivre précisément qui a chroniqué quoi.",
-    transitionButtonText: "Descendre vers les outils",
+    transitionTitle: "Mettre en pratique avec les ressources du module",
+    transitionText: "Une fois que tu as défini ta street team idéale et ton organisation de bêta‑lecture, passe aux ressources ci‑dessous.",
+    transitionButtonText: "Descendre vers les ressources",
     chapters: [
       {
         title: "Bâtir sa street team de A à Z",
@@ -393,11 +393,11 @@ export const COURSE_MODULES: ModuleContent[] = [
     steps: [
       "Lire la section « Le résumé haute tension ».",
       "Choisir un best‑seller noir/thriller à analyser.",
-      "Utiliser les outils du pack bonus pour analyser, décortiquer et réécrire ton propre résumé."
+      "Utiliser les outils du pack ressources pour analyser, décortiquer et réécrire ton propre résumé."
     ],
-    transitionTitle: "Mettre en pratique avec les outils du module",
-    transitionText: "Une fois que tu as compris ce qui fait la force d’un résumé et analysé un best‑seller, passe aux outils ci‑dessous. Ils t’aident à décortiquer en profondeur 50 résumés, à construire une base de 1000 mots‑clés Amazon Ads polar/thriller, à cartographier l’ADN d’un best‑seller noir et à travailler la psychologie de ta couverture.",
-    transitionButtonText: "Descendre vers les outils",
+    transitionTitle: "Mettre en pratique avec les ressources du module",
+    transitionText: "Une fois que tu as compris ce qui fait la force d’un résumé et analysé un best‑seller, passe aux ressources ci‑dessous.",
+    transitionButtonText: "Descendre vers les ressources",
     chapters: [
       {
         title: "Le résumé haute tension",
@@ -444,7 +444,7 @@ export const COURSE_MODULES: ModuleContent[] = [
   {
     id: 'bonus',
     title: "Module 6 : Le Pipeline de Vente Continu",
-    subtitle: "La machine de guerre automatique",
+    subtitle: "La machine de visibilité automatique",
     description: "Ne repartez plus jamais de zéro. Construisez la machine qui alimente vos ventes sur le long terme.",
     duration: "1h 30",
     bullets: [
@@ -459,11 +459,11 @@ export const COURSE_MODULES: ModuleContent[] = [
     longDescription: "La formation se termine, mais ta carrière commence. Ce module te donne la structure du 'Pipeline' : comment capturer l'email de chaque lecteur pour que ton prochain livre soit un succès garanti avant même de l'écrire.",
     steps: [
       "Lire la section « Le pipeline de vente continu ».",
-      "Choisir ton niveau d’intensity (15 min/jour, 1 h/jour, ou 1 demi‑journée par semaine).",
+      "Choisir ton niveau d’intensité (15 min/jour, 1 h/jour, ou 1 demi‑journée par semaine).",
       "Utiliser la checklist Plan de Guerre 90 Jours pour planifier concrètement ton lancement."
     ],
     transitionTitle: "Mettre en pratique avec le Plan de Guerre",
-    transitionText: "Maintenant que tu connais la logique du pipeline de vente continu et des 3 phases, télécharge la checklist 90 jours ci‑dessous. Elle te donne, semaine après semaine, les actions essentielles à mener pour lancer ton polar : préparation, lancement, consolidation. Choisis ton niveau d’intensité et coche au fur et à mesure.",
+    transitionText: "Maintenant que tu connais la logique du pipeline de vente continu et des 3 phases, télécharge la checklist 90 jours ci‑dessous.",
     transitionButtonText: "Descendre vers l'outil",
     chapters: [
       {
@@ -492,7 +492,7 @@ export const COURSE_MODULES: ModuleContent[] = [
         type: "key-concept",
         content: [
           "Phase 1 : Préparation (J‑30 à J‑1) – optimiser la fiche Amazon, préparer les contenus, mobiliser street team et chroniqueurs.",
-          "Phase 2 : Lancement (J0 à J+30) – concentrer l’attention, obtenir les premiers avis, tester pubs/visibilité.",
+          "Phase 2 : Lancement (J0 à J+30) – concentrer l’attention, obtenir les premiers avis, tester visibilité.",
           "Phase 3 : Consolidation (J+31 à J+90) – maintenir la présence, exploiter les avis, préparer le livre suivant.",
           "La checklist Plan de Guerre 90 Jours détaille semaine par semaine les actions proposées dans un cadre tactique précis."
         ]

@@ -47,9 +47,9 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
     }
   };
 
-  const scrollToGoodies = () => {
-    const goodies = document.getElementById('goodies-section');
-    if (goodies) goodies.scrollIntoView({ behavior: 'smooth' });
+  const scrollToResources = () => {
+    const resources = document.getElementById('resources-section');
+    if (resources) resources.scrollIntoView({ behavior: 'smooth' });
   };
 
   const renderCoachingContent = () => (
@@ -62,7 +62,7 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
           Mon Coaching <span className="text-[#ff0000]">Privé</span>
         </h1>
         <p className="text-2xl text-gray-500 leading-relaxed font-light italic max-w-2xl">
-          Comme tu fais partie des premiers inscrits, tu as droit à ton heure de coaching chirurgical. **Je m'immerge** personnellement dans ton projet pour propulser ta visibilité.
+          Comme tu fais partie des premiers inscrits, tu as droit à ton heure de coaching chirurgical. **Je m'immerge** personnellement dans ton projet pour propulser ta visibilité. C’est ton levier anti-erreur.
         </p>
       </header>
 
@@ -261,7 +261,7 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
             <div className="mt-8">
               <div className="flex items-center justify-between mb-6 px-2">
                 <div className="text-[10px] font-black text-[#ff0000] uppercase tracking-[0.2em] flex items-center gap-2">
-                  <Gift size={12} /> Vos Goodies
+                  <Gift size={12} /> Vos Ressources
                 </div>
                 <div className="text-[8px] font-black text-gray-600 uppercase tracking-widest">{activeModule.resources.length} Fichiers</div>
               </div>
@@ -373,15 +373,15 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
                        {activeModule.transitionText}
                      </p>
                      <button 
-                      onClick={scrollToGoodies}
+                      onClick={scrollToResources}
                       className="text-[#ff0000] font-black uppercase tracking-widest text-xs flex items-center gap-2 mx-auto hover:gap-4 transition-all"
                      >
-                       {activeModule.transitionButtonText || "Descendre vers les outils"} <ChevronRight size={16} />
+                       {activeModule.transitionButtonText || "Descendre vers les ressources"} <ChevronRight size={16} />
                      </button>
                   </div>
                 )}
 
-                <div id="goodies-section" className="mt-20 p-16 bg-gradient-to-br from-neutral-900 to-black rounded-[4rem] border border-[#ff0000]/30 text-center relative overflow-hidden">
+                <div id="resources-section" className="mt-20 p-16 bg-gradient-to-br from-neutral-900 to-black rounded-[4rem] border border-[#ff0000]/30 text-center relative overflow-hidden">
                   <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#ff0000]/10 rounded-full blur-[100px]" />
                   <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-900/10 rounded-full blur-[100px]" />
 
@@ -390,7 +390,7 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
                   </div>
                   
                   <h3 className="text-4xl font-serif font-black text-white mb-6 uppercase italic tracking-tighter">Votre Pack Bonus Elite</h3>
-                  <p className="text-xl text-gray-500 mb-12 max-w-xl mx-auto italic font-light">Pour passer de la théorie à la pratique, nous avons préparé des outils exclusifs disponibles dans notre Hub central.</p>
+                  <p className="text-xl text-gray-500 mb-12 max-w-xl mx-auto italic font-light">Pour passer de la théorie à la pratique, nous avons préparé des outils exclusifs déployés et utilisés à l'intérieur de ces modules.</p>
                   
                   <div className="flex flex-wrap justify-center gap-4 mb-12">
                     {activeModule.resources?.map((res, i) => {
@@ -419,7 +419,7 @@ const CoursePlayer: React.FC<CoursePlayerProps> = ({ modules, onBack, onLogout }
                   </div>
 
                   <div className="text-center">
-                    <p className="text-xs text-gray-600 mb-6 font-bold uppercase tracking-widest italic">Accédez au dossier partagé pour récupérer vos outils</p>
+                    <p className="text-xs text-gray-600 mb-6 font-bold uppercase tracking-widest italic">Accédez au dossier partagé pour récupérer vos ressources</p>
                     <a 
                       href={DRIVE_FOLDER}
                       target="_blank"
