@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { COURSE_MODULES, INSTRUCTOR, INSTRUCTOR_STATS, FAQ_ITEMS } from '../constants';
+import { COURSE_MODULES, INSTRUCTOR, INSTRUCTOR_STATS, FAQ_ITEMS, DEFAULT_TESTIMONIALS, Testimonial } from '../constants';
 import { ModuleContent, Chapter, Resource } from '../types';
 import { 
   ArrowLeft, 
@@ -10,7 +10,7 @@ import {
   BookOpen, 
   Plus, 
   Trash2, 
-  Image as ImageIcon, 
+  ImageIcon, 
   Type, 
   Link as LinkIcon,
   CheckCircle,
@@ -22,7 +22,9 @@ import {
   ListOrdered,
   Layers,
   Settings as SettingsIcon,
-  MessageSquare
+  MessageSquare,
+  Quote,
+  Star
 } from 'lucide-react';
 
 interface AdminDashboardProps {
@@ -30,7 +32,7 @@ interface AdminDashboardProps {
 }
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack }) => {
-  const [activeTab, setActiveTab] = useState<'landing' | 'modules' | 'global'>('landing');
+  const [activeTab, setActiveTab] = useState<'landing' | 'modules' | 'testimonials' | 'global'>('landing');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -44,6 +46,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack }) => {
   const [modules, setModules] = useState<ModuleContent[]>(COURSE_MODULES);
   const [stats, setStats] = useState(INSTRUCTOR_STATS);
   const [faq, setFaq] = useState(FAQ_ITEMS);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(DEFAULT_TESTIMONIALS);
   const [selectedModuleId, setSelectedModuleId] = useState(COURSE_MODULES[0].id);
 
   useEffect(() => {
@@ -60,12 +63,14 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack }) => {
         const mods = data.find(c => c.key === 'modules')?.data;
         const s = data.find(c => c.key === 'stats')?.data;
         const f = data.find(c => c.key === 'faq')?.data;
+        const t = data.find(c => c.key === 'testimonials')?.data;
         
         if (land) setLanding(land);
         if (inst) setInstData(inst);
         if (mods) setModules(mods);
         if (s) setStats(s);
         if (f) setFaq(f);
+        if (t && Array.isArray(t) && t.length > 0) setTestimonials(t);
       }
     } catch (err) {
       console.error(err);
@@ -84,7 +89,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack }) => {
         { key: 'instructor', data: instData },
         { key: 'modules', data: modules },
         { key: 'stats', data: stats },
-        { key: 'faq', data: faq }
+        { key: 'faq', data: faq },
+        { key: 'testimonials', data: testimonials }
       ];
 
       for (const item of payload) {
@@ -145,6 +151,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack }) => {
     handleModuleChange('chapters', newChapters);
   };
 
+  const updateTestimonial = (index: number, field: keyof Testimonial, value: any) => {
+    const newTestimonials = [...testimonials];
+    newTestimonials[index] = { ...newTestimonials[index], [field]: value };
+    setTestimonials(newTestimonials);
+  };
+
   return (
     <div className="min-h-screen bg-black text-white font-sans flex">
       {/* Sidebar Admin */}
@@ -168,6 +180,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack }) => {
             className={`w-full flex items-center gap-3 p-4 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${activeTab === 'modules' ? 'bg-[#ff0000] text-white shadow-lg shadow-[#ff0000]/20' : 'text-gray-500 hover:bg-white/5'}`}
           >
             <BookOpen size={16} /> Modules Formation
+          </button>
+          <button 
+            onClick={() => setActiveTab('testimonials')}
+            className={`w-full flex items-center gap-3 p-4 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${activeTab === 'testimonials' ? 'bg-[#ff0000] text-white shadow-lg shadow-[#ff0000]/20' : 'text-gray-500 hover:bg-white/5'}`}
+          >
+            <Quote size={16} /> Témoignages
           </button>
           <button 
             onClick={() => setActiveTab('global')}
@@ -344,29 +362,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack }) => {
                 </div>
               </section>
 
-              {/* SECTION : SÉQUENCE D'INTERVENTION */}
-              <section className="space-y-6">
-                <h3 className="text-[#ff0000] font-black uppercase text-xs tracking-widest border-l-2 border-[#ff0000] pl-4 flex items-center gap-2">
-                   <ListOrdered size={14} /> Séquence d'Intervention (Étapes)
-                </h3>
-                <div className="space-y-3 bg-neutral-900/40 p-8 rounded-[2rem] border border-white/5">
-                  {selectedModule.steps?.map((step, i) => (
-                    <div key={i} className="flex gap-2">
-                      <div className="w-8 h-8 bg-[#ff0000] rounded-lg flex items-center justify-center font-black text-xs shrink-0">{i+1}</div>
-                      <input 
-                        value={step} 
-                        onChange={(e) => updateList('steps', i, e.target.value)}
-                        className="flex-1 bg-black border border-white/10 rounded-xl p-3 text-sm focus:border-[#ff0000] outline-none"
-                      />
-                      <button onClick={() => removeItemFromList('steps', i)} className="p-3 text-gray-600 hover:text-[#ff0000] transition-colors"><Trash2 size={18} /></button>
-                    </div>
-                  ))}
-                  <button onClick={() => addItemToList('steps')} className="text-[10px] font-black uppercase text-[#ff0000] flex items-center gap-2 mt-4 px-4 py-2 border border-[#ff0000]/20 rounded-full hover:bg-[#ff0000]/5 transition-all">
-                    <Plus size={14} /> Ajouter une étape
-                  </button>
-                </div>
-              </section>
-
               {/* SECTION : CHAPITRES (CONTENU PÉDAGOGIQUE) */}
               <section className="space-y-6">
                 <div className="flex items-center justify-between border-l-2 border-[#ff0000] pl-4">
@@ -421,58 +416,64 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack }) => {
                           placeholder="Écrivez votre texte ici..."
                         />
                       </div>
-
-                      {chapter.type === 'exercise' && (
-                        <div>
-                          <label className="text-[9px] font-black text-gray-600 uppercase mb-2 block">Questions Guidées (Une par ligne)</label>
-                          <textarea 
-                            value={chapter.guidedQuestions?.join('\n') || ''} 
-                            onChange={(e) => updateChapter(i, 'guidedQuestions', e.target.value.split('\n'))}
-                            className="w-full bg-black border border-white/10 rounded-xl p-4 text-sm h-24 focus:border-[#ff0000] outline-none font-mono"
-                          />
-                        </div>
-                      )}
-
-                      <div>
-                        <label className="text-[9px] font-black text-gray-600 uppercase mb-2 block">Impact / Résultat Attendu</label>
-                        <input 
-                          value={chapter.expectedResult || ''} 
-                          onChange={(e) => updateChapter(i, 'expectedResult', e.target.value)}
-                          className="w-full bg-black border border-white/10 rounded-xl p-4 text-sm focus:border-[#ff0000] outline-none italic text-gray-400"
-                          placeholder="Ex: Une vitrine qui rassure immédiatement."
-                        />
-                      </div>
                     </div>
                   ))}
                 </div>
               </section>
+            </div>
+          )}
 
-              {/* SECTION : TRANSITION FINALE */}
-              <section className="space-y-6">
-                <h3 className="text-[#ff0000] font-black uppercase text-xs tracking-widest border-l-2 border-[#ff0000] pl-4">Transition Finale</h3>
-                <div className="grid gap-4 bg-neutral-900/40 p-8 rounded-[2rem] border border-white/5">
-                  <input 
-                    type="text" 
-                    value={selectedModule.transitionTitle || ''} 
-                    onChange={(e) => handleModuleChange('transitionTitle', e.target.value)}
-                    placeholder="Titre de la transition"
-                    className="w-full bg-black border border-white/10 rounded-xl p-4 text-sm focus:border-[#ff0000] outline-none"
-                  />
-                  <textarea 
-                    value={selectedModule.transitionText || ''} 
-                    onChange={(e) => handleModuleChange('transitionText', e.target.value)}
-                    placeholder="Texte d'encouragement"
-                    className="w-full bg-black border border-white/10 rounded-xl p-4 text-sm h-24 focus:border-[#ff0000] outline-none"
-                  />
-                  <input 
-                    type="text" 
-                    value={selectedModule.transitionButtonText || ''} 
-                    onChange={(e) => handleModuleChange('transitionButtonText', e.target.value)}
-                    placeholder="Texte du bouton (ex: Voir les instruments)"
-                    className="w-full bg-black border border-white/10 rounded-xl p-4 text-sm focus:border-[#ff0000] outline-none"
-                  />
+          {activeTab === 'testimonials' && (
+            <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <header className="mb-12 flex items-center justify-between">
+                <div>
+                  <h2 className="text-4xl font-black italic serif-font mb-2">TÉMOIGNAGES</h2>
+                  <p className="text-gray-500 text-xs font-black uppercase tracking-widest">Gérez les retours du Clan Pulse Noir</p>
                 </div>
-              </section>
+                <button 
+                  onClick={() => setTestimonials([{ name: 'Nouvel Auteur', text: 'Témoignage...', highlight: false }, ...testimonials])}
+                  className="bg-[#ff0000] text-white px-6 py-3 rounded-xl font-black uppercase text-[10px] tracking-widest flex items-center gap-2 hover:scale-105 transition-all shadow-lg"
+                >
+                  <Plus size={16} /> Ajouter
+                </button>
+              </header>
+
+              <div className="grid gap-6">
+                {testimonials.map((t, i) => (
+                  <div key={i} className={`bg-neutral-900/40 p-8 rounded-[2.5rem] border transition-all group relative ${t.highlight ? 'border-[#ff0000]/30 shadow-[0_0_30px_rgba(255,0,0,0.05)]' : 'border-white/5'}`}>
+                    <div className="flex gap-6 items-start">
+                      <div className="flex-1 space-y-4">
+                        <div className="flex items-center gap-4">
+                          <input 
+                            value={t.name} 
+                            onChange={(e) => updateTestimonial(i, 'name', e.target.value)}
+                            placeholder="Nom de l'auteur"
+                            className="bg-black border border-white/10 rounded-xl px-4 py-2 text-sm font-black text-white uppercase tracking-tight focus:border-[#ff0000] outline-none"
+                          />
+                          <button 
+                            onClick={() => updateTestimonial(i, 'highlight', !t.highlight)}
+                            className={`flex items-center gap-2 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest transition-all ${t.highlight ? 'bg-[#ff0000] text-white' : 'bg-white/5 text-gray-600 hover:text-white'}`}
+                          >
+                            <Star size={10} fill={t.highlight ? 'currentColor' : 'none'} /> Clan PulseNoir
+                          </button>
+                        </div>
+                        <textarea 
+                          value={t.text} 
+                          onChange={(e) => updateTestimonial(i, 'text', e.target.value)}
+                          placeholder="Texte du témoignage..."
+                          className="w-full bg-black border border-white/10 rounded-xl p-4 text-sm h-24 italic text-gray-400 focus:border-[#ff0000] outline-none"
+                        />
+                      </div>
+                      <button 
+                        onClick={() => setTestimonials(testimonials.filter((_, idx) => idx !== i))}
+                        className="p-3 text-gray-800 hover:text-[#ff0000] transition-colors"
+                      >
+                        <Trash2 size={20} />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
