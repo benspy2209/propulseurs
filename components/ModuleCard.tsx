@@ -21,10 +21,11 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ module, index }) => {
           <Icon size={28} />
         </div>
         <div className="flex flex-col items-end">
-          <span className="text-5xl font-black text-white/5 italic group-hover:text-[#ff0000]/10 transition-colors">0{index + 1}</span>
-          {/* Badge Goodies en Jaune avec texte noir, forcé à 4 par carte comme demandé */}
+          {/* Chiffre en Jaune PulseNoir avec opacité augmentée au survol */}
+          <span className="text-6xl font-black text-[#f4c024]/10 italic group-hover:text-[#f4c024]/40 transition-all duration-500 scale-110">0{index + 1}</span>
+          {/* Badge Ressources en Jaune avec texte noir */}
           <div className="flex items-center gap-1.5 mt-2 px-3 py-1 bg-[#f4c024] rounded-full text-[9px] font-black text-black uppercase tracking-widest shadow-[0_0_15px_rgba(244,192,36,0.4)]">
-            <Gift size={10} /> 4 GOODIES INCLUS
+            <Gift size={10} /> 4 RESSOURCES INCLUSES
           </div>
         </div>
       </div>

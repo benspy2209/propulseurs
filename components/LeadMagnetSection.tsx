@@ -118,7 +118,7 @@ const LeadMagnetCard: React.FC<LeadMagnetProps> = ({ title, description, image, 
               <CheckCircle className="text-green-500 shrink-0" size={24} />
               <div className="text-left">
                 <p className="text-white font-black uppercase text-[10px] tracking-tight italic leading-none mb-1">C'est prêt !</p>
-                <p className="text-gray-500 text-[9px] uppercase font-bold tracking-widest">Le dossier est ouvert dans un nouvel onglet.</p>
+                <p className="text-gray-500 text-[9px] uppercase font-bold tracking-widest">Le guide est ouvert dans un nouvel onglet.</p>
               </div>
             </div>
             <a 
@@ -167,11 +167,11 @@ const LeadMagnetSection: React.FC = () => {
           {/* Lead Magnet 2: Plan d'attaque 7 étapes -> Le Protocole Anti-Invisibilité */}
           <LeadMagnetCard 
             title="Le Protocole Anti-Invisibilité"
-            description="Comment forcer le mur de l'algorithme et rassurer un lecteur méfiant en 7 briques stratégiques. Le guide étape par étape pour transformer un manuscrit ignoré en une valeur sûre."
+            description="Comment lever le mur de l'algorithme et rassurer un lecteur méfiant avec une méthode structurée en 7 briques stratégiques. Le guide étape par étape pour transformer un manuscrit ignoré en une valeur sûre."
             image="https://raw.githubusercontent.com/benspy2209/propulseurs/10707a5e1d1eae7bf26f636ce3e67218dfaa8854/Lancer%20son%20polar%20en%20auto%20edition%20-%20le%20plan%20d%E2%80%99attaque%20en%207%20etapes.png"
             link={PULSENOIR_LINKS.leadMagnetAutoedition}
             source="lead_magnet_7_steps_autoedition"
-            badge="Stratégie Elite"
+            badge="Méthode Elite"
             icon={<Target size={10} />}
           />
         </div>

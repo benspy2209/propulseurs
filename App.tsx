@@ -27,6 +27,7 @@ import {
   ShieldCheck,
   CalendarDays,
   User,
+  Users,
   Play,
   HelpCircle,
   Plus,
@@ -37,7 +38,14 @@ import {
   Repeat,
   UserCircle,
   Video,
-  Mic
+  Mic,
+  Crosshair,
+  UserPlus,
+  Rocket,
+  ShieldAlert,
+  AlertTriangle,
+  XCircle,
+  Target
 } from 'lucide-react';
 
 type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success' | 'login';
@@ -106,7 +114,7 @@ const CoachingBonusSection: React.FC = () => {
             </h2>
             
             <p className="text-gray-300 text-lg md:text-xl italic font-light leading-relaxed mb-10">
-              Pour les 10 premiers inscrits uniquement, **je m'immerge** personnellement dans votre projet pour débloquer votre visibilité et valider votre plan d'attaque personnalisé. Ce n'est pas un appel de courtoisie, c'est une séance de travail chirurgicale que **je mène avec vous** pour votre carrière d'auteur de noir.
+              Pour les 10 premiers inscrits uniquement, **je m'immerge** personnellement dans votre projet pour lever vos blocages et valider votre système de visibilité personnalisé. C’est votre levier anti-erreur pour bâtir une carrière d’auteur de noir solide.
             </p>
             
             <div className="pt-8 border-t border-white/5">
@@ -300,7 +308,7 @@ const App: React.FC = () => {
             <button onClick={() => scrollToSection('autopsie')} className="hover:text-white transition-colors cursor-pointer">L'Analyse</button>
             <button onClick={() => scrollToSection('pour-qui')} className="hover:text-white transition-colors cursor-pointer">Pour qui ?</button>
             <button onClick={() => scrollToSection('programme')} className="hover:text-white transition-colors cursor-pointer">Le Programme</button>
-            <button onClick={() => scrollToSection('ressources')} className="hover:text-white transition-colors cursor-pointer">Plan d'Attaque</button>
+            <button onClick={() => scrollToSection('ressources')} className="hover:text-white transition-colors cursor-pointer">Ressources</button>
             <button onClick={() => scrollToSection('instructeur')} className="hover:text-white transition-colors cursor-pointer">L'Instructeur</button>
             <button onClick={() => scrollToSection('coaching')} className="hover:text-white transition-colors cursor-pointer">Coaching</button>
             <button onClick={() => scrollToSection('faq')} className="hover:text-white transition-colors cursor-pointer">FAQ</button>
@@ -324,47 +332,138 @@ const App: React.FC = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <header className="relative min-h-screen flex flex-col items-center justify-center pt-52 lg:pt-40 px-6 overflow-hidden bg-black">
+      {/* Hero Section - Optimized Header "AUTEUR INVISIBLE" */}
+      <header className="relative min-h-screen flex flex-col items-center justify-center pt-52 lg:pt-32 px-6 overflow-hidden bg-black">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff0000]/5 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="relative z-10 w-full max-w-6xl mx-auto text-center">
-          <div className="inline-block px-5 py-1.5 mb-8 rounded-full border border-[#ff0000]/30 bg-[#ff0000]/5 text-[#ff0000] text-[11px] font-black uppercase tracking-[0.3em]">
-            Dossier : Rupture de l'Anonymat
-          </div>
-          
-          <h1 className="text-[10vw] md:text-[120px] leading-[0.85] mb-12 polar-title">
-            Pourquoi les bons polars restent-ils <span className="text-[#ff0000] text-glow-red">invisibles</span> ?
+          <h1 className="text-[10vw] md:text-[120px] leading-[0.85] mb-4 md:mb-6 polar-title animate-in fade-in slide-in-from-top-12 duration-1000">
+            AUTEUR <span className="text-[#ff0000] text-glow-red">INVISIBLE</span>
           </h1>
 
-          <p className="max-w-4xl mx-auto text-lg md:text-2xl text-white font-black uppercase tracking-tight border-y border-white/10 py-6 lg:py-8 mb-8 bg-white/5 backdrop-blur-sm px-4 leading-relaxed">
-            Ce n'est pas une question de talent. C'est un système biaisé et un lecteur qui a peur de l'inconnu. <br />
-            En 90 jours, brisez le plafond de verre et devenez une valeur sûre.
-          </p>
+          <h2 className="text-xl md:text-3xl lg:text-4xl text-gray-400 font-black uppercase tracking-tight leading-snug italic mb-12 animate-in fade-in slide-in-from-top-8 duration-1000 delay-100">
+            Pourquoi votre polar ne trouve pas ses lecteurs <br className="hidden md:block"/>
+            (et comment y remédier)
+          </h2>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
-            <button 
-              onClick={() => setCurrentView('purchase')}
-              className="w-full md:w-auto px-12 py-7 bg-[#ff0000] text-white text-base font-black rounded-full flex items-center justify-center gap-3 group uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-[0_0_60px_rgba(255,0,0,0.5)] active:scale-95"
-            >
-              Rejoindre l'offensive
-              <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
-            </button>
-            <button 
-              onClick={() => setShowPresentation(true)}
-              className="w-full md:w-auto px-12 py-7 bg-white/5 border border-[#f4c024] text-[#f4c024] text-base font-black rounded-full flex items-center justify-center gap-3 group uppercase tracking-[0.2em] transition-all hover:bg-[#f4c024] hover:text-black active:scale-95"
-            >
-              <Play size={20} className="fill-current" />
-              Découvrir la méthode
-            </button>
+          <div className="max-w-4xl mx-auto mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+            <p className="text-2xl md:text-5xl text-white font-black uppercase tracking-tighter leading-[1.1] mb-6">
+              Votre polar est publié. <br/>
+              <span className="text-[#ff0000] italic">Il ne se vend pas.</span>
+            </p>
+            <p className="text-base md:text-xl text-gray-300 font-bold uppercase tracking-tight leading-relaxed mb-6">
+              Ce n’est pas un problème de talent. <br className="md:hidden"/>
+              C’est un problème de visibilité, de signaux et de méthode.
+            </p>
+            <p className="text-lg md:text-2xl text-white font-black uppercase tracking-wide border-t border-white/10 pt-8 mt-4">
+              En 90 jours, construisez une crédibilité réelle et sortez de l’invisibilité.
+            </p>
           </div>
 
-          <div className="flex items-center justify-center gap-3 text-white/60 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs italic bg-white/5 py-3 px-6 rounded-full border border-white/5 backdrop-blur-sm">
-            <Video size={16} className="text-[#f4c024]" />
-            Inclus : 1h de coaching privé avec Benjamin (AKA Pulseman) <span className="text-[#f4c024]">(Offert aux 10 premiers)</span>
+          <div className="flex flex-col items-center gap-6 mb-12">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full">
+              <button 
+                onClick={() => setCurrentView('purchase')}
+                className="w-full md:w-auto px-12 py-7 bg-[#ff0000] text-white text-base font-black rounded-full flex items-center justify-center gap-3 group uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-[0_0_60px_rgba(255,0,0,0.5)] active:scale-95"
+              >
+                Rejoindre le programme AUTEUR INVISIBLE
+                <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
+              </button>
+            </div>
+            
+            <p className="text-[10px] md:text-xs font-black text-gray-600 uppercase tracking-widest italic">
+              Accès immédiat • Garantie 10 jours • Paiement sécurisé
+            </p>
+          </div>
+
+          <div className="flex items-center justify-center gap-3 text-white/60 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs italic bg-white/5 py-4 px-8 rounded-full border border-white/5 backdrop-blur-sm shadow-xl">
+            <Users size={16} className="text-[#f4c024]" />
+            <span className="text-[#f4c024] font-black">+1500 membres</span> • +350 auteurs dans le clan Pulse Noir
           </div>
         </div>
       </header>
+
+      {/* Section Cible Hiérarchisée - Lexique Nettoyé */}
+      <section id="pour-qui" className="py-32 bg-black border-b border-white/5 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-24">
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 border border-[#f4c024]/30 bg-[#f4c024]/5 text-[#f4c024] text-[10px] font-black uppercase tracking-[0.4em]">
+              <Crosshair size={12} /> Cible Prioritaire
+            </div>
+            <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white italic serif-font leading-tight">
+              Pour qui est cette <span className="text-[#ff0000]">Méthode</span> ?
+            </h2>
+          </div>
+
+          {/* Profil Principal : Mis en avant radicalement */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="bg-neutral-900 border-2 border-[#f4c024] p-10 md:p-16 rounded-[4rem] relative overflow-hidden shadow-[0_0_50px_rgba(244,192,36,0.2)] group">
+              <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity">
+                <Target size={150} className="text-[#f4c024]" />
+              </div>
+              <div className="relative z-10">
+                <div className="inline-block px-4 py-1 bg-[#f4c024] text-black text-[9px] font-black uppercase tracking-widest rounded-full mb-6">FOCUS PRINCIPAL</div>
+                <h3 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight italic serif-font">L'Auteur Déjà Publié (1-5 livres)</h3>
+                <p className="text-gray-300 text-xl md:text-2xl leading-relaxed font-light italic mb-8 border-l-4 border-[#f4c024] pl-8">
+                  Vos ventes stagnent ou sont inexistantes. Vous avez le texte, mais pas les lecteurs. On va structurer une méthode claire ensemble pour briser votre plafond de verre.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  {["Ventes faibles", "Algorithmes sourds", "Manque de système", "Prêt à l'offensive"].map((tag, i) => (
+                    <span key={i} className="px-3 py-1 bg-white/5 border border-white/10 text-[10px] font-bold text-gray-500 uppercase tracking-widest">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Profils Secondaires */}
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-24">
+            {[
+              { 
+                icon: <Rocket className="text-[#ff0000]" />,
+                title: "Fin de Manuscrit", 
+                desc: "Vous avez compris que finir n'est que 50% du travail. Vous préparez votre système de visibilité AVANT la sortie." 
+              },
+              { 
+                icon: <ShieldAlert className="text-[#ff0000]" />,
+                title: "Édité mais Abandonné", 
+                desc: "Votre éditeur ne fait rien ? Reprenez le contrôle et bâtissez votre propre cercle de lecteurs fidèles." 
+              },
+              { 
+                icon: <Zap className="text-[#ff0000]" />,
+                title: "Auto-édition Pro", 
+                desc: "Vous voulez des systèmes robustes, des automatisations et des résultats concrets, pas du bricolage." 
+              }
+            ].map((profile, i) => (
+              <div key={i} className="bg-neutral-950 p-10 rounded-[3rem] border border-white/5 hover:border-[#ff0000]/30 transition-all duration-500 group flex flex-col">
+                <div className="mb-6 p-4 bg-white/5 rounded-2xl w-fit group-hover:bg-[#ff0000] group-hover:text-white transition-all">
+                  {profile.icon}
+                </div>
+                <h3 className="text-xl font-black text-white mb-4 uppercase tracking-tight italic serif-font">{profile.title}</h3>
+                <p className="text-gray-500 leading-relaxed font-medium italic text-base">{profile.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Section d'Exclusion : Clivant */}
+          <div className="max-w-2xl mx-auto bg-red-950/20 border border-red-900/30 p-10 rounded-[3rem] text-center">
+            <h3 className="text-[#ff0000] font-black uppercase tracking-[0.3em] text-xs mb-8 flex items-center justify-center gap-2">
+              <XCircle size={14} /> Ce n'est PAS pour vous si...
+            </h3>
+            <ul className="space-y-4">
+              {[
+                "Vous n'avez pas encore commencé à écrire une seule ligne.",
+                "Vous cherchez une recette miracle sans effort de mise en place.",
+                "Vous refusez de voir votre livre comme un projet professionnel à structurer."
+              ].map((txt, i) => (
+                <li key={i} className="text-gray-500 text-sm italic font-medium flex items-start gap-4 justify-center">
+                  <span className="text-red-900/40">•</span> {txt}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
 
       {/* Autopsie Section */}
       <section id="autopsie" className="py-32 bg-neutral-950 relative border-y border-white/5 overflow-hidden">
@@ -380,12 +479,12 @@ const App: React.FC = () => {
               { 
                 icon: <EyeOff size={40} className="text-[#ff0000]" />, 
                 title: "Le Mur du Lecteur", 
-                desc: "Le budget se resserre. Le lecteur ne prend plus de risque. S'il ne voit pas de signaux de rassurance immédiats, il retourne vers les auteurs 'bankables'." 
+                desc: "Le budget se resserre. Le lecteur ne prend plus de risque. S'il ne voit pas de signaux de rassurance immédiats, il retourne vers les auteurs 'reconnus'." 
               },
               { 
                 icon: <TrendingDown size={40} className="text-[#ff0000]" />, 
                 title: "L'Étranglement", 
-                desc: "400 polars par mois. Les algorithmes et les libraires ne voient que ce qui brille déjà. Sans machine de guerre, votre texte est noyé dans la masse." 
+                desc: "400 polars par mois. Les algorithmes et les libraires ne voient que ce qui brille déjà. Sans système solide, votre texte est noyé dans la masse." 
               },
               { 
                 icon: <Repeat size={40} className="text-[#ff0000]" />, 
@@ -405,30 +504,11 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Section Pour Qui ? */}
-      <section id="pour-qui" className="py-32 bg-black border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-20 text-white italic serif-font">Est-ce pour <span className="text-[#ff0000]">vous</span> ?</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { title: "Le Nouveau Talent", desc: "Pour ne pas griller votre première cartouche dans le vide et sortir de l'anonymat dès le premier jour." },
-              { title: "L'Expérimenté", desc: "Pour briser le plafond de verre qui vous empêche de percer et transformer vos ventes stagnantes." },
-              { title: "L'Efficace Radical", desc: "Pour ceux qui veulent des armes, une méthode chirurgicale, et pas un énième blabla marketing." }
-            ].map((profile, i) => (
-              <div key={i} className="bg-neutral-950 p-10 rounded-[2.5rem] border border-white/5 hover:border-[#ff0000]/30 transition-all group h-full">
-                <h3 className="text-2xl font-black text-white mb-4 uppercase group-hover:text-[#ff0000] transition-colors tracking-tight italic serif-font">{profile.title}</h3>
-                <p className="text-gray-500 leading-relaxed font-medium italic text-lg">{profile.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Section Programme */}
       <section id="programme" className="py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6 text-center mb-24">
-          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight italic serif-font">Votre arsenal de <span className="text-[#ff0000]">guerre</span></h2>
-          <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4 italic">6 étapes tactiques + 1 Master Bonus pour briser l'invisibilité</p>
+          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight italic serif-font">Votre arsenal de <span className="text-[#ff0000]">visibilité</span></h2>
+          <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4 italic">6 étapes méthodiques + 1 Master Bonus pour briser l'invisibilité</p>
         </div>
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {COURSE_MODULES.map((module, index) => (
@@ -449,7 +529,7 @@ const App: React.FC = () => {
             </div>
 
             <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tighter italic serif-font group-hover:text-[#f4c024] transition-colors leading-tight relative z-10">
-              Le Coaching Commando
+              Le Coaching Privé
             </h3>
             <p className="text-[10px] font-black text-gray-500 mb-6 uppercase tracking-[0.2em] relative z-10">
               Accompagnement Humain Direct
@@ -463,7 +543,7 @@ const App: React.FC = () => {
               {[
                 "1h de Visio privée avec moi",
                 "J'audite directement votre visibilité",
-                "Je valide votre plan d'attaque",
+                "Je valide votre système d'attaque",
                 "Je réponds à vos blocages précis"
               ].map((bullet, idx) => (
                 <li key={idx} className="flex items-start text-[11px] text-gray-200 font-bold uppercase tracking-wider leading-snug">
@@ -533,7 +613,7 @@ const App: React.FC = () => {
               <HelpCircle size={14} /> Dossier : Clarification
             </div>
             <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white italic serif-font">
-              FAQ : OPÉRATION <span className="text-[#ff0000]">PLAN DE GUERRE</span>
+              FAQ : PROGRAMME <span className="text-[#ff0000]">AUTEUR INVISIBLE</span>
             </h2>
           </div>
 
