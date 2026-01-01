@@ -9,16 +9,20 @@ interface Testimonial {
 }
 
 const ALL_TESTIMONIALS: Testimonial[] = [
+  { name: "Mag Schmitt", text: "Merci pour les beaux échanges que nous avons, constructifs ou futiles peu importe mais toujours dans la bonne humeur  […] Vous êtes le bonbon acidulé de mes journées", highlight: true },
+  { name: "Phil Fontanel – Auteur", text: "Très bonne année et merci pour tout ce que tu fais pour Pulse Noir.", highlight: true },
+  { name: "Laurence Hennico", text: "J’adore ce groupe. Je participerai plus en 2026. Promis. Il faut le faire vivre.", highlight: false },
+  { name: "Yves Lagamme", text: "Que cette année nous apporte de belles découvertes littéraires. Et… Bonne continuation aux administrateurs. 📚✨", highlight: false },
+  { name: "Cindy Hk", text: "Merci pour ce groupe Benjamin de Bruijne. Merci pour la bonne humeur. Merci pour le noir qui rime avec humour.", highlight: true },
+  { name: "Sylvie Syeille", text: "Bon réveillon du jour de l’an à toi et tes proches Benjamin !", highlight: false },
   { name: "Jonathan Laixhay", text: "Ton énergie est communicative. Continue ainsi et bravo. Bravo pour ce groupe d’une richesse rare, due à ton implication. Franchement, ce groupe déchire sa race !", highlight: true },
   { name: "Chantal Meher", text: "Je suis très heureuse de faire partie de celui-ci qui pulse bien, qui vibre et fait vivre le Noir. Les auteurs et auteures ancrés dans le réel sont ceux que j’apprécie le plus.", highlight: true },
-  { name: "Mag Schmitt", text: "Tu sais bien à quel point j’aime ce groupe. Il y a plein de lecteurs passionnés, chaleureux, intéressants. Le chef d’orchestre, c’est toi.", highlight: true },
   { name: "Nelly Topscher", text: "Ce groupe est le plus bienveillant et sympathique qui existe. Ta passion et ton énergie sont fédératrices. Je suis trop fière de faire partie de cette aventure.", highlight: true },
   { name: "Nicole Joye", text: "Ce groupe est incroyable : on papote, on partage, on découvre plein de nouveaux auteurs. Vive le groupe et merci à toi. Trop contente d’en faire partie.", highlight: true },
   { name: "Bénédicte Herbin", text: "Benjamin, un énorme merci. Ton groupe Pulse Noir et toi, Benjamin, vous êtes géniaux. Je ne crains rien à vos forces noires.", highlight: true },
   { name: "Sébastien Cheruel", text: "Bravo à toi et aux autres modérateurs pour toute cette énergie positive. Le meilleur groupe littéraire.", highlight: false },
   { name: "Fredrik Serres", text: "Merci pour cette idée et pour la vie du groupe. Très heureux d’être là pour partager mes lectures et bientôt mon écriture.", highlight: false },
   { name: "Olivier Sebbah", text: "Longue vie à ce groupe. Grand respect : quand on voit comment tu le fais vivre, ce n’est que justice.", highlight: false },
-  { name: "Cindy Hk", text: "Ce groupe est un cocon où l’on se sent bien. Rare et précieux.", highlight: false },
   { name: "Léna Lou", text: "Merci pour ce groupe riche en partages et en émotions. On se sent chez soi, entouré, porté. Tu as créé quelque chose de profondément humain.", highlight: false },
   { name: "Bulle d’Air littéraire", text: "Bravo à toi Benjamin pour tout le boulot accompli. De très belles découvertes littéraires. Bravo Pulseman et vive les pulseurs.", highlight: false },
   { name: "Isabelle Depraetere", text: "Je remercie Jean de m’avoir invité sur ce groupe hyper sympa.", highlight: false },
@@ -47,10 +51,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
   { name: "Annie Soyer", text: "Heureuse d’être là avec toi.", highlight: false },
   { name: "Nathalie Nogrette", text: "« J’aime les discussions constructives et bienveillantes, ce qui n’est pas évident sur les réseaux sociaux. »", highlight: false },
   { name: "Ma Rina Bez", text: "« J’ai adoré grâce à ce groupe découvrir de nouveaux auteurs que je ne serais pas allée commander dans ma librairie si je ne les avais pas vu passer ici. »", highlight: false },
-  { name: "Ma Rina Bez", text: "« Parfois trop d’engouement autour d’un auteur me freine. »", highlight: false },
-  { name: "Nathalie Hubert", text: "« Et le risque, c’est de lire des critiques dithyrambiques alors que lorsque je lis le roman, ce n’est pas fou. »", highlight: false },
-  { name: "Nathalie Hubert", text: "« Moi, j’aime bien lire les critiques négatives par ex. »", highlight: false },
-  { name: "Olivier Sebbah", text: "« Le plus difficile étant de rester respectueux envers l’auteur malgré le fait que l’on écrit que le livre en question n’est pas apprécié et que la critique sera visible par beaucoup de lecteurs. »", highlight: false },
   { name: "Benjamin de Bruijne", text: "Ici, broyer du noir, c’est un cadeau. Pulse Noir est une communauté qui palpite.", highlight: true }
 ];
 
