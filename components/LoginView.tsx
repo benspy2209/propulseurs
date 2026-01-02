@@ -29,7 +29,6 @@ const LoginView: React.FC<LoginViewProps> = ({ onBack, onLogin }) => {
     
     try {
       // 1. Vérification préalable : l'utilisateur existe-t-il dans notre table de clients ?
-      // (Remplie par n8n lors de l'achat Stripe)
       const { data, error: dbError } = await supabase
         .from('utilisateurs')
         .select('*')
@@ -54,13 +53,8 @@ const LoginView: React.FC<LoginViewProps> = ({ onBack, onLogin }) => {
         return;
       }
 
-      // ACCÈS VIP : debruijneb@gmail.com bypass le Magic Link
-      if (cleanEmail === 'debruijneb@gmail.com') {
-        onLogin(cleanEmail);
-        return;
-      }
-
       // 2. Déclenchement du Magic Link Supabase
+      // Suppression du bypass VIP pour garantir la création d'une session réelle
       const { error: authError } = await supabase.auth.signInWithOtp({
         email: cleanEmail,
         options: {
