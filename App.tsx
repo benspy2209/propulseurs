@@ -178,17 +178,44 @@ const App: React.FC = () => {
     try {
       const { data: contentData } = await supabase.from('site_content').select('*');
       if (contentData) {
-        const mods = contentData.find(c => c.key === 'modules')?.data;
-        const inst = contentData.find(c => c.key === 'instructor')?.data;
-        const land = contentData.find(c => c.key === 'landing')?.data;
-        const s = contentData.find(c => c.key === 'stats')?.data;
-        const f = contentData.find(c => c.key === 'faq')?.data;
+        const modsData = contentData.find(c => c.key === 'modules')?.data;
+        const instData = contentData.find(c => c.key === 'instructor')?.data;
+        const landData = contentData.find(c => c.key === 'landing')?.data;
+        const statsData = contentData.find(c => c.key === 'stats')?.data;
+        const faqData = contentData.find(c => c.key === 'faq')?.data;
         
-        if (mods) setModules(mods);
-        if (inst) setInstructor(inst);
-        if (land) setLandingContent(land);
-        if (s) setInstructorStats(s);
-        if (f) setFaqItems(f);
+        // 1. MODULES: Restore Icons + Validate Array
+        if (Array.isArray(modsData)) {
+          const mergedModules = modsData.map((m: any) => {
+            // Find default module to restore icon (functions are lost in JSON serialization)
+            const defaultMod = DEFAULT_MODULES.find(dm => dm.id === m.id);
+            return {
+              ...m,
+              icon: defaultMod?.icon || Target // Fallback icon if not found
+            };
+          });
+          setModules(mergedModules);
+        }
+
+        // 2. INSTRUCTOR: Validate Object
+        if (instData && typeof instData === 'object' && !Array.isArray(instData)) {
+           setInstructor(prev => ({ ...prev, ...instData }));
+        }
+
+        // 3. LANDING: Validate Object
+        if (landData && typeof landData === 'object' && !Array.isArray(landData)) {
+           setLandingContent(prev => ({ ...prev, ...landData }));
+        }
+
+        // 4. STATS: Validate Array
+        if (Array.isArray(statsData)) {
+           setInstructorStats(statsData);
+        }
+
+        // 5. FAQ: Validate Array
+        if (Array.isArray(faqData)) {
+           setFaqItems(faqData);
+        }
       }
     } catch (err) {
       console.error("Failed to load dynamic content", err);
@@ -396,7 +423,7 @@ const App: React.FC = () => {
         
         <div className="relative z-10 w-full max-w-6xl mx-auto text-center">
           <h1 className="text-[10vw] md:text-[120px] leading-[0.85] mb-4 md:mb-6 polar-title animate-in fade-in slide-in-from-top-12 duration-1000">
-            {landingContent.heroTitle.split(' ').map((word, i) => (
+            {typeof landingContent.heroTitle === 'string' && landingContent.heroTitle.split(' ').map((word, i) => (
               word === 'INVISIBLE' ? <span key={i} className="text-[#ff0000] text-glow-red">INVISIBLE </span> : <span key={i}>{word} </span>
             ))}
           </h1>
@@ -649,7 +676,7 @@ const App: React.FC = () => {
                 {instructor.quote}
               </p>
               <div className="space-y-6 text-gray-500 text-base md:text-lg leading-relaxed font-medium italic">
-                {instructor.bioBlocks.map((block, idx) => <p key={idx}>{block}</p>)}
+                {Array.isArray(instructor.bioBlocks) && instructor.bioBlocks.map((block, idx) => <p key={idx}>{block}</p>)}
               </div>
             </div>
           </div>

@@ -86,7 +86,8 @@ const TestimonialsSection: React.FC = () => {
           .eq('key', 'testimonials')
           .maybeSingle();
         
-        if (data && data.data && Array.isArray(data.data) && data.data.length > 0) {
+        // Sécurisation stricte : on ne met à jour que si c'est bien un tableau
+        if (data && Array.isArray(data.data) && data.data.length > 0) {
           setTestimonials(data.data);
         }
       } catch (err) {
