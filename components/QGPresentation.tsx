@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Shield, HardDrive, Users, CheckCircle2 } from 'lucide-react';
 
@@ -80,17 +81,19 @@ const QGPresentation: React.FC = () => {
             </p>
 
             <div className="bg-black/10 rounded-2xl p-6 border border-black/5">
-              <div className="flex items-center gap-4 mb-4">
-                 <div className="flex -space-x-3">
-                   {[1,2,3,4].map(i => (
-                     <div key={i} className="w-8 h-8 rounded-full bg-black border-2 border-[#f4c024]" />
-                   ))}
-                 </div>
-                 <span className="text-xs font-black uppercase tracking-widest text-black">+350 Auteurs actifs</span>
+              <div className="mb-4">
+                 <span className="inline-block px-3 py-1 bg-black text-[#f4c024] text-[9px] font-black uppercase tracking-widest rounded-full">
+                   Accès réservé aux inscrits
+                 </span>
               </div>
-              <p className="text-sm font-bold text-black/80 italic">
+              <p className="text-sm font-bold text-black/80 italic mb-4">
                 "Ce groupe est le plus bienveillant et tactique qui existe. On se sent enfin compris."
               </p>
+              <div className="pt-3 border-t border-black/10">
+                <p className="text-[9px] font-black uppercase tracking-wide text-black/50">
+                  * Témoignage issu du Clan Pulse Noir (Groupe Public - 350+ Auteurs)
+                </p>
+              </div>
             </div>
           </div>
 

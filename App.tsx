@@ -128,7 +128,6 @@ const CoachingBonusSection: React.FC = () => {
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('landing');
   const [showPresentation, setShowPresentation] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isInstructorHovered, setIsInstructorHovered] = useState(false);
   
@@ -219,14 +218,6 @@ const App: React.FC = () => {
       window.history.replaceState({}, document.title, window.location.pathname);
     }
   }, []);
-
-  const PROMO_CODE = "JELANCEMONLIVRE";
-
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(PROMO_CODE);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -346,19 +337,8 @@ const App: React.FC = () => {
           <Sparkles size={14} className="text-black hidden sm:block animate-pulse shrink-0" />
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
             <p className="text-black text-[9px] sm:text-[11px] lg:text-xs font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] leading-tight">
-              Promotion jusqu'au 15 janvier : <span className="bg-black/10 px-1.5 py-0.5 rounded">-30% sur l'opération</span> avec le code : 
+              Lancement — tarif préférentiel jusqu’au 31 janvier <span className="bg-black/10 px-1.5 py-0.5 rounded">(-30%)</span>
             </p>
-            <button 
-              onClick={handleCopyCode}
-              className="flex items-center gap-2 bg-black text-[#f4c024] px-3 py-1 rounded-full text-[9px] sm:text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all group shadow-lg shrink-0"
-            >
-              <span className="border-b border-[#f4c024]/30">{PROMO_CODE}</span>
-              {copied ? (
-                <CheckCircle2 size={12} className="text-green-400" />
-              ) : (
-                <Copy size={12} />
-              )}
-            </button>
           </div>
         </div>
       </div>
