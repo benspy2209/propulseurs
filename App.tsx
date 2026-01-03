@@ -172,7 +172,7 @@ const App: React.FC = () => {
       const { data: contentData } = await supabase.from('site_content').select('*');
       if (contentData) {
         const modsData = contentData.find(c => c.key === 'modules')?.data;
-        const instData = contentData.find(c => c.key === 'instructor')?.data;
+        // Instructor data synchronization removed to enforce constants.ts as single source of truth for the landing page bio.
         const landData = contentData.find(c => c.key === 'landing')?.data;
         const statsData = contentData.find(c => c.key === 'stats')?.data;
         const faqData = contentData.find(c => c.key === 'faq')?.data;
@@ -190,10 +190,7 @@ const App: React.FC = () => {
           setModules(mergedModules);
         }
 
-        // 2. INSTRUCTOR: Validate Object
-        if (instData && typeof instData === 'object' && !Array.isArray(instData)) {
-           setInstructor(prev => ({ ...prev, ...instData }));
-        }
+        // 2. INSTRUCTOR: Removed dynamic override.
 
         // 3. LANDING: Validate Object
         if (landData && typeof landData === 'object' && !Array.isArray(landData)) {
