@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Quote, Search } from 'lucide-react';
+import { Quote, Search, Plus, Minus } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { DEFAULT_TESTIMONIALS, Testimonial } from '../constants';
 
@@ -27,7 +27,7 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial; index: number }> = (
       onMouseLeave={() => setIsHovered(false)}
       className={`break-inside-avoid relative p-8 bg-neutral-950 border transition-all duration-500 group overflow-hidden
         ${testimonial.highlight ? 'border-white/10' : 'border-white/5 opacity-80 hover:opacity-100'}
-        hover:border-[#ff0000]/50 hover:shadow-[0_0_40px_rgba(255,0,0,0.15)] rounded-2xl`}
+        hover:border-[#ff0000]/50 hover:shadow-[0_0_40px_rgba(255,0,0,0.15)] rounded-2xl animate-in fade-in slide-in-from-bottom-4 duration-500`}
       style={{
         cursor: 'none'
       }}
@@ -76,6 +76,7 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial; index: number }> = (
 
 const TestimonialsSection: React.FC = () => {
   const [testimonials, setTestimonials] = useState<Testimonial[]>(DEFAULT_TESTIMONIALS);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -86,7 +87,6 @@ const TestimonialsSection: React.FC = () => {
           .eq('key', 'testimonials')
           .maybeSingle();
         
-        // Sécurisation stricte : on ne met à jour que si c'est bien un tableau
         if (data && Array.isArray(data.data) && data.data.length > 0) {
           setTestimonials(data.data);
         }
@@ -96,6 +96,8 @@ const TestimonialsSection: React.FC = () => {
     };
     fetchTestimonials();
   }, []);
+
+  const displayedTestimonials = showAll ? testimonials : testimonials.slice(0, 6);
 
   return (
     <section id="testimonials" className="py-32 bg-black overflow-hidden relative border-y border-white/5">
@@ -116,12 +118,25 @@ const TestimonialsSection: React.FC = () => {
         </div>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-          {testimonials.map((t, i) => (
+          {displayedTestimonials.map((t, i) => (
             <TestimonialCard key={i} testimonial={t} index={i} />
           ))}
         </div>
 
-        <div className="mt-24 pt-16 border-t border-white/10 text-center">
+        <div className="mt-16 text-center">
+           <button 
+             onClick={() => setShowAll(!showAll)}
+             className="inline-flex items-center gap-2 px-8 py-4 bg-neutral-900 border border-white/10 rounded-full text-white font-black uppercase text-[10px] tracking-widest hover:bg-[#ff0000] hover:border-[#ff0000] transition-all shadow-lg active:scale-95 group"
+           >
+             {showAll ? (
+               <>Réduire l'affichage <Minus size={12} /></>
+             ) : (
+               <>Lire les {testimonials.length}+ témoignages <Plus size={12} className="group-hover:rotate-90 transition-transform" /></>
+             )}
+           </button>
+        </div>
+
+        <div className="mt-16 pt-16 border-t border-white/10 text-center">
           <div className="inline-block relative">
             <div className="absolute -inset-4 bg-[#ff0000]/5 blur-xl rounded-full opacity-50"></div>
             <p className="relative text-white font-black uppercase italic serif-font text-2xl md:text-4xl tracking-tight">

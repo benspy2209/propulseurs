@@ -31,14 +31,18 @@ import {
 import { ModuleContent } from './types';
 
 export const INSTRUCTOR = {
-  name: "Benjamin de Bruijne",
-  role: "Fondateur de Pulsenoir - Visibilité Noir & Thriller",
+  name: "PULSEMAN",
+  role: "Benjamin de Bruijne",
   photo: "https://raw.githubusercontent.com/benspy2209/propulseurs/b432764d6f2f27df0da85a57446329dd5abb426a/public/benjamin.jpg",
   hoverPhoto: "https://raw.githubusercontent.com/benspy2209/propulseurs/b9ec43f7844ebe6793b9d56d94145fcee25e39db/public/pulsemanprofilf.jpg",
   quote: "« Aider les auteurs de noir à ne pas laisser leurs livres disparaître dans l'ombre des plateformes. »",
   bioBlocks: [
-    "En 2026, j’ai vu la même scène se répététer : des auteur·rices de polar, thriller, roman noir qui ont travaillé dur on leur livre… et qui se retrouvent bloqué·es au moment de le faire connaître. Pas de méthode, pas de plan, et trop souvent cette phrase : “Mon livre ne se vend pas.” C’est pour cela que j’ai créé Pulsenoir et cette Intervention : pour vous donner un plan concret, adapté à votre genre, loin des généralités marketing habituelles.",
-    "Lecteur passionné de noir depuis 35 ans et expert du web depuis 20 ans, j'ai conçu des méthodes dédiées à ce milieu très spécifique. La méthode « AUTEUR INVISIBLE » est la synthèse de cette expertise : une obsession simple – que votre livre trouve ses lecteurs, en s'appuyant on les mécaniques réelles de la communauté Noir & Thriller."
+    "En 2025, j’ai vu la même scène se répéter.",
+    "Des auteur·rices de polar, thriller et roman noir qui ont travaillé dur sur leur livre… et qui se retrouvent bloqué·es au moment de le faire connaître. Pas par manque de talent. Mais par manque de méthode, de repères, et toujours les mêmes constats qui revenaient, encore et encore, dans mes messages privés :\n« Mon livre ne se vend pas. »\n« Je ne comprends pas ce qui bloque. »\n« J’ai l’impression d’être invisible. »",
+    "Je n’ai pas créé le groupe Pulse Noir pour vendre quoi que ce soit.\nIl est né bien avant, d’un besoin simple : échanger, lire, partager autour du noir et du thriller.\nMais à force de voir les mêmes situations se répéter, les mêmes erreurs, les mêmes découragements, une idée s’est imposée fin 2025 : structurer une réponse claire.",
+    "AUTEUR INVISIBLE n’est pas une opportunité marketing.\nC’est la formalisation d’un réel désir : aider les auteurs de noir à comprendre pourquoi leurs livres restent invisibles — et surtout comment y remédier concrètement.",
+    "Cette Intervention me permet aussi de continuer à faire vivre Pulse Noir dans de bonnes conditions.\nOutils, hébergement, temps investi, accompagnement : tout cela a un coût réel.\nMon objectif est simple : couvrir ces frais pour pouvoir m’investir encore davantage dès 2026, au service de cette communauté et des auteurs qui la composent.",
+    "Lecteur passionné de noir depuis plus de 35 ans et expert du web et de la stratégie digitale depuis 20 ans, j’ai conçu une méthode dédiée à ce milieu très spécifique.\nLa méthode AUTEUR INVISIBLE en est la synthèse : une obsession simple — que vos livres cessent de disparaître dans l’ombre des plateformes et trouvent enfin leurs lecteurs, en s’appuyant sur les mécaniques réelles de la communauté Noir & Thriller."
   ]
 };
 
@@ -57,16 +61,16 @@ export interface Testimonial {
 
 export const DEFAULT_TESTIMONIALS: Testimonial[] = [
   { name: "Mag Schmitt", text: "Merci pour les beaux échanges que nous avons, constructifs ou futiles peu importe mais toujours dans la bonne humeur  […] Vous êtes le bonbon acidulé de mes journées", highlight: true },
-  { name: "Phil Fontanel – Auteur", text: "Très bonne année et merci pour tout ce que tu fais pour Pulse Noir.", highlight: true },
-  { name: "Laurence Hennico", text: "J’adore ce groupe. Je participerai plus en 2026. Promis. Il faut le faire vivre.", highlight: false },
-  { name: "Yves Lagamme", text: "Que cette année nous apporte de belles découvertes littéraires. Et… Bonne continuation aux administrateurs. 📚✨", highlight: false },
-  { name: "Cindy Hk", text: "Merci pour ce groupe Benjamin de Bruijne. Merci pour la bonne humeur. Merci pour le noir qui rime avec humour.", highlight: true },
-  { name: "Sylvie Syeille", text: "Bon réveillon du jour de l’an à toi et tes proches Benjamin !", highlight: false },
   { name: "Jonathan Laixhay", text: "Ton énergie est communicative. Continue ainsi et bravo. Bravo pour ce groupe d’une richesse rare, due à ton implication. Franchement, ce groupe déchire sa race !", highlight: true },
   { name: "Chantal Meher", text: "Je suis très heureuse de faire partie de celui-ci qui pulse bien, qui vibre et fait vivre le Noir. Les auteurs et auteures ancrés dans le réel sont ceux que j’apprécie le plus.", highlight: true },
   { name: "Nelly Topscher", text: "Ce groupe est le plus bienveillant et sympathique qui existe. Ta passion et ton énergie sont fédératrices. Je suis trop fière de faire partie de cette aventure.", highlight: true },
+  { name: "Cindy Hk", text: "Merci pour ce groupe Benjamin de Bruijne. Merci pour la bonne humeur. Merci pour le noir qui rime avec humour.", highlight: true },
   { name: "Nicole Joye", text: "Ce groupe est incroyable : on papote, on partage, on découvre plein de nouveaux auteurs. Vive le groupe et merci à toi. Trop contente d’en faire partie.", highlight: true },
+  { name: "Phil Fontanel – Auteur", text: "Très bonne année et merci pour tout ce que tu fais pour Pulse Noir.", highlight: true },
   { name: "Bénédicte Herbin", text: "Benjamin, un énorme merci. Ton groupe Pulse Noir et toi, Benjamin, vous êtes géniaux. Je ne crains rien à vos forces noires.", highlight: true },
+  { name: "Laurence Hennico", text: "J’adore ce groupe. Je participerai plus en 2025. Promis. Il faut le faire vivre.", highlight: false },
+  { name: "Yves Lagamme", text: "Que cette année nous apporte de belles découvertes littéraires. Et… Bonne continuation aux administrateurs. 📚✨", highlight: false },
+  { name: "Sylvie Syeille", text: "Bon réveillon du jour de l’an à toi et tes proches Benjamin !", highlight: false },
   { name: "Sébastien Cheruel", text: "Bravo à toi et aux autres modérateurs pour toute cette énergie positive. Le meilleur groupe littéraire.", highlight: false },
   { name: "Fredrik Serres", text: "Merci pour cette idée et pour la vie du groupe. Très heureux d’être là pour partager mes lectures et bientôt mon écriture.", highlight: false },
   { name: "Olivier Sebbah", text: "Longue vie à ce groupe. Grand respect : quand on voit comment tu le fais vivre, ce n’est que justice.", highlight: false },
@@ -108,7 +112,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Mon livre est déjà publié longtemps, est-ce utile ?",
-    a: "C’est l'objectif même de l'Intervention AUTEUR INVISIBLE. Nous diagnostiquons ce qui bloque on votre livre existant, nous réparons la vitrine et nous orchestrons une séquence de relance stratégique."
+    a: "C’est l'objectif même de l'Intervention AUTEUR INVISIBLE. Nous diagnostiquons ce qui bloque sur votre livre existant, nous réparons la vitrine et nous orchestrons une séquence de relance stratégique."
   },
   {
     q: "Je n'aime pas la technique, vais-je m'en sortir ?",
@@ -262,7 +266,7 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: Target,
     color: "red",
     imageKeyword: "diagnostic",
-    longDescription: "Votre polar est publié. Vous avez investi du temps, de l’énergie, parfois de l’argent. Pourtant, il reste invisible : peu ou pas de ventes, peu ou pas de signaux qui remontent. Ce module a un objectif unique : transformer ce flou en diagnostic clair. Vous allez regarder votre livre non plus comme son auteur, mais comme un analyste qui cherche où le signal se casse entre votre texte et le lecteur. Ce module n’est pas là pour rassurer, il est là pour mesurer. Vous allez passer en revue, point par point, la présence de votre livre sur le marché : disponibilité technique, qualité de la vitrine, clarté du positionnement, cohérence du prix, quantité et qualité des preuves sociales, mais aussi adéquation avec votre lecteur réel. À la fin, vous surez pourquoi votre livre est invisible aujourd’hui et où intervenir en priorité dans les modules suivants.",
+    longDescription: "Votre polar est publié. Vous avez investi du temps, de l’énergie, parfois de l’argent. Pourtant, il reste invisible : peu ou pas de ventes, peu ou pas de signaux qui remontent. Ce module a un objectif unique : transformer ce flou en diagnostic clair. Vous allez regarder votre livre non plus comme son auteur, mais comme un analyste qui cherche où le signal se casse entre votre texte et le lecteur. Ce module n’est pas là pour rassurer, il est là pour mesurer. Vous allez passer en revue, point par point, la présence de votre livre sur le marché : disponibilité technique, qualité de la vitrine, clarté du positionnement, cohérence du prix, quantité et qualité des preuves sociales, mais aussi adéquation avec votre lecteur réel. À la fin, vous saurez pourquoi votre livre est invisible aujourd’hui et où intervenir en priorité dans les modules suivants.",
     steps: [
       "Préparez l’accès à vos fiches produits (Amazon, Kobo, Fnac, autres plateformes).",
       "Téléchargez et ouvrez l’Audit de l’Invisibilité (Ressource 1).",
@@ -283,7 +287,7 @@ export const COURSE_MODULES: ModuleContent[] = [
           "À la fin du Module 1, vous serez capable de :",
           "• Repérer les ruptures de signal : problèmes techniques, fiches incomplètes, vitrine peu claire, mauvais choix de catégories ou de prix.",
           "• Identifier votre lecteur réel et vérifier si votre livre lui parle vraiment dans la forme où il est présenté aujourd’hui.",
-          "• Vérifier si votre positionnement de niche (polar, thriller, noir et sous-genre) est livible pour un lecteur qui ne vous connaît pas.",
+          "• Vérifier si votre positionnement de niche (polar, thriller, noir et sous-genre) est lisible pour un lecteur qui ne vous connaît pas.",
           "• Constater l’état réel de votre crédibilité visible : avis, chroniques, éléments de preuve, ou au contraire “mur de silence”, puis structurer un mur de crédibilité à afficher.",
           "Ce module pose le diagnostic. Tant qu’il n’est pas fait, toutes les idées de relance ou de pub restent des paris au hasard."
         ]
@@ -295,8 +299,8 @@ export const COURSE_MODULES: ModuleContent[] = [
         guidedQuestions: [
           "Quels sont les trois points de rupture techniques immédiats qui ressortent de l’audit ?",
           "Qui est exactement votre lecteur réel, et votre vitrine lui parle-t-elle vraiment ?",
-          "Votre genre et votre sous-niche sont-ils livibles pour un lecteur de polar/thriller ?",
-          "De quelles preuves de crédibilité visibles dispose un lecteur qui arrive on votre fiche aujourd’hui, et que manque-t-ils à votre mur de crédibilité ?",
+          "Votre genre et votre sous-niche sont-ils lisibles pour un lecteur de polar/thriller ?",
+          "De quelles preuves de crédibilité visibles dispose un lecteur qui arrive sur votre fiche aujourd’hui, et que manque-t-il à votre mur de crédibilité ?",
           "Quel est votre score final d’invisibilité et quelles sont vos trois zones rouges ?"
         ],
         content: [
@@ -304,7 +308,7 @@ export const COURSE_MODULES: ModuleContent[] = [
           "• Ressource 1 – Audit de l’Invisibilité : Scan complet de la situation : checklists, tableaux, score d’invisibilité et trois zones rouges prioritaires.",
           "• Ressource 2 – Profilage du Lecteur Réel : Fiche “acheteur instinctif” : portrait, habitudes de lecture polar/thriller, attentes, peurs et déclencheurs d’achat.",
           "• Ressource 3 – Positionnement de Niche : Polar, Thriller ou Noir ? : Fiche de positionnement : genre principal, sous-niche précise, auteurs comparables et cohérences / incohérences avec ta vitrine actuelle.",
-          "• Ressource 4 – Stratégie de Rassurance : Construire votre mur de crédibilité : Inventaire de toutes vos preuves, sélection des avis forts, extraction de citations et assemblage d’un mur de crédibilité prêt à être affiché on vos fiches et bios.",
+          "• Ressource 4 – Stratégie de Rassurance : Construire votre mur de crédibilité : Inventaire de toutes vos preuves, sélection des avis forts, extraction de citations et assemblage d’un mur de crédibilité prêt à être affiché sur vos fiches et bios.",
           "Prenez ces PDF comme un examen clinique : répondez honnêtement, sans chercher à vous justifier. Le but n’est pas de juger votre travail d’auteur, mais d’identifier les points de rupture entre un livre écrit… et un livre visible, rassurant et crédible pour le bon lecteur, dans la bonne niche."
         ]
       },
@@ -329,7 +333,7 @@ export const COURSE_MODULES: ModuleContent[] = [
   {
     id: 'vitrine',
     title: "Module 2 — Réparer la vitrine du livre",
-    subtitle: "Intervention on cover, titre et 4e",
+    subtitle: "Intervention sur cover, titre et 4e",
     description: "Correction technique de votre vitrine pour lever les doutes et déclencher enfin le clic de l'acheteur.",
     duration: "1h 15",
     bullets: [
@@ -349,7 +353,7 @@ export const COURSE_MODULES: ModuleContent[] = [
       "Utilisez la Ressource 4 pour vérifier l'ensemble de votre fiche produit."
     ],
     transitionTitle: "Restaurez votre vitrine",
-    transitionText: "Ce module intervient uniquement on l’enveloppe visible de votre livre, là où se joue la majorité des décisions d’achat.",
+    transitionText: "Ce module intervient uniquement sur l’enveloppe visible de votre livre, là où se joue la majorité des décisions d’achat.",
     transitionButtonText: "Accéder aux instruments",
     chapters: [
       {
@@ -362,7 +366,7 @@ export const COURSE_MODULES: ModuleContent[] = [
           "• Détecter et éliminer les signaux “amateurs” dans votre couverture (composition, typographie, codes de genre) qui font fuir un lecteur de polar/thriller avant même qu’il lise le titre.",
           "• Créer un hook haute-tension en première ligne de 4e / de description, qui capte l’attention en moins de trois secondes.",
           "• Ajuster les éléments-clés de votre fiche (titre, sous-titre, mentions, citations) pour envoyer un signal d’achat clair : “ce livre est pour toi, c’est un pari raisonnable”.",
-          "Ce module ne touche pas à votre texte intérieur. Il intervient uniquement on l’enveloppe visible de votre livre."
+          "Ce module ne touche pas à votre texte intérieur. Il intervient uniquement sur l’enveloppe visible de votre livre."
         ]
       },
       {
@@ -371,10 +375,10 @@ export const COURSE_MODULES: ModuleContent[] = [
         expectedResult: "Maîtrise des instruments de conversion visuelle.",
         content: [
           "Pour travailler ce module, vous utiliserez quatre instruments :",
-          "• Ressource 1 — Psychologie du Clic – Réparer votre 4e de couverture : Vous transformez votre 4e actuelle en un texte orienté lecteur : promesse claire, enjeu livible, tension, éléments de crédibilité, au lieu d’un résumé flou ou littéraire.",
+          "• Ressource 1 — Psychologie du Clic – Réparer votre 4e de couverture : Vous transformez votre 4e actuelle en un texte orienté lecteur : promesse claire, enjeu lisible, tension, éléments de crédibilité, au lieu d’un résumé flou ou littéraire.",
           "• Ressource 2 — Codes Visuels Polar/Thriller – Chasser les signaux “amateurs” : Vous passez votre couverture au crible des codes de votre niche (polar, thriller, noir) afin d’identifier ce qui fait “autoédition bricolée” et ce qui, au contraire, rassure immédiatement.",
-          "• Ressource 3 — Hook Haute-Tension – La première ligne qui arrête le lecteur : Vous travaillez spécifiquement la première phrase de votre 4e and de votre page produit pour qu’elle arrête le regard, crée une question, et pousse à lire le reste.",
-          "• Ressource 4 — Signal d’Achat – Vérifier que ta vitrine donne envie de cliquer : Vous vérifiez que l’ensemble de la fiche (titre, sous-titre, 4e, citations, éléments de rassurance issus du Module 1) fonctionne comme un ensemble cohérent qui donne envie de cliquer on “Acheter”."
+          "• Ressource 3 — Hook Haute-Tension – La première ligne qui arrête le lecteur : Vous travaillez spécifiquement la première phrase de votre 4e et de votre page produit pour qu’elle arrête le regard, crée une question, et pousse à lire le reste.",
+          "• Ressource 4 — Signal d’Achat – Vérifier que ta vitrine donne envie de cliquer : Vous vérifiez que l’ensemble de la fiche (titre, sous-titre, 4e, citations, éléments de rassurance issus du Module 1) fonctionne comme un ensemble cohérent qui donne envie de cliquer sur “Acheter”."
         ]
       },
       {
@@ -385,7 +389,7 @@ export const COURSE_MODULES: ModuleContent[] = [
           "Un lecteur qui ne vous connaît pas peut-il dire en une phrase quel type de polar/thriller vous proposez, rien qu’en voyant la couverture et la première ligne de la 4e ?",
           "Votre couverture ressemble-t-elle à ce qu’on trouve dans les rayons pro de votre sous-niche, ou continue-t-elle à envoyer des signaux “premier essai amateur” ?",
           "Votre 4e de couverture répond-elle aux attentes et déclencheurs d’achat de votre lecteur réel, tels que définis dans le Module 1 ?",
-          "Si vous comparez votre fiche à celles de 3 livres concurrents, auriez-vous envie de cliquer on la vôtre ?"
+          "Si vous comparez votre fiche à celles de 3 livres concurrents, auriez-vous envie de cliquer sur la vôtre ?"
         ],
         content: [
           "Quand ces questions appellent enfin des “oui” honnêtes, vous pouvez considérer que la vitrine de votre polar a été réparée et qu’elle est prête pour la relance et la réactivation des algorithmes."
@@ -414,16 +418,16 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: UserCircle,
     color: "red",
     imageKeyword: "authority",
-    longDescription: "Votre livre n’est pas seulement jugé on sa couverture. Il est aussi jugé on vous : votre nom, votre bio, votre page auteur, votre manière d’apparaître (ou non) dans l’écosystème noir/polar/thriller. Si votre présence numérique est floue, absente ou “amateur”, le lecteur et les algorithmes en déduisent une chose simple : pari risqué. Ce module a pour but de réparer cette image pour que votre profil d’auteur cesse de saboter vos efforts de relance. Après avoir diagnostiqué l’invisibilité (Module 1) et réparé la vitrine du livre (Module 2), vous allez maintenant vous occuper de la vitrine de l’auteur : bio, hub central, lieux où vous apparaissez, signaux de sérieux et de constance. L’objectif n’est pas de devenir une “marque personnelle” abstraite, mais de paraître livible, crédible et cohérent pour un lecteur qui découvre votre nom pour la première fois.",
+    longDescription: "Votre livre n’est pas seulement jugé sur sa couverture. Il est aussi jugé sur vous : votre nom, votre bio, votre page auteur, votre manière d’apparaître (ou non) dans l’écosystème noir/polar/thriller. Si votre présence numérique est floue, absente ou “amateur”, le lecteur et les algorithmes en déduisent une chose simple : pari risqué. Ce module a pour but de réparer cette image pour que votre profil d’auteur cesse de saboter vos efforts de relance. Après avoir diagnostiqué l’invisibilité (Module 1) et réparé la vitrine du livre (Module 2), vous allez maintenant vous occuper de la vitrine de l’auteur : bio, hub central, lieux où vous apparaissez, signaux de sérieux et de constance. L’objectif n’est pas de devenir une “marque personnelle” abstraite, mais de paraître lisible, crédible et cohérent pour un lecteur qui découvre votre nom pour la première fois.",
     steps: [
-      "Récupérez ce que vous avez déjà : bio(s), pages auteur, profils réseaux, site ou blog, pages on plateformes (Amazon, Kobo, Fnac, Babelio…).",
+      "Récupérez ce que vous avez déjà : bio(s), pages auteur, profils réseaux, site ou blog, pages sur plateformes (Amazon, Kobo, Fnac, Babelio…).",
       "Clarifiez qui vous êtes pour le lecteur polar/thriller à partir de votre diagnostic et de votre niche (Modules 1 et 2).",
       "Reconcevez une bio courte et une bio longue orientées “rassurance” lecteur.",
       "Posez ou ajustez votre Hub Auteur : un point central où tout converge (page auteur, mini-site, page dédiée).",
       "Décidez où vous devez être présent dans le “Clan” (lecteurs, groupes, médias, événements) et ce que vous y montrez."
     ],
     transitionTitle: "Restaurez votre crédibilité",
-    transitionText: "Votre livre ne sera plus porté par une vitrine solide (Module 2) posée on une identité floue, mais par un ensemble cohérent : auteur livible, livre livible, niche livible.",
+    transitionText: "Votre livre ne sera plus porté par une vitrine solide (Module 2) posée sur une identité floue, mais par un ensemble cohérent : auteur lisible, livre lisible, niche lisible.",
     transitionButtonText: "Accéder aux instruments",
     chapters: [
       {
@@ -436,7 +440,7 @@ export const COURSE_MODULES: ModuleContent[] = [
           "• Mettre en place un Hub Auteur clair (page auteur / mini-site) qui rassemble vos livres, vos preuves de crédibilité et vos points de contact, au lieu de tout laisser éparpillé.",
           "• Choisir les bons terrains d’infiltration : groupes, communautés, événements et plateformes où se trouve réellement votre lectorat noir/polar/thriller.",
           "• Nettoyer vos profils existants pour qu’ils renvoient tous la même image professionnelle, cohérente avec le mur de crédibilité construit au Module 1.",
-          "Ce module ne vous demande pas d’être partout ni tout le temps. Il vous demande d’être livible là où ça compte, pour ne plus perdre des lecteurs potentiels au moment où ils se renseignent on vous."
+          "Ce module ne vous demande pas d’être omniprésent. Il vous demande d’être lisible là où ça compte, pour ne plus perdre des lecteurs potentiels au moment où ils se renseignent sur vous."
         ]
       },
       {
@@ -447,7 +451,7 @@ export const COURSE_MODULES: ModuleContent[] = [
           "Pour travailler ce module, vous utiliserez quatre instruments (ressources téléchargeables) :",
           "• Psychologie de la Bio : Convertir le visiteur en 3 secondes. Vous reformulez vos bios (courte, moyenne, longue) pour qu’elles parlent au lecteur de polar/thriller : genre, univers, légitimité, ton, en évitant les formulations floues et génériques.",
           "• Le Hub Auteur : Votre quartier général professionnel. Vous concevez le plan de votre “maison d’auteur” : quelles sections, quels liens, quelles preuves y afficher pour qu’un lecteur ou un libraire comprenne en un coup d’œil qui vous êtes et ce que vous écrivez.",
-          "• Infiltration Stratégique : Être là où le Clan palpite. Vous cartographiez les lieux où se trouvent vos lecteurs et vos pairs (groupes, festivals, médias, communautés en ligne) et vous décidez où vous allez réellement vous investir, with quel type de présence.",
+          "• Infiltration Stratégique : Être là où le Clan palpite. Vous cartographiez les lieux où se trouvent vos lecteurs et vos pairs (groupes, festivals, médias, communautés en ligne) et vous décidez où vous allez réellement vous investir, avec quel type de présence.",
           "• Aura Numérique : Audit et nettoyage de vos profils. Vous passez vos profils existants (Amazon, réseaux, Babelio, etc.) au crible et vous listez toutes les corrections à faire pour qu’aucun ne renvoie une image contradictoire, vide ou amateur."
         ]
       },
@@ -456,7 +460,7 @@ export const COURSE_MODULES: ModuleContent[] = [
         type: "exercise",
         expectedResult: "Validation de la crédibilité d'auteur.",
         guidedQuestions: [
-          "Un lecteur qui tombe on votre nom pour la première fois peut-il dire en une phrase qui vous êtes et quel type de polar/thriller vous écrivez ?",
+          "Un lecteur qui tombe sur votre nom pour la première fois peut-il dire en une phrase qui vous êtes et quel type de polar/thriller vous écrivez ?",
           "Existe-t-il un endroit central où il peut voir vos livres, vos preuves de crédibilité et vos liens sans devoir fouiller partout ?",
           "Vos différents profils (plateformes, réseaux, pages auteur) racontent-ils la même histoire ou donnent-ils des versions contradictoires de vous ?",
           "Êtes-vous présent, même modestement, là où votre lectorat se trouve vraiment, ou restez-vous cantonné à des endroits où personne ne cherche de polar ?"
@@ -488,17 +492,17 @@ export const COURSE_MODULES: ModuleContent[] = [
     icon: Users,
     color: "red",
     imageKeyword: "relaunch",
-    longDescription: "Votre polar est déjà publié. Il a eu une sortie timide, peu structurée, ou il a simplement disparu dans le flux. Ce module existe pour une seule chose : organiser une vraie opération de relance autour de ce livre, comme s’il bénéficiait enfin du lancement qu’il n’a jamais eu. Il ne s’agit pas de “faire un peu plus de posts”, mais de dérouler une séquence précise qui envoie un signal fort au lecteur, aux algorithmes et à votre Clan.\n\nAprès le diagnostic (Module 1), la réparation de la vitrine (Module 2) et la restauration de votre crédibilité d’auteur (Module 3), vous allez maintenant mettre tout cela en mouvement. L’objectif : concentrer vos efforts on une période courte, pour créer un pic de visibilité livible par les plateformes et générer de nouveaux avis, de nouveaux clics, de nouveaux lecteurs.",
+    longDescription: "Votre polar est déjà publié. Il a eu une sortie timide, peu structurée, ou il a simplement disparu dans le flux. Ce module existe pour une seule chose : organiser une vraie opération de relance autour de ce livre, comme s’il bénéficiait enfin du lancement qu’il n’a jamais eu. Il ne s’agit pas de “faire un peu plus de posts”, mais de dérouler une séquence précise qui envoie un signal fort au lecteur, aux algorithmes et à votre Clan.\n\nAprès le diagnostic (Module 1), la réparation de la vitrine (Module 2) et la restauration de votre crédibilité d’auteur (Module 3), vous allez maintenant mettre tout cela en mouvement. L’objectif : concentrer vos efforts sur une période courte, pour créer un pic de visibilité lisible par les plateformes et générer de nouveaux avis, de nouveaux clics, de nouveaux lecteurs.",
     steps: [
       "Choisissez un livre cible : un polar/thriller déjà publié que vous voulez sortir de l’oubli en priorité.",
-      "Fixez une fenêtre de relance (10 à 14 jours) pendant laquelle vous acceptez de concentrer vos actions on ce livre.",
+      "Fixez une fenêtre de relance (10 à 14 jours) pendant laquelle vous acceptez de concentrer vos actions sur ce livre.",
       "Mobilisez votre Clan existant (lecteurs, proches, communauté, newsletter) avec une démarche claire : “opération seconde chance” autour de ce titre.",
       "Lancez une Opération Avis pour sortir du désert et renforcer votre mur de crédibilité.",
       "Déployez une Relance Tactique jour par jour : contenus, rappels, offres ponctuelles éventuelles.",
-      "Envoyez un Service de Presse ciblé à des relais pertinents (blogs, chroniqueurs, bookstagram, médias spécialisés) en cohérence with votre niche."
+      "Envoyez un Service de Presse ciblé à des relais pertinents (blogs, chroniqueurs, bookstagram, médias spécialisés) en cohérence avec votre niche."
     ],
     transitionTitle: "Actionnez la relance",
-    transitionText: "Le diagnostic et la réparation sont faits. Passez à l'action coordonnée with ces instruments de relance.",
+    transitionText: "Le diagnostic et la réparation sont faits. Passez à l'action coordonnée avec ces instruments de relance.",
     transitionButtonText: "Accéder aux instruments",
     chapters: [
       {
@@ -641,7 +645,7 @@ export const COURSE_MODULES: ModuleContent[] = [
       "Faites le lien entre vos modules précédents (diagnostic, vitrine, crédibilité, relance, algorithmes) et ce système de long terme, de manière à ce que chaque nouveau livre arrive sur une piste déjà balisée."
     ],
     transitionTitle: "Sécurisez votre avenir",
-    transitionText: "L'opération touche à sa fin. Sécurisez vos acquis et construisez votre trajectoire with ces instruments de long terme.",
+    transitionText: "L'opération touche à sa fin. Sécurisez vos acquis et construisez votre trajectoire avec ces instruments de long terme.",
     transitionButtonText: "Accéder aux instruments",
     chapters: [
       {

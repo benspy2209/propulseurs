@@ -13,6 +13,8 @@ import AdminDashboard from './components/AdminDashboard';
 import InteractivePresentation from './components/InteractivePresentation';
 import TestimonialsSection from './components/TestimonialsSection';
 import LeadMagnetSection from './components/LeadMagnetSection';
+import EcosystemOverview from './components/EcosystemOverview';
+import QGPresentation from './components/QGPresentation';
 import { supabase } from './lib/supabase';
 import { ModuleContent } from './types';
 import { 
@@ -20,35 +22,26 @@ import {
   Instagram,
   Facebook,
   Youtube,
-  Check,
   Sparkles,
   CheckCircle2,
   Copy,
-  ChevronDown,
   Zap,
-  ShieldCheck,
-  CalendarDays,
-  User,
-  Users,
-  Play,
   HelpCircle,
   Plus,
   Minus,
-  Search,
   EyeOff,
   TrendingDown,
   Repeat,
   UserCircle,
   Video,
-  Mic,
   Crosshair,
-  UserPlus,
   Rocket,
   ShieldAlert,
-  AlertTriangle,
   XCircle,
   Target,
-  Settings
+  Settings,
+  Users,
+  User
 } from 'lucide-react';
 
 type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success' | 'login' | 'admin';
@@ -109,7 +102,7 @@ const CoachingBonusSection: React.FC = () => {
           
           <div className="relative z-10">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-[#f4c024] text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full shadow-lg">
-              <Zap size={14} fill="currentColor" /> BONUS MASTER : ACCOMPAGNEMENT HUMAIN
+              <Zap size={14} fill="currentColor" /> PILIER 3 : LE MENTORAT
             </div>
             
             <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white italic serif-font mb-6 leading-tight">
@@ -381,12 +374,10 @@ const App: React.FC = () => {
           </button>
           
           <div className="hidden lg:flex items-center gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
-            <button onClick={() => scrollToSection('autopsie')} className="hover:text-white transition-colors cursor-pointer">L'Analyse</button>
-            <button onClick={() => scrollToSection('pour-qui')} className="hover:text-white transition-colors cursor-pointer">Pour qui ?</button>
-            <button onClick={() => scrollToSection('programme')} className="hover:text-white transition-colors cursor-pointer">La Méthode</button>
-            <button onClick={() => scrollToSection('ressources')} className="hover:text-white transition-colors cursor-pointer">Instruments</button>
-            <button onClick={() => scrollToSection('instructeur')} className="hover:text-white transition-colors cursor-pointer">L'Intervenant</button>
-            <button onClick={() => scrollToSection('coaching')} className="hover:text-white transition-colors cursor-pointer">Coaching</button>
+            <button onClick={() => scrollToSection('autopsie')} className="hover:text-white transition-colors cursor-pointer">Diagnostic</button>
+            <button onClick={() => scrollToSection('ecosysteme')} className="hover:text-white transition-colors cursor-pointer">Les 3 Piliers</button>
+            <button onClick={() => scrollToSection('programme')} className="hover:text-white transition-colors cursor-pointer">Le Plan</button>
+            <button onClick={() => scrollToSection('instructeur')} className="hover:text-white transition-colors cursor-pointer">Le Mentor</button>
             <button onClick={() => scrollToSection('faq')} className="hover:text-white transition-colors cursor-pointer">FAQ</button>
           </div>
 
@@ -411,13 +402,13 @@ const App: React.FC = () => {
               onClick={() => setCurrentView('purchase')}
               className="bg-[#ff0000] text-white px-3 lg:px-6 py-2 lg:py-2.5 rounded-full text-[9px] lg:text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(244,192,36,0.4)] active:scale-95"
             >
-              Lancer la relance
+              Rejoindre le Clan
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* 1. HERO SECTION */}
       <header className="relative min-h-screen flex flex-col items-center justify-center pt-52 lg:pt-32 px-6 overflow-hidden bg-black">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff0000]/5 rounded-full blur-[120px] pointer-events-none" />
         
@@ -469,7 +460,7 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {/* Section Cible de l'Opération */}
+      {/* 2. POUR QUI / CE N'EST PAS POUR VOUS */}
       <section id="pour-qui" className="py-32 bg-black border-b border-white/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-24">
@@ -548,13 +539,13 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Autopsie Section */}
+      {/* AUTOPSIE (Part of the problem/diagnosis logic) */}
       <section id="autopsie" className="py-32 bg-neutral-950 relative border-y border-white/5 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,rgba(255,0,0,0.05),transparent_50%)]"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white italic serif-font">L'Autopsie du <span className="text-[#ff0000]">Marché</span></h2>
-            <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4">Pourquoi la qualité ne suffit plus en 2026</p>
+            <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4">Pourquoi la qualité ne suffit plus en 2025</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-10">
@@ -587,107 +578,57 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Section Programme - Les 6 Phases */}
+      {/* 3. VUE D'ENSEMBLE (LES 3 PILIERS) */}
+      <EcosystemOverview />
+
+      {/* 4. PILIER 1 : LA METHODE (MODULES) */}
       <section id="programme" className="py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6 text-center mb-24">
-          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight italic serif-font">Votre <span className="text-[#ff0000]">Plan d'Action</span></h2>
-          <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4 italic">6 phases d'intervention + 1 Master Bonus pour briser l'invisibilité</p>
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 border border-white/20 bg-white/5 text-white text-[10px] font-black uppercase tracking-[0.4em]">
+            <Target size={12} /> Pilier 1 : Le Plan de Bataille
+          </div>
+          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-tight italic serif-font">La <span className="text-[#ff0000]">Méthode</span></h2>
+          <p className="text-gray-500 font-black uppercase tracking-[0.4em] text-[10px] mt-4 italic">6 phases d'intervention pour briser l'invisibilité</p>
         </div>
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {modules.map((module, index) => (
             <ModuleCard key={module.id} module={module} index={index} />
           ))}
-          
-          {/* Master Bonus Block */}
-          <div className="group relative bg-[#ff0000]/5 rounded-[2.5rem] p-10 border-2 border-[#f4c024]/30 transition-all duration-500 flex flex-col h-full hover:bg-[#ff0000]/10 shadow-[0_0_30px_rgba(244,192,36,0.1)] overflow-hidden">
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-[#f4c024]/5 rounded-full blur-3xl" />
-            
-            <div className="flex justify-between items-start mb-10 relative z-10">
-              <div className="w-14 h-14 bg-[#f4c024] text-black rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(244,192,36,0.4)]">
-                <Video size={28} />
-              </div>
-              <div className="px-3 py-1 bg-[#f4c024] rounded-full text-[9px] font-black text-black uppercase tracking-widest shadow-lg">
-                MASTER BONUS
-              </div>
-            </div>
-
-            <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tighter italic serif-font group-hover:text-[#f4c024] transition-colors leading-tight relative z-10">
-              Le Coaching Privé
-            </h3>
-            <p className="text-[10px] font-black text-gray-500 mb-6 uppercase tracking-[0.2em] relative z-10">
-              Accompagnement Humain Direct
-            </p>
-            
-            <p className="text-gray-400 mb-8 text-sm leading-relaxed font-medium italic relative z-10">
-              **Je m'immerge** personnellement dans votre projet lors d'une session privée d'une heure. Cette session vous évite des mois d’actions inutiles, d’erreurs coûteuses et de fausses bonnes idées. C’est votre levier anti-erreur indispensable pour bâtir une trajectoire solide.
-            </p>
-
-            <ul className="space-y-4 mt-auto relative z-10">
-              {[
-                "1h de Visio privée avec moi",
-                "J'audite directement votre visibilité",
-                "Je valide votre système stratégique",
-                "Je réponds à vos blocages précis"
-              ].map((bullet, idx) => (
-                <li key={idx} className="flex items-start text-[11px] text-gray-200 font-bold uppercase tracking-wider leading-snug">
-                  <CheckCircle2 size={14} className="mr-3 mt-0.5 text-[#f4c024] flex-shrink-0" />
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </section>
 
-      {/* Instructor Section */}
-      <section id="instructeur" className="py-32 bg-black">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-start gap-12 lg:gap-20">
-          <div className="w-full md:w-[40%]">
-            <div 
-              onMouseEnter={() => setIsInstructorHovered(true)}
-              onMouseLeave={() => setIsInstructorHovered(false)}
-              className="relative rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transition-all duration-700 group aspect-[4/5] md:aspect-auto cursor-help mb-12"
-            >
-              <img src={instructor.photo} alt={instructor.name} className="w-full h-auto object-cover transition-all duration-1000 group-hover:scale-105" />
-              <img src={instructor.hoverPhoto} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-1000 scale-110 group-hover:scale-105" />
-            </div>
+      {/* 5. PILIER 2 : LE QG OPERATIONNEL */}
+      <QGPresentation />
 
-            <div className="grid grid-cols-2 gap-4">
-              {instructorStats.map((stat, i) => (
-                <div key={i} className="bg-neutral-900/40 p-6 rounded-3xl border border-white/5 hover:border-[#ff0000]/30 transition-all group text-center">
-                   <div className="text-2xl font-black text-white group-hover:text-[#ff0000] transition-colors mb-2 serif-font italic tracking-tighter">
-                     {stat.value}
-                   </div>
-                   <div className="text-[8px] font-black text-gray-500 uppercase tracking-widest leading-tight italic">
-                     {stat.label}
-                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          <div className="w-full md:w-[60%] text-left">
-            <h2 className={`text-4xl md:text-6xl font-black uppercase tracking-tighter italic serif-font mb-4 transition-colors duration-500 ${isInstructorHovered ? 'text-[#ff0000]' : 'text-white'}`}>
-              {isInstructorHovered ? 'Pulseman' : instructor.name}
-            </h2>
-            <p className="text-[#ff0000] font-black uppercase tracking-[0.2em] text-xs mb-10">L'Intervenant Stratégique</p>
-            <div className="space-y-8">
-              <p className="text-gray-400 text-xl md:text-2xl leading-relaxed font-light border-l-4 border-[#ff0000] pl-6 py-2 italic">
-                {instructor.quote}
-              </p>
-              <div className="space-y-6 text-gray-500 text-base md:text-lg leading-relaxed font-medium italic">
-                {Array.isArray(instructor.bioBlocks) && instructor.bioBlocks.map((block, idx) => <p key={idx}>{block}</p>)}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* 6. PREUVE SOCIALE / LE CLAN S'EXPRIME */}
       <TestimonialsSection />
-      <LeadMagnetSection />
+
+      {/* 7. PILIER 3 : LE MENTORAT (COACHING) */}
       <CoachingBonusSection />
 
-      {/* FAQ Section */}
+      {/* 8. CTA PRINCIPAL */}
+      <section className="py-24 bg-black border-t border-white/5">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white italic serif-font mb-8">
+            Passez de l'Ombre à la <span className="text-[#ff0000]">Lumière</span>
+          </h2>
+          <button 
+            onClick={() => setCurrentView('purchase')}
+            className="w-full md:w-auto px-12 py-8 bg-[#ff0000] text-white text-lg font-black rounded-full uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-[0_0_60px_rgba(255,0,0,0.5)] active:scale-95 flex items-center justify-center gap-4 mx-auto"
+          >
+            Rejoindre l'Intervention
+            <ArrowRight size={24} />
+          </button>
+          <p className="mt-6 text-gray-500 text-[10px] font-black uppercase tracking-widest italic">
+            Place sécurisée • Garantie 10 jours • Accès Immédiat
+          </p>
+        </div>
+      </section>
+
+      {/* 9. LEAD MAGNETS (FOOTER DE RATTRAPAGE) */}
+      <LeadMagnetSection />
+
+      {/* 10. FAQ */}
       <section id="faq" className="py-32 bg-black relative border-t border-white/5">
         <div className="absolute top-0 right-0 p-12 opacity-[0.02] pointer-events-none select-none italic font-black text-[15vw] masonry-none uppercase">Questions</div>
         <div className="max-w-4xl mx-auto px-6">
@@ -734,6 +675,84 @@ const App: React.FC = () => {
             <a href="mailto:debruijneb@gmail.com" className="text-[#ff0000] font-black uppercase tracking-[0.3em] text-xs hover:underline decoration-white/20 underline-offset-8">Envoyez un message direct à l'intervenant</a>
           </div>
         </div>
+
+        {/* INSTRUCTOR SECTION (RESTORED FULL VERSION WITH INTERACTIONS) */}
+        <section id="instructeur" className="py-32 bg-neutral-950 border-t border-white/5 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            
+            <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+              {/* Photo & Identity */}
+              <div 
+                className="relative group cursor-pointer"
+                onMouseEnter={() => setIsInstructorHovered(true)}
+                onMouseLeave={() => setIsInstructorHovered(false)}
+                onClick={() => setIsInstructorHovered(!isInstructorHovered)}
+              >
+                 <div className="absolute inset-0 bg-[#ff0000] rounded-[3rem] rotate-3 blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                 <div className="relative rounded-[3rem] overflow-hidden border-2 border-white/10 aspect-[4/5] shadow-2xl bg-black">
+                    {/* Main Photo (No Filter) */}
+                    <img 
+                      src={instructor.photo} 
+                      alt={instructor.name} 
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${isInstructorHovered ? 'opacity-0' : 'opacity-100'}`} 
+                    />
+                    {/* Hover Photo (Pulseman) */}
+                    <img 
+                      src={instructor.hoverPhoto || instructor.photo} 
+                      alt="Pulseman" 
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${isInstructorHovered ? 'opacity-100' : 'opacity-0'}`} 
+                    />
+
+                    <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-8">
+                       <h3 className={`text-3xl font-black uppercase italic serif-font mb-2 transition-all duration-500 ${isInstructorHovered ? 'text-[#ff0000] tracking-widest scale-105 origin-left' : 'text-white'}`}>
+                         {instructor.name}
+                       </h3>
+                       <p className="text-[#ff0000] font-black uppercase tracking-[0.2em] text-xs">{instructor.role}</p>
+                    </div>
+                 </div>
+              </div>
+
+              {/* Bio & Story */}
+              <div>
+                 <div className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 border border-[#ff0000]/30 bg-[#ff0000]/5 text-[#ff0000] text-[10px] font-black uppercase tracking-[0.4em]">
+                  <User size={12} /> L'Intervenant Stratégique
+                </div>
+                
+                <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white italic serif-font mb-8 leading-none">
+                  L'Expertise <span className="text-[#ff0000]">Terrain</span>
+                </h2>
+
+                <div className="space-y-6 text-lg text-gray-400 font-medium italic leading-relaxed mb-10">
+                  {instructor.bioBlocks && instructor.bioBlocks.map((block, i) => (
+                    <p key={i} className="whitespace-pre-line">{block}</p>
+                  ))}
+                  {!instructor.bioBlocks && (
+                     // Fallback in case dynamic content fails or is partial
+                     <>
+                      <p>En 2025, j’ai vu la même scène se répéter.</p>
+                      <p>Des auteur·rices de polar, thriller et roman noir qui ont travaillé dur sur leur livre… et qui se retrouvent bloqué·es au moment de le faire connaître. Pas par manque de talent. Mais par manque de méthode, de repères, et toujours les mêmes constats qui revenaient, encore et encore, dans mes messages privés :<br/>« Mon livre ne se vend pas. »<br/>« Je ne comprends pas ce qui bloque. »<br/>« J’ai l’impression d’être invisible. »</p>
+                     </>
+                  )}
+                </div>
+
+                <div className="p-8 bg-neutral-900 rounded-3xl border-l-4 border-[#ff0000] italic text-gray-300">
+                   "{instructor.quote}"
+                </div>
+              </div>
+            </div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {instructorStats.map((stat, i) => (
+                <div key={i} className="bg-black/50 p-6 rounded-2xl border border-white/5 text-center hover:border-[#ff0000]/30 transition-colors">
+                  <div className="text-3xl md:text-4xl font-black text-white italic serif-font mb-2">{stat.value}</div>
+                  <div className="text-[9px] font-black text-gray-600 uppercase tracking-widest">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
       </section>
 
       {/* Footer */}
@@ -745,7 +764,7 @@ const App: React.FC = () => {
         </div>
         <div className="flex flex-col items-center gap-6">
           <Logo size="sm" />
-          <p className="text-gray-800 text-[10px] font-black uppercase tracking-[0.5em] mb-4">© 2026 PulseNoir - Benjamin de Bruijne - Academy Elite</p>
+          <p className="text-gray-800 text-[10px] font-black uppercase tracking-[0.5em] mb-4">© 2025 PulseNoir - Benjamin de Bruijne - Academy Elite</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <button onClick={() => setCurrentView('mentions')} className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4">Mentions Légales</button>
             <button onClick={() => setCurrentView('cgv')} className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4">Conditions Générales de Vente</button>
