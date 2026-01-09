@@ -41,7 +41,11 @@ import {
   Target,
   Settings,
   Users,
-  User
+  User,
+  Home,
+  Trophy,
+  Book,
+  BookOpen
 } from 'lucide-react';
 
 type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purchase' | 'success' | 'login' | 'admin';
@@ -224,11 +228,28 @@ const App: React.FC = () => {
   };
 
   const handleLogin = (email: string) => {
+    // Si l'utilisateur est déjà dans une session active (par exemple après un reload),
+    // on met à jour l'email et l'accès mais on NE REDIRIGE PAS automatiquement s'il est sur la landing page.
+    // La redirection automatique se fera uniquement via le bouton "Mon Espace" ou si l'utilisateur vient d'un lien magique (détecté ailleurs ou par action utilisateur).
+    // Cependant, pour simplifier et corriger le bug du refresh :
+    // On vérifie si l'utilisateur est déjà sur la vue 'landing'. Si oui, on y reste.
+    
+    // NOTE : La logique de redirection automatique au login (comme depuis un lien magic link) est souvent gérée par le fait que le lien redirige vers une URL spécifique ou que l'utilisateur clique.
+    // Ici, le code précédent forçait `setCurrentView('course')`.
+    // Pour corriger le bug de "refresh = redirection forcée vers cours", on ne change la vue que si on vient de la page de login explicite ou si l'utilisateur clique.
+    // MAIS, comme handleLogin est appelé par onAuthStateChange au chargement...
+    
+    // SOLUTION : On ne change pas la vue ici. On met juste à jour l'état utilisateur.
     setUserEmail(email);
     setHasAccess(true);
     localStorage.setItem('userEmail', email);
     localStorage.setItem('hasAccess', 'true');
-    setCurrentView('course');
+    
+    // Si on est sur la page de login, alors on redirige vers le cours car c'est une action volontaire.
+    // Si on est sur la landing (au chargement), on reste sur la landing.
+    if (currentView === 'login') {
+        setCurrentView('course');
+    }
   };
 
   const handleLogout = async () => {
@@ -732,20 +753,117 @@ const App: React.FC = () => {
         </section>
       </section>
 
-      {/* Footer */}
-      <footer className="py-20 bg-black border-t border-white/5 text-center px-6">
-        <div className="mb-10 opacity-30 flex justify-center gap-8">
-           <a href={PULSENOIR_LINKS.instagram} target="_blank" className="hover:text-[#ff0000] transition-colors"><Instagram size={24} /></a>
-           <a href={PULSENOIR_LINKS.group} target="_blank" className="hover:text-[#ff0000] transition-colors"><Facebook size={24} /></a>
-           <a href={PULSENOIR_LINKS.youtube} target="_blank" className="hover:text-[#ff0000] transition-colors"><Youtube size={24} /></a>
-        </div>
-        <div className="flex flex-col items-center gap-6">
-          <Logo size="sm" />
-          <p className="text-gray-800 text-[10px] font-black uppercase tracking-[0.5em] mb-4">© 2025 PulseNoir - Benjamin de Bruijne - Academy Elite</p>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-            <button onClick={() => setCurrentView('mentions')} className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4">Mentions Légales</button>
-            <button onClick={() => setCurrentView('cgv')} className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4">Conditions Générales de Vente</button>
-            <button onClick={() => setCurrentView('privacy')} className="text-gray-600 hover:text-[#ff0000] text-[9px] font-black uppercase tracking-widest transition-colors underline decoration-white/10 underline-offset-4">Politique de confidentialité</button>
+      {/* FOOTER ÉCOSYSTÈME UNIFORMISÉ */}
+      <footer className="bg-black border-t border-white/5 pt-20 pb-10">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-3 gap-12 lg:gap-20 mb-20">
+            
+            {/* Col 1: Identity */}
+            <div className="space-y-6">
+              <Logo size="md" />
+              <div>
+                <p className="text-[#ff0000] font-black uppercase italic tracking-widest text-sm mb-2">L'Arythmie du Crime</p>
+                <p className="text-gray-400 text-sm leading-relaxed font-medium">
+                  Le Plan de Guerre 90 Jours pour Auteurs de Polar, Noir & Thriller.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                 <span className="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-black text-gray-500 uppercase tracking-widest">📚 Polar</span>
+                 <span className="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-black text-gray-500 uppercase tracking-widest">Thriller</span>
+                 <span className="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-black text-gray-500 uppercase tracking-widest">Policier</span>
+              </div>
+              
+              <nav className="flex flex-col gap-2 pt-4">
+                <button onClick={() => scrollToSection('pour-qui')} className="text-left text-gray-500 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors flex items-center gap-2 group">
+                   <span className="w-1 h-1 bg-gray-700 group-hover:bg-[#ff0000] rounded-full transition-colors"></span> À propos
+                </button>
+                <button onClick={() => scrollToSection('programme')} className="text-left text-gray-500 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors flex items-center gap-2 group">
+                   <span className="w-1 h-1 bg-gray-700 group-hover:bg-[#ff0000] rounded-full transition-colors"></span> Le Programme
+                </button>
+                <button onClick={() => scrollToSection('instructeur')} className="text-left text-gray-500 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors flex items-center gap-2 group">
+                   <span className="w-1 h-1 bg-gray-700 group-hover:bg-[#ff0000] rounded-full transition-colors"></span> Le Mentor
+                </button>
+              </nav>
+            </div>
+
+            {/* Col 2: Ecosystem */}
+            <div>
+              <h3 className="text-white font-black uppercase tracking-widest text-xs mb-8 flex items-center gap-2">
+                L'écosystème Pulse Noir <span className="text-[#ff0000]">❤️</span>
+              </h3>
+              <ul className="space-y-4">
+                 <li>
+                   <a href={PULSENOIR_LINKS.main} target="_blank" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                     <Home size={16} className="text-gray-600 group-hover:text-[#ff0000] transition-colors" />
+                     <span className="text-sm font-medium">Le Site Principal</span>
+                   </a>
+                 </li>
+                 <li>
+                   <a href={PULSENOIR_LINKS.studio} target="_blank" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                     <div className="text-gray-600 group-hover:text-[#ff0000] transition-colors"><span className="text-xs font-black">📝</span></div>
+                     <span className="text-sm font-medium">Studio Pulse Noir — L'atelier d'écriture</span>
+                   </a>
+                 </li>
+                 <li>
+                   <a href={PULSENOIR_LINKS.biblio} target="_blank" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                     <BookOpen size={16} className="text-gray-600 group-hover:text-[#ff0000] transition-colors" />
+                     <span className="text-sm font-medium">Bibliopulse — La bibliothèque</span>
+                   </a>
+                 </li>
+                 <li>
+                   <a href={PULSENOIR_LINKS.group} target="_blank" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                     <Users size={16} className="text-gray-600 group-hover:text-[#ff0000] transition-colors" />
+                     <span className="text-sm font-medium">La Communauté Facebook</span>
+                   </a>
+                 </li>
+                 <li>
+                   <a href={PULSENOIR_LINKS.price} target="_blank" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                     <Trophy size={16} className="text-gray-600 group-hover:text-[#ff0000] transition-colors" />
+                     <span className="text-sm font-medium">Prix Pulse Noir</span>
+                   </a>
+                 </li>
+                 <li>
+                   <a href={PULSENOIR_LINKS.blog} target="_blank" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                     <Book size={16} className="text-gray-600 group-hover:text-[#ff0000] transition-colors" />
+                     <span className="text-sm font-medium">Dark Blog</span>
+                   </a>
+                 </li>
+                 
+                 <li className="pt-4 flex gap-4">
+                    <a href={PULSENOIR_LINKS.instagram} target="_blank" className="text-gray-600 hover:text-[#ff0000] transition-colors"><Instagram size={20} /></a>
+                    <a href={PULSENOIR_LINKS.youtube} target="_blank" className="text-gray-600 hover:text-[#ff0000] transition-colors"><Youtube size={20} /></a>
+                 </li>
+              </ul>
+            </div>
+
+            {/* Col 3: Legal & Support */}
+            <div>
+              <h3 className="text-white font-black uppercase tracking-widest text-xs mb-8">
+                Légal & Soutien
+              </h3>
+              <nav className="flex flex-col gap-3 mb-8">
+                 <button onClick={() => setCurrentView('mentions')} className="text-left text-gray-500 hover:text-white text-xs font-medium transition-colors">Mentions Légales</button>
+                 <button onClick={() => setCurrentView('privacy')} className="text-left text-gray-500 hover:text-white text-xs font-medium transition-colors">Politique de confidentialité</button>
+                 <button onClick={() => setCurrentView('cgv')} className="text-left text-gray-500 hover:text-white text-xs font-medium transition-colors">Conditions Générales de Vente</button>
+              </nav>
+              
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5 mb-6">
+                <p className="text-[10px] text-gray-500 italic leading-relaxed">
+                  💡 Les liens Amazon présents sur nos sites nous aident à financer l'hébergement et les outils.
+                </p>
+              </div>
+
+              <a href={PULSENOIR_LINKS.tipeee} target="_blank" className="block w-full py-4 bg-[#ff0000] hover:bg-[#ff0000]/90 text-white text-center rounded-xl font-black uppercase text-[10px] tracking-[0.2em] transition-all shadow-lg active:scale-95">
+                Soutenez-nous sur Tipeee
+              </a>
+            </div>
+
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+             <p className="text-gray-600 text-[10px] font-black uppercase tracking-widest">© 2025 Pulse Noir. "Broyer du noir, c'est une promotion."</p>
+             <p className="text-gray-700 text-[10px] font-bold uppercase tracking-widest">Réalisé avec passion par <span className="text-white">Beneloo</span></p>
           </div>
         </div>
       </footer>

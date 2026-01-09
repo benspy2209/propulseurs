@@ -138,7 +138,10 @@ export const PULSENOIR_LINKS = {
   instagram: "https://www.instagram.com/pulsenoirbe/",
   youtube: "https://www.youtube.com/@PulseNoirBe",
   leadMagnetDoc: "https://drive.google.com/file/d/1A_3xB_TOWQaOMU5CJXD9LAkjXGJb3PTM/view?usp=drive_link",
-  leadMagnetAutoedition: "https://drive.google.com/file/d/1GUz-z2ENCpF_ZdSTbXLNX2UFQyZtyqkM/view?usp=drive_link"
+  leadMagnetAutoedition: "https://drive.google.com/file/d/1GUz-z2ENCpF_ZdSTbXLNX2UFQyZtyqkM/view?usp=drive_link",
+  price: "https://pulsenoir.be/prix-pulsenoir-2025",
+  blog: "https://pulsenoir.be/dark-blog",
+  tipeee: "https://fr.tipeee.com/pulsenoir"
 };
 
 export const AUTHOR_TOOLBOX = [
