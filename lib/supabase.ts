@@ -1,12 +1,11 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-// URL de ton projet Supabase
-const supabaseUrl = 'https://raqoyoihigtqxlgpwzzz.supabase.co';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-// ATTENTION : Cette clé DOIT être la clé "anon" "public" trouvée dans 
-// Settings > API de ton tableau de bord Supabase. 
-// Elle doit commencer par "eyJ..."
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJhcW95b2loaWd0cXhsZ3B3enp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcwMDQ2NDcsImV4cCI6MjA4MjU4MDY0N30.SZlckWCqulLb8tZHrSx3UWg9RN9LdAq7ekllJADRAnc';
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Variables manquantes : VITE_SUPABASE_URL et VITE_SUPABASE_ANON_KEY doivent être définies dans .env');
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);

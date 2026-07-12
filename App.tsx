@@ -22,7 +22,6 @@ import {
   Instagram,
   Facebook,
   Youtube,
-  Sparkles,
   CheckCircle2,
   Copy,
   Zap,
@@ -352,20 +351,8 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-[#ff0000] selection:text-white">
       
-      {/* Promotional Subheader */}
-      <div className="fixed top-0 w-full bg-[#f4c024] z-[60] py-2 px-4 shadow-xl min-h-[44px] flex items-center justify-center">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-center">
-          <Sparkles size={14} className="text-black hidden sm:block animate-pulse shrink-0" />
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-            <p className="text-black text-[9px] sm:text-[11px] lg:text-xs font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] leading-tight">
-              Lancement — tarif préférentiel jusqu’au 31 janvier <span className="bg-black/10 px-1.5 py-0.5 rounded">(-30%)</span>
-            </p>
-          </div>
-        </div>
-      </div>
-
       {/* Navigation */}
-      <nav className="fixed top-[72px] lg:top-[44px] w-full bg-black/90 backdrop-blur-md z-50 border-b border-white/5">
+      <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-16 lg:h-20 flex items-center justify-between">
           <button onClick={() => setCurrentView('landing')} className="hover:opacity-80 transition-opacity">
             <Logo size="md" />
