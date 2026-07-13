@@ -52,45 +52,18 @@ type ViewState = 'landing' | 'course' | 'cgv' | 'privacy' | 'mentions' | 'purcha
 
 const Logo: React.FC<{ size?: 'sm' | 'md' | 'lg', className?: string }> = ({ size = 'md', className = '' }) => {
   const sizeClasses = {
-    sm: 'text-lg lg:text-xl',
-    md: 'text-xl lg:text-2xl',
-    lg: 'text-2xl lg:text-3xl'
+    sm: 'h-8 lg:h-10',
+    md: 'h-10 lg:h-12',
+    lg: 'h-12 lg:h-16'
   };
-  const heartSize = size === 'sm' ? 16 : size === 'md' ? 22 : 28;
 
   return (
-    <div className={`flex items-center gap-0 group/logo select-none ${className}`}>
-      <span className={`text-[#ff0000] font-black tracking-tighter uppercase ${sizeClasses[size]}`}>Pulse</span>
-      <div className="relative group-hover/logo:scale-110 group-active/logo:scale-95 transition-transform duration-300 mx-[-6px] lg:mx-[-7px]">
-        <svg 
-          width={heartSize} 
-          height={heartSize} 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-          className="drop-shadow-[0_0_10px_rgba(255,0,0,0.3)]"
-        >
-          <defs>
-            <clipPath id="left-half">
-              <rect x="0" y="0" width="12" height="24" />
-            </clipPath>
-            <clipPath id="right-half">
-              <rect x="12" y="0" width="12" height="24" />
-            </clipPath>
-          </defs>
-          <path 
-            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" 
-            fill="#ffffff" 
-            clipPath="url(#left-half)" 
-          />
-          <path 
-            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" 
-            fill="#ff0000" 
-            clipPath="url(#right-half)" 
-          />
-        </svg>
-      </div>
-      <span className={`text-white font-black tracking-tighter uppercase ${sizeClasses[size]}`}>Noir</span>
+    <div className={`flex items-center group/logo select-none ${className}`}>
+      <img
+        src="/logo-pulsenoir.png"
+        alt="Pulse Noir"
+        className={`w-auto ${sizeClasses[size]} group-hover/logo:scale-110 group-active/logo:scale-95 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(255,0,0,0.3)]`}
+      />
     </div>
   );
 };
