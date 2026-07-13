@@ -34,11 +34,10 @@ const LeadMagnetCard: React.FC<LeadMagnetProps> = ({ title, description, image, 
 
     try {
       const { error } = await supabase
-        .from('prospects')
-        .upsert({ 
-          email: cleanEmail, 
-          source: source 
-        }, { onConflict: 'email' });
+        .rpc('inscrire_prospect', {
+          p_email: cleanEmail,
+          p_source: source
+        });
 
       if (error) throw error;
 
