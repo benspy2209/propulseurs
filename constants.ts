@@ -49,8 +49,8 @@ export const INSTRUCTOR = {
 export const INSTRUCTOR_STATS = [
   { value: "35 ans", label: "LECTEUR PASSIONNÉ DE NOIR, POLAR & THRILLER" },
   { value: "20 ans", label: "D'EXPERTISE WEB, DEV & STRATÉGIE DIGITALE" },
-  { value: "1500+", label: "MEMBRES DU CLAN PULSE NOIR (FACEBOOK)" },
-  { value: "350", label: "AUTEUR·RICES PRÉSENTS DANS LE CLAN" }
+  { value: "2500+", label: "MEMBRES DU CLAN PULSE NOIR (FACEBOOK)" },
+  { value: "450", label: "AUTEUR·RICES PRÉSENTS DANS LE CLAN" }
 ];
 
 export interface Testimonial {

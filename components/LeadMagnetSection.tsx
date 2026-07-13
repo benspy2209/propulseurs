@@ -176,7 +176,7 @@ const LeadMagnetSection: React.FC = () => {
 
         <div className="mt-20 text-center">
           <p className="text-gray-700 text-[10px] font-black uppercase tracking-[0.4em] italic">
-            Rejoignez plus de 1500 auteurs dans le clan PulseNoir
+            Rejoignez plus de 2500 auteurs dans le clan PulseNoir
           </p>
         </div>
       </div>

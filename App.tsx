@@ -426,7 +426,7 @@ const App: React.FC = () => {
 
           <div className="flex items-center justify-center gap-3 text-white/60 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs italic bg-white/5 py-4 px-8 rounded-full border border-white/5 backdrop-blur-sm shadow-xl">
             <Users size={16} className="text-[#f4c024]" />
-            <span className="text-[#f4c024] font-black">+1500 membres</span> • +350 auteurs dans le Clan Pulse Noir
+            <span className="text-[#f4c024] font-black">+2500 membres</span> • +450 auteurs dans le Clan Pulse Noir
           </div>
         </div>
       </header>

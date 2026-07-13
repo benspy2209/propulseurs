@@ -91,7 +91,7 @@ const QGPresentation: React.FC = () => {
               </p>
               <div className="pt-3 border-t border-black/10">
                 <p className="text-[9px] font-black uppercase tracking-wide text-black/50">
-                  * Témoignage issu du Clan Pulse Noir (Groupe Public - 350+ Auteurs)
+                  * Témoignage issu du Clan Pulse Noir (Groupe Public - 450+ Auteurs)
                 </p>
               </div>
             </div>
